@@ -1,0 +1,205 @@
+// TMP - START
+.wrapper {
+    padding: 40px;
+}
+// TMP - END
+
+// Field
+// input:not(
+//     [type='button'],
+//     [type='submit'],
+//     [type='reset']
+// ) {
+.field {
+    border: 2px solid $clr-field-stroke-inactive;
+    border-radius: $br-2;
+    background-color: inherit;
+    padding: 7px 15px;
+    width: 400px; // TODO: change 400px
+    max-width: 100%;
+    // height: 58px;
+    outline: 0;
+    -webkit-appearance: none;
+    font-size: inherit;
+    line-height: inherit;
+
+    &,
+    &-icon {
+        transition: 0.2s ease;
+        transition-property: border-color, color;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    &[type='number'] {
+        -moz-appearance: textfield;
+    }
+
+    & + .field-icon {
+        color: $clr-field-stroke-inactive;
+
+        &::before {
+            font-family: 'STM-Icons';
+            font-size: 18px;
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+    }
+
+    // Hover
+    &:hover {
+        border-color: $clr-field-stroke-hover;
+
+        & + .field-icon {
+            color: $clr-field-stroke-hover;
+        }
+    }
+
+    // Disabled
+    &:disabled {
+        border-color: $clr-field-stroke-disabled;
+
+        & + .field-icon {
+            color: $clr-field-stroke-disabled;
+        }
+    }
+
+    // Focused
+    &:focus {
+        border-color: $clr-primary;
+
+        & ~ label,
+        & + .field-icon {
+            color: $clr-primary !important;
+        }
+    }
+
+    // Validation
+    &:invalid:not(:placeholder-shown) {
+        border-color: $clr-field-stroke-invalid;
+
+        & ~ label,
+        & + .field-icon {
+            color: $clr-field-stroke-invalid !important;
+        }
+
+        & + .field-icon::before {
+            content: '\e934';
+        }
+
+        & ~ .helper-text::before {
+            content: attr(data-warning);
+        }
+    }
+
+    // Error
+    &-error {
+        border-color: $clr-field-stroke-error;
+
+        & ~ label,
+        & + .field-icon {
+            color: $clr-field-stroke-error;
+        }
+
+        & + .field-icon::before {
+            content: '\e910';
+        }
+
+        & ~ .helper-text::before {
+            content: attr(data-error);
+        }
+    }
+
+    // Done
+    &-done {
+        border-color: $clr-field-stroke-done;
+
+        & + .field-icon::before {
+            content: '\e904';
+            color: $clr-secondary;
+        }
+    }
+
+    // Select
+    &-select {
+        cursor: pointer;
+
+        & + .field-icon::before {
+            content: '\e906';
+        }
+
+        // option {
+        //     color: #010101;
+        // }
+    }
+
+    // Search
+    &-search {
+        & + .field-icon::before {
+            content: '\e905';
+        }
+    }
+
+    // Password
+    &-password {
+        &:not(:disabled) + .field-icon::before {
+            cursor: pointer;
+            pointer-events: auto;
+        }
+    }
+}
+
+.field-wrapper {
+    display: inline-block;
+    // width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+
+    label {
+        position: absolute;
+        left: 15px;
+        top: 7px;
+        padding: 2px;
+        pointer-events: none;
+        font-size: 1em;
+        transition: 0.2s ease;
+        color: $clr-text-grey;
+    }
+
+    input:not(
+        [type='button'],
+        [type='submit'],
+        [type='reset']
+    ) {
+        &:focus ~ label,
+        &:valid:not(:placeholder-shown) ~ label,
+        &:invalid:not(:placeholder-shown) ~ label {
+            top: -12px;
+            font-size: 12px;
+            color: currentColor;
+            background-color: $clr-bg-white;
+        }
+    }
+
+    // Helper Text (inspired by materializecss.com)
+    .helper-text {
+        left: 17px;
+        position: absolute;
+        color: $clr-text-grey;
+        
+        &::before {
+            font-size: 16px;
+        }
+    }
+}
+
+
+// https://developer.wordpress.org/reference/functions/the_title/
+// http://steuermachen-theme.local/
+// TODO: create a simple script (local file) that opens saved urls

@@ -1,0 +1,21 @@
+.table-of-contents {
+    // border: 2px solid blue;
+
+    li {
+        list-style: none;
+        border-bottom: 1px solid $clr-bg-black;
+
+        &:first-child {
+            border-top: 1px solid $clr-bg-black;
+        }
+
+        &:hover {
+            background-color: $clr-bg-blue;
+        }
+
+        a {
+            padding: 10px;
+            display: block;
+        }
+    }
+}

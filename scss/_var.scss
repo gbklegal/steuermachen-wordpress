@@ -1,0 +1,72 @@
+// colors
+$clr-primary: #ff6138;
+$clr-primary-hover: #CC5637;
+$clr-primary-disabled: #FFCABC;
+$clr-primary-active: #FF5427;
+$clr-primary-active-stroke: #B45941;
+
+$clr-secondary: #66DB3B;
+$clr-secondary-hover: #5AB139;
+$clr-secondary-disabled: #DDF7D3;
+$clr-secondary-active: #40E703;
+$clr-secondary-active-stroke: #449E23;
+
+$clr-bg-turquoise: #DAF5EE;
+$clr-bg-green: #EAFFE2;
+$clr-bg-blue: #F1F6FC;
+$clr-bg-white: #FFFFFF;
+$clr-bg-black: #000000;
+$clr-bg: $clr-bg-white;
+
+$clr-text-black: #000000;
+$clr-text-blue: #252B42;
+$clr-text-white: #FFFFFF;
+$clr-text-grey: #737373;
+$clr-text: $clr-text-black; // default
+
+$clr-field-stroke: #AABFBD;
+$clr-field-stroke-disabled: #E6E6E6;
+$clr-field-stroke-inactive: #C9C9C9;
+$clr-field-stroke-hover: #8A8C8E;
+$clr-field-stroke-focused: #FF6138;
+$clr-field-stroke-invalid: #FFE7B9; // #FFEAC1
+$clr-field-stroke-error: #FF3B3B; // #FFD8D8
+$clr-field-stroke-done: $clr-text-grey; // #FFD8D8
+$clr-field-tile: $clr-primary;
+$clr-field-text: $clr-text-blue;
+$clr-field-disabled: #AABFBD;
+
+
+// font
+$font-default: 'Raleway', sans-serif;
+
+
+// border radius
+$br-0: 0px;
+$br-1: 4px;
+$br-2: 8px;
+$br-3: 10px;
+$br-4: 12px;
+$br-5: 30px;
+$br-6: 60px;
+$br-7: 90px;
+
+
+// sizes
+$max-width: 1280px;
+
+// break points
+$breakpoint-xs: 0;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+
+// directions
+$directions: (
+    left,
+    center,
+    right
+);

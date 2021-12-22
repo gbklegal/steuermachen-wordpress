@@ -1,0 +1,88 @@
+.btn {
+    display: inline-block;
+    max-width: 100%;
+    // height: 58px;
+    font-size: 18px;
+    border: 1px solid transparent;
+    border-radius: $br-2;
+    cursor: pointer;
+    transition: 0.2s ease;
+    transition-property: background-color, border-color;
+    padding: 15px 44px;
+    text-align: center;
+
+    &-lg {
+        width: 365px;
+    }
+
+    &-md {
+        width: 226px;
+    }
+
+    &-sm {
+        width: 105px;
+    }
+
+    // Primary
+    &-theme-primary, // compatibility reasons
+    &-primary {
+        background-color: $clr-primary;
+        color: $clr-text-white;
+
+        &:hover {
+            background-color: $clr-primary-hover;
+        }
+
+        &:active {
+            background-color: $clr-primary-active;
+            border-color: $clr-primary-active-stroke;
+        }
+
+        &:disabled {
+            background-color: $clr-primary-disabled;
+        }
+    }
+
+    // Secondary
+    &-secondary {
+        background-color: $clr-secondary;
+        color: $clr-text-white;
+
+        &:hover {
+            background-color: $clr-secondary-hover;
+        }
+
+        &:active {
+            background-color: $clr-secondary-active;
+            border-color: $clr-secondary-active-stroke;
+        }
+
+        &:disabled {
+            background-color: $clr-secondary-disabled;
+        }
+    }
+
+    // Outline
+    &-outline {
+        background-color: inherit;
+        color: $clr-text-blue;
+        border-color: $clr-text-blue;
+
+        &:hover {
+            border-color: $clr-secondary-hover;
+        }
+
+        &:active {
+            border-color: $clr-secondary-active-stroke;
+        }
+
+        &:disabled {
+            color: $clr-field-stroke-disabled;
+            border-color: $clr-field-stroke-disabled;
+        }
+    }
+}
+
+a.btn {
+    display: inline-block;
+}

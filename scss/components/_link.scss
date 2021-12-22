@@ -1,0 +1,16 @@
+a,
+.a {
+    text-decoration: none;
+
+    &:not(.btn) {
+        color: $clr-primary;
+
+        &:hover {
+            color: $clr-primary-hover;
+        }
+
+        &:active {
+            color: $clr-primary-active;
+        }
+    }
+}

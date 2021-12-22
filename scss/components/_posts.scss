@@ -1,0 +1,64 @@
+.posts-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, calc(100fr / 3));
+    gap: 30px 80px;
+
+    .list-article {
+        .list-article-thumb {
+            // border: 2px solid palevioletred;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border-radius: $br-4;
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: ease-in-out 0.3s transform;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        .list-article-content {
+
+            .rt-reading-time {
+                display: none !important; // TODO: not final - please ask the markting
+                font-size: 12px;
+            }
+
+            p {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+.posts-wrapper,
+.post-wrapper {
+    .list-article-categories,
+    .post-categories {
+        margin-bottom: 15px;
+
+        ul {
+            font-size: 0;
+
+            li {
+                font-size: 1rem;
+                display: inline;
+                list-style-type: none;
+
+                &:not(:last-child)::after {
+                    content: ' / ';
+                }
+                
+                a {
+                    text-transform: uppercase;
+                    font-weight: 500; // 700
+                }
+            }
+        }
+    }
+}

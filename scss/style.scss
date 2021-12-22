@@ -1,0 +1,27 @@
+/*
+    Theme Name: steuermachen
+    Author: Tobias Röder
+    Author URI: https://tobias-roeder.de
+    Description: Custom steuermachen theme.
+    Version: 0.0.1
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+@import 'var';
+@import 'lib/icons';
+@import 'defaults';
+@import 'utilities';
+
+// components
+@import 'components/back-to-top';
+@import 'components/button';
+@import 'components/field';
+@import 'components/footer';
+@import 'components/header';
+@import 'components/hero';
+@import 'components/link';
+@import 'components/post-preview';
+@import 'components/post';
+@import 'components/posts';
+@import 'components/table-of-contents';

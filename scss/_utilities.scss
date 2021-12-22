@@ -1,0 +1,14 @@
+.mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+@each $direction in $directions {
+    .text-#{$direction} {
+        text-align: $direction;
+    }
+}
