@@ -1,0 +1,107 @@
+.steuerlexikon,
+.dictionary {
+    #hero {
+        display: flex;
+        justify-content: center;
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .alphabet {
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
+        gap: 2px;
+
+        li {
+            width: 100%;
+
+            a {
+                font-size: 36px;
+                color: $clr-text;
+                font-weight: 700;
+                display: block;
+                background-color: $clr-bg-blue;
+                width: 100%;
+                text-align: center;
+
+                &:hover {
+                    background-color: $clr-bg-green;
+                }
+
+                &.selected {
+                    background-color: $clr-secondary;
+                }
+            }
+        }
+    }
+
+    section {
+        .section-inner {
+            display: flex;
+            margin-top: 4rem;
+            gap: 3rem;
+
+            .master-letter {
+                $pointSize: 10px;
+                $pointSizeHalf: calc($pointSize * 0.5);
+                $pointSizeHalfNeg: calc($pointSize * -0.5);
+
+                // background-color: $clr-primary;
+                position: relative;
+                margin-top: 30px;
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    transform: rotate(-90deg);
+
+                    top: $pointSizeHalfNeg;
+                    left: $pointSizeHalfNeg;
+                    width: 0; 
+                    height: 0; 
+                    border-left: $pointSize solid transparent;
+                    border-right: $pointSize solid transparent;
+                    border-bottom: $pointSize solid $clr-primary;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: -30px;
+                    left: $pointSize;
+                    width: 0;
+                    height: 110px;
+                    border-left: 1px solid $clr-primary;
+                }
+
+                h2 {
+                    width: 3.4rem;
+                    margin: 0;
+                    // border: 2px solid blue;
+                    text-align: center;
+                    background-color: $clr-primary;
+                    color: $clr-text-white; // $clr-text-black would be better (https://coolors.co/contrast-checker/000000-ff6138)
+                    box-shadow: 0 4px 4px rgba(#000, 0.25);
+                }
+            }
+
+            ul {
+                display: grid;
+                grid-template-columns: repeat(2, 50fr);
+                width: 100%;
+
+                li {
+                    list-style-type: none;
+
+                    a {
+                        font-size: 18px;
+                        display: block;
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

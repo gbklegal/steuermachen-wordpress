@@ -442,21 +442,6 @@ footer#footer {
   text-align: right;
 }
 
-#back-to-top {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background-color: #F1F6FC;
-  width: 62px;
-  height: 62px;
-  border-radius: 999rem;
-  display: grid;
-  place-items: center;
-  font-size: 35px;
-  color: #000000;
-  box-shadow: 0px 4px 4px -1px rgba(0, 0, 0, 0.25);
-}
-
 .btn {
   display: inline-block;
   max-width: 100%;
@@ -524,6 +509,103 @@ footer#footer {
 
 a.btn {
   display: inline-block;
+}
+
+.steuerlexikon #hero,
+.dictionary #hero {
+  display: flex;
+  justify-content: center;
+  width: 750px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.steuerlexikon .alphabet,
+.dictionary .alphabet {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  gap: 2px;
+}
+.steuerlexikon .alphabet li,
+.dictionary .alphabet li {
+  width: 100%;
+}
+.steuerlexikon .alphabet li a,
+.dictionary .alphabet li a {
+  font-size: 36px;
+  color: #000000;
+  font-weight: 700;
+  display: block;
+  background-color: #F1F6FC;
+  width: 100%;
+  text-align: center;
+}
+.steuerlexikon .alphabet li a:hover,
+.dictionary .alphabet li a:hover {
+  background-color: #EAFFE2;
+}
+.steuerlexikon .alphabet li a.selected,
+.dictionary .alphabet li a.selected {
+  background-color: #66DB3B;
+}
+.steuerlexikon section .section-inner,
+.dictionary section .section-inner {
+  display: flex;
+  margin-top: 4rem;
+  gap: 3rem;
+}
+.steuerlexikon section .section-inner .master-letter,
+.dictionary section .section-inner .master-letter {
+  position: relative;
+  margin-top: 30px;
+}
+.steuerlexikon section .section-inner .master-letter::before,
+.dictionary section .section-inner .master-letter::before {
+  position: absolute;
+  content: "";
+  transform: rotate(-90deg);
+  top: -5px;
+  left: -5px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ff6138;
+}
+.steuerlexikon section .section-inner .master-letter::after,
+.dictionary section .section-inner .master-letter::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 10px;
+  width: 0;
+  height: 110px;
+  border-left: 1px solid #ff6138;
+}
+.steuerlexikon section .section-inner .master-letter h2,
+.dictionary section .section-inner .master-letter h2 {
+  width: 3.4rem;
+  margin: 0;
+  text-align: center;
+  background-color: #ff6138;
+  color: #FFFFFF;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.steuerlexikon section .section-inner ul,
+.dictionary section .section-inner ul {
+  display: grid;
+  grid-template-columns: repeat(2, 50fr);
+  width: 100%;
+}
+.steuerlexikon section .section-inner ul li,
+.dictionary section .section-inner ul li {
+  list-style-type: none;
+}
+.steuerlexikon section .section-inner ul li a,
+.dictionary section .section-inner ul li a {
+  font-size: 18px;
+  display: block;
+  margin: 5px;
 }
 
 .wrapper {
@@ -846,6 +928,7 @@ a:not(.btn):active,
 }
 .post-wrapper .post-content-wrapper .post-content .rt-reading-time {
   font-size: 0.8rem;
+  margin-bottom: 1rem;
 }
 .post-wrapper .post-content-wrapper .post-content p {
   margin: 0;
@@ -930,6 +1013,21 @@ a:not(.btn):active,
 .post-wrapper .post-categories ul li a {
   text-transform: uppercase;
   font-weight: 500;
+}
+
+#scroll-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #F1F6FC;
+  width: 62px;
+  height: 62px;
+  border-radius: 999rem;
+  display: grid;
+  place-items: center;
+  font-size: 35px;
+  color: #000000;
+  box-shadow: 0px 4px 4px -1px rgba(0, 0, 0, 0.25);
 }
 
 .table-of-contents li {
