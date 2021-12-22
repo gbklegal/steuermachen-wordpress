@@ -42,6 +42,7 @@
         <i class="icon-chevrons-up"></i>
     </a>
 </div>
+</div>
 
 </body>
 </html>

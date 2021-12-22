@@ -34,6 +34,41 @@ window.onload = function() {
             }
         }
     });
+
+    // Steuerlexikon (dict)
+    selectLetterInDictFromHash();
+}
+
+window.onhashchange = function() {
+    selectLetterInDictFromHash();
+}
+
+
+/**
+ * @param {string} hashValue 
+ */
+function selectLetterInDict( hashValue ) {
+    // Steuerlexikon (dict)
+    if (hashValue.match(/[a-z]{1}/)) {
+        let dictLetterSelected = document.querySelector('.alphabet a.letter.selected');
+        if (dictLetterSelected)
+            dictLetterSelected.classList.remove('selected');
+
+        let dictLetterFromHash = document.querySelector('.alphabet a.letter-' + hashValue);
+        if (dictLetterFromHash)
+            dictLetterFromHash.classList.add('selected');
+    }
+}
+
+/**
+ * utility function for selectLetterInDict
+ */
+function selectLetterInDictFromHash() {
+    let hashValue = location.hash.slice(1);
+    selectLetterInDict(hashValue);
+}
+
+
 /**
  * scroll to top without changing/setting the location hash
  */

@@ -7,7 +7,8 @@
  * @see https://developer.wordpress.org/themes/basics/template-files/#template-partials
  */
 
-add_enqueue_script_attributes(wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/script.js'), 'defer');
+// add_enqueue_script_attributes(, 'defer');
+wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/script.js')
 
 ?>
 <!DOCTYPE html>
@@ -28,27 +29,28 @@ add_enqueue_script_attributes(wp_enqueue_script('steuermachen-script', get_templ
 </head>
 <body>
 
-    <header id="header">
-        <div class="header-inner">
-            <div class="header-content">
-                <div class="header-part">
-                    <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 42]); ?>
-                    <div class="hidden-on-mobile">
-                        <?php getNavMenu('primary'); ?>
+    <div id="page">
+        <header id="header">
+            <div class="header-inner">
+                <div class="header-content">
+                    <div class="header-part">
+                        <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 42]); ?>
+                        <div class="hidden-on-mobile">
+                            <?php getNavMenu('primary'); ?>
+                        </div>
+                    </div>
+                    <div class="header-part">
+                        <div class="hidden-on-mobile">
+                            <!-- TODO: convert button to a link button -->
+                            <button class="btn btn-primary">Anmelden</button>
+                        </div>
                     </div>
                 </div>
-                <div class="header-part">
-                    <div class="hidden-on-mobile">
-                        <!-- TODO: convert button to a link button -->
-                        <button class="btn btn-primary">Anmelden</button>
-                    </div>
+                <div class="header-mobile">
+                    <i class="icon-menu"></i>
                 </div>
             </div>
-            <div class="header-mobile">
-                <i class="icon-menu"></i>
-            </div>
-        </div>
-    </header>
+        </header>
 
 <?php # exit; ?>
 
