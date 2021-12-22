@@ -34,4 +34,11 @@ window.onload = function() {
             }
         }
     });
+/**
+ * scroll to top without changing/setting the location hash
+ */
+function scrollToTop(event) {
+    if (event)
+        event.preventDefault();
+    scrollTo(0, 0);
 }
