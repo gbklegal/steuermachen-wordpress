@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
     Theme Name: steuermachen
-    Author: Tobias Röder
+    Author: Tobias Roeder
     Author URI: https://tobias-roeder.de
     Description: Custom steuermachen theme.
     Version: 0.0.1
@@ -421,6 +421,13 @@ footer#footer {
     padding: 20px;
   }
 }
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mx-auto {
   margin-right: auto;
   margin-left: auto;
@@ -608,6 +615,25 @@ a.btn {
   margin: 5px;
 }
 
+@media (max-width: 768px) {
+  .steuerlexikon #hero,
+.dictionary #hero {
+    display: block;
+  }
+  .steuerlexikon .alphabet,
+.dictionary .alphabet {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .steuerlexikon .alphabet li,
+.dictionary .alphabet li {
+    width: 54px;
+  }
+  .steuerlexikon section .section-inner ul,
+.dictionary section .section-inner ul {
+    grid-template-columns: 100fr;
+  }
+}
 .wrapper {
   padding: 40px;
 }
@@ -903,6 +929,47 @@ a:not(.btn):hover,
 a:not(.btn):active,
 .a:not(.btn):active {
   color: #FF5427;
+}
+
+main p:not(:first-child) {
+  margin-top: 1.25em;
+}
+main p:not(:last-child) {
+  margin-bottom: 1.25em;
+}
+main h2 {
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+}
+main h3 {
+  font-size: 1.25em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.6;
+}
+main h4 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+main ul,
+main ol {
+  padding-left: 20px;
+  margin: 1.5em;
+}
+main ul li,
+main ol li {
+  padding: 0;
+  margin-bottom: 6px;
+}
+main blockquote {
+  border-left: 3px solid #252B42;
+  padding: 20px;
+  font-style: italic;
+  background-color: #F1F6FC;
+  margin: 20px 0;
 }
 
 .post-wrapper .posted-on {
