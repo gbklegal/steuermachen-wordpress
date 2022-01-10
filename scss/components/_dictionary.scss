@@ -105,3 +105,29 @@
         }
     }
 }
+
+@media (max-width: $breakpoint-md) {
+    .steuerlexikon,
+    .dictionary {
+        #hero {
+            display: block;
+        }
+
+        .alphabet {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            li {
+                width: 54px;
+            }
+        }
+
+        section {
+            .section-inner {
+                ul {
+                    grid-template-columns: 100fr;
+                }
+            }
+        }
+    }
+}

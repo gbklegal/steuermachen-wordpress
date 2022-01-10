@@ -92,8 +92,6 @@ h5 {
 }
 
 
-
-
 p {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -119,5 +117,15 @@ p {
     header#header,
     footer#footer {
         padding: 20px;
+    }
+}
+
+
+.aligncenter {
+    clear: both;
+    display: block;
+    margin: {
+        left: auto;
+        right: auto;
     }
 }
