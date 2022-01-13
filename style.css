@@ -421,11 +421,8 @@ footer#footer {
     padding: 20px;
   }
 }
-.aligncenter {
-  clear: both;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+img {
+  max-width: 100%;
 }
 
 .mx-auto {
@@ -449,6 +446,121 @@ footer#footer {
   text-align: right;
 }
 
+.alignfull {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.font-thin {
+  font-weight: 100;
+}
+
+.font-extralight {
+  font-weight: 200;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+.accordion-wrapper {
+  width: 100%;
+  background-color: #F1F6FC;
+  border-radius: 8px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.accordion-wrapper .accordion-inner {
+  max-width: 720px;
+  margin: auto;
+  padding: 50px 0;
+}
+.accordion-wrapper .accordion {
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+}
+.accordion-wrapper .accordion.active .icon-plus {
+  animation: plusToX 0.2s forwards;
+}
+.accordion-wrapper .accordion .icon-plus {
+  animation: XToPlus 0.2s forwards;
+  display: block;
+  float: right;
+  height: 32px;
+}
+.accordion-wrapper .accordion h3 {
+  margin: 1em 0;
+  font-size: 24px;
+  font-weight: 400;
+}
+.accordion-wrapper .panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border-bottom: 1px solid #000000;
+}
+.accordion-wrapper .panel .panel-inner {
+  margin-bottom: 1em;
+}
+
+@keyframes plusToX {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-45deg);
+  }
+}
+@keyframes XToPlus {
+  from {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
 .btn {
   display: inline-block;
   max-width: 100%;
@@ -518,14 +630,6 @@ a.btn {
   display: inline-block;
 }
 
-.steuerlexikon #hero,
-.dictionary #hero {
-  display: flex;
-  justify-content: center;
-  width: 750px;
-  max-width: 100%;
-  margin: 0 auto;
-}
 .steuerlexikon .alphabet,
 .dictionary .alphabet {
   display: flex;
@@ -634,6 +738,23 @@ a.btn {
     grid-template-columns: 100fr;
   }
 }
+.faq .curvy-video-section {
+  position: relative;
+}
+.faq .curvy-video-section .curvy-video-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.faq .curvy-video-section .curvy-video-inner h2 {
+  text-align: center;
+}
+.faq .curvy-video-section .curvy-video-inner iframe {
+  box-shadow: 3px 18px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
 .wrapper {
   padding: 40px;
 }
@@ -913,6 +1034,13 @@ header#header .header-inner .menu .menu-item .sub-menu {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+#hero.hero-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 900px;
+  max-width: 100%;
+  margin: 0 auto;
+}
 
 a,
 .a {
@@ -931,40 +1059,40 @@ a:not(.btn):active,
   color: #FF5427;
 }
 
-main p:not(:first-child) {
+.prose p:not(:first-child) {
   margin-top: 1.25em;
 }
-main p:not(:last-child) {
+.prose p:not(:last-child) {
   margin-bottom: 1.25em;
 }
-main h2 {
+.prose h2 {
   font-size: 1.5em;
   margin-top: 2em;
   margin-bottom: 1em;
   line-height: 1.3333333;
 }
-main h3 {
+.prose h3 {
   font-size: 1.25em;
   margin-top: 1.6em;
   margin-bottom: 0.6em;
   line-height: 1.6;
 }
-main h4 {
+.prose h4 {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   line-height: 1.5;
 }
-main ul,
-main ol {
+.prose ul,
+.prose ol {
   padding-left: 20px;
   margin: 1.5em;
 }
-main ul li,
-main ol li {
+.prose ul li,
+.prose ol li {
   padding: 0;
   margin-bottom: 6px;
 }
-main blockquote {
+.prose blockquote {
   border-left: 3px solid #252B42;
   padding: 20px;
   font-style: italic;
@@ -972,48 +1100,48 @@ main blockquote {
   margin: 20px 0;
 }
 
-.post-wrapper .posted-on {
+.post-wrapper.single-post .posted-on {
   font-size: 24px;
 }
-.post-wrapper .post-content-wrapper {
+.post-wrapper.single-post .post-content-wrapper {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 100px;
 }
-.post-wrapper .post-content-wrapper .post-table-of-contents {
+.post-wrapper.single-post .post-content-wrapper .post-table-of-contents {
   min-width: 300px;
 }
-.post-wrapper .post-content-wrapper .post-table-of-contents .header  {
+.post-wrapper.single-post .post-content-wrapper .post-table-of-contents .header  {
   font-weight: 600;
 }
-.post-wrapper .post-content-wrapper .post-content .post-thumbnail {
+.post-wrapper.single-post .post-content-wrapper .post-content .post-thumbnail {
   max-width: 100%;
   height: auto;
   border-radius: 12px;
   margin-bottom: 1rem;
 }
-.post-wrapper .post-content-wrapper .post-content .rt-reading-time {
+.post-wrapper.single-post .post-content-wrapper .post-content .rt-reading-time {
   font-size: 0.8rem;
   margin-bottom: 1rem;
 }
-.post-wrapper .post-content-wrapper .post-content p {
+.post-wrapper.single-post .post-content-wrapper .post-content p {
   margin: 0;
 }
-.post-wrapper .post-content-wrapper .post-content h3 {
+.post-wrapper.single-post .post-content-wrapper .post-content h3 {
   font-size: 24px;
 }
-.post-wrapper .post-content-wrapper .post-content ul,
-.post-wrapper .post-content-wrapper .post-content ol {
+.post-wrapper.single-post .post-content-wrapper .post-content ul,
+.post-wrapper.single-post .post-content-wrapper .post-content ol {
   padding-left: 20px;
   margin: 1.5em;
 }
-.post-wrapper .post-content-wrapper .post-content ul li,
-.post-wrapper .post-content-wrapper .post-content ol li {
+.post-wrapper.single-post .post-content-wrapper .post-content ul li,
+.post-wrapper.single-post .post-content-wrapper .post-content ol li {
   padding: 0;
   margin-bottom: 6px;
 }
-.post-wrapper .post-content-wrapper .post-content blockquote {
+.post-wrapper.single-post .post-content-wrapper .post-content blockquote {
   border-left: 3px solid #252B42;
   padding: 20px;
   font-style: italic;
