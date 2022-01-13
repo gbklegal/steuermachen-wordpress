@@ -69,7 +69,7 @@ get_header();
 
 ?>
 <main class="main-content steuerlexikon">
-    <div id="hero">
+    <div id="hero" class="hero-wrapper">
         <div class="hero-text">
             <h1>Steuerlexikon</h1>
             <p>Alles, was Sie über Steuern wissen müssen, findest Du in unserem Steuerlexikon.</p>
