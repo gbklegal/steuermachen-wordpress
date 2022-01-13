@@ -1,4 +1,4 @@
-<div class="post-wrapper">
+<div class="post-wrapper single-post">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <header id="hero" class="post-header">
             <?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
