@@ -3,4 +3,12 @@
         top: 4rem;
         bottom: 4rem;
     }
+
+    &.hero-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 900px; // 750px
+        max-width: 100%;
+        margin: 0 auto;
+    }
 }
