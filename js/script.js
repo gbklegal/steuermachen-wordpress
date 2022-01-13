@@ -37,6 +37,10 @@ window.onload = function() {
 
     // Steuerlexikon (dict)
     selectLetterInDictFromHash();
+
+    // FAQ Accordion
+    // const accs = document.querySelectorAll('.accordion');
+    accordionJS();
 }
 
 window.onhashchange = function() {
@@ -76,4 +80,35 @@ function scrollToTop(event) {
     if (event)
         event.preventDefault();
     scrollTo(0, 0);
+}
+
+
+/**
+ * Collapsibles/Accordion
+ * @see https://www.w3schools.com/howto/howto_js_accordion.asp
+ */
+function accordionJS(accs) {
+    accs = accs || document.querySelectorAll('.accordion');
+
+    accs.forEach(acc => {
+        acc.onclick = () => {
+            acc.classList.toggle('active');
+
+            const panel = acc.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+            }
+        }
+    });
+
+    // TODO fix lazy code
+    let hash = window.location.hash;
+    let focusedFaqItem = document.querySelector(hash);
+    if (focusedFaqItem) {
+        focusedFaqItem.classList.add('active');
+        const panel = focusedFaqItem.nextElementSibling;
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
 }
