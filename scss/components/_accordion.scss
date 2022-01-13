@@ -1,0 +1,79 @@
+.accordion-wrapper {
+    width: 100%;
+    background-color: $clr-bg-blue;
+    border-radius: $br-2;
+    box-shadow: 0 4px 4px rgba(#000, 0.25);
+
+    .accordion-inner {
+        max-width: 720px;
+        margin: auto;
+        padding: 50px 0;
+        // border: 2px solid blue;
+    }
+
+    .accordion {
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        // padding: 25px 0;
+        border: none;
+        outline: none;
+        transition: .4s;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: transparent;
+
+        &.active {
+            .icon-plus {
+                animation: plusToX .2s forwards;
+            }
+        }
+
+        .icon-plus {
+            animation: XToPlus .2s forwards;
+            display: block;
+            float: right;
+            height: 32px;
+        }
+
+        h3 {
+            margin: 1em 0;
+            font-size: 24px;
+            font-weight: 400;
+        }
+    }
+
+    .panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .2s ease-out;
+        border-bottom: 1px solid $clr-bg-black;
+
+        .panel-inner {
+            margin-bottom: 1em;
+        }
+    }
+}
+
+
+@keyframes plusToX {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes XToPlus {
+    from {
+        transform: rotate(-45deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
