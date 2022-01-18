@@ -1,4 +1,44 @@
 .faq {
+    .easy-with-tax-section {
+        main {
+            margin-top: 60px;
+
+            .tabs-wrapper {
+                display: grid;
+                grid-template-columns: repeat(2, 50fr);
+                gap: 20px;
+            }
+
+            .changeable-part {
+                .content:not(.content-selected) {
+                    display: none;
+                }
+
+                img {
+                    border-radius: $br-2;
+                }
+            }
+
+            .selections {
+                .item {
+                    padding-left: 10px;
+                    cursor: pointer;
+                    transition: color 0.1s ease-in;
+                    border-left: 2px solid transparent;
+
+                    &:hover {
+                        color: $clr-primary;
+                    }
+
+                    &-selected {
+                        color: $clr-primary;
+                        border-color: $clr-primary;
+                    }
+                }
+            }
+        }
+    }
+
     .curvy-video-section {
         position: relative;
 

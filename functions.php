@@ -69,11 +69,6 @@ function getImageById( int $attachmentId, string $size, string $className = '', 
 }
 
 
-// hide admin bar
-show_admin_bar(false);
-
-
-
 /**
  * Replace the_excerpt "more" text with a link
  *
@@ -87,7 +82,9 @@ add_filter('excerpt_more', 'ld_new_excerpt_more');
 
 /**
  * change the default length of the_excerpt string length
+ * 
  * @param int $length
+ * 
  * @return int
  */
 function replace_excerpt_length( ){
@@ -121,8 +118,10 @@ add_action( 'init', 'initStmTheme' );
 
 /**
  * helper function
+ * 
  * @param string $themeLocationName
  * @param array $args
+ * 
  * @return void
  */
 function getNavMenu( string $themeLocationName, array $args = array() ):void {
@@ -141,6 +140,7 @@ function getNavMenu( string $themeLocationName, array $args = array() ):void {
  * 
  * @param string $htmlString
  * @param int $depth (5) - (optional)
+ * 
  * @return string
  */
 function tableOfContents( string $content, int $depth = 5 ):string {

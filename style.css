@@ -495,6 +495,14 @@ img {
   font-weight: 900;
 }
 
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
 .accordion-wrapper {
   width: 100%;
   background-color: #F1F6FC;
@@ -737,6 +745,33 @@ a.btn {
 .dictionary section .section-inner ul {
     grid-template-columns: 100fr;
   }
+}
+.faq .easy-with-tax-section main {
+  margin-top: 60px;
+}
+.faq .easy-with-tax-section main .tabs-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 50fr);
+  gap: 20px;
+}
+.faq .easy-with-tax-section main .changeable-part .content:not(.content-selected) {
+  display: none;
+}
+.faq .easy-with-tax-section main .changeable-part img {
+  border-radius: 8px;
+}
+.faq .easy-with-tax-section main .selections .item {
+  padding-left: 10px;
+  cursor: pointer;
+  transition: color 0.1s ease-in;
+  border-left: 2px solid transparent;
+}
+.faq .easy-with-tax-section main .selections .item:hover {
+  color: #ff6138;
+}
+.faq .easy-with-tax-section main .selections .item-selected {
+  color: #ff6138;
+  border-color: #ff6138;
 }
 .faq .curvy-video-section {
   position: relative;
@@ -1225,6 +1260,14 @@ a:not(.btn):active,
   box-shadow: 0px 4px 4px -1px rgba(0, 0, 0, 0.25);
 }
 
+.section-mt {
+  margin-top: 82px;
+}
+
+.section-pt {
+  padding-top: 82px;
+}
+
 .table-of-contents li {
   list-style: none;
   border-bottom: 1px solid #000000;
@@ -1238,6 +1281,104 @@ a:not(.btn):active,
 .table-of-contents li a {
   padding: 10px;
   display: block;
+}
+
+/**
+ * originally from picnic.css
+ * @link https://picnicss.com/documentation#home
+ */
+.tabs {
+  position: relative;
+  overflow: hidden;
+}
+.tabs > label img {
+  float: left;
+  margin-left: 0.6em;
+}
+.tabs > label:first-of-type img {
+  margin-left: 0;
+}
+.tabs > .row {
+  width: calc(100% + 1.2em);
+  display: table;
+  table-layout: fixed;
+  position: relative;
+  padding-left: 0;
+  transition: all 0.3s;
+  border-spacing: 0;
+  margin: 0;
+}
+.tabs > .row:before {
+  display: none;
+}
+.tabs > .row:after {
+  display: none;
+}
+.tabs > .row > * {
+  display: table-cell;
+  vertical-align: top;
+  margin: 0;
+  width: 100%;
+}
+.tabs > .row img {
+  display: table-cell;
+  vertical-align: top;
+  margin: 0;
+  width: 100%;
+}
+.tabs > input {
+  display: none;
+}
+.tabs > input + * {
+  width: 100%;
+}
+.tabs > input + label {
+  width: auto;
+}
+
+.two.tabs > .row {
+  width: 200%;
+  left: -100%;
+}
+.two.tabs > input:nth-of-type(1):checked ~ .row {
+  margin-left: 100%;
+}
+.two.tabs > label img {
+  width: 48%;
+  margin: 4% 0 4% 4%;
+}
+
+.three.tabs > .row {
+  width: 300%;
+  left: -200%;
+}
+.three.tabs > input:nth-of-type(1):checked ~ .row {
+  margin-left: 200%;
+}
+.three.tabs > input:nth-of-type(2):checked ~ .row {
+  margin-left: 100%;
+}
+.three.tabs > label img {
+  width: 30%;
+  margin: 5% 0 5% 5%;
+}
+
+.four.tabs > .row {
+  width: 400%;
+  left: -300%;
+}
+.four.tabs > input:nth-of-type(1):checked ~ .row {
+  margin-left: 300%;
+}
+.four.tabs > input:nth-of-type(2):checked ~ .row {
+  margin-left: 200%;
+}
+.four.tabs > input:nth-of-type(3):checked ~ .row {
+  margin-left: 100%;
+}
+.four.tabs > label img {
+  width: 22%;
+  margin: 4% 0 4% 4%;
 }
 
 /*# sourceMappingURL=style.css.map */
