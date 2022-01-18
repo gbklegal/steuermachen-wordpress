@@ -105,7 +105,9 @@ function accordionJS(accs) {
 
     // TODO fix lazy code
     let hash = window.location.hash;
-    let focusedFaqItem = document.querySelector(hash);
+    let focusedFaqItem = null;
+    if (hash)
+        focusedFaqItem = document.querySelector(hash);
     if (focusedFaqItem) {
         focusedFaqItem.classList.add('active');
         const panel = focusedFaqItem.nextElementSibling;
