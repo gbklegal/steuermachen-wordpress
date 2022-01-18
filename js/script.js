@@ -41,6 +41,10 @@ window.onload = function() {
     // FAQ Accordion
     // const accs = document.querySelectorAll('.accordion');
     accordionJS();
+
+    // Tabs
+    let faqTabs = new Tabs();
+    faqTabs.init();
 }
 
 window.onhashchange = function() {
@@ -112,5 +116,59 @@ function accordionJS(accs) {
         focusedFaqItem.classList.add('active');
         const panel = focusedFaqItem.nextElementSibling;
         panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+}
+
+
+/**
+ * Tabs
+ */
+class Tabs {
+    /**
+     * ??
+     * 
+     * @param {object} selector 
+     * @param {object} content 
+     */
+    constructor( selector, content ) {
+        this.selector = selector || document.querySelector('[data-tabs="selector"]');
+        this.content = content || document.querySelector('[data-tabs="content"]');
+    }
+
+    /**
+     * ??
+     * 
+     * @returns {object}
+     */
+    getSelector() {
+        return this.selector;
+    }
+
+    /**
+     * ??
+     * 
+     * @returns {object}
+     */
+    getContent() {
+        return this.content;
+    }
+
+    init() {
+        let selector = this.selector;
+        let items = selector.querySelectorAll('.item');
+        let content = this.content;
+        let targets = content.querySelectorAll('.content');
+
+        items.forEach((item, index) => {
+            item.onclick = function() {
+                let selectedItem = selector.querySelector('.item-selected');
+                selectedItem.classList.remove('item-selected');
+                let selectedTarget = content.querySelector('.content-selected');
+                selectedTarget.classList.remove('content-selected');
+
+                item.classList.add('item-selected');
+                targets[index].classList.add('content-selected');
+            }
+        })
     }
 }
