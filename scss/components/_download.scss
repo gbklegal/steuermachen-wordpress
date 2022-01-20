@@ -1,0 +1,25 @@
+.section-download {
+    margin-bottom: 90px;
+
+    .download-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-top: 1px solid $clr-bg-grey-light;
+        padding: 20px 5px;
+        font-size: 18px;
+
+        &:last-child {
+            border-bottom: 1px solid $clr-bg-grey-light;
+        }
+
+        br {
+            display: none;
+        }
+
+        i {
+            color: $clr-text-black;
+        }
+    }
+}
