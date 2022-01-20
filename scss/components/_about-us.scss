@@ -1,0 +1,43 @@
+.section-about-us {
+    background: linear-gradient(180.62deg, #66DB3B 0.58%, #3CBA92 143.58%);
+    border-radius: $br-4;
+    padding: 44px;
+    color: $clr-text-white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 44px;
+    margin-bottom: 90px;
+
+    .left-side {
+        width: 300px;
+        max-width: 100%;
+        font-size: 18px;
+
+        img.tobias-gussmann {
+            background-color: rgba($clr-text-black, 0.1);
+            border-radius: 99em;
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .right-side {
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width: $breakpoint-lg) {
+    .section-about-us {
+        flex-direction: column;
+
+        .left-side {
+            order: 1;
+        }
+
+        .right-side {
+            order: 0;
+        }
+    }
+}
