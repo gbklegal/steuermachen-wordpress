@@ -24,7 +24,7 @@
     <?php get_template_part('/template-parts/content-single'); ?>
 </main>
 <?php else: ?>
-<main class="main-content">
+<main class="main-content prose">
     <?php while (have_posts()): ?>
         <?php the_post(); ?>
         <?php get_template_part('/template-parts/content-default'); ?>
