@@ -503,6 +503,43 @@ img {
   padding-bottom: 0;
 }
 
+.section-about-us {
+  background: linear-gradient(180.62deg, #66DB3B 0.58%, #3CBA92 143.58%);
+  border-radius: 12px;
+  padding: 44px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 44px;
+  margin-bottom: 90px;
+}
+.section-about-us .left-side {
+  width: 300px;
+  max-width: 100%;
+  font-size: 18px;
+}
+.section-about-us .left-side img.tobias-gussmann {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 99em;
+  max-width: 100%;
+  height: auto;
+}
+.section-about-us .right-side {
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  .section-about-us {
+    flex-direction: column;
+  }
+  .section-about-us .left-side {
+    order: 1;
+  }
+  .section-about-us .right-side {
+    order: 0;
+  }
+}
 .accordion-wrapper {
   width: 100%;
   background-color: #F1F6FC;
@@ -746,6 +783,28 @@ a.btn {
     grid-template-columns: 100fr;
   }
 }
+.section-download {
+  margin-bottom: 90px;
+}
+.section-download .download-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #E2E2E2;
+  padding: 20px 5px;
+  font-size: 18px;
+}
+.section-download .download-item:last-child {
+  border-bottom: 1px solid #E2E2E2;
+}
+.section-download .download-item br {
+  display: none;
+}
+.section-download .download-item i {
+  color: #000000;
+}
+
 .faq .easy-with-tax-section main {
   margin-top: 60px;
 }
@@ -1075,6 +1134,9 @@ header#header .header-inner .menu .menu-item .sub-menu {
   width: 900px;
   max-width: 100%;
   margin: 0 auto;
+}
+#hero h1 {
+  text-align: center;
 }
 
 a,
