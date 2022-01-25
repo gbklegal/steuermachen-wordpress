@@ -155,6 +155,9 @@ function tableOfContents( string $content, int $depth = 5 ):string {
         $title = $match;
         $slug = _wp_to_kebab_case($title);
 
+        if ($title == '' || $slug == '')
+            continue;
+
         $listItems .= '<li><a href="#'.$slug.'">'.$title.'</a></li>';
     }
 
