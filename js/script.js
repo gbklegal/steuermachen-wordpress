@@ -1,5 +1,6 @@
 /**
  * steuermachen WordPress Theme
+ * 
  * @author Tobias Roeder
  * @version 0.0.1
  */
@@ -125,7 +126,7 @@ function accordionJS(accs) {
  */
 class Tabs {
     /**
-     * ??
+     * * missing description
      * 
      * @param {object} selector 
      * @param {object} content 
@@ -136,7 +137,7 @@ class Tabs {
     }
 
     /**
-     * ??
+     * * missing description
      * 
      * @returns {object}
      */
@@ -145,7 +146,7 @@ class Tabs {
     }
 
     /**
-     * ??
+     * * missing description
      * 
      * @returns {object}
      */
@@ -170,5 +171,64 @@ class Tabs {
                 targets[index].classList.add('content-selected');
             }
         })
+    }
+}
+
+
+/**
+ * Quick Search
+ */
+class QuickSearch {
+    /**
+     * @param {string|object} searchElmt - search element
+     * @param {string|object} itemSelector - quick search item selector 
+     */
+    constructor(searchElmt, itemSelector) {
+        if (typeof searchElmt === 'string')
+            searchElmt = document.querySelector(searchElmt);
+
+        if (typeof itemSelector === 'string')
+            itemSelector = document.querySelectorAll(itemSelector);
+
+        this.elmt = searchElmt || document.querySelector('[data-qs-elmt]');
+        this.selector = itemSelector || document.querySelectorAll('[data-qs-item]');
+
+        // evtl. onkeydown
+        this.elmt.onkeyup = (event) => {
+            let val = event.target.value;
+            this.search(val);
+        };
+    }
+
+    /**
+     * @param {string} query - search query
+     */
+    search(query) {
+        query = query.toLowerCase();
+
+        this.selector.forEach(item => {
+            let text = item.innerText.toLowerCase();
+
+            if (!text.includes(query))
+                this.hide(item);
+            else
+                this.show(item);
+        });
+    }
+
+    /**
+     * @param {object} item
+     */
+    hide(item) {
+        if (item)
+            item.hidden = true;
+    }
+
+    /**
+     * @param {object} item
+     */
+    show(item) {
+        if (item)
+            item.hidden = false;
     }
 }
