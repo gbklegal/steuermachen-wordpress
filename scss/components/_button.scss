@@ -7,7 +7,7 @@
     border-radius: $br-2;
     cursor: pointer;
     transition: 0.2s ease;
-    transition-property: background-color, border-color;
+    transition-property: background-color, border-color, color;
     padding: 15px 44px;
     text-align: center;
 
@@ -31,6 +31,7 @@
 
         &:hover {
             background-color: $clr-primary-hover;
+            // color: $clr-text-white;
         }
 
         &:active {
@@ -50,6 +51,7 @@
 
         &:hover {
             background-color: $clr-secondary-hover;
+            // color: $clr-text-white;
         }
 
         &:active {
@@ -85,4 +87,5 @@
 
 a.btn {
     display: inline-block;
+    color: $clr-bg-black;
 }
