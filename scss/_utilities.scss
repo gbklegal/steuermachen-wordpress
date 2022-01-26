@@ -40,10 +40,18 @@
 .font-extrabold { font-weight: 800; }
 .font-black { font-weight: 900; }
 
+.mt-0 {
+    margin-top: 0 !important;
+}
+
 .mb-0 {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
+}
+
+.pt-0 {
+    padding-top: 0 !important;
 }
 
 .pb-0 {
-    padding-bottom: 0;
+    padding-bottom: 0 !important;
 }
