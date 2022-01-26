@@ -13,10 +13,16 @@
 @import 'defaults';
 @import 'utilities';
 
+// mixins
+@import 'mixins/alignfull';
+
 // components
 @import 'components/about-us';
 @import 'components/accordion';
+@import 'components/badge';
+@import 'components/brand-logos';
 @import 'components/button';
+@import 'components/career';
 @import 'components/dictionary';
 @import 'components/download';
 @import 'components/faq';
