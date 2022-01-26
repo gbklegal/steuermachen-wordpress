@@ -180,7 +180,8 @@
         [type='button'],
         [type='submit'],
         [type='reset']
-    ) {
+    ),
+    textarea {
         &:focus ~ label,
         &:valid:not(:placeholder-shown) ~ label,
         &:invalid:not(:placeholder-shown) ~ label {
