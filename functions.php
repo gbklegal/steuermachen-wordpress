@@ -204,3 +204,67 @@ add_filter('the_content', 'anchor_content_h');
 
 //     var_dump($heads);
 // }
+
+
+/**
+ * Temporary shorcode to satisfy coding
+ */
+function tmp_shortcode() {
+    include __DIR__ . '/tmp_shortcode_content.php';
+}
+add_shortcode('tmp_shortcode', 'tmp_shortcode');
+
+
+/**
+ * Utility Shortcode
+ * Get Image (Attachment) by ID.
+ * 
+ * @param array $atts
+ * 
+ * @return string
+ */
+function get_attachment_shortcode( $atts ) {
+    // image id
+    $image_id = $atts['id'] ?? false;
+    // image size
+    $image_size = $atts['size'] ?? '';
+
+    echo wp_get_attachment_image( $image_id, $image_size );
+}
+add_shortcode('get_image', 'get_attachment_shortcode');
+
+/**
+ * Utility function
+ * Get Image (Attachment) by ID.
+ * 
+ * Function version of the get_image shortcode.
+ * 
+ * @param string $image_id
+ * @param string $image_size
+ */
+function the_attachment( $image_id, $image_size ) {
+    get_attachment_shortcode( [
+        'id' => $image_id,
+        'size' => $image_size
+    ] );
+}
+
+
+/**
+ * CTA Button Shortcode
+ */
+function cta_button_shortcode( $atts ) {
+    $href = $atts['href'] ?? '#';
+    $value = $atts['value'] ?? '';
+    $size = $atts['size'] ?? false;
+    $theme = $atts['theme'] ?? false;
+
+    if ($size !== false)
+        $size = ' btn-' . $size;
+
+    if ($theme !== false)
+        $theme = ' btn-' . $theme;
+
+    echo '<a class="btn' . $size . $theme . '" href="' . $href . '">' . $value . '</a>';
+}
+add_shortcode('cta_button', 'cta_button_shortcode');
