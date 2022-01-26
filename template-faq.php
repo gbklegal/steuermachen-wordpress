@@ -10,12 +10,16 @@ get_header();
 <main class="main-content faq">
     <div id="hero" class="hero-wrapper">
         <div class="hero-text">
-            <h1>Häufig gestellte Fragen (FAQ)</h1>
-            <p>Haben Sie ein paar Fragen, bevor Sie beginnen?</p>
+            <?php the_title( '<h1>', '</h1>' ); ?>
+            <?php if (has_secondary_title()): ?>
+                <div class="secondary-title"><?php the_secondary_title(); ?></div>
+            <?php endif; ?>
         </div>
-        <div class="hero-image">
-            <img src="<?php echo STM_THEME_URL; ?>/img/faq.png" alt="" srcset="<?php echo STM_THEME_URL; ?>/img/faq@2x.png 2x">
-        </div>
+        <?php if (has_title_image()): ?>
+            <div class="hero-image">
+                <?php the_title_image(); ?>
+            </div>
+        <?php endif; ?>
     </div>
     <div class="content-wrapper">
         <section>

@@ -1,9 +1,16 @@
 .posts-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, calc(100fr / 3));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px 80px;
 
     .list-article {
+        &:target {
+            // background-color: $clr-bg-blue;
+            box-shadow: 0 4px 16px rgba(#000, 0.1);
+            border-radius: $br-4;
+            border: 10px solid transparent;
+        }
+
         .list-article-thumb {
             // border: 2px solid palevioletred;
             margin-bottom: 15px;

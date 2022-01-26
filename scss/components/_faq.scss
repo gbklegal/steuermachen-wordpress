@@ -1,4 +1,4 @@
-.faq {
+// .faq {
     .easy-with-tax-section {
         main {
             margin-top: 60px;
@@ -40,9 +40,15 @@
     }
 
     .curvy-video-section {
+        border: 2px solid lightblue;
         position: relative;
 
+        img {
+            position: relative;
+        }
+
         .curvy-video-inner {
+            border: 2px solid blue;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -58,4 +64,4 @@
             }
         }
     }
-}
+// }

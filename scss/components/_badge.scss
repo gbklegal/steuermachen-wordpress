@@ -1,0 +1,14 @@
+.badge {
+    display: inline-block;
+    background-color: $clr-bg-grey-light;
+    border-radius: 99em;
+    padding: 10px;
+
+    &-primary {
+        background-color: $clr-primary;
+    }
+
+    &-secondary {
+        background-color: $clr-secondary;
+    }
+}
