@@ -123,4 +123,15 @@ p {
 
 img {
     max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+
+code {
+    background-color: lightgrey;
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid darkgrey;
 }
