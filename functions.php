@@ -263,7 +263,7 @@ add_shortcode('image', 'get_attachment_shortcode');
  * @param string $image_size
  */
 function the_attachment( $image_id, $image_size ) {
-    get_attachment_shortcode( [
+    echo get_attachment_shortcode( [
         'id' => $image_id,
         'size' => $image_size
     ] );
