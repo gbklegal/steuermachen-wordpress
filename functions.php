@@ -225,15 +225,33 @@ add_shortcode('tmp_shortcode', 'tmp_shortcode');
  * 
  * @return string
  */
-function get_attachment_shortcode( $atts ) {
+function get_attachment_shortcode( $atts ):string {
     // image id
     $image_id = $atts['id'] ?? false;
-    // image size
-    $image_size = $atts['size'] ?? '';
 
-    echo wp_get_attachment_image( $image_id, $image_size );
+    // image width
+    $image_width = $atts['width'] ?? 'auto';
+
+    // image height
+    $image_height = $atts['height'] ?? 'auto';
+
+    // check if width or height is a number
+    if (is_numeric($image_width) || is_numeric($image_height)) {
+        // add width and height to image size array even they contain 'auto'
+        $image_size = [
+            $image_width,
+            $image_height
+        ];
+    } else {
+        // image size
+        $image_size = $atts['size'] ?? '';
+    }
+
+    // return image as HTML string or a empty string if failed
+    return wp_get_attachment_image( $image_id, $image_size );
 }
-add_shortcode('get_image', 'get_attachment_shortcode');
+add_shortcode('image', 'get_attachment_shortcode');
+
 
 /**
  * Utility function
