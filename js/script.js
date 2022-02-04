@@ -126,7 +126,7 @@ function accordionJS(accs) {
  */
 class Tabs {
     /**
-     * * missing description
+     * contructor
      * 
      * @param {object} selector 
      * @param {object} content 
@@ -137,7 +137,7 @@ class Tabs {
     }
 
     /**
-     * * missing description
+     * get selector element
      * 
      * @returns {object}
      */
@@ -146,7 +146,7 @@ class Tabs {
     }
 
     /**
-     * * missing description
+     * get content elements
      * 
      * @returns {object}
      */
@@ -154,6 +154,9 @@ class Tabs {
         return this.content;
     }
 
+    /**
+     * initilize the tabs
+     */
     init() {
         let selector = this.selector;
         let items = selector.querySelectorAll('.item');
