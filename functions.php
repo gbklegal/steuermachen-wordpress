@@ -288,3 +288,13 @@ function cta_button_shortcode( $atts ) {
     echo '<a class="btn' . $size . $theme . '" href="' . $href . '">' . $value . '</a>';
 }
 add_shortcode('cta_button', 'cta_button_shortcode');
+
+
+/**
+ * Remove input wrapper from WP Contact Form 7 plugin.
+ */
+add_filter('wpcf7_form_elements', function($content) {
+    $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+
+    return $content;
+});
