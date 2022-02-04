@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * ! Depreciated Template - This will be removed after checking if it's done correctly recreated with the buildin WordPress editor.
  * Template Name: FAQ
  */
 
