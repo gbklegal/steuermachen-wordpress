@@ -15,7 +15,7 @@
             <div class="post-table-of-contents">
                 <h3 class="text-center">Inhaltsverzeichnis</h3>
                 <ul class="table-of-contents">
-                    <?php echo tableOfContents(get_the_content()); ?>
+                    <?php echo table_of_contents(get_the_content()); ?>
                 </ul>
             </div>
             <div class="post-content">

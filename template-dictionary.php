@@ -7,28 +7,35 @@
 
 /**
  * utility function get first letter from string
+ * 
  * @param string $string
+ * 
  * @return string
  */
-function firstLetter( string $string ):string {
+function first_letter( string $string ):string {
     return $string[0];
 }
 
 /**
  * utility function to fix umlaut issue
+ * 
+ * @param string $string
+ * 
+ * @return string
  */
-function fixUmlaut( string $string ) {
+function fix_umlaut( string $string ):string {
     return strtr($string, 'ÄÖÜ', 'AOU');
 }
 
 
 /**
  * get title and link from all lexicon articles as array
+ * 
  * @return array
  */
-function getLexiconArticles():array {
+function get_lexicon_articles():array {
     // $apiUrl = get_site_url() . '/wp-json/wp/v2/pages/?parent=28564&orderby=title&order=asc&per_page=350&page=1&_fields=title,link&per_page_total';
-    $wpQuery = new WP_Query([
+    $wp_query = new WP_Query([
         's' => '',
         'post_parent' => 28564,
         'posts_per_page' => -1,
@@ -37,9 +44,9 @@ function getLexiconArticles():array {
     ]);
     $posts = [];
 
-    if ($wpQuery->have_posts())
-        foreach ($wpQuery->get_posts() as $post) {
-            $wpQuery->the_post();
+    if ($wp_query->have_posts())
+        foreach ($wp_query->get_posts() as $post) {
+            $wp_query->the_post();
             $posts[] = [
                 'title' => get_the_title(),
                 'link' => get_the_permalink()
@@ -52,17 +59,19 @@ function getLexiconArticles():array {
 
 /**
  * get all lexicon articles as 2d array sorted by there first letter (A, B, ...)
+ * 
+ * @return array
  */
-function getLexiconArticlesSorted():array {
-    $lexiconArticles = getLexiconArticles();
-    $sortedLexiconArticles = [];
+function get_lexicon_articles_sorted():array {
+    $lexicon_articles = get_lexicon_articles();
+    $sorted_lexicon_articles = [];
 
-    foreach($lexiconArticles as $lexiconArticle) {
-        $articleTitle = $lexiconArticle['title'];
-        $sortedLexiconArticles[fixUmlaut(firstLetter($articleTitle))][] = $lexiconArticle;
+    foreach($lexicon_articles as $lexicon_article) {
+        $article_title = $lexicon_article['title'];
+        $sorted_lexicon_articles[fix_umlaut(first_letter($article_title))][] = $lexicon_article;
     }
 
-    return $sortedLexiconArticles;
+    return $sorted_lexicon_articles;
 }
 
 get_header();
@@ -84,13 +93,13 @@ get_header();
         <ul class="alphabet">
             <?php for ($i = 65; $i <= 90; $i++): // 65 = A, 90 = Z
                 $letter = chr($i);
-                $letterLowerCase = strtolower($letter);
+                $letter_lower_case = strtolower($letter);
             ?>
-                <li><a class="letter letter-<?=$letterLowerCase?>" href="#<?=$letterLowerCase?>"><?=$letter?></a></li>
+                <li><a class="letter letter-<?=$letter_lower_case?>" href="#<?=$letter_lower_case?>"><?=$letter?></a></li>
             <?php endfor; ?>
         </ul>
         <?php endif; ?>
-        <?php foreach(getLexiconArticlesSorted() as $letter => $lexiconArticles): ?>
+        <?php foreach(get_lexicon_articles_sorted() as $letter => $lexicon_articles): ?>
             <section>
                 <span id="<?=strtolower($letter)?>" class="anchors"></span>
                 <div class="section-inner">
@@ -98,9 +107,9 @@ get_header();
                         <h2 id="<?=strtolower($letter)?>"><?=$letter?></h2>
                     </div>
                     <ul>
-                    <?php foreach($lexiconArticles as $lexiconArticle): ?>
+                    <?php foreach($lexicon_articles as $lexicon_article): ?>
                         <li>
-                            <a href="<?=$lexiconArticle['link']?>"><?=$lexiconArticle['title']?></a>
+                            <a href="<?=$lexicon_article['link']?>"><?=$lexicon_article['title']?></a>
                         </li>
                     <?php endforeach; ?>
                     </ul>

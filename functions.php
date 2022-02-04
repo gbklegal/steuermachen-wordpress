@@ -46,24 +46,26 @@ add_action( 'init', 'steuermachen_theme_setup');
 /**
  * Helper function
  * get image only by attachment ID like wp_get_attachment_image without the advanced settings and uneditable sizes
- * @param attachmentId
+ * 
+ * @param attachment_id
  * @param size
- * @param className
+ * @param class_name
+ * 
  * @return string
  */
-function getImageById( int $attachmentId, string $size, string $className = '', string $imgAlt = '' ):string {
-    $attachmentId = absint($attachmentId);
-    $imgURL = wp_get_attachment_image_url($attachmentId, $size);
+function get_image_by_id( int $attachment_id, string $size, string $class_name = '', string $img_alt = '' ):string {
+    $attachment_id = absint($attachment_id);
+    $img_url = wp_get_attachment_image_url($attachment_id, $size);
 
-    if ($imgAlt === '') {
-        $imgAlt = trim( strip_tags( get_post_meta( $attachmentId, '_wp_attachment_image_alt', true ) ) );
+    if ($img_alt === '') {
+        $img_alt = trim( strip_tags( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) );
     }
 
-    if ($className !== '') {
-        $className = ' class="'.$className.'"';
+    if ($class_name !== '') {
+        $class_name = ' class="'.$class_name.'"';
     }
 
-    $html = '<img src="'.$imgURL.'" alt="'.$imgAlt.'"'.$className.'>';
+    $html = '<img src="'.$img_url.'" alt="'.$img_alt.'"'.$class_name.'>';
 
     return $html;
 }
@@ -119,14 +121,14 @@ add_action( 'init', 'initStmTheme' );
 /**
  * helper function
  * 
- * @param string $themeLocationName
+ * @param string $theme_location_name
  * @param array $args
  * 
  * @return void
  */
-function getNavMenu( string $themeLocationName, array $args = array() ):void {
+function get_nav_menu( string $theme_location_name, array $args = array() ):void {
     $array = array(
-        'theme_location' => $themeLocationName
+        'theme_location' => $theme_location_name
     );
     $array = array_merge($array, $args);
     
@@ -138,19 +140,19 @@ function getNavMenu( string $themeLocationName, array $args = array() ):void {
  * get table of contents from html string
  * @see http://www.10stripe.com/articles/automatically-generate-table-of-contents-php.php#script
  * 
- * @param string $htmlString
+ * @param string $html_string
  * @param int $depth (5) - (optional)
  * 
  * @return string
  */
-function tableOfContents( string $content, int $depth = 5 ):string {
+function table_of_contents( string $content, int $depth = 5 ):string {
 
     // get the headings down to the specified depth
     $pattern = '/<h[2-'.$depth.']*[^>]*>(.*?)<\/h[2-'.$depth.']>/';
     preg_match_all($pattern, $content, $matches);
 
     // reformat the results to be more usable
-    $listItems = '';
+    $list_items = '';
     foreach ($matches[1] as $match) {
         $title = $match;
         $slug = _wp_to_kebab_case($title);
@@ -158,10 +160,10 @@ function tableOfContents( string $content, int $depth = 5 ):string {
         if ($title == '' || $slug == '')
             continue;
 
-        $listItems .= '<li><a href="#'.$slug.'">'.$title.'</a></li>';
+        $list_items .= '<li><a href="#'.$slug.'">'.$title.'</a></li>';
     }
 
-    return $listItems;
+    return $list_items;
 }
 
 
@@ -194,9 +196,9 @@ function anchor_content_h( $content) {
 }
 add_filter('the_content', 'anchor_content_h');
 
-// function tableOfContentsInit( string $htmlString, int $depth = 5 ) {
+// function table_of_contents_init( string $html_string, int $depth = 5 ) {
 //     $pattern = '/<h[2-'.$depth.']*[^>]*>.*?<\/h[2-'.$depth.']>/';
-//     preg_match_all($pattern, $htmlString, $matches);
+//     preg_match_all($pattern, $html_string, $matches);
 
 //     $heads = implode("\n", $matches[0]);
 //     $heads = preg_replace('/<h([1-' . $depth . '])>/', '<h$1 id="#$2">', $heads);
