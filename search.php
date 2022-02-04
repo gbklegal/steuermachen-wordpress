@@ -3,7 +3,7 @@
     <?php
         $the_query = new WP_Query(['s' => get_search_query()]);
         if ($the_query->have_posts()):
-            _e('<h2>'.get_query_var('s').'</h2>');
+            _e('<h2>Suchergebnisse für: <strong>'.get_query_var('s').'</strong></h2>');
             echo '<ul style="padding-left:20px">';
             while ($the_query->have_posts()):
                 $the_query->the_post();
