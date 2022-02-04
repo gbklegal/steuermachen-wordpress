@@ -55,3 +55,47 @@
 .pb-0 {
     padding-bottom: 0 !important;
 }
+
+
+// Resize (textarea)
+.resize-x {
+    resize: horizontal;
+}
+
+.resize-y {
+    resize: vertical;
+}
+
+.resize-none {
+    resize: none;
+}
+
+
+// Width
+.w-full {
+    width: 100%;
+}
+
+
+// utility classes highly inspired by tailwind css
+// display
+$displays: (
+    block,
+    inline-block
+);
+
+@each $display in $displays {
+    .#{$display} {
+        display: $display;
+    }
+}
+
+
+// text colors
+.text-primary {
+    color: $clr-primary !important;
+}
+
+.text-secondary {
+    color: $clr-secondary !important;
+}

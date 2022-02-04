@@ -2,7 +2,7 @@
     width: 100%;
     background-color: $clr-bg-blue;
     border-radius: $br-2;
-    box-shadow: 0 4px 4px rgba(#000, 0.25);
+    box-shadow: 0 4px 4px rgba($clr-bg-black, .25);
 
     .accordion-inner {
         max-width: 720px;

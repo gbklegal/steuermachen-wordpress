@@ -16,15 +16,15 @@
         <div class="footer-navs">
             <div class="footer-nav">
                 <h3>Über steuermachen</h3>
-                <?php getNavMenu('footer_1'); ?>
+                <?php get_nav_menu('footer_1'); ?>
             </div>
             <div class="footer-nav">
                 <h3>Rechtliche Dokumente</h3>
-                <?php getNavMenu('footer_2'); ?>
+                <?php get_nav_menu('footer_2'); ?>
             </div>
             <div class="footer-nav">
                 <h3>Kooperation | Wir helfen Ihnen</h3>
-                <?php getNavMenu('footer_3'); ?>
+                <?php get_nav_menu('footer_3'); ?>
             </div>
             <div class="trusted-shops-logo-wrapper">
                 <img src="<?=STM_THEME_URL?>/img/trusted-shops-logo.png" alt="">

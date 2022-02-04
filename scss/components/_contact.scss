@@ -1,0 +1,98 @@
+.contact-wrapper {
+    $gap: 25px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap;
+
+    // wp contact form 7 form id
+    #wpcf7-f30-p28381-o2 {
+        background-color: $clr-bg-turquoise;
+        box-shadow: 0 4px 4px rgba($clr-bg-black, .25);
+        border-radius: $br-5;
+        padding: 50px;
+        // width: 650px; // demo only
+        // max-width: 100%;
+
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .h-captcha {
+            display: inline-block;
+
+            // not working
+            &:not([data-size="invisible"]) {
+                margin-bottom: $gap !important;
+            }
+        }
+
+        .field-wrapper {
+            margin-bottom: 0;
+
+            label {
+                background-color: $clr-bg-turquoise;
+            }
+
+            .field {
+                width: 100%;
+            }
+
+            textarea {
+                resize: none;
+            }
+        }
+
+        .grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: 
+                'firstname surname'
+                'email phone';
+            gap: $gap;
+        }
+
+        .flex-wrapper {
+            display: flex;
+            flex-flow: column nowrap;
+            gap: $gap;
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-lg) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: $breakpoint-md) {
+    #wpcf7-f30-p28381-o2 {
+        .grid-wrapper {
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+                'firstname'
+                'surname'
+                'email'
+                'phone';
+        }
+    }
+}
+
+
+.contact-faq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+    h2 {
+        max-width: 320px;
+    }
+}

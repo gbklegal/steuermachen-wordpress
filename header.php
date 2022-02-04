@@ -38,7 +38,7 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
                     <div class="header-part">
                         <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 42]); ?>
                         <div class="hidden-on-mobile">
-                            <?php getNavMenu('primary'); ?>
+                            <?php get_nav_menu('primary'); ?>
                         </div>
                     </div>
                     <div class="header-part">

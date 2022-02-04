@@ -45,7 +45,8 @@ window.onload = function() {
 
     // Tabs
     let faqTabs = new Tabs();
-    faqTabs.init();
+    if (faqTabs.isAvailable())
+        faqTabs.init();
 }
 
 window.onhashchange = function() {
@@ -126,7 +127,7 @@ function accordionJS(accs) {
  */
 class Tabs {
     /**
-     * * missing description
+     * contructor
      * 
      * @param {object} selector 
      * @param {object} content 
@@ -137,7 +138,7 @@ class Tabs {
     }
 
     /**
-     * * missing description
+     * get selector element
      * 
      * @returns {object}
      */
@@ -146,7 +147,7 @@ class Tabs {
     }
 
     /**
-     * * missing description
+     * get content elements
      * 
      * @returns {object}
      */
@@ -154,6 +155,9 @@ class Tabs {
         return this.content;
     }
 
+    /**
+     * initilize the tabs
+     */
     init() {
         let selector = this.selector;
         let items = selector.querySelectorAll('.item');
@@ -171,6 +175,26 @@ class Tabs {
                 targets[index].classList.add('content-selected');
             }
         })
+    }
+
+    /**
+     * check if tabs is available
+     * 
+     * @param {boolean} showConsoleInfo false
+     */
+    isAvailable( showConsoleInfo = false ) {
+        if (showConsoleInfo) {
+            if (!this.selector)
+                console.info('Missing selector element, could not being found.');
+
+            if (!this.content)
+                console.info('Missing content elements, could not being found.');
+        }
+
+        if (!this.selector || this.content)
+            return false;
+
+        return true;
     }
 }
 

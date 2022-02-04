@@ -423,6 +423,16 @@ footer#footer {
 }
 img {
   max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+code {
+  background-color: lightgrey;
+  font-family: monospace;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid darkgrey;
 }
 
 .mx-auto {
@@ -509,6 +519,38 @@ img {
 
 .pb-0 {
   padding-bottom: 0 !important;
+}
+
+.resize-x {
+  resize: horizontal;
+}
+
+.resize-y {
+  resize: vertical;
+}
+
+.resize-none {
+  resize: none;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.text-primary {
+  color: #ff6138 !important;
+}
+
+.text-secondary {
+  color: #66DB3B !important;
 }
 
 .section-about-us {
@@ -746,6 +788,74 @@ a.btn {
   margin-left: calc(50% - 50vw);
 }
 
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 {
+  background-color: #DAF5EE;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  padding: 50px;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 h2 {
+  margin-top: 0;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 p {
+  margin: 0;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 .h-captcha {
+  display: inline-block;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 .h-captcha:not([data-size=invisible]) {
+  margin-bottom: 25px !important;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 .field-wrapper {
+  margin-bottom: 0;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 .field-wrapper label {
+  background-color: #DAF5EE;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 .field-wrapper .field {
+  width: 100%;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 .field-wrapper textarea {
+  resize: none;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 .grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "firstname surname" "email phone";
+  gap: 25px;
+}
+.contact-wrapper #wpcf7-f30-p28381-o2 .flex-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 25px;
+}
+
+@media (max-width: 1024px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  #wpcf7-f30-p28381-o2 .grid-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas: "firstname" "surname" "email" "phone";
+  }
+}
+.contact-faq {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+.contact-faq h2 {
+  max-width: 320px;
+}
+
 .steuerlexikon .alphabet,
 .dictionary .alphabet {
   display: flex;
@@ -946,6 +1056,9 @@ a.btn {
   transition: 0.2s ease;
   transition-property: border-color, color;
 }
+.field::placeholder {
+  color: transparent;
+}
 .field::-webkit-outer-spin-button, .field::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
@@ -1048,7 +1161,10 @@ a.btn {
 [type=submit],
 [type=reset]):valid:not(:placeholder-shown) ~ label, .field-wrapper input:not([type=button],
 [type=submit],
-[type=reset]):invalid:not(:placeholder-shown) ~ label {
+[type=reset]):invalid:not(:placeholder-shown) ~ label,
+.field-wrapper textarea:focus ~ label,
+.field-wrapper textarea:valid:not(:placeholder-shown) ~ label,
+.field-wrapper textarea:invalid:not(:placeholder-shown) ~ label {
   top: -12px;
   font-size: 12px;
   color: currentColor;
