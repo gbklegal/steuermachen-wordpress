@@ -59,7 +59,7 @@
             }
 
             iframe {
-                box-shadow: 3px 18px 20px rgba(#000, .25);
+                box-shadow: 3px 18px 20px rgba($clr-bg-black, .25);
                 border-radius: $br-2;
             }
         }

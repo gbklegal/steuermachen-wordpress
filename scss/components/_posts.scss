@@ -6,7 +6,7 @@
     .list-article {
         &:target {
             // background-color: $clr-bg-blue;
-            box-shadow: 0 4px 16px rgba(#000, 0.1);
+            box-shadow: 0 4px 16px rgba($clr-bg-black, 0.1);
             border-radius: $br-4;
             border: 10px solid transparent;
         }
