@@ -21,6 +21,8 @@ footer#footer {
     .footer-navs {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
 
         a {
             color: $clr-text;

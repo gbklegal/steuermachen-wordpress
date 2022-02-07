@@ -19,9 +19,7 @@
             <?php get_template_part('/template-parts/content-list-posts'); ?>
         <?php endwhile; ?>
         </div>
-        <div class="posts-pagination">
-            <?php the_posts_pagination(); ?>
-        </div>
+        <?php the_posts_navigation(); ?>
     <?php endif; ?>
 </main>
 <?php elseif (is_single()): ?>

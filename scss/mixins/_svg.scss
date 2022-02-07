@@ -1,0 +1,12 @@
+@mixin arrow-bend($color, $img-width: 165px, $img-height: 115px) {
+    content: '';
+    // background-image: url('./img/arrow-bend-up.svg');
+    mask-image: url('./img/arrow-bend.svg');
+    mask-repeat: no-repeat;
+    background-color: $color;
+    background-repeat: no-repeat;
+    background-size: $img-width $img-height;
+    width: $img-width;
+    height: $img-height;
+    display: block;
+}

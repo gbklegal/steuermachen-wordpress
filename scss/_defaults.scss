@@ -114,9 +114,18 @@ p {
 
 
 @media (max-width: $breakpoint-sm) {
+    $sm-padding: 20px;
+
     header#header,
     footer#footer {
-        padding: 20px;
+        padding: $sm-padding !important;
+    }
+
+    .main-content {
+        padding: {
+            right: $sm-padding;
+            left: $sm-padding;
+        }
     }
 }
 

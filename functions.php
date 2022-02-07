@@ -298,3 +298,15 @@ add_filter('wpcf7_form_elements', function($content) {
 
     return $content;
 });
+
+
+/**
+ * Add class attribute to the posts navigation.
+ * Turn them from a link (anchor tag) to a button (look).
+ */
+add_filter('next_posts_link_attributes', 'post_link_attributes');
+add_filter('previous_posts_link_attributes', 'post_link_attributes');
+
+function post_link_attributes($output) {
+    return 'class="btn btn-primary"';
+}

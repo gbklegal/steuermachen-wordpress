@@ -69,3 +69,29 @@
         }
     }
 }
+
+.posts-navigation {
+    padding-top: 2rem;
+    border-top: 1px solid rgba($clr-bg-black, 0.1);
+    margin-top: 2rem;
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+
+        div:first-child:nth-last-child(1) {
+            margin: 0 0 0 auto
+        }
+
+        .nav-previous {
+            order: 1;
+            align-self: flex-end;
+        }
+
+        .nav-next {
+            order: 0;
+        }
+    }
+}
