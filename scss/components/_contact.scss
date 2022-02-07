@@ -73,14 +73,29 @@
 
 
 @media (max-width: $breakpoint-md) {
-    #wpcf7-f30-p28381-o2 {
-        .grid-wrapper {
-            grid-template-columns: 1fr;
-            grid-template-areas: 
-                'firstname'
-                'surname'
-                'email'
-                'phone';
+    .contact-wrapper {
+        #wpcf7-f30-p28381-o2 {
+            .grid-wrapper {
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    'firstname'
+                    'surname'
+                    'email'
+                    'phone';
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-sm) {
+    .contact-wrapper {
+        #wpcf7-f30-p28381-o2 {
+            padding: 30px;
+
+            input[type='submit'] {
+                width: 100%;
+            }
         }
     }
 }
