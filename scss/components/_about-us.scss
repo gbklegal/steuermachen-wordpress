@@ -41,3 +41,58 @@
         }
     }
 }
+
+
+.section-about-intro {
+    width: 810px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.section-about-who-are-we {
+    text-align: center;
+    position: relative;
+    padding: {
+        top: 2rem;
+        bottom: 2rem;
+    };
+
+    &:before {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        background-color: $clr-bg-blue;
+        height: 100%;
+        @include alignfull;
+    }
+}
+
+.section-about-office-location {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    .h1 {
+        font-size: 56px;
+        font-weight: 400;
+        flex-basis: fit-content;
+    }
+
+    img {
+        box-shadow: 0 4px 16px rgba($clr-bg-black, 0.4);
+        display: block;
+        border-radius: $br-1;
+    }
+}
+
+
+@media (max-width: $breakpoint-sm) {
+    .section-about-office-location {
+        flex-direction: column;
+    }
+}
