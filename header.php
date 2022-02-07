@@ -24,6 +24,8 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
 
     <!-- <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>"> -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title><?=wp_get_document_title()?></title>
 
     <?php wp_head(); ?>
