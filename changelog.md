@@ -1,0 +1,6 @@
+! NOT FINAL THIS IS JUST A TEMPLATE !
+
+# CHANGELOG
+
+## 1.0.0
+* Initial release
