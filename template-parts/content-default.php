@@ -14,7 +14,9 @@
     </header>
     <div class="post-content-wrapper">
         <div class="post-content">
-            <?php the_content(); ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <?php the_content(); ?>
+            </article>
         </div>
     </div>
 </div>
