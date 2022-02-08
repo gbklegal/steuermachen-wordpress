@@ -191,7 +191,7 @@ class Tabs {
                 console.info('Missing content elements, could not being found.');
         }
 
-        if (!this.selector || this.content)
+        if (!this.selector || !this.content)
             return false;
 
         return true;

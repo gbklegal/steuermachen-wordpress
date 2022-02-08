@@ -5,8 +5,8 @@
     grid-template-columns: repeat(2, 1fr);
     gap: $gap;
 
-    // wp contact form 7 form id
-    #wpcf7-f30-p28381-o2 {
+    // wp contact form 7 form
+    .wpcf7 {
         background-color: $clr-bg-turquoise;
         box-shadow: 0 4px 4px rgba($clr-bg-black, .25);
         border-radius: $br-5;
@@ -74,7 +74,7 @@
 
 @media (max-width: $breakpoint-md) {
     .contact-wrapper {
-        #wpcf7-f30-p28381-o2 {
+        .wpcf7 {
             .grid-wrapper {
                 grid-template-columns: 1fr;
                 grid-template-areas: 
@@ -90,7 +90,7 @@
 
 @media (max-width: $breakpoint-sm) {
     .contact-wrapper {
-        #wpcf7-f30-p28381-o2 {
+        .wpcf7 {
             padding: 30px;
 
             input[type='submit'] {

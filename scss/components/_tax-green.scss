@@ -1,0 +1,72 @@
+// URL: /nachhaltigkeit/
+#post-28259 {
+    font-size: 18px;
+
+    section.section-taxgreen {
+        display: flex;
+        flex-flow: column wrap;
+        gap: 60px;
+
+        .flex-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+
+            .img-wrapper {
+                width: fit-content;
+                max-width: 100%;
+
+                img {
+                    min-width: 256px;
+                }
+            }
+
+            .text-wrapper {
+                h3 {
+                    margin-top: 0;
+                }
+            }
+
+            &:nth-child(4) {
+                img {
+                    margin-left: auto;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: ($breakpoint-sm + 1px)) {
+    #post-28259 {
+        section.section-taxgreen {
+            .flex-wrapper {
+                &:nth-child(even) {
+                    .img-wrapper {
+                        order: 1;
+                    }
+
+                    .text-wrapper {
+                        order: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-sm) {
+    #post-28259 {
+        section.section-taxgreen {
+            .flex-wrapper {
+                flex-direction: column;
+
+                .img-wrapper {
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
