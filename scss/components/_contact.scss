@@ -40,6 +40,10 @@
 
             .field {
                 width: 100%;
+
+                &:focus ~ label {
+                    background-color: $clr-bg-turquoise;
+                }
             }
 
             textarea {
