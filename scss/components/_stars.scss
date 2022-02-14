@@ -1,0 +1,25 @@
+.stars {
+    font-size: 32px;
+    position: relative;
+    display: inline-block;
+
+    &::before,
+    &::after {
+        /* content: '\002605\002605\002605\002605\002605'; */
+        content: '\e90e\e90e\e90e\e90e\e90e';
+        font-family: 'STM-Icons';
+    }
+
+    &::before {
+        color: $clr-bg-grey-light;
+    }
+
+    &::after {
+        color: $clr-gold;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: var(--stars-width);
+    }
+}
