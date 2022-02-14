@@ -310,3 +310,105 @@ add_filter('previous_posts_link_attributes', 'post_link_attributes');
 function post_link_attributes($output) {
     return 'class="btn btn-primary"';
 }
+
+
+/**
+ * get the trusted shops rating from the last year
+ * 
+ * TODO add optional error resporting (show response_code)
+ * TODO add rating caching (session variable)
+ * 
+ * @param array $attr
+ * - @param string $period - optional (Default: all)
+ * 
+ * @return string
+ */
+function trusted_shops_rating( array $attr ):string {
+    $period = $attr['period'] ?? 'all';
+
+    /**
+     * get the access token via oauth
+     * 
+     * @return string - access token
+     */
+    function get_access_token() {
+        $url = 'https://login.etrusted.com/oauth/token';
+        $data = [
+            'client_id' => '1478bf1ccf6b__steuermachen-website',
+            'client_secret' => '382ff162-100e-4d87-96b0-b3777c41ba2b',
+            'grant_type' => 'client_credentials',
+            'audience' => 'https://api.etrusted.com'
+        ];
+        $post_data = http_build_query($data);
+        $options = [
+            'http' => [
+                'method'  => 'POST',
+                'content' => $post_data
+            ]
+        ];
+
+        $stream_context = stream_context_create($options);
+        $result = @file_get_contents($url, false, $stream_context);
+
+        $result_json = json_decode($result);
+
+        $access_token = $result_json->access_token;
+
+        // TODO add error fallback
+
+        return $access_token;
+    }
+
+    $url = 'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
+    $options = [
+        'http' => [
+            'method'  => 'GET',
+            'header'  => 'Authorization: Bearer ' . get_access_token()
+        ]
+    ];
+
+    $stream_context = stream_context_create($options);
+    $result = @file_get_contents($url, false, $stream_context);
+    
+    // filter the response code out of the http response header as integer
+    $response_code = (int) explode(' ', $http_response_header[0])[1];
+
+    // var_dump($response_code);
+
+    if ($response_code === 200) {
+        $json = json_decode($result, true);
+
+        if ($period === 'all')
+            $period = 'overall';
+        else
+            $period .= 'days';
+
+        return $json[$period]['rating'];
+    }
+
+    return '';
+}
+add_shortcode('trusted_shops_rating', 'trusted_shops_rating');
+
+/**
+ * get trusted shops rating
+ * 
+ * @param string $period - optional (Default: all)
+ * 
+ * @return bool
+ */
+function get_trusted_shops_rating( string $period = 'all' ):string {
+    $attr = [
+        'period' => $period
+    ];
+    return trusted_shops_rating( $attr );
+}
+
+/**
+ * echos the trusted shops rating
+ * 
+ * @param string $period - optional (Default: all)
+ */
+function the_trusted_shops_rating( string $period = 'all' ) {
+    echo get_trusted_shops_rating( $period );
+}
