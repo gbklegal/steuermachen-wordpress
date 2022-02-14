@@ -257,12 +257,12 @@ add_shortcode('image', 'get_attachment_shortcode');
  * Utility function
  * Get Image (Attachment) by ID.
  * 
- * Function version of the get_image shortcode.
+ * Function version of the image shortcode.
  * 
  * @param string $image_id
- * @param string $image_size
+ * @param string $image_size - optional (Default: '')
  */
-function the_attachment( $image_id, $image_size ) {
+function the_attachment( $image_id, $image_size = '' ) {
     echo get_attachment_shortcode( [
         'id' => $image_id,
         'size' => $image_size
