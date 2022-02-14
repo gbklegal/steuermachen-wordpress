@@ -209,12 +209,12 @@ add_filter('the_content', 'anchor_content_h');
 
 
 /**
- * Temporary shorcode to satisfy coding
+ * Temporary shortcode to satisfy coding
  */
-function tmp_shortcode() {
+function tmp_shortcode_content() {
     include __DIR__ . '/tmp_shortcode_content.php';
 }
-add_shortcode('tmp_shortcode', 'tmp_shortcode');
+add_shortcode('tmp_content', 'tmp_shortcode_content');
 
 
 /**
