@@ -47,6 +47,13 @@ window.onload = function() {
     let faqTabs = new Tabs();
     if (faqTabs.isAvailable())
         faqTabs.init();
+
+    // Price Calculator
+    let priceCalc = new PriceCalc({
+        input: '#priceInput',
+        result: '#priceResult'
+    });
+    priceCalc.run();
 }
 
 window.onhashchange = function() {
@@ -254,5 +261,184 @@ class QuickSearch {
     show(item) {
         if (item)
             item.hidden = false;
+    }
+}
+
+
+/**
+ * Price Calculator
+ * calculate the price on the base of Bruttojahreneinkommen
+ */
+class PriceCalc {
+    /**
+     * prices
+     * @private
+     */
+    #prices = [
+        89,
+        99,
+        129,
+        169,
+        189,
+        229,
+        299,
+        319,
+        369,
+        429
+    ];
+
+    /**
+     * @param {string|object} input
+     * @param {string|object} result
+     */
+    constructor({ input, result }) {
+        if (typeof input === 'string')
+            this.input = document.querySelector(input);
+        else
+            this.input = input;
+
+        if (typeof result === 'string')
+            this.result = document.querySelector(result);
+        else
+            this.result = result;
+    }
+
+    /**
+     * this method does everything automatically
+     * it only need the input and result element
+     * from the constructor
+     * 
+     * @returns {undefined}
+     */
+    run() {
+        // we need both elements for the task
+        if (this.isAvailable() === false)
+            return;
+
+        let input = this.input;
+        let result = this.result;
+
+        // watch for changes
+        input.oninput = () => {
+            // get price from input value
+            let price = this.getPrice(input);
+
+            // only show price if its a number
+            if (typeof price === 'number') {
+                // format price (add currency)
+                let priceFormatted = this.formatCurrency(price);
+
+                // write the formatted price into the result element
+                result.innerHTML = priceFormatted;
+            }
+            // as fallback just write a whitespace
+            else {
+                result.innerHTML = '&nbsp;';
+            }
+        }
+    }
+
+    /**
+     * format a number into a currency string
+     * 
+     * @param {number} number 
+     * 
+     * @returns {string}
+     */
+    formatCurrency( number ) {
+        return String(number)
+            // .toFixed(2)
+            .replace('.', ',')
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' Euro';
+    }
+
+    /**
+     * reduce a string to its core numbers
+     * 
+     * @param {string} string 
+     * 
+     * @returns {number}
+     */
+    reduceToNumber( string ) {
+        return Number(
+            parseInt(
+                string.replace(/[^\d,]/g, '')
+            ).toFixed(0)
+        );
+    }
+
+    /**
+     * get price
+     * 
+     * @param {object} elmt - optional
+     * 
+     * @returns {number|boolean}
+     */
+    getPrice( elmt = null ) {
+        if (!elmt) elmt = this.input;
+        const bje = this.reduceToNumber(elmt.value);
+        let price = 0;
+
+        if (bje !== NaN) {
+            let priceIndex = 0;
+
+            if (bje <= 8000) {
+                priceIndex = 0;
+            }
+            else if (bje >= 8001 && bje <= 16000) {
+                priceIndex = 1;
+            }
+            else if (bje >= 16001 && bje <= 25000) {
+                priceIndex = 2;
+            }
+            else if (bje >= 25001 && bje <= 37000) {
+                priceIndex = 3;
+            }
+            else if (bje >= 37001 && bje <= 50000) {
+                priceIndex = 4;
+            }
+            else if (bje >= 50001 && bje <= 80000) {
+                priceIndex = 5;
+            }
+            else if (bje >= 80001 && bje <= 110000) {
+                priceIndex = 6;
+            }
+            else if (bje >= 110001 && bje <= 150000) {
+                priceIndex = 7;
+            }
+            else if (bje >= 150001 && bje <= 200000) {
+                priceIndex = 8;
+            }
+            else if (bje >= 200001 && bje <= 250000) {
+                priceIndex = 9;
+            }
+            else {
+                price = 0;
+                return false;
+            }
+
+            price = this.#prices[priceIndex];
+
+            return price;
+        }
+    }
+
+    /**
+     * checks if all necessary elements exists
+     * 
+     * @param {boolean} showInfo - optional (Default: false)
+     * 
+     * @returns {boolean}
+     */
+    isAvailable( showInfo = false ) {
+        // check if both elements exists
+        if (this.input && this.result)
+            return true;
+
+        // only show info in console if requested
+        if (showInfo)
+            console.warn('Input or Result is missing');
+
+        return false;
     }
 }
