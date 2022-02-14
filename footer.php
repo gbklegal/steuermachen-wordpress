@@ -27,7 +27,7 @@
                 <?php get_nav_menu('footer_3'); ?>
             </div>
             <div class="trusted-shops-logo-wrapper">
-                <img src="<?=STM_THEME_URL?>/img/trusted-shops-logo.png" alt="">
+                <?php the_attachment('442', 'thumbnail'); ?>
             </div>
         </div>
         <div class="footer-text">
