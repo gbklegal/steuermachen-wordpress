@@ -99,3 +99,54 @@ $displays: (
 .text-secondary {
     color: $clr-secondary !important;
 }
+
+
+// line height
+// @see https://tailwindcss.com/docs/line-height
+.leading-3 { line-height: .75rem; }
+.leading-4 { line-height: 1rem; }
+.leading-5 { line-height: 1.25rem; }
+.leading-6 { line-height: 1.5rem; }
+.leading-7 { line-height: 1.75rem; }
+.leading-8 { line-height: 2rem; }
+.leading-9 { line-height: 2.25rem; }
+.leading-10 { line-height: 2.5rem; }
+.leading-none { line-height: 1; }
+.leading-tight { line-height: 1.25; }
+.leading-snug { line-height: 1.375; }
+.leading-normal { line-height: 1.5; }
+.leading-relaxed { line-height: 1.625; }
+.leading-loose { line-height: 2; }
+
+
+// font size
+// @see https://tailwindcss.com/docs/font-size
+.text-xs { font-size: 0.75rem !important; line-height: 1rem !important; }
+.text-sm { font-size: 0.875rem !important; line-height: 1.25rem !important; }
+.text-base { font-size: 1rem !important; line-height: 1.5rem !important; }
+.text-lg { font-size: 1.125rem !important; line-height: 1.75rem !important; }
+.text-xl { font-size: 1.25rem !important; line-height: 1.75rem !important; }
+.text-2xl { font-size: 1.5rem !important; line-height: 2rem !important; }
+.text-3xl { font-size: 1.875rem !important; line-height: 2.25rem !important; }
+.text-4xl { font-size: 2.25rem !important; line-height: 2.5rem !important; }
+.text-5xl { font-size: 3rem !important; line-height: 1 !important; }
+.text-6xl { font-size: 3.75rem !important; line-height: 1 !important; }
+.text-7xl { font-size: 4.5rem !important; line-height: 1 !important; }
+.text-8xl { font-size: 6rem !important; line-height: 1 !important; }
+.text-9xl { font-size: 8rem !important; line-height: 1 !important; }
+
+
+// font color
+$text-colors: (
+    'black': #000000,
+    'blue': #252B42,
+    'white': #FFFFFF,
+    'grey': #737373,
+    'default': $clr-text-black
+);
+
+@each $name, $color in $text-colors {
+    .text-#{$name} {
+        color: $color;
+    }
+}
