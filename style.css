@@ -288,7 +288,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 ::after,
@@ -319,80 +319,77 @@ hr {
 
 h1,
 .h1 {
-  margin-bottom: 0.5rem;
   font-weight: 700;
-}
-
-h2,
-.h2 {
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-h3,
-.h3 {
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-h4,
-.h4 {
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-h5,
-.h5 {
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-h6,
-.h6 {
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-h1 {
-  font-size: 56px;
-}
-
-h2 {
-  font-size: 30px;
-}
-
-h3 {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
   clear: both;
-  font-weight: 600;
-  margin-bottom: 15px;
-  margin-bottom: 15px;
   margin-bottom: 0.9375rem;
   margin-top: 0;
 }
 
-h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
+h2,
+.h2 {
+  font-weight: 700;
+  clear: both;
+  margin-bottom: 0.9375rem;
+  margin-top: 0;
+}
+
+h3,
+.h3 {
+  font-weight: 700;
+  clear: both;
+  margin-bottom: 0.9375rem;
+  margin-top: 0;
+}
+
+h4,
+.h4 {
+  font-weight: 700;
+  clear: both;
+  margin-bottom: 0.9375rem;
+  margin-top: 0;
+}
+
+h5,
+.h5 {
+  font-weight: 700;
+  clear: both;
+  margin-bottom: 0.9375rem;
+  margin-top: 0;
+}
+
+h6,
+.h6 {
+  font-weight: 700;
+  clear: both;
+  margin-bottom: 0.9375rem;
+  margin-top: 0;
+}
+
+h1,
+.h1 {
+  font-size: 56px;
+}
+
+h2,
+.h2 {
+  font-size: 30px;
+}
+
+h3,
+.h3 {
+  font-size: 24px;
   font-weight: 600;
 }
 
-h4 {
+h4,
+.h4 {
   font-size: 17px;
   font-size: 1.0625rem;
   margin-bottom: 12px;
 }
 
-h5 {
+h5,
+.h5 {
   text-transform: uppercase;
   font-size: 15px;
   font-size: 0.9375rem;
@@ -556,6 +553,147 @@ code {
 
 .text-secondary {
   color: #66DB3B !important;
+}
+
+.leading-3 {
+  line-height: 0.75rem;
+}
+
+.leading-4 {
+  line-height: 1rem;
+}
+
+.leading-5 {
+  line-height: 1.25rem;
+}
+
+.leading-6 {
+  line-height: 1.5rem;
+}
+
+.leading-7 {
+  line-height: 1.75rem;
+}
+
+.leading-8 {
+  line-height: 2rem;
+}
+
+.leading-9 {
+  line-height: 2.25rem;
+}
+
+.leading-10 {
+  line-height: 2.5rem;
+}
+
+.leading-none {
+  line-height: 1;
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+
+.leading-snug {
+  line-height: 1.375;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+.text-xs {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+.text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+.text-base {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+}
+
+.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+.text-xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+.text-2xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
+.text-3xl {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+}
+
+.text-4xl {
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+.text-5xl {
+  font-size: 3rem !important;
+  line-height: 1 !important;
+}
+
+.text-6xl {
+  font-size: 3.75rem !important;
+  line-height: 1 !important;
+}
+
+.text-7xl {
+  font-size: 4.5rem !important;
+  line-height: 1 !important;
+}
+
+.text-8xl {
+  font-size: 6rem !important;
+  line-height: 1 !important;
+}
+
+.text-9xl {
+  font-size: 8rem !important;
+  line-height: 1 !important;
+}
+
+.text-black {
+  color: #000000;
+}
+
+.text-blue {
+  color: #252B42;
+}
+
+.text-white {
+  color: #FFFFFF;
+}
+
+.text-grey {
+  color: #737373;
+}
+
+.text-default {
+  color: #000000;
 }
 
 ._404-image {
@@ -738,6 +876,7 @@ code {
 }
 .badge-primary {
   background-color: #ff6138;
+  color: #FFFFFF;
 }
 .badge-secondary {
   background-color: #66DB3B;
@@ -787,6 +926,9 @@ code {
 }
 .btn-lg {
   width: 365px;
+}
+.btn-mdxl {
+  width: 256px;
 }
 .btn-md {
   width: 226px;
@@ -892,6 +1034,9 @@ a.btn {
 }
 .contact-wrapper .wpcf7 .field-wrapper .field {
   width: 100%;
+}
+.contact-wrapper .wpcf7 .field-wrapper .field:focus ~ label {
+  background-color: #DAF5EE;
 }
 .contact-wrapper .wpcf7 .field-wrapper textarea {
   resize: none;
@@ -1137,9 +1282,6 @@ a.btn {
   transition: 0.2s ease;
   transition-property: border-color, color;
 }
-.field::placeholder {
-  color: transparent;
-}
 .field::-webkit-outer-spin-button, .field::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
@@ -1258,6 +1400,10 @@ a.btn {
 }
 .field-wrapper .helper-text::before {
   font-size: 16px;
+}
+
+.wpcf7 .field::placeholder {
+  color: transparent;
 }
 
 footer#footer {
@@ -1419,6 +1565,7 @@ header#header .header-inner .menu .menu-item .sub-menu {
 #hero.hero-wrapper .hero-image img {
   width: auto;
   height: auto;
+  min-width: 256px;
   max-height: 296px;
 }
 #hero h1 {
@@ -1680,6 +1827,62 @@ a:not(.btn):active,
   order: 0;
 }
 
+.price-card {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 20px;
+  width: 1000px;
+  max-width: 100%;
+  background-color: #FCFCFC;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
+}
+.price-card .title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.price-card ul.description {
+  font-size: 20px;
+  margin-left: 30px;
+}
+.price-card ul.description li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.price-card ul.description li::marker {
+  content: "\e904  ";
+  font-family: "STM-Icons";
+  color: #66DB3B;
+  padding-right: 5px;
+}
+.price-card .price-wrapper {
+  margin-bottom: 25px;
+}
+.price-card .price-wrapper .price {
+  font-size: 64px;
+  font-weight: 700;
+  text-align: center;
+}
+.price-card .price-wrapper .vat-info {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: -10px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .price-card {
+    flex-direction: column;
+  }
+  .price-card .price-wrapper .price,
+.price-card .price-wrapper .vat-info,
+.price-card .cta-wrapper {
+    text-align: right;
+  }
+}
 #scroll-to-top {
   position: fixed;
   right: 20px;
@@ -1719,6 +1922,28 @@ a:not(.btn):active,
 .section-py {
   padding-top: 82px;
   padding-bottom: 82px;
+}
+
+.stars {
+  font-size: 32px;
+  position: relative;
+  display: inline-block;
+}
+.stars::before, .stars::after {
+  /* content: '\002605\002605\002605\002605\002605'; */
+  content: "\e90e\e90e\e90e\e90e\e90e";
+  font-family: "STM-Icons";
+}
+.stars::before {
+  color: #E2E2E2;
+}
+.stars::after {
+  color: #ffd700;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: var(--stars-width);
 }
 
 .table-of-contents li {
