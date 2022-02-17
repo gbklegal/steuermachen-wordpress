@@ -1883,6 +1883,17 @@ a:not(.btn):active,
     text-align: right;
   }
 }
+/* /preise */
+#post-28374 .section-seals .flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+#post-28374 .section-seals .trusted-shops-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 15px;
+}
+
 #scroll-to-top {
   position: fixed;
   right: 20px;
