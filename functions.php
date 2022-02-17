@@ -316,7 +316,9 @@ function post_link_attributes($output) {
  * get the trusted shops rating from the last year
  * 
  * TODO add optional error resporting (show response_code)
- * TODO add rating caching (session variable)
+ * 
+ * To avoid high traffic on the trusted shops api because the number isn't changing rapidly,
+ * the rating is getting stored in an cookie for an hour and from there beeing loaded.
  * 
  * @param array $attr
  * - @param string $period - optional (Default: all)
@@ -325,6 +327,19 @@ function post_link_attributes($output) {
  */
 function trusted_shops_rating( array $attr ):string {
     $period = $attr['period'] ?? 'all';
+
+    /**
+     * helper function to set cookies
+     * 
+     * @param string $cookie_name
+     * @param string $cookie_value
+     * 
+     * @return bool
+     */
+    function create_cookie( $cookie_name, $cookie_value ):bool {
+        // set cookie for 1 hour (3600 seconds)
+        return setcookie($cookie_name, $cookie_value, time() + 3600, '/');
+    }
 
     /**
      * get the access token via oauth
@@ -359,34 +374,57 @@ function trusted_shops_rating( array $attr ):string {
         return $access_token;
     }
 
-    $url = 'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
-    $options = [
-        'http' => [
-            'method'  => 'GET',
-            'header'  => 'Authorization: Bearer ' . get_access_token()
-        ]
-    ];
+    /**
+     * get rating from trusted shops api
+     * 
+     * @param string $period
+     * 
+     * @return string
+     */
+    function get_rating( string $period ):string {
+        $url = 'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
+        // $url = 'https://code.tobias-roeder.de/http_response_code/http_response_code.php?response_code=418';
+        $options = [
+            'http' => [
+                'method'  => 'GET',
+                'header'  => 'Authorization: Bearer ' . get_access_token()
+            ]
+        ];
 
-    $stream_context = stream_context_create($options);
-    $result = @file_get_contents($url, false, $stream_context);
-    
-    // filter the response code out of the http response header as integer
-    $response_code = (int) explode(' ', $http_response_header[0])[1];
+        $stream_context = stream_context_create($options);
+        $result = @file_get_contents($url, false, $stream_context);
 
-    // var_dump($response_code);
+        // filter the response code out of the http response header as integer
+        $response_code = (int) explode(' ', $http_response_header[0])[1];
 
-    if ($response_code === 200) {
-        $json = json_decode($result, true);
+        // var_dump($response_code);
 
-        if ($period === 'all')
-            $period = 'overall';
-        else
-            $period .= 'days';
+        if ($response_code === 200) {
+            $json = json_decode($result, true);
 
-        return $json[$period]['rating'];
+            if ($period === 'all')
+                $period = 'overall';
+            else
+                $period .= 'days';
+
+            return $json[$period]['rating'];
+        }
+
+        return '0';
     }
 
-    return '';
+    // check if cookie already exists
+    $trusted_shops_rating = $_COOKIE['trusted_shops_rating'] ?? null;
+
+    // if cookie not exists create and return lastest rating
+    if (is_null($trusted_shops_rating)) {
+        $_trusted_shops_rating = get_rating($period);
+        create_cookie('trusted_shops_rating', $_trusted_shops_rating);
+
+        return $_trusted_shops_rating;
+    }
+
+    return $trusted_shops_rating;
 }
 add_shortcode('trusted_shops_rating', 'trusted_shops_rating');
 
