@@ -450,3 +450,26 @@ function get_trusted_shops_rating( string $period = 'all' ):string {
 function the_trusted_shops_rating( string $period = 'all' ) {
     echo get_trusted_shops_rating( $period );
 }
+
+/**
+ * calculate the star length and get also a rounded rating
+ * 
+ * @param string $period - optional (Default: 365)
+ * 
+ * @return array
+ */
+function trusted_shops_rating_stars( $period = '365' ):array {
+    $rating = (float) get_trusted_shops_rating($period);
+    $max_rating = 0.05;
+
+    $rating_rounded = number_format(round($rating, 1), 2);
+    $star_length = $rating_rounded / $max_rating;
+
+    $result = [
+        'rating' => $rating_rounded,
+        'star_length' => $star_length
+    ];
+
+    return $result;
+}
+
