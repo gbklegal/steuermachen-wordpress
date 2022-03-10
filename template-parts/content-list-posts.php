@@ -11,7 +11,7 @@
     </div>
     <div class="list-article-content">
         <div class="list-article-categories">
-            <?php echo get_the_category_list(); ?>
+            <?php echo get_the_category_list(' / '); ?>
         </div>
         <h3><?php the_title(); ?></h2>
         <p><span class="posted-on"><i class="icon-calendar"></i> <?=get_the_date()?></span></p>
