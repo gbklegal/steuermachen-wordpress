@@ -9,7 +9,7 @@
         <hr>
         <div class="sign-up text-center">
             <h2 class="uppercase">Jetzt registrieren! Keine Verpflichtung kostenlose Testverion (ist dieser Text wirklich final?)</h2>
-            <p>Melde Dich bei Tax-Think an und mache deine persönliche Tour durch Tax-Think (ist auch dieser Text wirklich final?)</p>
+            <p>Melde Dich bei Think-Tax an und mache deine persönliche Tour durch Think-Tax (ist auch dieser Text wirklich final?)</p>
             <a href="/dashboard" class="btn btn-secondary btn-lg">Anmelden</a>
         </div>
         <!-- <iframe src="https://tf53be01c.emailsys1a.net/139/6219/913c50802d/subscribe/form.html?_g=1640003230" frameborder="0" width="100%" height="449"></iframe> -->

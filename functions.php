@@ -111,7 +111,7 @@ function initStmTheme() {
         'primary' => __( 'Header Navigation' ),
         'footer_1' => __( 'Footer - Über steuermachen.de' ),
         'footer_2' => __( 'Footer - Rechtliche Dokumente' ),
-        'footer_3' => __( 'Footer - Kooperation | Wird helfen Ihnen' ),
+        'footer_3' => __( 'Footer - Kooperation | Wir helfen dir' ),
     ]);
 }
 add_action( 'init', 'initStmTheme' );
