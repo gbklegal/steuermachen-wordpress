@@ -31,6 +31,7 @@
 
     <section id="quicktax" class="section section-mb">
         <h2 class="h3 text-center">Quick Tax - Berechne schnell und kostenlos deine voraussichtliche Steuererstattung</h2>
+        <?php the_steuerrecher(); ?>
         <a class="btn btn-primary mx-auto block whitespace-nowrap w-fit" href="http://steuermachen-theme.local/steuererklaerung-beauftragen/?utm_source=steuermachen.de&amp;utm_medium=steuerrechner&amp;utm_campaign=steuer2021">Jetzt Steuererklärung machen lassen</a>
     </section>
 

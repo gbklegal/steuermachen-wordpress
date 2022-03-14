@@ -473,3 +473,188 @@ function trusted_shops_rating_stars( $period = '365' ):array {
     return $result;
 }
 
+
+
+
+/**
+ * Steuerrechner (Quick Tax)
+ * 
+ * @return string
+ */
+function get_steuerrechner() {
+    $content = '';
+
+    // add steuerrechner css and js files
+    wp_enqueue_style('steuerrechner-style', get_stylesheet_directory_uri() . '/css/steuerrechner.min.css');
+    wp_enqueue_script('steuerrechner-script', get_stylesheet_directory_uri() . '/js/steuerrechner.min.js');
+
+    // steuerrechner content
+    $content .= '<div id="steuerrechner">
+        <div class="progress-wrapper">
+            <div class="progress-bar"></div>
+        </div>
+
+        <form method="post" name="steuerrechner" onsubmit="return false">
+
+            <!-- STEP 1 -->
+            <section data-step="1">
+                <h3>Wähle dein jährliches Bruttoeinkommen aus (ca.)</h3>
+                <div class="radio-wrapper radio-triple">
+                    <label>
+                        <input type="radio" name="bje" value="8tgohapk">
+                        <div class="label">0 - 9k &euro;</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="bje" value="f0ps693k">
+                        <div class="label">10k - 14k &euro;</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="bje" value="gdh4wo35">
+                        <div class="label">15k - 34k &euro;</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="bje" value="28bdv9ct">
+                        <div class="label">35k - 54k &euro;</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="bje" value="iqt18dgo">
+                        <div class="label">55k - 69k &euro;</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="bje" value="8cj3sdaf">
+                        <div class="label">> 70k &euro;</div>
+                    </label>
+                </div>
+            </section>
+
+            <!-- STEP 2 -->
+            <section data-step="2" hidden>
+                <h3>In welcher Steuerklasse bist du?</h3>
+                <div class="radio-wrapper radio-triple">
+                    <label>
+                        <input type="radio" name="steuerklasse" value="s70nqblu">
+                        <div class="label">Steuerklasse 1</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="steuerklasse" value="qa0ubmhy">
+                        <div class="label">Steuerklasse 2</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="steuerklasse" value="3i8dtp70">
+                        <div class="label">Steuerklasse 3</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="steuerklasse" value="pc6yqtxg">
+                        <div class="label">Steuerklasse 4</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="steuerklasse" value="muh3q6p0">
+                        <div class="label">Steuerklasse 5</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="steuerklasse" value="41ozqcsx">
+                        <div class="label">Steuerklasse 6</div>
+                    </label>
+                </div>
+            </section>
+
+            <!-- STEP 3 -->
+            <section data-step="3" hidden>
+                <h3>Gib deinen Arbeitsweg in km an (einfache Wegstrecke)</h3>
+                <div class="number-wrapper">
+                    <input type="number" name="arbeitsweg" oninput="checkValue(this)">
+                    <input type="button" value="Weiter" disabled>
+                </div>
+            </section>
+
+            <!-- STEP 4 -->
+            <section data-step="4" hidden>
+                <h3>Hattest du eine/mehrere berufliche Weiterbildung/en?</h3>
+                <div class="radio-wrapper radio-double">
+                    <label>
+                        <input type="radio" name="berufliche_weiterbildung" value="lgunwzdf">
+                        <div class="label">Ja</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="berufliche_weiterbildung" value="bzw5kr6f">
+                        <div class="label">Nein</div>
+                    </label>
+                </div>
+            </section>
+
+            <!-- STEP 5 -->
+            <section data-step="5" hidden>
+                <h3>Wähle die Anzahl deiner Kinder</h3>
+                <div class="radio-wrapper radio-triple">
+                    <label>
+                        <input type="radio" name="kinder" value="nqdhxspv">
+                        <div class="label">0</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="kinder" value="68d0n29u">
+                        <div class="label">1</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="kinder" value="6lki7zu0">
+                        <div class="label">2</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="kinder" value="n24ufj9g">
+                        <div class="label">3</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="kinder" value="dok8bcv1">
+                        <div class="label">4</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="kinder" value="wqatlzfu">
+                        <div class="label">5 oder mehr</div>
+                    </label>
+                </div>
+            </section>
+
+            <!-- STEP 6 -->
+            <section data-step="6" hidden>
+                <h3>Bist du bereits verheiratet?</h3>
+                <div class="radio-wrapper radio-double">
+                    <label>
+                        <input type="radio" name="verheiratet" value="knt2e3rd">
+                        <div class="label">Ja</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="verheiratet" value="n7msrdoe">
+                        <div class="label">Nein</div>
+                    </label>
+                </div>
+            </section>
+
+            <section data-stage="2"></section>
+
+            <!-- (FINAL RESULT) -->
+            <section data-step="final" hidden>
+                <div class="section-inner">
+                    <p>Bitte haben Sie einen Moment Geduld, Ihre geschätzte Steuerrückerstattung wird gerade berechnet...</p>
+                    <div class="spinner"></div>
+                </div>
+            </section>
+
+        </form>
+
+        <!-- <section class="cta">
+            <a href="https://steuermachen.de/steuererklaerung-beauftragen/?utm_source=steuermachen.de&utm_medium=steuerrechner&utm_campaign=steuer2021" class="btn btn-primary">Jetzt Steuererklärung machen lassen</a>
+        </section> -->
+    </div>';
+
+    return $content;
+}
+add_shortcode('steuerrechner', 'get_steuerrechner');
+
+/**
+ * Steuerrechner (Quick Tax)
+ * echos the steuerrechner
+ * 
+ * @return void
+ */
+function the_steuerrecher() {
+    echo get_steuerrechner();
+}
