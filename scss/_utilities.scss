@@ -86,8 +86,32 @@ $displays: (
 
 @each $display in $displays {
     .#{$display} {
-        display: $display;
+        display: $display !important;
     }
+}
+
+// whitespace
+$whitespaces: (
+    normal,
+    nowrap,
+    pre,
+    pre-line,
+    pre-wrap
+);
+
+@each $whitespace in $whitespaces {
+    .#{$whitespace} {
+        white-space: $whitespace;
+    }
+}
+
+// width
+.w-fit {
+    width: fit-content;
+}
+
+.w-700 {
+    width: 700px;
 }
 
 
