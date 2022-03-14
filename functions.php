@@ -117,6 +117,60 @@ function init_stm_theme() {
 add_action( 'init', 'init_stm_theme' );
 
 
+/**
+ * WP Cronjob Testing
+ * 
+ * @see https://kinsta.com/de/wissensdatenbank/wordpress-cron-job/#set-up-wordpress-cron-job
+ * @see https://developer.wordpress.org/plugins/cron/scheduling-wp-cron-events/
+ */
+add_filter( 'cron_schedules', 'example_add_cron_interval' );
+function example_add_cron_interval( $schedules ) { 
+    $schedules['five_seconds'] = array(
+        'interval' => 5,
+        'display'  => esc_html__( 'Every Five Seconds' ), );
+    return $schedules;
+}
+
+get_header();
+get_footer();
+
+exit;
+
+
+/**
+ * helper function
+ * 
+ * @param string $query
+ * @param string $post_type (Optional)
+ * 
+ */
+function get_search_results( string $query, ?string $post_type = null ):array {
+    $args = ['s' => $query];
+
+    if (true === is_string($post_type))
+        $args['post_type'] = $post_type;
+
+    $the_query = new WP_Query($args);
+
+    if ($the_query->have_posts())
+        while ($the_query->have_posts()) {
+            $the_query->the_post();
+
+            the_ID();
+            echo '<br>';
+            the_title();
+            echo '<br>' . get_post_type();
+
+            echo '<br><br>';
+        }
+
+    return [];
+}
+
+get_search_results('demo');
+
+exit;
+
 
 /**
  * helper function
