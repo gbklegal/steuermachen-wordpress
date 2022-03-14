@@ -101,7 +101,7 @@ add_filter('excerpt_length', 'replace_excerpt_length');
  * initilize steuermachen theme
  * with the help of add_action init
  */
-function initStmTheme() {
+function init_stm_theme() {
     /**
      * initilize (register) nav menus
      * these are later accessible via wp_nav_menu()
@@ -114,7 +114,7 @@ function initStmTheme() {
         'footer_3' => __( 'Footer - Kooperation | Wir helfen dir' ),
     ]);
 }
-add_action( 'init', 'initStmTheme' );
+add_action( 'init', 'init_stm_theme' );
 
 
 
