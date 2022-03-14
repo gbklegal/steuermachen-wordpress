@@ -42,7 +42,7 @@
         color: $clr-field-stroke-inactive;
 
         &::before {
-            font-family: 'STM-Icons';
+            font-family: $font-icons;
             font-size: 18px;
             position: absolute;
             top: 50%;

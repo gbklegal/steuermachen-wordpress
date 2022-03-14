@@ -7,7 +7,7 @@
     &::after {
         /* content: '\002605\002605\002605\002605\002605'; */
         content: '\e90e\e90e\e90e\e90e\e90e';
-        font-family: 'STM-Icons';
+        font-family: $font-icons;
     }
 
     &::before {

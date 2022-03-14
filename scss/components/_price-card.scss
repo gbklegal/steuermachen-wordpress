@@ -28,7 +28,7 @@
 
             &::marker {
                 content: '\e904\000020'; // Icon + Whitespace
-                font-family: 'STM-Icons';
+                font-family: $font-icons;
                 color: $clr-secondary;
                 padding-right: 5px;
             }
