@@ -1,3 +1,4 @@
+<?php __DIR__ . '/includes/utilities.php'; ?>
 <?php get_header(); ?>
 
 <?php // var_dump(get_the_ID()); ?>

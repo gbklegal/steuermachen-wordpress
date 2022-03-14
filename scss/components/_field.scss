@@ -42,7 +42,7 @@
         color: $clr-field-stroke-inactive;
 
         &::before {
-            font-family: 'STM-Icons';
+            font-family: $font-icons;
             font-size: 18px;
             position: absolute;
             top: 50%;
@@ -141,8 +141,20 @@
 
     // Search
     &-search {
-        & + .field-icon::before {
-            content: '\e905';
+        & + .field-icon {
+            &::before {
+                content: '\e905';
+                pointer-events: all;
+                cursor: pointer;
+            }
+
+            &:hover::before {
+                color: $clr-field-stroke-hover;
+            }
+
+            &:active::before {
+                color: $clr-field-stroke-done;
+            }
         }
     }
 

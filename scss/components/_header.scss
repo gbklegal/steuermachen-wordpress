@@ -34,48 +34,53 @@ header#header {
             justify-content: space-between;
             align-items: center;
             width: 100%;
-        }
 
-        .menu {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
+            .menu-top-container-wrapper {
+                display: flex;
+                align-items: center;
+            
+                .menu {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
 
-            a {
-                display: block;
-                position: relative;
-            }
-
-            &,
-            ul {
-                min-width: 12em;
-
-                li {
-                    white-space: nowrap;
-                    list-style-type: none;
-                }
-            }
-
-            .menu-item {
-                // display: inline-block;
-                padding: 10px 15px;
-                position: relative;
-                
-                &.menu-item-has-children:hover {
-                    .sub-menu {
+                    a {
                         display: block;
+                        position: relative;
                     }
-                }
 
-                .sub-menu {
-                    display: none;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    background-color: $clr-bg;
-                    width: auto;
-                    border-radius: $br-1;
-                    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                    &,
+                    ul {
+                        min-width: 12em;
+
+                        li {
+                            white-space: nowrap;
+                            list-style-type: none;
+                        }
+                    }
+
+                    .menu-item {
+                        // display: inline-block;
+                        padding: 10px 15px;
+                        position: relative;
+                        
+                        &.menu-item-has-children:hover {
+                            .sub-menu {
+                                display: block;
+                            }
+                        }
+
+                        .sub-menu {
+                            display: none;
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            background-color: $clr-bg;
+                            width: auto;
+                            border-radius: $br-1;
+                            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                        }
+                    }
                 }
             }
         }
@@ -87,9 +92,9 @@ header#header {
     header#header {
         // padding: 20px;
 
-        // .hidden-on-mobile {
-        //     display: none;
-        // }
+        .hidden-on-mobile {
+            display: none !important;
+        }
 
         .header-inner {
             display: flex;
@@ -108,9 +113,52 @@ header#header {
             .header-mobile {
                 // display: block;
                 text-align: right;
-                
+
                 i {
                     font-size: 42px;
+                }
+
+                [data-show-menu],
+                [data-hide-menu] {
+                    cursor: pointer;
+                }
+
+                .header-mobile-overlay {
+                    z-index: 90;
+                    position: fixed;
+                    background-color: $clr-secondary;
+                    // top: 0;
+                    // left: 0;
+                    // width: 100%;
+                    // height: 100%;
+                    inset: 0 0 0 0;
+                    display: grid;
+                    place-items: center;
+
+                    .icon-x {
+                        z-index: 99;
+                        position: fixed;
+                        inset: 20px 20px auto;
+                    }
+
+                    .menu-top-container {
+                        margin-bottom: 24px;
+
+                        ul {
+                            list-style-type: none;
+                            text-align: center;
+
+                            li {
+                                font-size: 18px;
+                                font-weight: 600;
+                                padding-bottom: 24px;
+
+                                a {
+                                    color: $clr-text-black;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

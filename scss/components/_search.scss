@@ -1,0 +1,31 @@
+// search form
+.search-form-wrapper {
+    padding: 20px;
+    // box-shadow: 0 4px 16px rgba($clr-text-black, 0.2);
+    // border-radius: $br-2;
+
+    .field-wrapper {
+        width: 100%;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+
+        .field-search {
+            width: 100%;
+        }
+    }
+}
+
+// search results
+.search-results {
+    $gap: 10px;
+
+    display: flex;
+    flex-flow: column wrap;
+    gap: $gap;
+    margin-top: 3rem;
+
+    .search-result {
+        border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+        padding-bottom: $gap;
+    }
+}
