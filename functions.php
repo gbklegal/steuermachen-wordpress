@@ -39,6 +39,9 @@ function steuermachen_theme_setup() {
         'page',
         'custom-post-type-name',
     ));
+
+    // remove read more on the_excerpt but keep the three dots
+    add_filter('excerpt_more', function() { return '...'; });
 }
 add_action( 'init', 'steuermachen_theme_setup');
 
@@ -263,6 +266,15 @@ add_filter('the_content', 'anchor_content_h');
 
 
 /**
+ * ***********************************
+ * 
+ * Shortcodes
+ * 
+ * ***********************************
+ */
+
+
+/**
  * Temporary shortcode to satisfy coding
  */
 function tmp_shortcode_content() {
@@ -280,6 +292,9 @@ add_shortcode('tmp_content', 'tmp_shortcode_content');
  * @return string
  */
 function get_attachment_shortcode( $atts ):string {
+    // keep default if not used later
+    $attachment_attr = array();
+
     // image id
     $image_id = $atts['id'] ?? false;
 
@@ -301,8 +316,15 @@ function get_attachment_shortcode( $atts ):string {
         $image_size = $atts['size'] ?? '';
     }
 
+    // class (overwrite)
+    $class = $atts['class'] ?? null;
+
+    // check if a class was set
+    if (false === is_null($class))
+        $attachment_attr['class'] = $class;
+
     // return image as HTML string or a empty string if failed
-    return wp_get_attachment_image( $image_id, $image_size );
+    return wp_get_attachment_image( $image_id, $image_size, false, $attachment_attr );
 }
 add_shortcode('image', 'get_attachment_shortcode');
 
@@ -315,12 +337,29 @@ add_shortcode('image', 'get_attachment_shortcode');
  * 
  * @param string $image_id
  * @param string $image_size - optional (Default: '')
+ * @param string $class - optional (Default: null)
  */
-function the_attachment( $image_id, $image_size = '' ) {
-    echo get_attachment_shortcode( [
+function get_attachment( $image_id, $image_size = '', $class = null ) {
+    return get_attachment_shortcode( [
         'id' => $image_id,
-        'size' => $image_size
+        'size' => $image_size,
+        'class' => $class
     ] );
+}
+
+
+/**
+ * Utility function
+ * Echo Image (Attachment) by ID.
+ * 
+ * Function version of the image shortcode.
+ * 
+ * @param string $image_id
+ * @param string $image_size - optional (Default: '')
+ * @param string $class - optional (Default: '')
+ */
+function the_attachment( $image_id, $image_size = '', $class = null ) {
+    echo get_attachment( $image_id, $image_size, $class );
 }
 
 
@@ -370,6 +409,7 @@ function post_link_attributes($output) {
  * get the trusted shops rating from the last year
  * 
  * TODO add optional error resporting (show response_code)
+ * TODO replace current api request with wp_remote_get/wp_remote_post (more: https://deliciousbrains.com/wordpress-http-api-requests/)
  * 
  * To avoid high traffic on the trusted shops api because the number isn't changing rapidly,
  * the rating is getting stored in an cookie for an hour and from there beeing loaded.
@@ -379,20 +419,22 @@ function post_link_attributes($output) {
  * 
  * @return string
  */
-function trusted_shops_rating( array $attr ):string {
+function trusted_shops_rating( array $attr = [] ):string {
     $period = $attr['period'] ?? 'all';
 
     /**
-     * helper function to set cookies
+     * helper function to set cookies for 1 hour
      * 
      * @param string $cookie_name
      * @param string $cookie_value
      * 
      * @return bool
      */
-    function create_cookie( $cookie_name, $cookie_value ):bool {
-        // set cookie for 1 hour (3600 seconds)
-        return setcookie($cookie_name, $cookie_value, time() + 3600, '/');
+    if (false === function_exists('create_cookie')) {
+        function create_cookie( $cookie_name, $cookie_value ):bool {
+            // set cookie for 1 hour (3600 seconds)
+            return setcookie($cookie_name, $cookie_value, time() + 3600, '/');
+        }
     }
 
     /**
@@ -400,32 +442,34 @@ function trusted_shops_rating( array $attr ):string {
      * 
      * @return string - access token
      */
-    function get_access_token() {
-        $url = 'https://login.etrusted.com/oauth/token';
-        $data = [
-            'client_id' => '1478bf1ccf6b__steuermachen-website',
-            'client_secret' => '382ff162-100e-4d87-96b0-b3777c41ba2b',
-            'grant_type' => 'client_credentials',
-            'audience' => 'https://api.etrusted.com'
-        ];
-        $post_data = http_build_query($data);
-        $options = [
-            'http' => [
-                'method'  => 'POST',
-                'content' => $post_data
-            ]
-        ];
+    if (false === function_exists('get_access_token')) {
+        function get_access_token() {
+            $url = 'https://login.etrusted.com/oauth/token';
+            $data = [
+                'client_id' => '1478bf1ccf6b__steuermachen-website',
+                'client_secret' => '382ff162-100e-4d87-96b0-b3777c41ba2b',
+                'grant_type' => 'client_credentials',
+                'audience' => 'https://api.etrusted.com'
+            ];
+            $post_data = http_build_query($data);
+            $options = [
+                'http' => [
+                    'method'  => 'POST',
+                    'content' => $post_data
+                ]
+            ];
 
-        $stream_context = stream_context_create($options);
-        $result = @file_get_contents($url, false, $stream_context);
+            $stream_context = stream_context_create($options);
+            $result = @file_get_contents($url, false, $stream_context);
 
-        $result_json = json_decode($result);
+            $result_json = json_decode($result);
 
-        $access_token = $result_json->access_token;
+            $access_token = $result_json->access_token;
 
-        // TODO add error fallback
+            // TODO add error fallback
 
-        return $access_token;
+            return $access_token;
+        }
     }
 
     /**
@@ -435,36 +479,38 @@ function trusted_shops_rating( array $attr ):string {
      * 
      * @return string
      */
-    function get_rating( string $period ):string {
-        $url = 'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
-        // $url = 'https://code.tobias-roeder.de/http_response_code/http_response_code.php?response_code=418';
-        $options = [
-            'http' => [
-                'method'  => 'GET',
-                'header'  => 'Authorization: Bearer ' . get_access_token()
-            ]
-        ];
+    if (false === function_exists('get_rating')) {
+        function get_rating( string $period ):string {
+            $url = 'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
+            // $url = 'https://code.tobias-roeder.de/http_response_code/http_response_code.php?response_code=418';
+            $options = [
+                'http' => [
+                    'method'  => 'GET',
+                    'header'  => 'Authorization: Bearer ' . get_access_token()
+                ]
+            ];
 
-        $stream_context = stream_context_create($options);
-        $result = @file_get_contents($url, false, $stream_context);
+            $stream_context = stream_context_create($options);
+            $result = @file_get_contents($url, false, $stream_context);
 
-        // filter the response code out of the http response header as integer
-        $response_code = (int) explode(' ', $http_response_header[0])[1];
+            // filter the response code out of the http response header as integer
+            $response_code = (int) explode(' ', $http_response_header[0])[1];
 
-        // var_dump($response_code);
+            // var_dump($response_code);
 
-        if ($response_code === 200) {
-            $json = json_decode($result, true);
+            if ($response_code === 200) {
+                $json = json_decode($result, true);
 
-            if ($period === 'all')
-                $period = 'overall';
-            else
-                $period .= 'days';
+                if ($period === 'all')
+                    $period = 'overall';
+                else
+                    $period .= 'days';
 
-            return $json[$period]['rating'];
+                return $json[$period]['rating'];
+            }
+
+            return '0';
         }
-
-        return '0';
     }
 
     // check if cookie already exists
@@ -482,6 +528,7 @@ function trusted_shops_rating( array $attr ):string {
 }
 add_shortcode('trusted_shops_rating', 'trusted_shops_rating');
 
+
 /**
  * get trusted shops rating
  * 
@@ -496,6 +543,7 @@ function get_trusted_shops_rating( string $period = 'all' ):string {
     return trusted_shops_rating( $attr );
 }
 
+
 /**
  * echos the trusted shops rating
  * 
@@ -504,6 +552,7 @@ function get_trusted_shops_rating( string $period = 'all' ):string {
 function the_trusted_shops_rating( string $period = 'all' ) {
     echo get_trusted_shops_rating( $period );
 }
+
 
 /**
  * calculate the star length and get also a rounded rating
@@ -516,17 +565,203 @@ function trusted_shops_rating_stars( $period = '365' ):array {
     $rating = (float) get_trusted_shops_rating($period);
     $max_rating = 0.05;
 
-    $rating_rounded = number_format(round($rating, 1), 2);
-    $star_length = $rating_rounded / $max_rating;
+    // $rating_rounded = number_format(round($rating, 1), 2);
+    $star_length = $rating / $max_rating;
 
     $result = [
-        'rating' => $rating_rounded,
+        // 'rating' => $rating_rounded,
+        'rating' => $rating,
         'star_length' => $star_length
     ];
 
     return $result;
 }
 
+
+/**
+ * trusted shops logo with rating and rating stars
+ * 
+ * @return string
+ */
+function trusted_shops() {
+    $content = '';
+
+    $_trusted_shops_rating_stars = trusted_shops_rating_stars();
+    $rating = $_trusted_shops_rating_stars['rating'];
+    $star_length = $_trusted_shops_rating_stars['star_length'];
+
+    $content .= '<div class="trusted-shops-wrapper">';
+    $content .= get_attachment('442', 'thumbnail');
+    $content .= '<div class="trusted-shops-rating-wrapper">
+            <h3 class="font-normal mb-0">Käuferschutz</h3>
+            <div class="h3 mb-0">';
+    $content .= $rating;
+    $content .= '/5.00</div>
+            <div class="stars" style="--stars-width:';
+    $content .= $star_length;
+    $content .= '%"></div>
+        </div>
+    </div>';
+
+    return $content;
+}
+add_shortcode('trusted_shops', 'trusted_shops');
+
+
+/**
+ * echos the trusted shops wrapper
+ */
+function the_trusted_shops() {
+    echo trusted_shops();
+}
+
+
+/**
+ * Trusted Shops Logo shortcode
+ * 
+ * @param string|int $image_size - optional (Default: thumbnail)
+ * @param string $url - optional (Default: link to ratings)
+ * @param bool $wrap_p - optional (Default: true)
+ * 
+ * @return string
+ */
+function get_trusted_shops_logo( $attr ):string {
+    $attachment_id = 442;
+    $image_size = $attr['size'] ?? 100;
+    $url = $attr['url'] ?? 'https://www.trustedshops.de/bewertung/info_X24AEB26CBD9A2EBDB8A0AC232A1BB7F9.html';
+    // $target = $attr['target'] ?? '_blank'; // enable if required
+    // $rel = $attr['rel'] ?? 'noopener noreferrer nofollow'; // enable if required
+    $wrap_p = $attr['wrap_p'] ?? true;
+
+    // check if image size string contains a word or an integer
+    if ((int)$image_size === 0)
+        $size = $image_size;
+    else
+        $size = [$image_size];
+
+    // content start
+    $content = '';
+
+    // wrap the whole content with an paragraph tag if needed
+    if ($wrap_p === true) $content .= '<p>';
+
+    // wrap image with an anchor tag
+    $content .= '<a href="' . $url . '" rel="noopener noreferrer nofollow" target="_blank">';
+
+    // image as HTML string or a empty string if failed
+    $content .= wp_get_attachment_image( $attachment_id, $size);
+
+    // close wrapper (anchor tag)
+    $content .= '</a>';
+
+    // close wrapper (paragraph tag)
+    if ($wrap_p === true) $content .= '</p>';
+
+    // return the image with the anchor (and p) tag wrapper
+    return $content;
+}
+add_shortcode('trusted_shops_logo', 'get_trusted_shops_logo');
+
+
+/**
+ * CTA Button shortcode
+ * 
+ * @param string $value
+ * @param string $link_to - optional (Default: order)
+ * @param string $url - optional (Default: <empty string>) this overwrites link_to
+ * @param string $class - optional (Default: btn btn-theme-primary btn-full) this overwrites the default classes
+ * @param string $add_class - optional (Default: <empty string>)
+ * @param bool $wrap_p - optional (Default: true)
+ */
+function get_cta_button( $attr ):string {
+    $value = $attr['value'] ?? '';
+    $link_to = $attr['link_to'] ?? 'order';
+    $url = $attr['url'] ?? '';
+    $class = $attr['class'] ?? 'btn btn-theme-primary btn-full';
+    $add_class = $attr['add_class'] ?? '';
+    $wrap_p = $attr['wrap_p'] ?? true;
+
+    $links = [
+        'order' => '/steuererklaerung-beauftragen/',
+        'steuereasy' => '/steuereasy/',
+        'safetax' => '/' // does not exists on the website yet
+    ];
+
+    // check if url is empty and link to key exists
+    if (empty($url) && array_key_exists($link_to, $links))
+        $url = home_url($links[$link_to]);
+
+    // check if there a classes to be added
+    if (!empty($add_class))
+        $class .= ' ' . $add_class;
+
+    // content start
+    $content = '';
+
+    // wrap the whole content with an paragraph tag if needed
+    if ($wrap_p === true) $content .= '<p>';
+
+    // link
+    $content .= '<a class="' . $class . '" href="' . $url . '">' . $value . '</a>';
+
+    // close wrapper (paragraph tag)
+    if ($wrap_p === true) $content .= '</p>';
+
+    // return the link (with the p tag wrapper)
+    return $content;
+}
+add_shortcode('cta_button', 'get_cta_button');
+
+
+
+function sc_playground($atts, $content) {
+    $header = $atts['header'] ?? '';
+    $image_id = $atts['image_id'] ?? 0;
+
+    return $content;
+}
+add_shortcode('playground', 'sc_playground');
+
+
+/**
+ * * Test
+ * Price Card as shortcodes
+ * 
+ * - price card (wrapper)
+ * - price card list
+ * - price card price
+ */
+function price_card( $attr ) {
+    $title = $attr['title'] ?? '';
+    $price = $attr['price'] ?? '';
+    $items = array_filter($attr, 'is_int', ARRAY_FILTER_USE_KEY);
+    $url = $attr['url'] ?? '#';
+
+    $content = '<div class="price-card mx-auto">
+        <div>
+            <div class="title">' . $title . '</div>
+            <ul class="description">';
+        foreach ($items as $item)
+            $content .= "<li>$item</li>";
+        $content .= '</ul>
+        </div>
+        <div>
+            <div class="price-wrapper">
+                <div class="price">' . $price . '&euro;</div>
+                <div class="vat-info">(ohne MwSt.)</div>
+            </div>
+            <div class="cta-wrapper">
+                <a class="btn btn-primary btn-mdxl" href="' . $url . '">Jetzt bestellen</a>
+            </div>
+        </div>
+    </div>';
+
+    return $content;
+}
+add_shortcode('price_card', 'price_card');
+
+// DEMO
+// [price_card title="Premium" price="49" "Du kannst das ganze Jahr über Dokumente sicher hochladen und sammeln" "Du erhältst für das aktuelle Jahr eine qualifizierte steuerrechtliche Beratung durch deinen Steuerexperten" "Wenn du eine Steuererklärung bei uns beauftragst, erstatten wir dir alle bereits bezahlten Kosten "]
 
 
 
