@@ -136,6 +136,42 @@ get_footer();
 
 exit;
 
+
+/**
+ * helper function
+ * 
+ * @param string $query
+ * @param string $post_type (Optional)
+ * 
+ */
+function get_search_results( string $query, ?string $post_type = null ):array {
+    $args = ['s' => $query];
+
+    if (true === is_string($post_type))
+        $args['post_type'] = $post_type;
+
+    $the_query = new WP_Query($args);
+
+    if ($the_query->have_posts())
+        while ($the_query->have_posts()) {
+            $the_query->the_post();
+
+            the_ID();
+            echo '<br>';
+            the_title();
+            echo '<br>' . get_post_type();
+
+            echo '<br><br>';
+        }
+
+    return [];
+}
+
+get_search_results('demo');
+
+exit;
+
+
 /**
  * helper function
  * 
