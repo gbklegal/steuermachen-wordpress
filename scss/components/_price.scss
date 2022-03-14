@@ -1,0 +1,15 @@
+/* /preise */
+#post-28374 {
+    .section-seals {
+        .flex-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .trusted-shops-wrapper {
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 15px;
+        }
+    }
+}

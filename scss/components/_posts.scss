@@ -48,24 +48,11 @@
     .list-article-categories,
     .post-categories {
         margin-bottom: 15px;
-
-        ul {
-            font-size: 0;
-
-            li {
-                font-size: 1rem;
-                display: inline;
-                list-style-type: none;
-
-                &:not(:last-child)::after {
-                    content: ' / ';
-                }
-                
-                a {
-                    text-transform: uppercase;
-                    font-weight: 500; // 700
-                }
-            }
+        font-size: 1rem;
+        
+        a {
+            text-transform: uppercase;
+            font-weight: 500; // 700
         }
     }
 }

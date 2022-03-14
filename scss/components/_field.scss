@@ -29,10 +29,6 @@
         transition-property: border-color, color;
     }
 
-    &::placeholder {
-        color: transparent;
-    }
-
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -204,7 +200,9 @@
     }
 }
 
-
-// https://developer.wordpress.org/reference/functions/the_title/
-// http://steuermachen-theme.local/
-// TODO: create a simple script (local file) that opens saved urls
+// only hide placeholder on wp contact form 7 forms
+.wpcf7 {
+    .field::placeholder {
+        color: transparent;
+    }
+}

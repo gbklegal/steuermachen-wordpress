@@ -8,7 +8,7 @@
             </div>
             <?php endif; ?>
             <div class="post-categories">
-                <?php echo get_the_category_list(); ?>
+                <?php echo get_the_category_list(' / '); ?>
             </div>
         </header>
         <main class="post-content-wrapper">
