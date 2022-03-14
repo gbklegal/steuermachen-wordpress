@@ -5,7 +5,7 @@
  * @version 0.0.1
  */
 
-window.onload = function() {
+window.addEventListener('load', function() {
     'use strict';
 
     // const fieldWrappers = document.querySelectorAll('.field-wrapper input[data-error], .field-wrapper input[data-warning]').forEach(elmt => elmt.parentNode);
@@ -54,11 +54,14 @@ window.onload = function() {
         result: '#priceResult'
     });
     priceCalc.run();
-}
 
-window.onhashchange = function() {
+    // Init Mobile Menu
+    initMenuMobile();
+});
+
+window.addEventListener('hashchange', function() {
     selectLetterInDictFromHash();
-}
+});
 
 
 /**
@@ -441,4 +444,48 @@ class PriceCalc {
 
         return false;
     }
+}
+
+
+/**
+ * Mobile menu functions
+ * 
+ * @function initMenuMobile
+ * @function showMenuMobile
+ * @function hideMenuMobile
+ */
+
+/**
+ * Init menu mobile only if it exists
+ */
+function initMenuMobile() {
+    const MENU_MOBILE = document.querySelector('#menu-mobile');
+
+    // abort if not exists
+    if (!MENU_MOBILE)
+        return;
+
+    const SHOW_MENU = document.querySelector('[data-show-menu]');
+    const HIDE_MENU = document.querySelector('[data-hide-menu]');
+
+    SHOW_MENU.addEventListener('click', showMenuMobile);
+    HIDE_MENU.addEventListener('click', hideMenuMobile);
+}
+
+/**
+ * Show menu mobile
+ */
+function showMenuMobile() {
+    const MENU_MOBILE = document.querySelector('#menu-mobile');
+
+    jQuery(MENU_MOBILE).fadeIn();
+}
+
+/**
+ * Hide menu mobile
+ */
+function hideMenuMobile() {
+    const MENU_MOBILE = document.querySelector('#menu-mobile');
+
+    jQuery(MENU_MOBILE).fadeOut();
 }

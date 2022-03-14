@@ -39,8 +39,10 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
             <div class="header-inner">
                 <div class="header-content">
                     <div class="header-part">
-                        <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 42]); ?>
-                        <div class="hidden-on-mobile">
+                        <a href="<?php echo home_url(); ?>">
+                            <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 42]); ?>
+                        </a>
+                        <div class="menu-top-container-wrapper hidden-on-mobile">
                             <?php get_nav_menu('primary'); ?>
                         </div>
                     </div>
@@ -52,7 +54,17 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
                     </div>
                 </div>
                 <div class="header-mobile">
-                    <i class="icon-menu"></i>
+                    <i class="icon-menu" data-show-menu></i>
+
+                    <div class="header-mobile-overlay" id="menu-mobile">
+                        <i class="icon-x" data-hide-menu></i>
+
+                        <div class="header-mobile-overlay-inner">
+                            <?php get_nav_menu('primary'); ?>
+                            <!-- TODO: convert button to a link button -->
+                            <button class="btn btn-primary">Anmelden</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
