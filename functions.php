@@ -658,3 +658,63 @@ add_shortcode('steuerrechner', 'get_steuerrechner');
 function the_steuerrecher() {
     echo get_steuerrechner();
 }
+
+
+/**
+ * ***********************************
+ * 
+ * Customizer
+ * 
+ * @see https://themefoundation.com/wordpress-theme-customizer/
+ * 
+ * ***********************************
+ */
+
+/**
+ * Adds the Customize page to the WordPress admin area
+ */
+function steuermachen_customizer_menu() {
+    add_theme_page( 'Customize', 'Customize', 'edit_theme_options', 'customize.php' );
+}
+add_action( 'admin_menu', 'steuermachen_customizer_menu' );
+
+/**
+ * Adds the individual sections, settings, and controls to the theme customizer
+ */
+function steuermachen_customizer( $wp_customize ) {
+    $wp_customize->add_section(
+        'banner_section',
+        array(
+            'title' => 'Banner',
+            // 'description' => 'Inhalt des Banners.',
+            'priority' => 35,
+        )
+    );
+
+    $wp_customize->add_setting(
+        'hide_banner'
+    );
+
+    $wp_customize->add_control(
+        'hide_banner',
+        array(
+            'label' => 'Banner ausblenden?',
+            'section' => 'banner_section',
+            'type' => 'checkbox',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'banner_content'
+    );
+
+    $wp_customize->add_control(
+        'banner_content',
+        array(
+            'label' => 'Inhalt des Banners',
+            'section' => 'banner_section',
+            'type' => 'textarea',
+        )
+    );
+}
+add_action( 'customize_register', 'steuermachen_customizer' );

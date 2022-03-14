@@ -1,5 +1,10 @@
 <?php get_header(); ?>
 
+<?php if (false === get_theme_mod( 'hide_banner' )): ?>
+    <div class="banner">
+        <?php echo get_theme_mod( 'banner_content' ); ?>
+    </div>
+<?php endif; ?>
 
 <main class="main-content front-page">
     <div id="hero" class="hero-wrapper">
