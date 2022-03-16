@@ -459,33 +459,33 @@ class PriceCalc {
  * Init menu mobile only if it exists
  */
 function initMenuMobile() {
-    const MENU_MOBILE = document.querySelector('#menu-mobile');
+    const menuMobile = document.querySelector('#menu-mobile');
 
     // abort if not exists
-    if (!MENU_MOBILE)
+    if (!menuMobile)
         return;
 
-    const SHOW_MENU = document.querySelector('[data-show-menu]');
-    const HIDE_MENU = document.querySelector('[data-hide-menu]');
+    const showMenu = document.querySelector('[data-show-menu]');
+    const hideMenu = document.querySelector('[data-hide-menu]');
 
-    SHOW_MENU.addEventListener('click', showMenuMobile);
-    HIDE_MENU.addEventListener('click', hideMenuMobile);
+    showMenu.addEventListener('click', showMenuMobile);
+    hideMenu.addEventListener('click', hideMenuMobile);
 }
 
 /**
  * Show menu mobile
  */
 function showMenuMobile() {
-    const MENU_MOBILE = document.querySelector('#menu-mobile');
+    const menuMobile = document.querySelector('#menu-mobile');
 
-    jQuery(MENU_MOBILE).fadeIn();
+    jQuery(menuMobile).fadeIn(400, disablePageScroll);
 }
 
 /**
  * Hide menu mobile
  */
 function hideMenuMobile() {
-    const MENU_MOBILE = document.querySelector('#menu-mobile');
+    const menuMobile = document.querySelector('#menu-mobile');
 
-    jQuery(MENU_MOBILE).fadeOut();
+    jQuery(menuMobile).fadeOut();
 }
