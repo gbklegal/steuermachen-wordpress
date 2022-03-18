@@ -57,6 +57,11 @@ window.addEventListener('load', function() {
 
     // Init Mobile Menu
     initMenuMobile();
+
+    // Scroll To Top Init
+    let scrollToTopElmt = document.querySelector('#scroll-to-top');
+    if (scrollToTopElmt)
+        scrollToTopElmt.addEventListener('click', scrollToTop);
 });
 
 window.addEventListener('hashchange', function() {
@@ -93,9 +98,15 @@ function selectLetterInDictFromHash() {
  * scroll to top without changing/setting the location hash
  */
 function scrollToTop(event) {
-    if (event)
-        event.preventDefault();
-    scrollTo(0, 0);
+    event.preventDefault();
+
+    // without animation
+    // scrollTo(0, 0);
+
+    // with animation
+    jQuery('html, body').animate({ scrollTop: 0 }, 400);
+
+    return false;
 }
 
 
