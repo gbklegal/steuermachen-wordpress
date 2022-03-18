@@ -1005,5 +1005,11 @@ function steuermachen_customizer( $wp_customize ) {
             'type' => 'textarea',
         )
     );
+/**
+ * include this files if a user is logged in
+ */
+if (true === is_user_logged_in()) {
+    wp_enqueue_style( 'admin-style', trailingslashit( get_template_directory_uri() ) . 'css/admin.css');
+}
 }
 add_action( 'customize_register', 'steuermachen_customizer' );
