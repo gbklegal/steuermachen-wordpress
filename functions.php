@@ -931,13 +931,10 @@ function the_steuerrecher() {
 
 
 /**
- * ***********************************
  * Utility function
  * 
- * Customizer
  * get custom logo url string
  * 
- * @see https://themefoundation.com/wordpress-theme-customizer/
  * @return string - if no custom logo exists return empty string
  */
 function get_custom_logo_url() {
@@ -951,7 +948,6 @@ function get_custom_logo_url() {
 /**
  * Add custom retina logo support
  * 
- * ***********************************
  * get custom retina logo url
  * 
  * @return int
@@ -961,47 +957,22 @@ function get_custom_retina_logo() {
 }
 
 /**
- * Adds the Customize page to the WordPress admin area
  * echo the retina logo url
  */
-function steuermachen_customizer_menu() {
-    add_theme_page( 'Customize', 'Customize', 'edit_theme_options', 'customize.php' );
 function the_custom_retina_logo() {
     echo get_custom_retina_logo();
 }
-add_action( 'admin_menu', 'steuermachen_customizer_menu' );
 
 /**
- * Adds the individual sections, settings, and controls to the theme customizer
  * check if a custom retina logo exists
  * 
  * @return bool
  */
-function steuermachen_customizer( $wp_customize ) {
-    $wp_customize->add_section(
-        'banner_section',
-        array(
-            'title' => 'Banner',
-            // 'description' => 'Inhalt des Banners.',
-            'priority' => 35,
-        )
-    );
 function has_custom_retina_logo() {
     return (bool) get_custom_retina_logo();
 }
 
-    $wp_customize->add_setting(
-        'hide_banner'
-    );
 
-    $wp_customize->add_control(
-        'hide_banner',
-        array(
-            'label' => 'Banner ausblenden?',
-            'section' => 'banner_section',
-            'type' => 'checkbox',
-        )
-    );
 /**
  * advanced get_image_tag function
  * this functions adds srcset parameter at the end
@@ -1045,18 +1016,7 @@ require trailingslashit( get_template_directory() ) . 'admin-section/customizer.
  */
 require trailingslashit( get_template_directory() ) . 'includes/init.php';
 
-    $wp_customize->add_setting(
-        'banner_content'
-    );
 
-    $wp_customize->add_control(
-        'banner_content',
-        array(
-            'label' => 'Inhalt des Banners',
-            'section' => 'banner_section',
-            'type' => 'textarea',
-        )
-    );
 /**
  * include this files if a user is logged in
  */
@@ -1064,4 +1024,3 @@ if (true === is_user_logged_in()) {
     wp_enqueue_style( 'admin-style', trailingslashit( get_template_directory_uri() ) . 'css/admin.css');
 }
 }
-add_action( 'customize_register', 'steuermachen_customizer' );
