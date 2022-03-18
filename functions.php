@@ -957,18 +957,30 @@ function the_steuerrecher() {
  * @see https://themefoundation.com/wordpress-theme-customizer/
  * 
  * ***********************************
+ * get custom retina logo url
+ * 
+ * @return int
  */
+function get_custom_retina_logo() {
+    return attachment_url_to_postid( get_theme_mod( 'custom_retina_logo' ) );
+}
 
 /**
  * Adds the Customize page to the WordPress admin area
+ * echo the retina logo url
  */
 function steuermachen_customizer_menu() {
     add_theme_page( 'Customize', 'Customize', 'edit_theme_options', 'customize.php' );
+function the_custom_retina_logo() {
+    echo get_custom_retina_logo();
 }
 add_action( 'admin_menu', 'steuermachen_customizer_menu' );
 
 /**
  * Adds the individual sections, settings, and controls to the theme customizer
+ * check if a custom retina logo exists
+ * 
+ * @return bool
  */
 function steuermachen_customizer( $wp_customize ) {
     $wp_customize->add_section(
@@ -979,6 +991,9 @@ function steuermachen_customizer( $wp_customize ) {
             'priority' => 35,
         )
     );
+function has_custom_retina_logo() {
+    return (bool) get_custom_retina_logo();
+}
 
     $wp_customize->add_setting(
         'hide_banner'
