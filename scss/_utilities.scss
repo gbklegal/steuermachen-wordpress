@@ -28,6 +28,10 @@
     }
 }
 
+.disable-scroll {
+    overflow: hidden;
+}
+
 
 // inspired by tailwindcss
 .font-thin { font-weight: 100; }
@@ -112,6 +116,7 @@ $whitespaces: (
 
 .w-700 {
     width: 700px;
+    max-width: 100%;
 }
 
 
