@@ -37,7 +37,7 @@
     <section id="quicktax" class="section section-mb">
         <h2 class="h3 text-center">Quick Tax - Berechne schnell und kostenlos deine voraussichtliche Steuererstattung</h2>
         <?php the_steuerrecher(); ?>
-        <a class="btn btn-primary mx-auto block whitespace-nowrap w-fit" href="http://steuermachen-theme.local/steuererklaerung-beauftragen/?utm_source=steuermachen.de&amp;utm_medium=steuerrechner&amp;utm_campaign=steuer2021">Jetzt Steuererklärung machen lassen</a>
+        <a class="btn btn-primary mx-auto block whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/?utm_source=steuermachen.de&amp;utm_medium=steuerrechner&amp;utm_campaign=steuer2021">Jetzt Steuererklärung machen lassen</a>
     </section>
 
     <section id="steps" class="section section-mb">
@@ -71,7 +71,7 @@
         </div>
     </section>
 
-    <section id="not-clear-0" class="section section-mb text-center w-700 mx-auto">
+    <section id="steuerexperten" class="section section-mb text-center w-700 mx-auto">
         <h3>Einführung einer persönlichen Betreuung durch echte Steuerexperten.</h3>
         <p>Setzen Sie sich mit unseren Steuerexperten in Verbindung, die Ihnen bei der Bewältigung Ihrer steuerlichen Situation helfen können. Sie erhalten Zugang zu unbegrenzter Beratung, wenn Sie sie am dringendsten benötigen.*</p>
         <a class="btn btn-primary mx-auto" href="#">Jetzt beauftragen</a>
