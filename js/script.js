@@ -5,6 +5,7 @@
  * @version 0.0.1
  */
 
+// window load
 window.addEventListener('load', function() {
     'use strict';
 
@@ -36,6 +37,9 @@ window.addEventListener('load', function() {
         }
     });
 
+    // fixed header page padding fix
+    setPagePaddingToHeaderHeight();
+
     // Steuerlexikon (dict)
     selectLetterInDictFromHash();
 
@@ -64,9 +68,52 @@ window.addEventListener('load', function() {
         scrollToTopElmt.addEventListener('click', scrollToTop);
 });
 
+// window hash change
 window.addEventListener('hashchange', function() {
     selectLetterInDictFromHash();
 });
+
+// window resize
+window.addEventListener('resize', function() {
+    setPagePaddingToHeaderHeight();
+});
+
+// window scroll
+window.addEventListener('scroll', function() {
+    headerScroll();
+});
+
+// window keydown
+window.addEventListener('keydown', function(event) {
+    switch (event.key) {
+        case 'Escape':
+            hideMenuMobile();
+    }
+});
+
+
+/**
+ * set padding to page from header height
+ */
+function setPagePaddingToHeaderHeight() {
+    const page = document.querySelector('#page');
+    const header = document.querySelector('#header');
+
+    page.style.paddingTop = header.clientHeight + 'px';
+}
+
+
+/**
+ * toggle header scroll class by checking scroll position
+ */
+function headerScroll() {
+    const header = document.querySelector('#header');
+
+    if (window.scrollY > 0)
+        header.classList.add('header-scroll');
+    else
+        header.classList.remove('header-scroll');
+}
 
 
 /**
@@ -489,7 +536,7 @@ function initMenuMobile() {
 function showMenuMobile() {
     const menuMobile = document.querySelector('#menu-mobile');
 
-    jQuery(menuMobile).fadeIn(400, disablePageScroll);
+    jQuery(menuMobile).fadeIn(200, disablePageScroll);
 }
 
 /**
@@ -498,5 +545,36 @@ function showMenuMobile() {
 function hideMenuMobile() {
     const menuMobile = document.querySelector('#menu-mobile');
 
-    jQuery(menuMobile).fadeOut();
+    enablePageScroll();
+    jQuery(menuMobile).fadeOut(200);
+}
+
+
+/**
+ * Influence the scrolling of the body
+ * 
+ * @function disableScroll
+ * @function enableScroll
+ * @function toggleScroll
+ */
+
+/**
+ * prevent page from beeing scrollable
+ */
+function disablePageScroll() {
+    jQuery(document.body).addClass('disable-scroll');
+}
+
+/**
+ * enable scrolling on page
+ */
+function enablePageScroll() {
+    jQuery(document.body).removeClass('disable-scroll');
+}
+
+/**
+ * toggle scrolling on page
+ */
+function togglePageScroll() {
+    jQuery(document.body).toggleClass('disable-scroll');
 }
