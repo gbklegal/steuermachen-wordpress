@@ -1002,6 +1002,48 @@ function has_custom_retina_logo() {
             'type' => 'checkbox',
         )
     );
+/**
+ * advanced get_image_tag function
+ * this functions adds srcset parameter at the end
+ * 
+ * original function:
+ * @see https://developer.wordpress.org/reference/functions/get_image_tag/
+ * 
+ * @param string|int $id
+ * @param string $alt
+ * @param string $title
+ * @param string $align
+ * @param string|array $size - optional
+ * @param string $add_class - optional
+ * @param string $srcset - optional
+ * 
+ * @return string
+ */
+function stm_get_image_tag( $id, $alt, $title, $align, $size = 'medium', $add_class = '', $srcset = '' ) {
+    list( $image_src, $width, $height ) = image_downsize( $id, $size );
+    $hwstring = image_hwstring( $width, $height );
+
+    $title = $title ? 'title="' . esc_attr( $title ) . '" ' : '';
+    $srcset = $srcset ? 'srcset="' . esc_attr( $srcset ) . '" ' : '';
+
+    $size_class = is_array( $size ) ? implode( 'x', $size ) : $size;
+    $class = 'align' . esc_attr( $align ) . ' size-' . esc_attr( $size_class ) . ' wp-image-' . $id . ' ' . $add_class;
+
+    $html = '<img src="' . esc_attr( $image_src ) . '" alt="' . esc_attr( $alt ) . '" ' . $title . $hwstring . 'class="' . $class . '" ' . $srcset . ' />';
+
+    return $html;
+}
+
+
+/**
+ * Require init from Admin Section.
+ */
+require trailingslashit( get_template_directory() ) . 'admin-section/customizer.php';
+
+/**
+ * Require init from Includes.
+ */
+require trailingslashit( get_template_directory() ) . 'includes/init.php';
 
     $wp_customize->add_setting(
         'banner_content'
