@@ -7,7 +7,7 @@
             </div>
         </div>
         <hr>
-        <div class="sign-up text-center">
+        <div class="text-center sign-up">
             <h2 class="uppercase">Jetzt registrieren! Keine Verpflichtung kostenlose Testverion (ist dieser Text wirklich final?)</h2>
             <p>Melde Dich bei Think-Tax an und mache deine persönliche Tour durch Think-Tax (ist auch dieser Text wirklich final?)</p>
             <a href="/dashboard" class="btn btn-secondary btn-lg">Anmelden</a>
