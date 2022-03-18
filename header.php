@@ -27,7 +27,7 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?=wp_get_document_title()?></title>
+    <title><?php echo wp_get_document_title(); ?></title>
 
     <?php wp_head(); ?>
 
@@ -40,7 +40,15 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
                 <div class="header-content">
                     <div class="header-part">
                         <a href="<?php echo home_url(); ?>">
-                            <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 42]); ?>
+                            <?php if (has_custom_logo()): ?>
+                                <?php # the_custom_logo(); ?>
+                                <?php
+                                    $custom_logo_srcset = '';
+                                    if ( has_custom_retina_logo() )
+                                        $custom_logo_srcset = wp_get_attachment_url( get_custom_retina_logo() ) . ' 2x';
+                                ?>
+                                <?php echo stm_get_image_tag(get_theme_mod('custom_logo'), 'steuermachen', 'steuermachen', 'left', [0, 42], 'custom-logo', $custom_logo_srcset); ?>
+                            <?php endif; ?>
                         </a>
                         <div class="menu-top-container-wrapper hidden-on-mobile">
                             <?php get_nav_menu('primary'); ?>
