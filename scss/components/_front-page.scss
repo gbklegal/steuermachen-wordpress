@@ -30,7 +30,8 @@ main.main-content.front-page {
 
                 ul {
                     display: flex;
-                    flex-direction: row;
+                    // flex-direction: row;
+                    flex-flow: row wrap;
                     gap: 10px;
 
                     li {
@@ -420,6 +421,216 @@ main.main-content.front-page {
 
             a {
                 font-size: 20px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1000px) {
+    main.main-content.front-page {
+        .hero-wrapper {
+            .hero-image img {
+                min-width: auto !important;
+            }
+        }
+
+        #zahlen-und-fakten {
+            padding-bottom: 0;
+
+            .box {
+                flex-flow: column wrap;
+                gap: 0;
+
+                .items {
+                    // grid-template-columns: 1fr;
+                    // justify-items: center;
+                    justify-items: stretch;
+
+                    .item:nth-child(even) {
+                        justify-self: end;
+                    }
+                }
+
+                .header img.mockup {
+                    display: none;
+                    // margin-top: 0;
+                    // position: static;
+                    // float: none;
+                }
+            }
+        }
+
+        #bewertungen {
+            .rating-boxes {
+                overflow: hidden;
+                overflow-x: scroll;
+            }
+            //     grid-template-columns: 1fr;
+            //     justify-items: center;
+
+            //     .rating-box {
+            //         // width: 420px;
+            //         // max-width: 100%;
+            //         width: 100%;
+            //         max-width: 420px;
+                    
+            //         &:nth-child(1) {
+            //             background: linear-gradient(to top, $clr-bg-blue, transparent);
+            //         }
+            //         &:nth-child(3) {
+            //             background: linear-gradient(to bottom, $clr-bg-blue, transparent);
+            //         }
+            //     }
+            // }
+        }
+    }
+}
+
+
+@media (max-width: 835px) {
+    main.main-content.front-page {
+        #steps {
+            grid-template-columns: repeat(2, 1fr);
+
+            .step:nth-child(even)::after {
+                display: none;
+            }
+        }
+
+        #sicherheit {
+            padding: 20px;
+
+            .section-inner {
+                .benefits {
+                    gap: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-md) {
+    main.main-content.front-page {
+        #hero.hero-wrapper {
+            .hero-text {
+                margin: 20px;
+                display: flex;
+                flex-flow: column wrap;
+                align-items: center;
+                
+                h1 {
+                    font-size: 30px;
+                    text-align: center;
+                }
+            }
+
+            .hero-image {
+                display: none;
+            }
+        }
+
+        #zahlen-und-fakten {
+            .box {
+                flex-direction: column;
+
+                .header {
+                    text-align: center;
+                }
+
+                .items {
+                    grid-template-columns: 1fr;
+                    justify-items: center;
+
+                    .item:nth-child(even) {
+                        justify-self: center;
+                    }
+
+                    // .item {
+                        // width: 100%;
+                        // height: auto;
+                    // }
+                }
+            }
+        }
+
+        #steuerratgeber {
+            .recent-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #sicherheit {
+            .section-inner {
+                .benefits {
+                    flex-flow: column wrap;
+                    margin: 0 auto;
+                    width: fit-content;
+
+                    li {
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-sm) {
+    main.main-content.front-page {
+        #steps {
+            grid-template-columns: 1fr;
+
+            .step::after {
+                display: none;
+            }
+        }
+
+        #zahlen-und-fakten {
+            .body {
+                padding: 20px;
+            }
+        }
+
+        #steuerratgeber {
+            .recent-posts {
+                display: flex;
+                flex-flow: row nowrap;
+                overflow: hidden;
+                overflow-x: scroll;
+
+                .categories {
+                    font-size: 14px;
+                }
+
+                .latest-post {
+                    min-width: 200px;
+
+                    .image {
+                        width: fit-content;
+                    }
+
+                    .title {
+                        font-size: inherit;
+                        font-weight: inherit;
+                    }
+                }
+
+                .latest-posts {
+                    flex-flow: row nowrap;
+
+                    .post {
+                        display: flex;
+                        flex-flow: column wrap;
+                        gap: 5px;
+                        
+                        .image {
+                            width: fit-content;
+                        }
+                    }
+                }
             }
         }
     }

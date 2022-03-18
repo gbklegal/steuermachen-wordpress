@@ -120,25 +120,6 @@ function init_stm_theme() {
 add_action( 'init', 'init_stm_theme' );
 
 
-/**
- * WP Cronjob Testing
- * 
- * @see https://kinsta.com/de/wissensdatenbank/wordpress-cron-job/#set-up-wordpress-cron-job
- * @see https://developer.wordpress.org/plugins/cron/scheduling-wp-cron-events/
- */
-add_filter( 'cron_schedules', 'example_add_cron_interval' );
-function example_add_cron_interval( $schedules ) { 
-    $schedules['five_seconds'] = array(
-        'interval' => 5,
-        'display'  => esc_html__( 'Every Five Seconds' ), );
-    return $schedules;
-}
-
-get_header();
-get_footer();
-
-exit;
-
 
 /**
  * helper function
@@ -163,6 +144,8 @@ function get_search_results( string $query, ?string $post_type = null ):array {
             echo '<br>';
             the_title();
             echo '<br>' . get_post_type();
+            echo '<br>';
+            the_permalink(get_the_ID());
 
             echo '<br><br>';
         }
@@ -170,9 +153,9 @@ function get_search_results( string $query, ?string $post_type = null ):array {
     return [];
 }
 
-get_search_results('demo');
+// get_search_results('demo', 'page');
 
-exit;
+// exit;
 
 
 /**
@@ -593,8 +576,8 @@ function trusted_shops() {
     $content .= '<div class="trusted-shops-wrapper">';
     $content .= get_attachment('442', 'thumbnail');
     $content .= '<div class="trusted-shops-rating-wrapper">
-            <h3 class="font-normal mb-0">Käuferschutz</h3>
-            <div class="h3 mb-0">';
+            <h3 class="mb-0 font-normal">Käuferschutz</h3>
+            <div class="mb-0 h3">';
     $content .= $rating;
     $content .= '/5.00</div>
             <div class="stars" style="--stars-width:';
@@ -737,7 +720,7 @@ function price_card( $attr ) {
     $items = array_filter($attr, 'is_int', ARRAY_FILTER_USE_KEY);
     $url = $attr['url'] ?? '#';
 
-    $content = '<div class="price-card mx-auto">
+    $content = '<div class="mx-auto price-card">
         <div>
             <div class="title">' . $title . '</div>
             <ul class="description">';
@@ -950,60 +933,111 @@ function the_steuerrecher() {
 
 
 /**
- * ***********************************
+ * Utility function
  * 
- * Customizer
+ * get custom logo url string
  * 
- * @see https://themefoundation.com/wordpress-theme-customizer/
- * 
- * ***********************************
+ * @return string - if no custom logo exists return empty string
  */
+function get_custom_logo_url() {
+    if (has_custom_logo())
+        return wp_get_attachment_image_url( get_theme_mod('custom_logo'), '' );
+
+    return '';
+}
+
 
 /**
- * Adds the Customize page to the WordPress admin area
+ * Add custom retina logo support
+ * 
+ * get custom retina logo url
+ * 
+ * @return int
  */
-function steuermachen_customizer_menu() {
-    add_theme_page( 'Customize', 'Customize', 'edit_theme_options', 'customize.php' );
+function get_custom_retina_logo() {
+    return attachment_url_to_postid( get_theme_mod( 'custom_retina_logo' ) );
 }
-add_action( 'admin_menu', 'steuermachen_customizer_menu' );
 
 /**
- * Adds the individual sections, settings, and controls to the theme customizer
+ * echo the retina logo url
  */
-function steuermachen_customizer( $wp_customize ) {
-    $wp_customize->add_section(
-        'banner_section',
-        array(
-            'title' => 'Banner',
-            // 'description' => 'Inhalt des Banners.',
-            'priority' => 35,
-        )
-    );
-
-    $wp_customize->add_setting(
-        'hide_banner'
-    );
-
-    $wp_customize->add_control(
-        'hide_banner',
-        array(
-            'label' => 'Banner ausblenden?',
-            'section' => 'banner_section',
-            'type' => 'checkbox',
-        )
-    );
-
-    $wp_customize->add_setting(
-        'banner_content'
-    );
-
-    $wp_customize->add_control(
-        'banner_content',
-        array(
-            'label' => 'Inhalt des Banners',
-            'section' => 'banner_section',
-            'type' => 'textarea',
-        )
-    );
+function the_custom_retina_logo() {
+    echo get_custom_retina_logo();
 }
-add_action( 'customize_register', 'steuermachen_customizer' );
+
+/**
+ * check if a custom retina logo exists
+ * 
+ * @return bool
+ */
+function has_custom_retina_logo() {
+    return (bool) get_custom_retina_logo();
+}
+
+
+/**
+ * advanced get_image_tag function
+ * this functions adds srcset parameter at the end
+ * 
+ * original function:
+ * @see https://developer.wordpress.org/reference/functions/get_image_tag/
+ * 
+ * @param string|int $id
+ * @param string $alt
+ * @param string $title
+ * @param string $align
+ * @param string|array $size - optional
+ * @param string $add_class - optional
+ * @param string $srcset - optional
+ * 
+ * @return string
+ */
+function stm_get_image_tag( $id, $alt, $title, $align, $size = 'medium', $add_class = '', $srcset = '' ) {
+    list( $image_src, $width, $height ) = image_downsize( $id, $size );
+    $hwstring = image_hwstring( $width, $height );
+
+    $title = $title ? 'title="' . esc_attr( $title ) . '" ' : '';
+    $srcset = $srcset ? 'srcset="' . esc_attr( $srcset ) . '" ' : '';
+
+    $size_class = is_array( $size ) ? implode( 'x', $size ) : $size;
+    $class = 'align' . esc_attr( $align ) . ' size-' . esc_attr( $size_class ) . ' wp-image-' . $id . ' ' . $add_class;
+
+    $html = '<img src="' . esc_attr( $image_src ) . '" alt="' . esc_attr( $alt ) . '" ' . $title . $hwstring . 'class="' . $class . '" ' . $srcset . ' />';
+
+    return $html;
+}
+
+
+/**
+ * Require init from Admin Section.
+ */
+require trailingslashit( get_template_directory() ) . 'admin-section/customizer.php';
+
+/**
+ * Require init from Includes.
+ */
+require trailingslashit( get_template_directory() ) . 'includes/init.php';
+
+
+/**
+ * include this files if a user is logged in
+ */
+if (true === is_user_logged_in()) {
+    wp_enqueue_style( 'admin-style', trailingslashit( get_template_directory_uri() ) . 'css/admin.css');
+}
+
+
+/**
+ * remove jQuery Migrate
+ */
+function remove_jquery_migrate( $scripts ) {
+    if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
+        $script = $scripts->registered['jquery'];
+
+        if ( $script->deps ) { 
+            // Check whether the script has any dependencies
+            $script->deps = array_diff( $script->deps, array( 'jquery-migrate' ) );
+        }
+    }
+}
+add_action( 'wp_default_scripts', 'remove_jquery_migrate' );

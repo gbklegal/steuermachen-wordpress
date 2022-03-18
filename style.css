@@ -2,8 +2,8 @@
 /*
     Theme Name: steuermachen
     Author: Tobias Roeder
-    Author URI: https://tobias-roeder.de
-    Description: Custom steuermachen theme.
+    Author URI: https://tobias-roeder.de/
+    Description: Custom steuermachen theme. More description coming soon.
     Version: 0.0.1
 */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
@@ -471,6 +471,10 @@ code {
   margin-right: auto;
 }
 
+.disable-scroll {
+  overflow: hidden;
+}
+
 .font-thin {
   font-weight: 100;
 }
@@ -573,6 +577,7 @@ code {
 
 .w-700 {
   width: 700px;
+  max-width: 100%;
 }
 
 .text-primary {
@@ -1515,7 +1520,7 @@ main.main-content.front-page .hero-wrapper .hero-text .advantages {
 }
 main.main-content.front-page .hero-wrapper .hero-text .advantages ul {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   gap: 10px;
 }
 main.main-content.front-page .hero-wrapper .hero-text .advantages ul li {
@@ -1817,6 +1822,125 @@ main.main-content.front-page #sicherheit .more-details a {
   font-size: 20px;
 }
 
+@media (max-width: 1000px) {
+  main.main-content.front-page .hero-wrapper .hero-image img {
+    min-width: auto !important;
+  }
+  main.main-content.front-page #zahlen-und-fakten {
+    padding-bottom: 0;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box {
+    flex-flow: column wrap;
+    gap: 0;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box .items {
+    justify-items: stretch;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box .items .item:nth-child(even) {
+    justify-self: end;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box .header img.mockup {
+    display: none;
+  }
+  main.main-content.front-page #bewertungen .rating-boxes {
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+}
+@media (max-width: 835px) {
+  main.main-content.front-page #steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  main.main-content.front-page #steps .step:nth-child(even)::after {
+    display: none;
+  }
+  main.main-content.front-page #sicherheit {
+    padding: 20px;
+  }
+  main.main-content.front-page #sicherheit .section-inner .benefits {
+    gap: 10px;
+  }
+}
+@media (max-width: 768px) {
+  main.main-content.front-page #hero.hero-wrapper .hero-text {
+    margin: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+  }
+  main.main-content.front-page #hero.hero-wrapper .hero-text h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+  main.main-content.front-page #hero.hero-wrapper .hero-image {
+    display: none;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box {
+    flex-direction: column;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box .header {
+    text-align: center;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box .items {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box .items .item:nth-child(even) {
+    justify-self: center;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts {
+    grid-template-columns: 1fr;
+  }
+  main.main-content.front-page #sicherheit .section-inner .benefits {
+    flex-flow: column wrap;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  main.main-content.front-page #sicherheit .section-inner .benefits li {
+    text-align: left;
+  }
+}
+@media (max-width: 640px) {
+  main.main-content.front-page #steps {
+    grid-template-columns: 1fr;
+  }
+  main.main-content.front-page #steps .step::after {
+    display: none;
+  }
+  main.main-content.front-page #zahlen-und-fakten .body {
+    padding: 20px;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts .categories {
+    font-size: 14px;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts .latest-post {
+    min-width: 200px;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts .latest-post .image {
+    width: fit-content;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts .latest-post .title {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts .latest-posts {
+    flex-flow: row nowrap;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts .latest-posts .post {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 5px;
+  }
+  main.main-content.front-page #steuerratgeber .recent-posts .latest-posts .post .image {
+    width: fit-content;
+  }
+}
 body::before {
   z-index: -1;
   position: absolute;
@@ -1831,7 +1955,16 @@ body::before {
 }
 
 header#header {
+  z-index: 99;
+  position: fixed;
   padding: 42px 50px;
+  transition: ease 0.2s;
+  transition-property: box-shadow background;
+  inset: 0 0 auto 0;
+}
+header#header.header-scroll {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  background-color: #FFFFFF;
 }
 header#header .header-inner .header-mobile {
   display: none;
@@ -1847,6 +1980,9 @@ header#header .header-inner .header-content {
   align-items: center;
   width: 100%;
 }
+header#header .header-inner .header-content .custom-logo {
+  height: 42px;
+}
 header#header .header-inner .header-content .menu-top-container-wrapper {
   display: flex;
   align-items: center;
@@ -1859,6 +1995,7 @@ header#header .header-inner .header-content .menu-top-container-wrapper .menu {
 header#header .header-inner .header-content .menu-top-container-wrapper .menu a {
   display: block;
   position: relative;
+  color: #000000;
 }
 header#header .header-inner .header-content .menu-top-container-wrapper .menu,
 header#header .header-inner .header-content .menu-top-container-wrapper .menu ul {
@@ -1888,6 +2025,10 @@ header#header .header-inner .header-content .menu-top-container-wrapper .menu .m
 }
 
 @media (max-width: 1240px) {
+  header#header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   header#header .hidden-on-mobile {
     display: none !important;
   }
@@ -1901,6 +2042,7 @@ header#header .header-inner .header-content .menu-top-container-wrapper .menu .m
     display: block;
   }
   header#header .header-inner .header-mobile {
+    display: block;
     text-align: right;
   }
   header#header .header-inner .header-mobile i {
@@ -1915,46 +2057,33 @@ header#header .header-inner .header-mobile [data-hide-menu] {
     position: fixed;
     background-color: #66DB3B;
     inset: 0 0 0 0;
-    display: grid;
-    place-items: center;
+    display: none;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay .icon-x {
     z-index: 99;
     position: fixed;
     inset: 20px 20px auto;
   }
-  header#header .header-inner .header-mobile .header-mobile-overlay .menu-top-container {
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container {
     margin-bottom: 24px;
   }
-  header#header .header-inner .header-mobile .header-mobile-overlay .menu-top-container ul {
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul {
     list-style-type: none;
     text-align: center;
   }
-  header#header .header-inner .header-mobile .header-mobile-overlay .menu-top-container ul li {
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul li {
     font-size: 18px;
     font-weight: 600;
     padding-bottom: 24px;
   }
-  header#header .header-inner .header-mobile .header-mobile-overlay .menu-top-container ul li a {
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul li a {
     color: #000000;
-  }
-}
-@media (max-width: 1010px) {
-  header#header .hidden-on-mobile {
-    display: none;
-  }
-  header#header .header-inner {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header#header .header-inner .header-mobile {
-    display: block;
-    text-align: right;
-  }
-  header#header .header-inner .header-mobile i {
-    font-size: 42px;
   }
 }
 #hero {

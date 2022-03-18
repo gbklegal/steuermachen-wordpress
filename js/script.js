@@ -5,6 +5,7 @@
  * @version 0.0.1
  */
 
+// window load
 window.addEventListener('load', function() {
     'use strict';
 
@@ -36,6 +37,9 @@ window.addEventListener('load', function() {
         }
     });
 
+    // fixed header page padding fix
+    setPagePaddingToHeaderHeight();
+
     // Steuerlexikon (dict)
     selectLetterInDictFromHash();
 
@@ -57,11 +61,59 @@ window.addEventListener('load', function() {
 
     // Init Mobile Menu
     initMenuMobile();
+
+    // Scroll To Top Init
+    let scrollToTopElmt = document.querySelector('#scroll-to-top');
+    if (scrollToTopElmt)
+        scrollToTopElmt.addEventListener('click', scrollToTop);
 });
 
+// window hash change
 window.addEventListener('hashchange', function() {
     selectLetterInDictFromHash();
 });
+
+// window resize
+window.addEventListener('resize', function() {
+    setPagePaddingToHeaderHeight();
+});
+
+// window scroll
+window.addEventListener('scroll', function() {
+    headerScroll();
+});
+
+// window keydown
+window.addEventListener('keydown', function(event) {
+    switch (event.key) {
+        case 'Escape':
+            hideMenuMobile();
+    }
+});
+
+
+/**
+ * set padding to page from header height
+ */
+function setPagePaddingToHeaderHeight() {
+    const page = document.querySelector('#page');
+    const header = document.querySelector('#header');
+
+    page.style.paddingTop = header.clientHeight + 'px';
+}
+
+
+/**
+ * toggle header scroll class by checking scroll position
+ */
+function headerScroll() {
+    const header = document.querySelector('#header');
+
+    if (window.scrollY > 0)
+        header.classList.add('header-scroll');
+    else
+        header.classList.remove('header-scroll');
+}
 
 
 /**
@@ -93,9 +145,15 @@ function selectLetterInDictFromHash() {
  * scroll to top without changing/setting the location hash
  */
 function scrollToTop(event) {
-    if (event)
-        event.preventDefault();
-    scrollTo(0, 0);
+    event.preventDefault();
+
+    // without animation
+    // scrollTo(0, 0);
+
+    // with animation
+    jQuery('html, body').animate({ scrollTop: 0 }, 400);
+
+    return false;
 }
 
 
@@ -459,33 +517,64 @@ class PriceCalc {
  * Init menu mobile only if it exists
  */
 function initMenuMobile() {
-    const MENU_MOBILE = document.querySelector('#menu-mobile');
+    const menuMobile = document.querySelector('#menu-mobile');
 
     // abort if not exists
-    if (!MENU_MOBILE)
+    if (!menuMobile)
         return;
 
-    const SHOW_MENU = document.querySelector('[data-show-menu]');
-    const HIDE_MENU = document.querySelector('[data-hide-menu]');
+    const showMenu = document.querySelector('[data-show-menu]');
+    const hideMenu = document.querySelector('[data-hide-menu]');
 
-    SHOW_MENU.addEventListener('click', showMenuMobile);
-    HIDE_MENU.addEventListener('click', hideMenuMobile);
+    showMenu.addEventListener('click', showMenuMobile);
+    hideMenu.addEventListener('click', hideMenuMobile);
 }
 
 /**
  * Show menu mobile
  */
 function showMenuMobile() {
-    const MENU_MOBILE = document.querySelector('#menu-mobile');
+    const menuMobile = document.querySelector('#menu-mobile');
 
-    jQuery(MENU_MOBILE).fadeIn();
+    jQuery(menuMobile).fadeIn(200, disablePageScroll);
 }
 
 /**
  * Hide menu mobile
  */
 function hideMenuMobile() {
-    const MENU_MOBILE = document.querySelector('#menu-mobile');
+    const menuMobile = document.querySelector('#menu-mobile');
 
-    jQuery(MENU_MOBILE).fadeOut();
+    enablePageScroll();
+    jQuery(menuMobile).fadeOut(200);
+}
+
+
+/**
+ * Influence the scrolling of the body
+ * 
+ * @function disableScroll
+ * @function enableScroll
+ * @function toggleScroll
+ */
+
+/**
+ * prevent page from beeing scrollable
+ */
+function disablePageScroll() {
+    jQuery(document.body).addClass('disable-scroll');
+}
+
+/**
+ * enable scrolling on page
+ */
+function enablePageScroll() {
+    jQuery(document.body).removeClass('disable-scroll');
+}
+
+/**
+ * toggle scrolling on page
+ */
+function togglePageScroll() {
+    jQuery(document.body).toggleClass('disable-scroll');
 }
