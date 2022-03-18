@@ -120,25 +120,6 @@ function init_stm_theme() {
 add_action( 'init', 'init_stm_theme' );
 
 
-/**
- * WP Cronjob Testing
- * 
- * @see https://kinsta.com/de/wissensdatenbank/wordpress-cron-job/#set-up-wordpress-cron-job
- * @see https://developer.wordpress.org/plugins/cron/scheduling-wp-cron-events/
- */
-add_filter( 'cron_schedules', 'example_add_cron_interval' );
-function example_add_cron_interval( $schedules ) { 
-    $schedules['five_seconds'] = array(
-        'interval' => 5,
-        'display'  => esc_html__( 'Every Five Seconds' ), );
-    return $schedules;
-}
-
-get_header();
-get_footer();
-
-exit;
-
 
 /**
  * helper function
