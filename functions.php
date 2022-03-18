@@ -144,6 +144,8 @@ function get_search_results( string $query, ?string $post_type = null ):array {
             echo '<br>';
             the_title();
             echo '<br>' . get_post_type();
+            echo '<br>';
+            the_permalink(get_the_ID());
 
             echo '<br><br>';
         }
@@ -151,9 +153,9 @@ function get_search_results( string $query, ?string $post_type = null ):array {
     return [];
 }
 
-get_search_results('demo');
+// get_search_results('demo', 'page');
 
-exit;
+// exit;
 
 
 /**
@@ -574,8 +576,8 @@ function trusted_shops() {
     $content .= '<div class="trusted-shops-wrapper">';
     $content .= get_attachment('442', 'thumbnail');
     $content .= '<div class="trusted-shops-rating-wrapper">
-            <h3 class="font-normal mb-0">Käuferschutz</h3>
-            <div class="h3 mb-0">';
+            <h3 class="mb-0 font-normal">Käuferschutz</h3>
+            <div class="mb-0 h3">';
     $content .= $rating;
     $content .= '/5.00</div>
             <div class="stars" style="--stars-width:';
@@ -718,7 +720,7 @@ function price_card( $attr ) {
     $items = array_filter($attr, 'is_int', ARRAY_FILTER_USE_KEY);
     $url = $attr['url'] ?? '#';
 
-    $content = '<div class="price-card mx-auto">
+    $content = '<div class="mx-auto price-card">
         <div>
             <div class="title">' . $title . '</div>
             <ul class="description">';
