@@ -932,10 +932,24 @@ function the_steuerrecher() {
 
 /**
  * ***********************************
+ * Utility function
  * 
  * Customizer
+ * get custom logo url string
  * 
  * @see https://themefoundation.com/wordpress-theme-customizer/
+ * @return string - if no custom logo exists return empty string
+ */
+function get_custom_logo_url() {
+    if (has_custom_logo())
+        return wp_get_attachment_image_url( get_theme_mod('custom_logo'), '' );
+
+    return '';
+}
+
+
+/**
+ * Add custom retina logo support
  * 
  * ***********************************
  * get custom retina logo url
