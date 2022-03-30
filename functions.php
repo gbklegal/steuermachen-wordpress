@@ -1041,3 +1041,98 @@ function remove_jquery_migrate( $scripts ) {
     }
 }
 add_action( 'wp_default_scripts', 'remove_jquery_migrate' );
+
+
+
+/**
+ * get attachment details from database
+ * 
+ * @param int|string $attachment_id
+ * 
+ * @return WP_Query
+ */
+function get_attachment_details( $attachment_id = 28504 ) {
+     $args = [
+          'p' => $attachment_id,
+          'post_type' => 'attachment'
+     ];
+     $query = new WP_Query( $args );
+     $post = (array) $query->posts[0];
+
+     $post['pathinfo'] = pathinfo($post['guid']);
+     $post['filesize'] = get_attachment_filesize( (int) $attachment_id, false );
+     $post['filesize_human_readable'] = get_attachment_filesize( (int) $attachment_id );
+
+     return $post;
+}
+
+
+/**
+ * get attachment filesize from attachment id with optional units format
+ * for better human readability
+ * 
+ * @param int $attachement_id
+ * @param bool $human_readable - optional
+ * 
+ * @return int|string
+ */
+function get_attachment_filesize( int $attachment_id, $human_readable = true ) {
+     $attachment_abspath = get_attached_file( $attachment_id );
+     $attachment_filesize = filesize( $attachment_abspath );
+
+     if ($human_readable === true)
+          return size_format( $attachment_filesize, 2 );
+
+     return $attachment_filesize;
+}
+
+
+/**
+ * Download PDF shortcode
+ * 
+ * @param array $args
+ * 
+ * @return string
+ */
+function download_pdf( $args ) {
+     $attachment_id = $args[0] ?? null;
+
+     if ( true === is_null( $attachment_id ) )
+          return '';
+
+     $content = '';
+
+     $download_pdf_html = function( $attachment_id ) {
+          $attachment_details = get_attachment_details( $attachment_id );
+
+          $attachment_title = $attachment_details['post_title'];
+          $attachment_name = $attachment_details['pathinfo']['basename'];
+          $attachment_url = $attachment_details['guid'];
+          $attachment_filesize = $attachment_details['filesize_human_readable'];
+
+          $content .= '<div class="download-pdf-wrapper">'
+               . '<div class="download-pdf-details">'
+               . '<a href="' . $attachment_url . '">' . $attachment_title . '</a>'
+               . ' &bull; '
+               . $attachment_filesize
+               . '</div><div class="download-pdf-download">'
+               . '<a href="' . $attachment_url . '" download="' . $attachment_name . '"><i class="icon-download"></i></a>'
+               . '</div></div>';
+
+          return $content;
+     };
+
+     $content .= '<div class="download-pdf-list">';
+
+     if ( count($args) > 1 )
+          foreach ( $args as $attachment_id) {
+               $content .= $download_pdf_html( $attachment_id );
+          }
+     else
+          $content .= $download_pdf_html( $attachment_id );
+     
+     $content .= '</div>';
+
+     return $content;
+}
+add_shortcode('download_pdf', 'download_pdf');
