@@ -10,10 +10,13 @@
         align-items: flex-start;
         gap: 100px;
 
-        .post-table-of-contents {
+        .post-sidebar {
             min-width: 300px;
+            display: flex;
+            flex-flow: wrap column;
+            gap: 3rem;
 
-            .header {
+            .header {
                 font-weight: 600;
             }
         }
