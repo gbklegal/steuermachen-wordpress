@@ -28,5 +28,6 @@ function steuermachen_customize_register( $wp_customize ) {
     require_once $path. '/admin-section/customizer/banner.php';
     require_once $path. '/admin-section/customizer/front-page.php';
     require_once $path. '/admin-section/customizer/site-identity.php';
+    require_once $path. '/admin-section/customizer/countdown.php';
 }
 add_action( 'customize_register', 'steuermachen_customize_register' );

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
+@import '_var.scss';
+
+.countdown-wrapper {
+    border-radius: $br-4;
+    background: linear-gradient(180.62deg, $clr-secondary 0.58%, hsl(161, 51%, 48%) 143.58%);
+    border-radius: 12px;
+
+    .countdown {
+        display: grid;
+        grid-template-columns: repeat(4, 25fr);
+        place-items: center;
+
+        .col {
+            // padding: 40px;
+            text-align: center;
+
+            // &:not(:last-child)::after {
+            //     content: ':';
+            // }
+
+            .number {
+                // font-family: 'Helvetica', sans-serif;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 600;
+                font-size: 60px;
+
+                .countdown-loader {
+                    line-height: 1;
+
+                    &::before {
+                        font-family: $font-icons;
+                        content: '\e91e';
+                        animation: clockLoader 2s infinite;
+                        transition: ease 0.2s;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            // .label {
+            //     color: #343641;
+            //     font-weight: 700;
+            // }
+        }
+    }
+}
+
+@media (min-width: $breakpoint-md) {
+    .countdown-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 50fr);
+        
+        .countdown .label .label-content-mobile {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .countdown-wrapper {
+        .countdown {
+            padding-top: 2rem;
+
+            .col {
+                .number {
+                    font-size: 40px;
+                    font-weight: 400;
+                }
+    
+                .label .label-content-desktop {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@keyframes clockLoader {
+    0% {
+        content: '\e91e';
+    }
+
+    8.333% {
+        content: '\e913';
+    }
+
+    16.666% {
+        content: '\e914';
+    }
+
+    24.999% {
+        content: '\e915';
+    }
+
+    33.332% {
+        content: '\e916';
+    }
+
+    41.665% {
+        content: '\e917';
+    }
+
+    50% {
+        content: '\e918';
+    }
+
+    58.331% {
+        content: '\e919';
+    }
+
+    66.664% {
+        content: '\e91a';
+    }
+
+    74.997% {
+        content: '\e91b';
+    }
+
+    83.333% {
+        content: '\e91c';
+    }
+
+    91.663% {
+        content: '\e91d';
+    }
+
+    100% {
+        content: '\e91e';
+    }
+}

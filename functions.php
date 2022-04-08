@@ -1136,3 +1136,79 @@ function download_pdf( $args ) {
      return $content;
 }
 add_shortcode('download_pdf', 'download_pdf');
+
+
+/**
+ * Countdown
+ * 
+ * @param array $args
+ * 
+ * @return string
+ */
+function get_countdown( $args = [] ):string {
+    $default_end = get_theme_mod( 'countdown_end' ) ?? '';
+    $end = $args['end'] ?? $default_end;
+
+    $content = '';
+
+    if ( true === empty( $end ) )
+        return $content;
+
+    wp_enqueue_style('steuermachen-countdown-style', get_template_directory_uri() . '/css/countdown.min.css');
+    wp_enqueue_script_footer('steuermachen-countdown-script', get_template_directory_uri() . '/js/countdown.js');
+
+    $content .= '
+        <div class="countdown" data-countdown-end="' . $end . '">
+            <div class="col">
+                <div class="number countdown-days">
+                    <span class="countdown-loader"></span>
+                </div>
+                <div class="label">
+                    <span class="label-content-desktop">Tage</span>
+                    <span class="label-content-mobile">Tage</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="number countdown-hours">
+                    <span class="countdown-loader"></span>
+                </div>
+                <div class="label">
+                    <span class="label-content-desktop">Stunden</span>
+                    <span class="label-content-mobile">Std.</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="number countdown-minutes">
+                    <span class="countdown-loader"></span>
+                </div>
+                <div class="label">
+                    <span class="label-content-desktop">Minuten</span>
+                    <span class="label-content-mobile">Min.</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="number countdown-seconds">
+                    <span class="countdown-loader"></span>
+                </div>
+                <div class="label">
+                    <span class="label-content-desktop">Sekunden</span>
+                    <span class="label-content-mobile">Sek.</span>
+                </div>
+            </div>
+        </div>
+    ';
+
+    return $content;
+}
+add_shortcode('countdown', 'get_countdown');
+
+
+/**
+ * echos the countdown
+ * 
+ * @param null|string $end - optional
+ */
+function the_countdown( ?string $end = null ) {
+    echo get_countdown( [ 'end' => $end ] );
+}
+
