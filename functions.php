@@ -932,6 +932,61 @@ function the_steuerrecher() {
 }
 
 
+
+
+/**
+ * Price Calculator Shortcode
+ * 
+ * @author Tobias Röder
+ * @version 0.1.1
+ * 
+ * @param array $args - optional
+ * 
+ * @return string
+ */
+function get_price_calculator( $args = [] ) {
+    $url = $args['url'] ?? '/steuererklaerung-beauftragen/?bje=';
+    $position = $args['position'] ?? 'center';
+
+    $content = '';
+
+    wp_enqueue_style('price-calculator-style', STM_THEME_URL . '/css/price-calculator.css');
+    wp_enqueue_script('calculator-script', STM_THEME_URL . '/js/calculator.js');
+    wp_enqueue_script('price-calculator-script', STM_THEME_URL . '/js/price-calculator.js');
+
+    $content .= '
+    <div id="priceCalculator" class="position-'.$position.'">
+    <div class="bje-wrapper">
+    <label for="bje">Wie hoch ist dein Bruttojahreseinkommen?</label>
+    <input type="text" id="bje" placeholder="Dein Bruttojahreseinkommen">
+    </div>
+    <div class="bje-price-wrapper">
+    <label>Dein voraussichtlicher Preis (inkl. MwSt.)</label>
+    <div id="bjePrice">&nbsp;</div>
+    </div>
+    <a href="'.$url.'" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+    </div>';
+
+    return $content;
+}
+
+add_shortcode('price_calculator', 'get_price_calculator');
+
+/**
+ * Price Calculator
+ * echos the price calculator
+ * 
+ * @param array $args - optional
+ * ! @param string $url - optional (might coming soon)
+ * ! @param string $position - optional (might coming soon)
+ * 
+ * @return void
+ */
+function the_price_calculator( $args = [] ) {
+    echo get_price_calculator( $args );
+}
+
+
 /**
  * Utility function
  * 
