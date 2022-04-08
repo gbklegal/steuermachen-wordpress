@@ -1,9 +1,36 @@
 <?php
 
 /**
- * theme base url
+ * theme base url and more
  */
 define('STM_THEME_URL', get_template_directory_uri());
+define('STM_THEME_CSS', STM_THEME_URL . '/css');
+define('STM_THEME_JS', STM_THEME_URL . '/js');
+define('STM_THEME_IMG', STM_THEME_URL . '/img');
+
+
+
+/**
+ * utility function to create a random id
+ * 
+ * @param int length - optional
+ * 
+ * @return string
+ */
+function random_id( int $length ):string {
+    $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $length = 8;
+    $random_id = '';
+    $i = 1;
+
+    while ($i <= $length) {
+        $random_id .= $chars[rand( 0, 61 )];
+        $i++;
+    }
+
+    return $random_id;
+}
+
 
 
 function add_enqueue_script_attributes( $tag, $handle ) {
@@ -393,6 +420,7 @@ function post_link_attributes($output) {
  * 
  * TODO add optional error resporting (show response_code)
  * TODO replace current api request with wp_remote_get/wp_remote_post (more: https://deliciousbrains.com/wordpress-http-api-requests/)
+ * TODO replace function_exists with an anonymous function (create_cookie() => $create_cookie())
  * 
  * To avoid high traffic on the trusted shops api because the number isn't changing rapidly,
  * the rating is getting stored in an cookie for an hour and from there beeing loaded.
@@ -1293,6 +1321,20 @@ function the_countdown( ?string $end = null ) {
 }
 
 
+/**
+ * utility function for adding script files into the footer
+ * without filling up the same defaults
+ * 
+ * @param string $handle
+ * @param string $src - optional
+ * 
+ * more details about the parameter
+ * @see https://developer.wordpress.org/reference/functions/wp_enqueue_script/
+ */
+function wp_enqueue_script_footer( string $handle, string $src = '' ) {
+    wp_enqueue_script( $handle, $src, [], false, true );
+}
+
 
 /**
  * checks if frame mode is active
@@ -1301,4 +1343,21 @@ function the_countdown( ?string $end = null ) {
  */
 function is_frame_mode() {
     return isset( $_GET['frame_mode'] );
+}
+
+
+/**
+ * utility function for if else shorthand
+ * 
+ * @param bool $condition
+ * @param mixed $if_text
+ * @param mixed $else_text - optional
+ * 
+ * @return mixed
+ */
+function echo_if( bool $condition, $if_text, $else_text = '' ) {
+    if ( true === $condition )
+        return $if_text;
+
+    return $else_text;
 }
