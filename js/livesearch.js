@@ -14,6 +14,13 @@ function liveSearch() {
     const searchResultsStatus = document.querySelector('.search-results-status');
     const searchResultsLoadMore = document.querySelector('.search-form-wrapper .search-results-load-more');
     const loaderElmt = document.querySelector('.search-form-wrapper .search-results-loader');
+    const updateSearchResults = throttle(() => {
+        clearResults(() => {
+            resultsCount = 0;
+            searchTerm = searchInput.value;
+            loadResults(pageCurrent);
+        });
+    });
 
     let searchTerm = '';
     let pageCurrent = 1;
@@ -21,24 +28,10 @@ function liveSearch() {
     let resultsTotal = 0;
     let resultsCount = 0;
     let perPage = 15;
-    let currentTimeout = null;
+    // let currentTimeout = null;
     let currentLoading = false;
 
-    searchInput.addEventListener('input', function (event) {
-        // add an delay
-        // this prevents that the timeout gets triggered multiple times
-        // instead it gets reseted
-        if (currentTimeout)
-            clearTimeout(currentTimeout);
-
-        currentTimeout = setTimeout(function () {
-            clearResults(() => {
-                resultsCount = 0;
-                searchTerm = event.target.value;
-                loadResults(pageCurrent);
-            });
-        }, 250);
-    });
+    searchInput.addEventListener('input', updateSearchResults);
 
     // get the results from API
     async function getResults(searchTerm, page) {
