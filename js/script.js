@@ -26,13 +26,11 @@ window.addEventListener('load', function() {
 
             if (inputType === 'password') {
                 input.type = 'text';
-                button.classList.remove('icon-eye-off');
-                button.classList.add('icon-eye');
+                button.classList.replace('icon-eye-off', 'icon-eye');
             }
             else if (inputType === 'text') {
                 input.type = 'password';
-                button.classList.remove('icon-eye');
-                button.classList.add('icon-eye-off');
+                button.classList.replace('icon-eye', 'icon-eye-off');
             }
         }
     });
@@ -62,10 +60,10 @@ window.addEventListener('load', function() {
     // Init Mobile Menu
     initMenuMobile();
 
-    // Scroll To Top Init
-    let scrollToTopElmt = document.querySelector('#scroll-to-top');
-    if (scrollToTopElmt)
-        scrollToTopElmt.addEventListener('click', scrollToTop);
+    // Back To Top Init
+    let backToTopElmt = document.querySelector('#back-to-top');
+    if (backToTopElmt)
+        backToTopElmt.addEventListener('click', backToTop);
 });
 
 // window hash change
@@ -99,6 +97,9 @@ function setPagePaddingToHeaderHeight() {
     const page = document.querySelector('#page');
     const header = document.querySelector('#header');
 
+    if (!page || !header)
+        return;
+
     page.style.paddingTop = header.clientHeight + 'px';
 }
 
@@ -108,6 +109,9 @@ function setPagePaddingToHeaderHeight() {
  */
 function headerScroll() {
     const header = document.querySelector('#header');
+
+    if (!header)
+        return;
 
     if (window.scrollY > 0)
         header.classList.add('header-scroll');
@@ -142,9 +146,9 @@ function selectLetterInDictFromHash() {
 
 
 /**
- * scroll to top without changing/setting the location hash
+ * back to top without changing/setting the location hash
  */
-function scrollToTop(event) {
+function backToTop(event) {
     event.preventDefault();
 
     // without animation
@@ -577,4 +581,116 @@ function enablePageScroll() {
  */
 function togglePageScroll() {
     jQuery(document.body).toggleClass('disable-scroll');
+}
+
+
+
+/**
+ * Modal with a focus an iframe
+ * TODO change ModalFrame to Modal back and add the parameter frame, also look if show gets a string or an event
+ * ! TODO: fix go back issue
+ * TODO close modal with 'ESC'
+ */
+class ModalFrame {
+    /**
+     * @param {HTMLElement} modalElmt
+     * @param {HTMLElement} closeElmt
+     * @param {HTMLElement} frameElmt
+     */
+    constructor({ modalElmt, closeElmt, frameElmt }) {
+        if (!modalElmt || !closeElmt || !frameElmt)
+            throw new Error('Modal initialisation failed. One or more elements are missing.');
+
+        this.modal = modalElmt;
+        this.close = closeElmt;
+        this.frame = frameElmt;
+
+        this.close.addEventListener('click', () => this.hide());
+    }
+
+    /**
+     * show modal
+     * 
+     * @param {string} url 
+     */
+    show(url) {
+        disablePageScroll();
+        jQuery(this.modal).fadeIn(400, () => {
+            this.frame.src = url;
+        });
+    }
+
+    /**
+     * hide modal
+     */
+    hide() {
+        enablePageScroll();
+        jQuery(this.modal).fadeOut(200, () => {
+            this.frame.src = '';
+        });
+    }
+}
+
+
+
+/**
+ * ! currently not working
+ * utiltiy function to create a random id
+ * 
+ * @param {number} length - optional
+ * 
+ * @returns {string}
+ */
+function randomId( length = 8 ) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const random = Math.round(Math.random() * 61);
+    let randomId = '';
+
+    let i = 1;
+    while(i <= length) {
+        randomId += chars[random];
+        i++;
+    }
+
+    return randomId;
+}
+
+
+/**
+ * executs the callback each delay
+ * this prevents for example an eventlistener
+ * to get executed more often than it has to
+ * 
+ * orignal code from Web Dev Simplified
+ * @see https://github.com/WebDevSimplified/debounce-throttle-js/blob/main/script.js#L24
+ * 
+ * @param {function} callback
+ * @param {number} delay - optional
+ * 
+ * @returns {undefined}
+ */
+function throttle(callback, delay = 1000) {
+    let shouldWait = false;
+    let waitingArgs;
+    const timeoutFunc = () => {
+        if (waitingArgs == null) {
+            shouldWait = false;
+        } else {
+            callback(...waitingArgs)
+            waitingArgs = null;
+            setTimeout(timeoutFunc, delay);
+        }
+    }
+
+    return (...args) => {
+        if (shouldWait) {
+            waitingArgs = args;
+            return;
+        }
+
+        callback(...args);
+        shouldWait = true;
+
+        setTimeout(timeoutFunc, delay);
+    }
 }
