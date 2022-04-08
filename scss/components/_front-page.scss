@@ -336,6 +336,14 @@ main.main-content.front-page {
                         width: $size;
                         min-width: $size !important;
                     }
+
+                    .content {
+                        .title {
+                            a {
+                                color: $clr-text-black;
+                            }
+                        }
+                    }
                 }
             }
         }
