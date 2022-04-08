@@ -159,14 +159,15 @@
                     <div class="image">
                         <?php echo $latest_post_thumbnail; ?>
                     </div>
-                    <div class="categories"><?php echo $latest_post_categories; ?></div>
-                    <div class="title"><?php echo $latest_post_title; ?></div>
                 </a>
+                <div class="categories"><?php echo $latest_post_categories; ?></div>
+                <div class="title"><?php echo $latest_post_title; ?></div>
             </div>
         <?php
             foreach ($recent_posts as $post):
                 $post_id = $post['ID'];
-                $post_url = $post['guid'];
+                // $post_url = $post['guid'];
+                $post_url = get_permalink($post_id);
                 $post_title = $post['post_title'];
                 $post_thumbnail = get_the_post_thumbnail($post_id, 'medium');
                 $post_categories = get_the_category_list(' / ', '', $post_id);
@@ -178,11 +179,13 @@
                         <div class="image">
                             <?php echo $post_thumbnail; ?>
                         </div>
-                        <div class="content">
-                            <div class="categories"><?php echo $post_categories; ?></div>
-                            <div class="title"><?php echo $post_title; ?></div>
-                        </div>
                     </a>
+                    <div class="content">
+                        <div class="categories"><?php echo $post_categories; ?></div>
+                        <div class="title">
+                            <a href="<?php echo $post_url; ?>"><?php echo $post_title; ?></a>
+                        </div>
+                    </div>
                 </div>
                 <?php endforeach; ?>
             </div>
