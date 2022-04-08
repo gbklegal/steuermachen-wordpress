@@ -17,6 +17,7 @@
                 <ul class="table-of-contents">
                     <?php echo table_of_contents(get_the_content()); ?>
                 </ul>
+                <?php the_author_info(); ?>
             </div>
             <div class="post-content">
                 <?php if (has_post_thumbnail()) the_post_thumbnail('post-thumbnail', ['class' => 'post-thumbnail']); ?>

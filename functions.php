@@ -932,6 +932,31 @@ function the_steuerrecher() {
 }
 
 
+/**
+ * Author Info (Blog Sidebar)
+ */
+function the_author_info() {
+    $author_id = get_the_author_meta( 'ID' );
+    $author_name = get_the_author_meta( 'display_name' );
+    $author_first_name = get_the_author_meta( 'first_name' );
+    $author_description = get_the_author_meta( 'description' );
+    $author_avatar = get_avatar( $author_id, 96, '', $author_name, [ 'class' => 'author-avatar' ] );
+    $author_posts_url = get_author_posts_url( $author_id );
+
+    $_author_s = '';
+    if ( false === str_ends_with( $author_first_name, 's' ) )
+        $_author_s = 's';
+    ?>
+    <div class="author-info">
+        <h3 class="text-center"><?php echo $author_name; ?></h3>
+        <?php echo $author_avatar; ?>
+        <p><?php echo $author_description; ?></p>
+        <p>
+            <a href="<?php echo $author_posts_url; ?>"><?php echo $author_first_name; ?><?php echo $_author_s; ?> Artikel</a>
+        </p>
+    </div>
+    <?php
+}
 
 
 /**
