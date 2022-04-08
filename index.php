@@ -19,7 +19,10 @@
             <?php get_template_part('/template-parts/content-list-posts'); ?>
         <?php endwhile; ?>
         </div>
-        <?php the_posts_navigation(); ?>
+        <?php the_posts_navigation([
+            'prev_text' => 'Ältere Beiträge <i class="icon-chevrons-right"></i>',
+            'next_text' => '<i class="icon-chevrons-left"></i> Neuere Beiträge',
+        ]); ?>
     <?php endif; ?>
 </main>
 <?php elseif (is_single()): ?>
