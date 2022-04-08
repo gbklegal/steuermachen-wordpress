@@ -31,9 +31,12 @@
 
         .list-article-content {
 
-            .rt-reading-time {
-                display: none !important; // TODO: not final - please ask the markting
-                font-size: 12px;
+            a.list-article-link {
+                color: $clr-text-black;
+
+                &:hover {
+                    color: $clr-primary-hover;
+                }
             }
 
             p {
