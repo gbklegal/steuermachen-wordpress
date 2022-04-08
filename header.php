@@ -35,6 +35,7 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
 <body>
 
     <div id="page">
+        <?php if ( false === is_frame_mode() ): ?>
         <header id="header">
             <div class="header-inner">
                 <div class="header-content">
@@ -76,7 +77,6 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
                 </div>
             </div>
         </header>
-
-<?php # exit; ?>
+        <?php endif; ?>
 
     <div class="container">

@@ -1292,3 +1292,13 @@ function the_countdown( ?string $end = null ) {
     echo get_countdown( [ 'end' => $end ] );
 }
 
+
+
+/**
+ * checks if frame mode is active
+ * 
+ * @return bool
+ */
+function is_frame_mode() {
+    return isset( $_GET['frame_mode'] );
+}
