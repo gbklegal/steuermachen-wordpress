@@ -9,7 +9,7 @@
 
 @each $direction in $directions {
     .text-#{$direction} {
-        text-align: $direction;
+        text-align: $direction !important;
     }
 }
 
@@ -94,6 +94,10 @@ $displays: (
     }
 }
 
+.hidden {
+    display: none !important;
+}
+
 // whitespace
 $whitespaces: (
     normal,
@@ -117,16 +121,6 @@ $whitespaces: (
 .w-700 {
     width: 700px;
     max-width: 100%;
-}
-
-
-// text colors
-.text-primary {
-    color: $clr-primary !important;
-}
-
-.text-secondary {
-    color: $clr-secondary !important;
 }
 
 
@@ -166,16 +160,54 @@ $whitespaces: (
 
 
 // font color
-$text-colors: (
+$colors-map: (
     'black': #000000,
     'blue': #252B42,
     'white': #FFFFFF,
     'grey': #737373,
-    'default': $clr-text-black
+    'default': $clr-text-black,
+    'primary': $clr-primary,
+    'secondary': $clr-secondary
 );
 
-@each $name, $color in $text-colors {
+@each $name, $color in $colors-map {
     .text-#{$name} {
-        color: $color;
+        color: $color !important;
     }
+    .bg-#{$name} {
+        background-color: $color !important;
+    }
+}
+
+.text-christmas {
+    background: repeating-linear-gradient(90deg, $clr-blue 10%, $clr-orange 20%, $clr-blue 30%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+// spin (loading)
+// .u-spin {
+//     animation: spin 2s linear infinite;
+//     color: red;
+// }
+
+// @keyframes spin {
+//     from {
+//         transform: rotate(0deg);
+//     }
+//     to {
+//         transform: rotate(1turn);
+//     }
+// }
+
+
+.u-spin {
+    display: inline-block;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
 }
