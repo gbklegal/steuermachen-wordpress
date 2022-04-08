@@ -1,0 +1,30 @@
+.back-to-top-wrapper {
+    position: absolute;
+    top: 120vh;
+    bottom: 3rem;
+    right: 2rem;
+}
+
+#back-to-top {
+    // position: fixed;
+    // right: 20px;
+    // bottom: 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90vh;
+
+    background-color: $clr-bg-blue;
+    width: 62px;
+    height: 62px;
+    border-radius: 999rem;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    color: $clr-text;
+
+    box-shadow: 0px 4px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+#page {
+    position: relative;
+}
