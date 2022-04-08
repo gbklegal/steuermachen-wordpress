@@ -38,9 +38,12 @@
         ** Wichtiger Hinweis zum Bruttojahreseinkommen: Die Bemessungsgrundlage setzt sich zusammen aus: - dem auf der Lohnsteuerkarte des betreffenden Steuerjahres eingetragenen Bruttoarbeitslohn - dem jährlichen Gesamtbetrag der Renten, Versorgungsbezüge, Lohnersatzleistungen und Unterhaltsleistungen - den Einnahmen aus Vermietung und Verpachtung, sowie den Einnahmen aus Kapitalvermögen. Im Falle von zusammenveranlagten Ehegatten werden die zuvor genannten Bemessungsgrundlagen und Einnahmen zusammengerechnet.</small></p>
     </footer>
 
-    <a id="scroll-to-top" href="#">
-        <i class="icon-chevrons-up"></i>
-    </a>
+
+    <div class="back-to-top-wrapper">
+        <a id="back-to-top" href="#">
+            <i class="icon-chevrons-up"></i>
+        </a>
+    </div>
 </div>
 </div>
 
