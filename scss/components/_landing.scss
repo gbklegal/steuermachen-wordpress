@@ -1,0 +1,210 @@
+@use '../utilities/margin';
+@use '../utilities/padding';
+
+body.christmas #page {
+    background-image: url('./img/christmas-background.png');
+    // background-size: cover;
+    background-repeat: repeat-x;
+}
+
+.page-template-landing-page {
+    .custom-logo {
+        max-height: 90px;
+    }
+
+    &.christmas {
+        .landing-page {
+            .countdown-wrapper {
+                position: relative;
+
+                &::before {
+                    position: absolute;
+                    top: -55px;
+                    left: -55px;
+                    content: url('./img/christmas-bells.png');
+                }
+            }
+        }
+    }
+
+    .landing-page {
+        .h1, h1,
+        .h2, h2,
+        .h3, h3,
+        .h4, h4,
+        .h5, h5 {
+            font-style: normal;
+            font-weight: 700;
+            margin-bottom: 0;
+            line-height: 1 !important;
+        }
+        
+        .h1, h1 {
+            font-size: 56px;
+        }
+        
+        .h2, h2 {
+            font-size: 40px;
+        }
+        
+        .h3, h3 {
+            font-size: 36px;
+            font-weight: 600;
+        }
+        
+        .h4, h4 {
+            font-size: 24px;
+            letter-spacing: 0.1em;
+        }
+        
+        .h5, h5 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        header#hero {
+            padding: 0 70px 40px;
+            margin-top: 40px;
+            margin-bottom: -40px;
+        
+            .hero-inner {
+                padding: 70px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+        
+                img {
+                    width: 400px;
+                    display: block;
+                }
+            }
+        }
+        
+        section {
+            margin-bottom: 75px;
+        
+            &.section-price {
+                #calculator {
+                    width: 512px;
+                    max-width: 100%;
+        
+                    #bjeResult {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        
+            &.section-benefits {
+                .benefits-box {
+                    border-radius: 24px;
+                    background-color: #F7F8FA;
+        
+                    .header {
+                        border-radius: 24px 24px 0 0;
+                    }
+        
+                    .main {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+        
+                        ul.benefits {
+                            padding: 20px 0;
+        
+                            li {
+                                font-size: 24px;
+                                font-weight: 500;
+                                margin: 20px 20px 20px 60px;
+                                padding-left: 10px;
+                                
+                                &::marker {
+                                    font-family: $font-icons;
+                                    content: '\e90e';
+                                    color: $clr-secondary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    footer {
+        padding: 40px;
+        font-size: 12px;
+
+        .custom-logo {
+            padding-bottom: 20px;
+        }
+
+        ul {
+            padding-top: 10px;
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+
+            li:not(:last-child) {
+                padding-right: 10px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-xl) {
+    .page-template-landing-page {
+        .max-width {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (min-width: $breakpoint-lg) {
+    .page-template-landing-page {
+        .max-width {
+            $n: 32px;
+
+            padding: {
+                right: $n;
+                left: $n;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-lg) {
+    .page-template-landing-page {
+        .max-width {
+            $n: 8px;
+
+            padding: {
+                right: $n;
+                left: $n;
+            }
+        }
+
+        header#hero {
+            .hero-inner {
+                flex-direction: column !important;
+                padding: 20px !important;
+
+                h1 {
+                    font-size: 40px;
+                    padding: 0px 0px 10px;
+                }
+
+                img {
+                    margin-top: 2rem;
+                }
+            }
+        }
+
+        section.section-benefits .benefits-box .main img {
+            display: none;
+        }
+    }
+}
