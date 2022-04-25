@@ -1,0 +1,14 @@
+/* Download PDF for [download_pdf] shortcode */
+.download-pdf-list .download-pdf-wrapper {
+    border-top: 2px solid lightgrey;
+
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 1.2em;
+
+    &:last-child {
+        border-bottom: 2px solid lightgrey;
+    }
+}

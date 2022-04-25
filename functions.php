@@ -1,9 +1,36 @@
 <?php
 
 /**
- * theme base url
+ * theme base url and more
  */
 define('STM_THEME_URL', get_template_directory_uri());
+define('STM_THEME_CSS', STM_THEME_URL . '/css');
+define('STM_THEME_JS', STM_THEME_URL . '/js');
+define('STM_THEME_IMG', STM_THEME_URL . '/img');
+
+
+
+/**
+ * utility function to create a random id
+ * 
+ * @param int length - optional
+ * 
+ * @return string
+ */
+function random_id( int $length ):string {
+    $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $length = 8;
+    $random_id = '';
+    $i = 1;
+
+    while ($i <= $length) {
+        $random_id .= $chars[rand( 0, 61 )];
+        $i++;
+    }
+
+    return $random_id;
+}
+
 
 
 function add_enqueue_script_attributes( $tag, $handle ) {
@@ -393,6 +420,7 @@ function post_link_attributes($output) {
  * 
  * TODO add optional error resporting (show response_code)
  * TODO replace current api request with wp_remote_get/wp_remote_post (more: https://deliciousbrains.com/wordpress-http-api-requests/)
+ * TODO replace function_exists with an anonymous function (create_cookie() => $create_cookie())
  * 
  * To avoid high traffic on the trusted shops api because the number isn't changing rapidly,
  * the rating is getting stored in an cookie for an hour and from there beeing loaded.
@@ -933,6 +961,86 @@ function the_steuerrecher() {
 
 
 /**
+ * Author Info (Blog Sidebar)
+ */
+function the_author_info() {
+    $author_id = get_the_author_meta( 'ID' );
+    $author_name = get_the_author_meta( 'display_name' );
+    $author_first_name = get_the_author_meta( 'first_name' );
+    $author_description = get_the_author_meta( 'description' );
+    $author_avatar = get_avatar( $author_id, 96, '', $author_name, [ 'class' => 'author-avatar' ] );
+    $author_posts_url = get_author_posts_url( $author_id );
+
+    $_author_s = '';
+    if ( false === str_ends_with( $author_first_name, 's' ) )
+        $_author_s = 's';
+    ?>
+    <div class="author-info">
+        <h3 class="text-center"><?php echo $author_name; ?></h3>
+        <?php echo $author_avatar; ?>
+        <p><?php echo $author_description; ?></p>
+        <p>
+            <a href="<?php echo $author_posts_url; ?>"><?php echo $author_first_name; ?><?php echo $_author_s; ?> Artikel</a>
+        </p>
+    </div>
+    <?php
+}
+
+
+/**
+ * Price Calculator Shortcode
+ * 
+ * @author Tobias Röder
+ * @version 0.1.1
+ * 
+ * @param array $args - optional
+ * 
+ * @return string
+ */
+function get_price_calculator( $args = [] ) {
+    $url = $args['url'] ?? '/steuererklaerung-beauftragen/?bje=';
+    $position = $args['position'] ?? 'center';
+
+    $content = '';
+
+    wp_enqueue_style('price-calculator-style', STM_THEME_URL . '/css/price-calculator.css');
+    wp_enqueue_script('calculator-script', STM_THEME_URL . '/js/calculator.js');
+    wp_enqueue_script('price-calculator-script', STM_THEME_URL . '/js/price-calculator.js');
+
+    $content .= '
+    <div id="priceCalculator" class="position-'.$position.'">
+    <div class="bje-wrapper">
+    <label for="bje">Wie hoch ist dein Bruttojahreseinkommen?</label>
+    <input type="text" id="bje" placeholder="Dein Bruttojahreseinkommen">
+    </div>
+    <div class="bje-price-wrapper">
+    <label>Dein voraussichtlicher Preis (inkl. MwSt.)</label>
+    <div id="bjePrice">&nbsp;</div>
+    </div>
+    <a href="'.$url.'" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+    </div>';
+
+    return $content;
+}
+
+add_shortcode('price_calculator', 'get_price_calculator');
+
+/**
+ * Price Calculator
+ * echos the price calculator
+ * 
+ * @param array $args - optional
+ * ! @param string $url - optional (might coming soon)
+ * ! @param string $position - optional (might coming soon)
+ * 
+ * @return void
+ */
+function the_price_calculator( $args = [] ) {
+    echo get_price_calculator( $args );
+}
+
+
+/**
  * Utility function
  * 
  * get custom logo url string
@@ -1041,3 +1149,215 @@ function remove_jquery_migrate( $scripts ) {
     }
 }
 add_action( 'wp_default_scripts', 'remove_jquery_migrate' );
+
+
+
+/**
+ * get attachment details from database
+ * 
+ * @param int|string $attachment_id
+ * 
+ * @return WP_Query
+ */
+function get_attachment_details( $attachment_id = 28504 ) {
+     $args = [
+          'p' => $attachment_id,
+          'post_type' => 'attachment'
+     ];
+     $query = new WP_Query( $args );
+     $post = (array) $query->posts[0];
+
+     $post['pathinfo'] = pathinfo($post['guid']);
+     $post['filesize'] = get_attachment_filesize( (int) $attachment_id, false );
+     $post['filesize_human_readable'] = get_attachment_filesize( (int) $attachment_id );
+
+     return $post;
+}
+
+
+/**
+ * get attachment filesize from attachment id with optional units format
+ * for better human readability
+ * 
+ * @param int $attachement_id
+ * @param bool $human_readable - optional
+ * 
+ * @return int|string
+ */
+function get_attachment_filesize( int $attachment_id, $human_readable = true ) {
+     $attachment_abspath = get_attached_file( $attachment_id );
+     $attachment_filesize = filesize( $attachment_abspath );
+
+     if ($human_readable === true)
+          return size_format( $attachment_filesize, 2 );
+
+     return $attachment_filesize;
+}
+
+
+/**
+ * Download PDF shortcode
+ * 
+ * @param array $args
+ * 
+ * @return string
+ */
+function download_pdf( $args ) {
+     $attachment_id = $args[0] ?? null;
+
+     if ( true === is_null( $attachment_id ) )
+          return '';
+
+     $content = '';
+
+     $download_pdf_html = function( $attachment_id ) {
+          $attachment_details = get_attachment_details( $attachment_id );
+
+          $attachment_title = $attachment_details['post_title'];
+          $attachment_name = $attachment_details['pathinfo']['basename'];
+          $attachment_url = $attachment_details['guid'];
+          $attachment_filesize = $attachment_details['filesize_human_readable'];
+
+          $content .= '<div class="download-pdf-wrapper">'
+               . '<div class="download-pdf-details">'
+               . '<a href="' . $attachment_url . '">' . $attachment_title . '</a>'
+               . ' &bull; '
+               . $attachment_filesize
+               . '</div><div class="download-pdf-download">'
+               . '<a href="' . $attachment_url . '" download="' . $attachment_name . '"><i class="icon-download"></i></a>'
+               . '</div></div>';
+
+          return $content;
+     };
+
+     $content .= '<div class="download-pdf-list">';
+
+     if ( count($args) > 1 )
+          foreach ( $args as $attachment_id) {
+               $content .= $download_pdf_html( $attachment_id );
+          }
+     else
+          $content .= $download_pdf_html( $attachment_id );
+     
+     $content .= '</div>';
+
+     return $content;
+}
+add_shortcode('download_pdf', 'download_pdf');
+
+
+/**
+ * Countdown
+ * 
+ * @param array $args
+ * 
+ * @return string
+ */
+function get_countdown( $args = [] ):string {
+    $default_end = get_theme_mod( 'countdown_end' ) ?? '';
+    $end = $args['end'] ?? $default_end;
+
+    $content = '';
+
+    if ( true === empty( $end ) )
+        return $content;
+
+    wp_enqueue_style('steuermachen-countdown-style', get_template_directory_uri() . '/css/countdown.min.css');
+    wp_enqueue_script_footer('steuermachen-countdown-script', get_template_directory_uri() . '/js/countdown.js');
+
+    $content .= '
+        <div class="countdown" data-countdown-end="' . $end . '">
+            <div class="col">
+                <div class="number countdown-days">
+                    <span class="countdown-loader"></span>
+                </div>
+                <div class="label">
+                    <span class="label-content-desktop">Tage</span>
+                    <span class="label-content-mobile">Tage</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="number countdown-hours">
+                    <span class="countdown-loader"></span>
+                </div>
+                <div class="label">
+                    <span class="label-content-desktop">Stunden</span>
+                    <span class="label-content-mobile">Std.</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="number countdown-minutes">
+                    <span class="countdown-loader"></span>
+                </div>
+                <div class="label">
+                    <span class="label-content-desktop">Minuten</span>
+                    <span class="label-content-mobile">Min.</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="number countdown-seconds">
+                    <span class="countdown-loader"></span>
+                </div>
+                <div class="label">
+                    <span class="label-content-desktop">Sekunden</span>
+                    <span class="label-content-mobile">Sek.</span>
+                </div>
+            </div>
+        </div>
+    ';
+
+    return $content;
+}
+add_shortcode('countdown', 'get_countdown');
+
+
+/**
+ * echos the countdown
+ * 
+ * @param null|string $end - optional
+ */
+function the_countdown( ?string $end = null ) {
+    echo get_countdown( [ 'end' => $end ] );
+}
+
+
+/**
+ * utility function for adding script files into the footer
+ * without filling up the same defaults
+ * 
+ * @param string $handle
+ * @param string $src - optional
+ * 
+ * more details about the parameter
+ * @see https://developer.wordpress.org/reference/functions/wp_enqueue_script/
+ */
+function wp_enqueue_script_footer( string $handle, string $src = '' ) {
+    wp_enqueue_script( $handle, $src, [], false, true );
+}
+
+
+/**
+ * checks if frame mode is active
+ * 
+ * @return bool
+ */
+function is_frame_mode() {
+    return isset( $_GET['frame_mode'] );
+}
+
+
+/**
+ * utility function for if else shorthand
+ * 
+ * @param bool $condition
+ * @param mixed $if_text
+ * @param mixed $else_text - optional
+ * 
+ * @return mixed
+ */
+function echo_if( bool $condition, $if_text, $else_text = '' ) {
+    if ( true === $condition )
+        return $if_text;
+
+    return $else_text;
+}

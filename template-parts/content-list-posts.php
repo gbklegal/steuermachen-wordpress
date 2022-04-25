@@ -13,7 +13,9 @@
         <div class="list-article-categories">
             <?php echo get_the_category_list(' / '); ?>
         </div>
-        <h3><?php the_title(); ?></h2>
+        <a class="list-article-link" href="<?php echo esc_url( get_permalink() ); ?>">
+            <h3><?php the_title(); ?></h3>
+        </a>
         <p><span class="posted-on"><i class="icon-calendar"></i> <?=get_the_date()?></span></p>
         <?php the_excerpt(); ?>
     </div>

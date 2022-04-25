@@ -62,6 +62,11 @@ header#header {
                         display: block;
                         position: relative;
                         color: $clr-text-black;
+                        font-size: 16px;
+
+                        &:hover {
+                            color: $clr-primary;
+                        }
                     }
 
                     &,

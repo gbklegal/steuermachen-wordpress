@@ -1,3 +1,4 @@
+<?php if ( false === is_frame_mode() ): ?>
     <footer id="footer" class="mx-auto max-width">
         <div class="footer-top">
             <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 25]); ?>
@@ -38,9 +39,13 @@
         ** Wichtiger Hinweis zum Bruttojahreseinkommen: Die Bemessungsgrundlage setzt sich zusammen aus: - dem auf der Lohnsteuerkarte des betreffenden Steuerjahres eingetragenen Bruttoarbeitslohn - dem jährlichen Gesamtbetrag der Renten, Versorgungsbezüge, Lohnersatzleistungen und Unterhaltsleistungen - den Einnahmen aus Vermietung und Verpachtung, sowie den Einnahmen aus Kapitalvermögen. Im Falle von zusammenveranlagten Ehegatten werden die zuvor genannten Bemessungsgrundlagen und Einnahmen zusammengerechnet.</small></p>
     </footer>
 
-    <a id="scroll-to-top" href="#">
-        <i class="icon-chevrons-up"></i>
-    </a>
+<?php endif; ?>
+
+    <div class="back-to-top-wrapper">
+        <a id="back-to-top" href="#">
+            <i class="icon-chevrons-up"></i>
+        </a>
+    </div>
 </div>
 </div>
 

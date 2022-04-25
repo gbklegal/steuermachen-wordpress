@@ -41,7 +41,7 @@ main.main-content.front-page {
                         letter-spacing: 2px;
 
                         &::marker {
-                            content: '\e903';
+                            content: '\e90e';
                             font-family: $font-icons;
                             color: $clr-secondary;
                         }
@@ -335,6 +335,14 @@ main.main-content.front-page {
 
                         width: $size;
                         min-width: $size !important;
+                    }
+
+                    .content {
+                        .title {
+                            a {
+                                color: $clr-text-black;
+                            }
+                        }
                     }
                 }
             }

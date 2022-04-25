@@ -10,7 +10,7 @@
 // add_enqueue_script_attributes(, 'defer');
 // wp_enqueue_style('steuermachen-style-old', 'https://steuermachen.de/wp-content/themes/onepress-child/style.css');
 wp_enqueue_style('steuermachen-style', get_bloginfo('stylesheet_url'));
-wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/script.js');
+wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '/js/script.js');
 
 ?>
 <!DOCTYPE html>
@@ -31,10 +31,13 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
 
     <?php wp_head(); ?>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
 </head>
-<body>
+<body <?php body_class(); ?>>
 
     <div id="page">
+        <?php if ( false === is_frame_mode() ): ?>
         <header id="header">
             <div class="header-inner">
                 <div class="header-content">
@@ -76,7 +79,6 @@ wp_enqueue_script('steuermachen-script', get_template_directory_uri() . '/js/scr
                 </div>
             </div>
         </header>
-
-<?php # exit; ?>
+        <?php endif; ?>
 
     <div class="container">

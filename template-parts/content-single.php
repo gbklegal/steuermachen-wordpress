@@ -12,11 +12,14 @@
             </div>
         </header>
         <main class="post-content-wrapper">
-            <div class="post-table-of-contents">
-                <h3 class="text-center">Inhaltsverzeichnis</h3>
-                <ul class="table-of-contents">
-                    <?php echo table_of_contents(get_the_content()); ?>
-                </ul>
+            <div class="post-sidebar">
+                <div class="post-table-of-contents">
+                    <h3 class="text-center">Inhaltsverzeichnis</h3>
+                    <ul class="table-of-contents">
+                        <?php echo table_of_contents(get_the_content()); ?>
+                    </ul>
+                </div>
+                <?php the_author_info(); ?>
             </div>
             <div class="post-content">
                 <?php if (has_post_thumbnail()) the_post_thumbnail('post-thumbnail', ['class' => 'post-thumbnail']); ?>
