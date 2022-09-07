@@ -1,5 +1,6 @@
 // urls
-$url-base: 'http://steuermachen-theme.local';
+//$url-base: 'http://steuermachen-theme.local';
+$url-base: '';
 $url-content: $url-base + '/wp-content';
 $url-uploads: $url-content + '/uploads';
 $url-theme-base: $url-content + '/themes/steuermachen';
@@ -19,6 +20,24 @@ $clr-secondary-disabled: #DDF7D3;
 $clr-secondary-active: #40E703;
 $clr-secondary-active-stroke: #449E23;
 
+// $clr-primary: #66DB3B;
+// $clr-primary-hover: #5AB139;
+// $clr-primary-disabled: #DDF7D3;
+// $clr-primary-active: #40E703;
+// $clr-primary-active-stroke: #449E23;
+
+// $clr-secondary: #66DB3B;
+// $clr-secondary-hover: #5AB139;
+// $clr-secondary-disabled: #DDF7D3;
+// $clr-secondary-active: #40E703;
+// $clr-secondary-active-stroke: #449E23;
+
+// $clr-secondary: #ff6138;
+// $clr-secondary-hover: #CC5637;
+// $clr-secondary-disabled: #FFCABC;
+// $clr-secondary-active: #FF5427;
+// $clr-secondary-active-stroke: #B45941;
+
 $clr-gold: #ffd700;
 $clr-blue: #0074b5;
 $clr-orange: $clr-primary;
@@ -34,7 +53,7 @@ $clr-bg-white: #FFFFFF;
 $clr-bg-black: #000000;
 $clr-bg: $clr-bg-white;
 
-$clr-text-black: #000000;
+$clr-text-black: #333; // #000 || 494949
 $clr-text-blue: #252B42;
 $clr-text-white: #FFFFFF;
 $clr-text-grey: #737373;
@@ -51,6 +70,37 @@ $clr-field-stroke-done: $clr-text-grey; // #FFD8D8
 $clr-field-tile: $clr-primary;
 $clr-field-text: $clr-text-blue;
 $clr-field-disabled: #AABFBD;
+
+// modal or other
+$clr-success: #a5dc86;
+$clr-danger: #f27474;
+$clr-warn: #f8bb86;
+
+// main purpose are the alert "boxes"
+// ! DEPRECATED
+// $clr-alert-primary-color: #084298;
+// $clr-alert-primary-bg: #cfe2ff;
+// $clr-alert-primary-border-color: #b6d4fe;
+
+$clr-alert-secondary-color: #41464b;
+$clr-alert-secondary-bg: #e2e3e5;
+$clr-alert-secondary-border-color: #d3d6d8;
+
+$clr-alert-success-color: #0f5132;
+$clr-alert-success-bg: #d1e7dd;
+$clr-alert-success-border-color: #badbcc;
+
+$clr-alert-danger-color: #842029;
+$clr-alert-danger-bg: #f8d7da;
+$clr-alert-danger-border-color: #f5c2c7;
+
+$clr-alert-warning-color: #664d03;
+$clr-alert-warning-bg: #fff3cd;
+$clr-alert-warning-border-color: #ffecb5;
+
+$clr-alert-info-color: #055160;
+$clr-alert-info-bg: #cff4fc;
+$clr-alert-info-border-color: #b6effb;
 
 
 // font
@@ -73,7 +123,7 @@ $br-7: 90px;
 $max-width: 1280px;
 
 // break points
-$breakpoint-xs: 0;
+$breakpoint-xs: 576px;
 $breakpoint-sm: 640px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
@@ -85,5 +135,16 @@ $breakpoint-2xl: 1536px;
 $directions: (
     left,
     center,
-    right
+    right,
+    justify
 );
+
+
+// header sizes
+$header-size: 143px;
+$header-size-mobile: 88px;
+
+
+// box shadow
+$box-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
+$box-shadow-soft: 0 5px 10px rgba(154, 160, 185, .05), 0 15px 40px rgba(166, 173, 201, .2);
