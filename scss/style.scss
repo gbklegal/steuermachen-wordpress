@@ -1,61 +1,80 @@
 /*
-    Theme Name: steuermachen
-    Author: Tobias Roeder
+    Themes Name: steuermachen
+    Author: Tobias Röder
     Author URI: https://tobias-roeder.de/
-    Description: Custom steuermachen theme. More description coming soon.
-    Version: 0.0.1
+    Description: Benutzerdefiniertes steuermachen Themes.
+    Version: 1.4.1
 */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+// ? Roboto?
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
 
 @import 'var';
 @import 'lib/icons';
 @import 'defaults';
 @import 'utilities';
 
+// utilities
+@import 'utilities/gap';
+@import 'utilities/scrolling';
+@import 'utilities/shadow';
+@import 'utilities/white-space';
+
 // mixins
 @import 'mixins/alignfull';
 @import 'mixins/svg';
+@import 'mixins/transition';
 @import 'mixins/utility';
 
 // components
-@import 'components/_404';
+@import 'components/404';
 @import 'components/about-us';
-@import 'components/accessability';
+// @import 'components/accessability';
 @import 'components/accordion';
+@import 'components/alert';
 @import 'components/author-info';
 @import 'components/back-to-top';
 @import 'components/badge';
 @import 'components/banner';
+@import 'components/box';
 @import 'components/brand-logos';
 @import 'components/button';
 @import 'components/career';
+@import 'components/checkbox';
 @import 'components/comments';
 @import 'components/contact';
+@import 'components/details';
 @import 'components/dictionary';
 @import 'components/download-pdf';
 @import 'components/download';
 @import 'components/faq';
 @import 'components/field';
+@import 'components/flip-card';
 @import 'components/footer';
 @import 'components/front-page';
 @import 'components/header';
 @import 'components/hero';
+@import 'components/iframe';
 @import 'components/landing';
 @import 'components/link';
 @import 'components/loader';
 @import 'components/main';
 @import 'components/modal';
+@import 'components/order-form';
+@import 'components/page';
 @import 'components/partner-program';
 @import 'components/post-preview';
 @import 'components/post';
 @import 'components/posts';
 @import 'components/price-card';
 @import 'components/price';
+@import 'components/progress-bar';
+@import 'components/radio';
+@import 'components/read-more';
 @import 'components/search';
 @import 'components/section';
 @import 'components/sidebar';
 @import 'components/stars';
+@import 'components/steuerrechner';
 @import 'components/table-of-contents';
 @import 'components/tabs';
 @import 'components/tax-green';
