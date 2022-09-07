@@ -2,7 +2,7 @@
  * steuermachen WordPress Theme
  * 
  * @author Tobias Roeder
- * @version 0.0.1
+ * @version 1.1.0
  */
 
 // window load
@@ -35,8 +35,17 @@ window.addEventListener('load', function() {
         }
     });
 
+    if (document.body.classList.contains('page-id-28564'))
+        initDictShortcodes();
+
+    // selfwritten slider
+    reallySimpleSlider();
+
+    // this fixes the issue - when the user refreshes the page and not beeing at the top of the page
+    headerScroll();
+
     // fixed header page padding fix
-    setPagePaddingToHeaderHeight();
+    // setPagePaddingToHeaderHeight(); // now solved with fixed css
 
     // Steuerlexikon (dict)
     selectLetterInDictFromHash();
@@ -56,6 +65,14 @@ window.addEventListener('load', function() {
         result: '#priceResult'
     });
     priceCalc.run();
+
+    // Price Calculator
+    let propertyTaxPriceCalc = new PriceCalc({
+        input: '[data-property-tax-price-input]',
+        result: '[data-property-tax-price-result]',
+        priceType: 'propertyTax'
+    });
+    propertyTaxPriceCalc.run();
 
     // Init Mobile Menu
     initMenuMobile();
@@ -88,6 +105,17 @@ window.addEventListener('keydown', function(event) {
             hideMenuMobile();
     }
 });
+
+
+/**
+ * enables keyboard shortcodes
+ */
+function initDictShortcodes() {
+    window.addEventListener('keydown', event => {
+        if (isLetter(event.key))
+            location.hash = event.key;
+    });
+}
 
 
 /**
@@ -140,6 +168,9 @@ function selectLetterInDict( hashValue ) {
  * utility function for selectLetterInDict
  */
 function selectLetterInDictFromHash() {
+    // only on the dictionary (steuerlexikon) page
+    if (!document.body.classList.contains('page-id-28564'))
+        return;
     let hashValue = location.hash.slice(1);
     selectLetterInDict(hashValue);
 }
@@ -180,6 +211,9 @@ function accordionJS(accs) {
             }
         }
     });
+
+    if (accs.length <= 0)
+        return;
 
     // TODO fix lazy code
     let hash = window.location.hash;
@@ -353,10 +387,34 @@ class PriceCalc {
     ];
 
     /**
+     * propertyTaxPrices
+     * @private
+     */
+    #propertyTaxPrices = [
+        89,
+        119,
+        169,
+        189,
+        229,
+        249,
+        309
+    ];
+
+    /**
+     * priceTypes
+     * @private
+     */
+    #priceTypes = [
+        'bje',
+        'propertyTax'
+    ];
+
+    /**
      * @param {string|object} input
      * @param {string|object} result
+     * @param {string} priceType - optional
      */
-    constructor({ input, result }) {
+    constructor({ input, result, priceType = 'bje' }) {
         if (typeof input === 'string')
             this.input = document.querySelector(input);
         else
@@ -366,6 +424,11 @@ class PriceCalc {
             this.result = document.querySelector(result);
         else
             this.result = result;
+
+        if (this.#priceTypes.includes(priceType))
+            this.priceType = priceType;
+        else
+            console.error(`${priceType} is wrong - allowed price types: ${this.#priceTypes}`);
     }
 
     /**
@@ -386,7 +449,12 @@ class PriceCalc {
         // watch for changes
         input.oninput = () => {
             // get price from input value
-            let price = this.getPrice(input);
+            let price = null;
+
+            if (this.priceType === 'bje')
+                price = this.getPrice(input);
+            else if (this.priceType === 'propertyTax')
+                price = this.getPropertyTaxPrice(input);
 
             // only show price if its a number
             if (typeof price === 'number') {
@@ -489,6 +557,46 @@ class PriceCalc {
     }
 
     /**
+     * get property tax price
+     * 
+     * @param {object} elmt - optional
+     * 
+     * @returns {number|boolean}
+     */
+    getPropertyTaxPrice( elmt = null ) {
+        if (!elmt) elmt = this.input;
+        const propertyTax = this.reduceToNumber(elmt.value);
+        let price = 0;
+
+        if (propertyTax !== NaN) {
+            let priceIndex = 0;
+
+            if (propertyTax <= 65000)
+                priceIndex = 0;
+            else if (propertyTax <= 125000)
+                priceIndex = 1;
+            else if (propertyTax <= 200000)
+                priceIndex = 2;
+            else if (propertyTax <= 350000)
+                priceIndex = 3;
+            else if (propertyTax <= 500000)
+                priceIndex = 4;
+            else if (propertyTax <= 1000000)
+                priceIndex = 5;
+            else if (propertyTax <= 5000000)
+                priceIndex = 6;
+            else {
+                price = 0;
+                return false;
+            }
+
+            price = this.#propertyTaxPrices[priceIndex];
+
+            return price;
+        }
+    }
+
+    /**
      * checks if all necessary elements exists
      * 
      * @param {boolean} showInfo - optional (Default: false)
@@ -581,6 +689,66 @@ function enablePageScroll() {
  */
 function togglePageScroll() {
     jQuery(document.body).toggleClass('disable-scroll');
+}
+
+
+/**
+ * Really Simple Slider
+ * 
+ * @author Tobias Röder
+ * @version 0.1.0
+ */
+function reallySimpleSlider() {
+    const scrollDistance = 400;
+
+    const isOverflownX = elmt => {
+        return elmt.scrollWidth > elmt.clientWidth;
+    }
+
+    const rssElmt = document.querySelector('[data-rss]');
+
+    if (!rssElmt || !isOverflownX(rssElmt))
+        return;
+
+    const rssElmtInner = rssElmt.querySelector('[data-rss-inner]');
+    const rssLeft = rssElmt.querySelector('[data-rss-left]');
+    const rssRight = rssElmt.querySelector('[data-rss-right]');
+
+    const hideRssLeft = () => rssLeft.hidden = true;
+    const showRssLeft = () => rssLeft.hidden = false;
+
+    const hideRssRight = () => rssRight.hidden = true;
+    const showRssRight = () => rssRight.hidden = false;
+
+    const checkRssControlVisibility = () => {
+        if (rssElmtInner.scrollLeft <= 0) {
+            hideRssLeft();
+        } else {
+            showRssLeft();
+        }
+
+        if (rssElmtInner.scrollLeft >= (rssElmtInner.scrollWidth - rssElmtInner.clientWidth)) {
+            hideRssRight();
+        } else {
+            showRssRight();
+        }
+    }
+
+    checkRssControlVisibility();
+
+    rssElmtInner.addEventListener('scroll', checkRssControlVisibility);
+
+    rssLeft.addEventListener('click', () => {
+        rssElmtInner.scrollLeft -= scrollDistance;
+    });
+
+    rssRight.addEventListener('click', () => {
+        rssElmtInner.scrollLeft += scrollDistance;
+    });
+
+
+    // fix position absolute height loss
+    rssElmt.style.height = rssElmtInner.clientHeight + 'px';
 }
 
 
@@ -693,4 +861,133 @@ function throttle(callback, delay = 1000) {
 
         setTimeout(timeoutFunc, delay);
     }
+}
+
+
+/**
+ * utility function to simply check if it's a letter
+ * 
+ * @param {string}
+ * 
+ * @returns {boolean}
+ */
+function isLetter(str) {
+    return !!(str.length === 1 && str.match(/[a-z]/i));
+}
+
+
+
+/**
+ * modal (alert alternate)
+ */
+// class Modal {
+//     constructor() {
+
+//     }
+
+//     crawler() {
+//         let modals = document.querySelectors('[data-modal]');
+//         return modals;
+//     }
+// }
+// function initModal() {
+//     const modals = document.querySelectorAll('[data-modal]');
+//     const modalOpener = document.querySelectorAll('[data-open-modal]');
+
+//     if (modals.length <= 0)
+//         return;
+    
+//     modals.forEach(modal => {
+//         const closeBtn = modal.querySelector('[data-modal-close]');
+//         closeBtn.addEventListener('click', () => modal.close());
+//     });
+
+//     modalOpener.forEach(modalOpener => {
+//         console.log(modalOpener);
+//     });
+
+//     if (modalOpener.length <= 0)
+//         return;
+// }
+
+
+// function openModal( modalId ) {
+//     const modal = document.querySelector(`[data-modal="${modalId}"]`);
+//     if (!modal)
+//         return;
+
+//     modal.showModal();
+// }
+
+
+
+const modal = {
+    modal: null,
+
+    icons: {
+        'success': 'icon-check-circle',
+        'warning': 'icon-alert-circle',
+        'error': 'icon-x-circle'
+    },
+
+    /**
+     * open the modal
+     * 
+     * @param {string} icon - optional (success, warning, error)
+     * @param {string} title - optional
+     * @param {string} message - optional
+     * 
+     * @returns {undefined}
+     */
+    open({ icon = null, title = null, message = null } = {}) {
+        let modalElmt = modal.modal;
+
+        if (modalElmt && modalElmt.open)
+            modal.close();
+
+        if (!modal.modal) {
+            modalElmt = document.createElement('dialog');
+            modalElmt.className = 'modal';
+            modalElmt.dataset.modal = '';
+        }
+
+        modalElmt.innerHTML = '';
+
+        if (icon in modal.icons) {
+            modalElmt.innerHTML += `
+                <div class="modal-icon ${modal.icons[icon]} modal-theme-${icon}"></div>`;
+        }
+        if (title)
+            modalElmt.innerHTML += `
+                <div class="modal-title">${title}</div>`;
+        if (message)
+            modalElmt.innerHTML += `
+                <div class="modal-main">${message}</div>`;
+
+        modalElmt.innerHTML += `
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-full" data-modal-close>OK</button>
+            </div>
+        `;
+
+        const modalCloseBtn = modalElmt.querySelector('[data-modal-close]');
+        modalCloseBtn.addEventListener('click', () => modalElmt.close());
+
+        modal.modal = modalElmt;
+        document.body.appendChild(modalElmt);
+        modalElmt.showModal();
+    },
+
+    close() {
+        if (!modal.modal)
+            return;
+        modal.modal.close();
+    }
+}
+
+
+
+
+function adjustIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.clientHeight + 'px';
 }
