@@ -1,6 +1,6 @@
 // Some exciting button focus styles
-:focus {
-    outline: 3px solid red;
+:focus:not(iframe) {
+    outline: 3px solid rgb(0, 213, 255);
 }
 
 // Undo all the above focused button styles
