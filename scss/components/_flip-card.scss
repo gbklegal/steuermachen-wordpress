@@ -1,0 +1,36 @@
+.flip-card {
+    perspective: 1000px;
+    display: block;
+
+    .flip-card-inner {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition: transform 0.4s;
+        transform-style: preserve-3d;
+        overflow: visible;
+
+        .flip-card-front,
+        .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            background-color: #fff;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background-color: #fff;
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    &.flip,
+    &:hover {
+        .flip-card-inner {
+            // &:hover {
+            transform: rotateY(180deg)
+        }
+    }
+}
