@@ -1,0 +1,13 @@
+.progress-bar-wrapper {
+    background-color: $clr-bg-grey-light;
+    height: 5px;
+    border-radius: 99rem;
+    overflow: hidden;
+
+    .progress-bar {
+        height: 100%;
+        width: var(--progress, 0%);
+        border-radius: 99rem;
+        transition: ease-in-out 0.4s width;
+    }
+}
