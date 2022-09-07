@@ -1,0 +1,30 @@
+$justify-content-values: (
+    flex-start,
+    flex-end,
+    center,
+    space-between,
+    space-around,
+    space-evenly,
+    start,
+    end,
+    left,
+    right
+);
+
+@each $justify-content-value in $justify-content-values {
+    .justify-content-#{$justify-content-value} {
+        justify-content: $justify-content-value  !important;
+    }
+}
+
+.align-items-baseline {
+    align-items: baseline;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
