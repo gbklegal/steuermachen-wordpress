@@ -1,4 +1,4 @@
-const modal = new ModalFrame({
+const modalFrame = new ModalFrame({
     modalElmt: document.querySelector('#modal'),
     closeElmt: document.querySelector('#modalClose'),
     frameElmt: document.querySelector('#modalFrame')

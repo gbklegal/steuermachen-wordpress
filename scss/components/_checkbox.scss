@@ -1,0 +1,43 @@
+.checkbox-container {
+    display: grid;
+    grid-template-columns: 22px auto;
+    gap: 0 10px;
+    cursor: pointer;
+
+    &:hover .checkmark {
+        border-color: $clr-secondary;
+    }
+
+    input[type='checkbox'] {
+        opacity: 0;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+
+        &:checked ~ .checkmark {
+            border-color: $clr-secondary;
+            background-color: $clr-secondary;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 13px;
+                height: 8px;
+                border: solid $clr-bg-white;
+                border-width: 0 0 2px 2px;
+                transform: rotate(-45deg) translate(0%, -100%);
+            }
+        }
+    }
+
+    .checkmark {
+        position: relative;
+        border: 2px solid $clr-bg-grey;
+        width: 22px;
+        height: 22px;
+        border-radius: $br-1;
+        @include transition(smooth);
+    }
+}

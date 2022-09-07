@@ -1,11 +1,12 @@
+@charset "UTF-8";
 /*
-    Theme Name: steuermachen
-    Author: Tobias Roeder
+    Themes Name: steuermachen
+    Author: Tobias Röder
     Author URI: https://tobias-roeder.de/
-    Description: Custom steuermachen theme. More description coming soon.
-    Version: 0.0.1
+    Description: Benutzerdefiniertes steuermachen Themes.
+    Version: 1.4.1
 */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap");
 @font-face {
   font-family: "STM-Icons";
   src: url("fonts/STM-Icons.ttf?2yh9d6") format("truetype"), url("fonts/STM-Icons.woff?2yh9d6") format("woff"), url("fonts/STM-Icons.svg?2yh9d6#STM-Icons") format("svg");
@@ -350,11 +351,24 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-padding-top: 163px;
+}
+
+@media (max-width: 1240px) {
+  html {
+    scroll-padding-top: 118px;
+  }
+}
 body {
   background-color: #FFFFFF;
-  color: #000000;
-  font-size: 14px;
+  color: #333;
+  font-size: 16px;
   line-height: 1.5;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 hr {
@@ -471,7 +485,6 @@ p {
 footer#footer {
     padding: 20px !important;
   }
-
   .main-content {
     padding-right: 20px;
     padding-left: 20px;
@@ -489,6 +502,98 @@ code {
   padding: 10px;
   border-radius: 5px;
   border: 2px solid darkgrey;
+}
+
+.fw-100 {
+  font-weight: 100;
+}
+
+.fw-200 {
+  font-weight: 200;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.fw-900 {
+  font-weight: 900;
+}
+
+.fw-950 {
+  font-weight: 950;
+}
+
+.justify-content-flex-start {
+  justify-content: flex-start !important;
+}
+
+.justify-content-flex-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-space-between {
+  justify-content: space-between !important;
+}
+
+.justify-content-space-around {
+  justify-content: space-around !important;
+}
+
+.justify-content-space-evenly {
+  justify-content: space-evenly !important;
+}
+
+.justify-content-start {
+  justify-content: start !important;
+}
+
+.justify-content-end {
+  justify-content: end !important;
+}
+
+.justify-content-left {
+  justify-content: left !important;
+}
+
+.justify-content-right {
+  justify-content: right !important;
+}
+
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .mx-auto {
@@ -510,6 +615,10 @@ code {
 
 .text-right {
   text-align: right !important;
+}
+
+.text-justify {
+  text-align: justify !important;
 }
 
 .alignfull {
@@ -594,7 +703,7 @@ code {
 }
 
 .w-full {
-  width: 100%;
+  width: 100% !important;
 }
 
 .block {
@@ -603,6 +712,14 @@ code {
 
 .inline-block {
   display: inline-block !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.align-items-center {
+  align-items: center;
 }
 
 .hidden {
@@ -629,12 +746,56 @@ code {
   white-space: pre-wrap;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.br-0 {
+  border-radius: 0px;
+}
+
+.br-1 {
+  border-radius: 4px;
+}
+
+.br-2 {
+  border-radius: 8px;
+}
+
+.br-3 {
+  border-radius: 10px;
+}
+
+.br-4 {
+  border-radius: 12px;
+}
+
+.br-5 {
+  border-radius: 30px;
+}
+
+.br-6 {
+  border-radius: 60px;
+}
+
+.br-7 {
+  border-radius: 90px;
+}
+
+.br-round {
+  border-radius: 99rem;
+}
+
 .w-fit {
   width: fit-content;
 }
 
 .w-700 {
   width: 700px;
+  max-width: 100%;
+}
+
+.max-w-full {
   max-width: 100%;
 }
 
@@ -792,11 +953,11 @@ code {
 }
 
 .text-default {
-  color: #000000 !important;
+  color: #333 !important;
 }
 
 .bg-default {
-  background-color: #000000 !important;
+  background-color: #333 !important;
 }
 
 .text-primary {
@@ -834,6 +995,45 @@ code {
     transform: rotate(360deg);
   }
 }
+.gap-0 {
+  gap: 0 !important;
+}
+
+.gap-1 {
+  gap: 0.25rem !important;
+}
+
+.gap-2 {
+  gap: 0.5rem !important;
+}
+
+.gap-3 {
+  gap: 1rem !important;
+}
+
+.gap-4 {
+  gap: 1.5rem !important;
+}
+
+.gap-5 {
+  gap: 3rem !important;
+}
+
+.disable-scroll {
+  overflow: hidden;
+}
+
+.box-shadow {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.box-shadow-soft {
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
 ._404-image {
   z-index: -1;
   position: absolute;
@@ -846,7 +1046,7 @@ code {
   margin-top: 300px;
 }
 ._404 h2 {
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px rgba(51, 51, 51, 0.25);
 }
 ._404 .search-form {
   margin-top: 40px;
@@ -872,7 +1072,7 @@ code {
   font-size: 18px;
 }
 .section-about-us .left-side img.tobias-gussmann {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(51, 51, 51, 0.1);
   border-radius: 99em;
   max-width: 100%;
   height: auto;
@@ -940,14 +1140,6 @@ code {
     flex-direction: column;
   }
 }
-:focus {
-  outline: 3px solid red;
-}
-
-:focus:not(:focus-visible) {
-  outline: 0;
-}
-
 .accordion-wrapper {
   width: 100%;
   background-color: #F1F6FC;
@@ -1014,6 +1206,52 @@ code {
     transform: rotate(0deg);
   }
 }
+.alert {
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 0.4em 0.8em;
+  color: #41464b;
+  background-color: #e2e3e5;
+  border-color: #d3d6d8;
+}
+.alert .alert-icon::before {
+  display: inline-block;
+  font-family: "STM-Icons";
+  vertical-align: baseline;
+}
+.alert-success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
+.alert-success .alert-icon::before {
+  content: "\e90e";
+}
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
+.alert-danger .alert-icon::before {
+  content: "\e944";
+}
+.alert-warning {
+  color: #664d03;
+  background-color: #fff3cd;
+  border-color: #ffecb5;
+}
+.alert-warning .alert-icon::before {
+  content: "\e901";
+}
+.alert-info {
+  color: #055160;
+  background-color: #cff4fc;
+  border-color: #b6effb;
+}
+.alert-info .alert-icon::before {
+  content: "\e928";
+}
+
 .author-info .avatar {
   float: right;
   border-radius: 99rem;
@@ -1025,12 +1263,14 @@ code {
   top: 120vh;
   bottom: 3rem;
   right: 2rem;
+  pointer-events: none;
 }
 
 #back-to-top {
   position: -webkit-sticky;
   position: sticky;
-  top: 90vh;
+  top: calc(100vh - 6rem);
+  pointer-events: auto;
   background-color: #F1F6FC;
   width: 62px;
   height: 62px;
@@ -1038,7 +1278,7 @@ code {
   display: grid;
   place-items: center;
   font-size: 35px;
-  color: #000000;
+  color: #333;
   box-shadow: 0px 4px 4px -1px rgba(0, 0, 0, 0.25);
 }
 
@@ -1061,6 +1301,7 @@ code {
 }
 
 .banner {
+  color: #333;
   background-color: #66DB3B;
   font-size: 24px;
   font-weight: 500;
@@ -1068,6 +1309,52 @@ code {
   text-align: center;
 }
 
+.box-txt-small {
+  font-size: 12px;
+}
+
+.box-info {
+  padding: 20px;
+  background: #C4ED8E;
+  border-radius: 4px;
+}
+
+.benefits-box {
+  border-radius: 24px;
+  background-color: #F7F8FA;
+}
+.benefits-box .header {
+  border-radius: 24px 24px 0 0;
+}
+.benefits-box .header h3 {
+  line-height: 1.2em !important;
+}
+.benefits-box .main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.benefits-box .main ul.benefits {
+  padding: 20px 0;
+}
+.benefits-box .main ul.benefits li {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 20px 20px 20px 60px;
+  padding-left: 10px;
+}
+.benefits-box .main ul.benefits li::marker {
+  font-family: "STM-Icons";
+  content: "\e90e";
+  color: #66DB3B;
+}
+
+@media (max-width: 1024px) {
+  .benefits-box .main img {
+    display: none;
+  }
+}
 .brand-logos {
   display: flex;
   flex-flow: row nowrap;
@@ -1126,32 +1413,32 @@ code {
   width: 100%;
 }
 .btn-theme-primary, .btn-primary {
-  background-color: #ff6138;
-  color: #FFFFFF;
-}
-.btn-theme-primary:hover, .btn-primary:hover {
-  background-color: #CC5637;
-}
-.btn-theme-primary:active, .btn-primary:active {
-  background-color: #FF5427;
-  border-color: #B45941;
-}
-.btn-theme-primary:disabled, .btn-primary:disabled {
-  background-color: #FFCABC;
-}
-.btn-secondary {
   background-color: #66DB3B;
   color: #FFFFFF;
 }
-.btn-secondary:hover {
+.btn-theme-primary:hover, .btn-primary:hover {
   background-color: #5AB139;
 }
-.btn-secondary:active {
+.btn-theme-primary:active, .btn-primary:active {
   background-color: #40E703;
   border-color: #449E23;
 }
-.btn-secondary:disabled {
+.btn-theme-primary:disabled, .btn-primary:disabled {
   background-color: #DDF7D3;
+}
+.btn-secondary {
+  background-color: #ff6138;
+  color: #FFFFFF;
+}
+.btn-secondary:hover {
+  background-color: #CC5637;
+}
+.btn-secondary:active {
+  background-color: #FF5427;
+  border-color: #B45941;
+}
+.btn-secondary:disabled {
+  background-color: #FFCABC;
 }
 .btn-outline {
   background-color: inherit;
@@ -1192,6 +1479,83 @@ a.btn {
   margin-left: calc(50% - 50vw);
 }
 
+.checkbox-container {
+  display: grid;
+  grid-template-columns: 22px auto;
+  gap: 0 10px;
+  cursor: pointer;
+}
+.checkbox-container:hover .checkmark {
+  border-color: #66DB3B;
+}
+.checkbox-container input[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+}
+.checkbox-container input[type=checkbox]:checked ~ .checkmark {
+  border-color: #66DB3B;
+  background-color: #66DB3B;
+}
+.checkbox-container input[type=checkbox]:checked ~ .checkmark::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13px;
+  height: 8px;
+  border: solid #FFFFFF;
+  border-width: 0 0 2px 2px;
+  transform: rotate(-45deg) translate(0%, -100%);
+}
+.checkbox-container .checkmark {
+  position: relative;
+  border: 2px solid #C4C4C4;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  transition: 0.2s all ease;
+}
+
+.comments-area .comment-list {
+  padding-bottom: 2em;
+}
+.comments-area .comment-list .comment {
+  background-color: #F1F6FC;
+}
+.comments-area .comment-list .comment .comment-children {
+  margin-left: calc(60px + 1rem);
+}
+.comments-area .comment-list .comment .comment-avatar {
+  width: 60px;
+  height: 60px;
+}
+.comments-area .comment-list .comment .comment-content {
+  background-color: #FFFFFF;
+  padding: 0.5em;
+  position: relative;
+  isolation: isolate;
+  border-radius: 0 8px 8px;
+  width: fit-content;
+}
+.comments-area .comment-list .comment .comment-content::before {
+  content: "";
+  position: absolute;
+  border-right: 12px solid #FFFFFF;
+  border-bottom: 12px solid transparent;
+  left: -12px;
+  top: 0;
+}
+.comments-area .comment-list .comment .comment-content p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .comments-area .comment-list .comment .comment-children {
+    margin-left: 1rem;
+  }
+}
 .contact-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1271,6 +1635,17 @@ a.btn {
   max-width: 320px;
 }
 
+details {
+  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
+  margin-top: 0;
+}
+
+details summary {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .steuerlexikon .alphabet,
 .dictionary .alphabet {
   display: flex;
@@ -1285,7 +1660,7 @@ a.btn {
 .steuerlexikon .alphabet li a,
 .dictionary .alphabet li a {
   font-size: 36px;
-  color: #000000;
+  color: #333;
   font-weight: 700;
   display: block;
   background-color: #F1F6FC;
@@ -1303,13 +1678,13 @@ a.btn {
 .steuerlexikon section .section-inner,
 .dictionary section .section-inner {
   display: flex;
-  margin-top: 4rem;
+  margin-block: 4rem;
   gap: 3rem;
 }
 .steuerlexikon section .section-inner .master-letter,
 .dictionary section .section-inner .master-letter {
   position: relative;
-  margin-top: 30px;
+  margin-top: -4pxpx;
 }
 .steuerlexikon section .section-inner .master-letter::before,
 .dictionary section .section-inner .master-letter::before {
@@ -1411,7 +1786,7 @@ a.btn {
   display: none;
 }
 .section-download .download-item i {
-  color: #000000;
+  color: #333;
 }
 
 .easy-with-tax-section main {
@@ -1425,7 +1800,13 @@ a.btn {
 .easy-with-tax-section main .changeable-part .content:not(.content-selected) {
   display: none;
 }
-.easy-with-tax-section main .changeable-part img {
+.easy-with-tax-section main .changeable-part .content {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.easy-with-tax-section main .changeable-part .content img {
+  max-width: 300px;
   border-radius: 8px;
 }
 .easy-with-tax-section main .selections .item {
@@ -1462,6 +1843,27 @@ a.btn {
   border-radius: 8px;
 }
 
+@media (max-width: 768px) {
+  .easy-with-tax-section main .tabs-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .easy-with-tax-section main .tabs-wrapper .changeable-part {
+    display: none;
+  }
+  .easy-with-tax-section main .tabs-wrapper .selections {
+    margin-bottom: 72px;
+  }
+  .easy-with-tax-section main .tabs-wrapper .selections .item {
+    cursor: default;
+  }
+  .easy-with-tax-section main .tabs-wrapper .selections .item:hover {
+    color: inherit;
+  }
+  .easy-with-tax-section main .tabs-wrapper .selections .item-selected {
+    color: inherit;
+    border: none;
+  }
+}
 .wrapper {
   padding: 40px;
 }
@@ -1573,6 +1975,8 @@ a.btn {
 
 .field-wrapper {
   display: inline-block;
+  width: fit-content;
+  max-width: 100%;
   position: relative;
   margin-bottom: 20px;
 }
@@ -1585,6 +1989,12 @@ a.btn {
   font-size: 1em;
   transition: 0.2s ease;
   color: #737373;
+}
+.field-wrapper input:not([type=button],
+[type=submit],
+[type=reset]),
+.field-wrapper textarea {
+  min-height: 42px;
 }
 .field-wrapper input:not([type=button],
 [type=submit],
@@ -1614,20 +2024,61 @@ a.btn {
   color: transparent;
 }
 
+.flip-card {
+  perspective: 1000px;
+  display: block;
+}
+.flip-card .flip-card-inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+  overflow: visible;
+}
+.flip-card .flip-card-inner .flip-card-front,
+.flip-card .flip-card-inner .flip-card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-color: #fff;
+}
+.flip-card .flip-card-inner .flip-card-back {
+  transform: rotateY(180deg);
+  background-color: #fff;
+  position: absolute;
+  inset: 0;
+}
+.flip-card.flip .flip-card-inner, .flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
 footer#footer {
   padding: 50px;
 }
 footer#footer .footer-top {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  max-width: 100%;
+  text-align: center;
 }
 footer#footer hr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin: 20px 0;
 }
-footer#footer .social i {
-  font-size: 22px;
+footer#footer .social {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+footer#footer .social img {
+  width: 32px;
+  height: 32px;
+  display: block;
 }
 footer#footer .footer-navs {
   display: flex;
@@ -1636,7 +2087,6 @@ footer#footer .footer-navs {
   gap: 1rem;
 }
 footer#footer .footer-navs a {
-  color: #000000;
   padding: 2px 0;
   display: inline-block;
 }
@@ -1646,19 +2096,54 @@ footer#footer .footer-navs a:hover {
 footer#footer .footer-navs ul {
   list-style-type: none;
 }
-footer#footer .sign-up {
-  margin-bottom: 4rem;
+footer#footer .app-badges {
+  margin-bottom: 1rem;
+}
+footer#footer .app-badges img {
+  width: 200px;
 }
 footer#footer .footer-text {
   margin: 30px 0;
 }
 
+@media (max-width: 867px) {
+  footer#footer .sign-up iframe#newsletter {
+    height: 587px;
+  }
+}
+@media (max-width: 618px) {
+  footer#footer .sign-up iframe#newsletter {
+    height: 632px;
+  }
+}
+@media (max-width: 449px) {
+  footer#footer .sign-up iframe#newsletter {
+    height: 645px;
+  }
+}
+@media (max-width: 410px) {
+  footer#footer .sign-up iframe#newsletter {
+    height: 690px;
+  }
+}
+@media (max-width: 381px) {
+  footer#footer .sign-up iframe#newsletter {
+    height: 720px;
+  }
+}
+main.main-content.front-page {
+  max-width: 1500px;
+}
 main.main-content.front-page .hero-wrapper {
   width: 100% !important;
 }
 main.main-content.front-page .hero-wrapper h1 {
   line-height: 1;
   padding-bottom: 20px;
+}
+main.main-content.front-page .hero-wrapper .hero-text h1 img {
+  height: 40px;
+  margin-right: 20px;
 }
 main.main-content.front-page .hero-wrapper .hero-text .seals {
   display: flex;
@@ -1694,29 +2179,32 @@ main.main-content.front-page .hero-wrapper .hero-text .advantages ul li::marker 
   color: #66DB3B;
 }
 main.main-content.front-page .hero-wrapper .hero-image img {
-  min-width: 440px !important;
-  max-height: 440px !important;
+  min-width: 512px !important;
+  max-height: 512px !important;
 }
-main.main-content.front-page #quicktax #steuerrechner form {
-  margin: 0 auto;
-  max-width: 790px;
-}
-main.main-content.front-page #quicktax #steuerrechner .radio-wrapper {
-  gap: 10px;
-}
-main.main-content.front-page #quicktax #steuerrechner .radio-wrapper label {
-  padding: 20px 24px;
-  font-size: 24px;
-  display: grid;
-  place-items: center;
-}
-main.main-content.front-page #quicktax #steuerrechner .number-wrapper input {
-  font-size: 24px;
-}
-main.main-content.front-page #steps {
+main.main-content.front-page #steps .flip-cards-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+}
+main.main-content.front-page #steps .flip-card-inner {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+main.main-content.front-page #steps .flip-card-inner img {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
+}
+main.main-content.front-page #steps .flip-card-inner .flip-card-front,
+main.main-content.front-page #steps .flip-card-inner .flip-card-back {
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+}
+main.main-content.front-page #steps .flip-card-inner .flip-card-back {
+  display: grid;
+  place-items: center;
 }
 main.main-content.front-page #steps .step {
   position: relative;
@@ -1751,13 +2239,38 @@ main.main-content.front-page #steps .step details .details-content {
   margin-top: 10px;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(51, 51, 51, 0.1);
   transition: ease-in 0.2s opacity;
   opacity: 0;
   background-color: #FFFFFF;
 }
 main.main-content.front-page #steps .step details[open] .details-content {
   opacity: 1;
+}
+main.main-content.front-page #app {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  background-color: #66DB3B;
+  border-radius: 12px;
+  overflow: hidden;
+}
+main.main-content.front-page #app .app-mockup {
+  height: 100%;
+}
+main.main-content.front-page #app .app-mockup img {
+  display: block;
+  object-fit: cover;
+  height: 100%;
+}
+main.main-content.front-page #app .app-text {
+  padding: 20px;
+}
+main.main-content.front-page #app .app-text h3 {
+  margin-top: 0.9375rem;
+}
+main.main-content.front-page #app .app-text .store-badges img {
+  width: 200px;
 }
 main.main-content.front-page #zahlen-und-fakten {
   padding-bottom: 200px;
@@ -1798,7 +2311,7 @@ main.main-content.front-page #zahlen-und-fakten .box .items::before {
   z-index: -1;
   content: "";
   position: absolute;
-  background-image: url("http://steuermachen-theme.local/wp-content/uploads/2020/12/cropped-steuermachen-logo.png");
+  background-image: url("/wp-content/uploads/2020/12/cropped-steuermachen-logo.png");
   background-size: 315px 315px;
   display: block;
   width: 315px;
@@ -1834,12 +2347,17 @@ main.main-content.front-page #bewertungen .rating-boxes .rating-box {
   border-radius: 12px;
   padding: 22px 24px;
   background-color: #F1F6FC;
+  display: flex;
+  flex-flow: column wrap;
 }
 main.main-content.front-page #bewertungen .rating-boxes .rating-box:nth-child(1) {
   background: linear-gradient(to left, #F1F6FC, transparent);
 }
 main.main-content.front-page #bewertungen .rating-boxes .rating-box:nth-child(3) {
   background: linear-gradient(to right, #F1F6FC, transparent);
+}
+main.main-content.front-page #bewertungen .rating-boxes .rating-box .details-wrapper {
+  flex: 1;
 }
 main.main-content.front-page #bewertungen .rating-boxes .rating-box .title {
   font-size: 24px;
@@ -1849,7 +2367,7 @@ main.main-content.front-page #bewertungen .rating-boxes .rating-box .date {
   font-size: 18px;
   font-weight: 700;
   color: #ff6138;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
 }
 main.main-content.front-page #bewertungen .rating-boxes .rating-box q.content {
   margin-top: 10px;
@@ -1865,10 +2383,13 @@ main.main-content.front-page #bewertungen .rating-boxes .rating-box .rating-wrap
 main.main-content.front-page #bewertungen .rating-boxes .rating-box .rating-wrapper .stars {
   letter-spacing: 10px;
 }
+main.main-content.front-page #steuerratgeber h2 {
+  margin-bottom: 40px;
+}
 main.main-content.front-page #steuerratgeber .recent-posts {
   display: grid;
   grid-template-columns: 4fr 3fr;
-  gap: 12px;
+  gap: 30px;
 }
 main.main-content.front-page #steuerratgeber .recent-posts .image {
   border-radius: 12px;
@@ -1897,7 +2418,7 @@ main.main-content.front-page #steuerratgeber .recent-posts .latest-post .image {
 main.main-content.front-page #steuerratgeber .recent-posts .latest-posts {
   display: flex;
   flex-flow: column wrap;
-  gap: 12px;
+  gap: 30px;
 }
 main.main-content.front-page #steuerratgeber .recent-posts .latest-posts .post {
   display: flex;
@@ -1907,9 +2428,6 @@ main.main-content.front-page #steuerratgeber .recent-posts .latest-posts .post {
 main.main-content.front-page #steuerratgeber .recent-posts .latest-posts .post .image img {
   width: 200px;
   min-width: 200px !important;
-}
-main.main-content.front-page #steuerratgeber .recent-posts .latest-posts .post .content .title a {
-  color: #000000;
 }
 main.main-content.front-page #sicherheit {
   padding: 54px;
@@ -1936,7 +2454,7 @@ main.main-content.front-page #sicherheit .shield {
   width: 60px;
   height: 60px;
   margin: 0 auto;
-  background-image: url("http://steuermachen-theme.local/wp-content/themes/steuermachen/img/shield.svg");
+  background-image: url("/wp-content/themes/steuermachen/img/shield.svg");
   background-repeat: no-repeat;
   position: relative;
 }
@@ -1986,7 +2504,7 @@ main.main-content.front-page #sicherheit .more-details a {
 
 @media (max-width: 1000px) {
   main.main-content.front-page .hero-wrapper .hero-image img {
-    min-width: auto !important;
+    min-width: 350px !important;
   }
   main.main-content.front-page #zahlen-und-fakten {
     padding-bottom: 0;
@@ -2005,15 +2523,31 @@ main.main-content.front-page #sicherheit .more-details a {
     display: none;
   }
   main.main-content.front-page #bewertungen .rating-boxes {
-    overflow: hidden;
-    overflow-x: scroll;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  main.main-content.front-page #bewertungen .rating-boxes .rating-box {
+    width: 100%;
+    max-width: 420px;
+  }
+  main.main-content.front-page #bewertungen .rating-boxes .rating-box:nth-child(1) {
+    background: linear-gradient(to top, #F1F6FC, transparent);
+  }
+  main.main-content.front-page #bewertungen .rating-boxes .rating-box:nth-child(3) {
+    background: linear-gradient(to bottom, #F1F6FC, transparent);
   }
 }
 @media (max-width: 835px) {
-  main.main-content.front-page #steps {
+  main.main-content.front-page .hero-wrapper {
+    flex-direction: column;
+  }
+  main.main-content.front-page .hero-wrapper .hero-image img {
+    max-height: 100% !important;
+  }
+  main.main-content.front-page #steps .flip-cards-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
-  main.main-content.front-page #steps .step:nth-child(even)::after {
+  main.main-content.front-page #steps .flip-cards-wrapper .step:nth-child(even)::after {
     display: none;
   }
   main.main-content.front-page #sicherheit {
@@ -2034,8 +2568,8 @@ main.main-content.front-page #sicherheit .more-details a {
     font-size: 30px;
     text-align: center;
   }
-  main.main-content.front-page #hero.hero-wrapper .hero-image {
-    display: none;
+  main.main-content.front-page #app {
+    grid-template-columns: 1fr;
   }
   main.main-content.front-page #zahlen-und-fakten .box {
     flex-direction: column;
@@ -2063,13 +2597,16 @@ main.main-content.front-page #sicherheit .more-details a {
   }
 }
 @media (max-width: 640px) {
-  main.main-content.front-page #steps {
+  main.main-content.front-page #steps .flip-cards-wrapper {
     grid-template-columns: 1fr;
   }
-  main.main-content.front-page #steps .step::after {
+  main.main-content.front-page #steps .flip-cards-wrapper .step::after {
     display: none;
   }
-  main.main-content.front-page #zahlen-und-fakten .body {
+  main.main-content.front-page #quicktax #steuerrechner .radio-wrapper label {
+    font-size: 20px;
+  }
+  main.main-content.front-page #zahlen-und-fakten .box {
     padding: 20px;
   }
   main.main-content.front-page #steuerratgeber .recent-posts {
@@ -2103,7 +2640,24 @@ main.main-content.front-page #sicherheit .more-details a {
     width: fit-content;
   }
 }
-body::before {
+@media (max-width: 576px) {
+  main.main-content.front-page .hero-wrapper .hero-text .seals {
+    flex-direction: column;
+  }
+  main.main-content.front-page .hero-wrapper .hero-text .advantages ul {
+    flex-direction: column;
+  }
+  main.main-content.front-page .hero-wrapper .hero-text .cta-button {
+    width: 100%;
+  }
+  main.main-content.front-page .hero-wrapper .hero-text .cta-button .btn-lg {
+    width: 100%;
+  }
+  main.main-content.front-page #quicktax #steuerrechner .radio-wrapper label {
+    font-size: 16px;
+  }
+}
+body:not(.no-gradient)::before {
   z-index: -1;
   position: absolute;
   top: 0;
@@ -2112,8 +2666,7 @@ body::before {
   width: 100%;
   height: 550px;
   display: block;
-  background: linear-gradient(359.99deg, #FFFFFF -5.47%, #EEF6FF 99.99%);
-  border-radius: 0px 0px 90px 90px;
+  background: linear-gradient(0deg, #FFFFFF, #EEF6FF);
 }
 
 header#header {
@@ -2157,7 +2710,7 @@ header#header .header-inner .header-content .menu-top-container-wrapper .menu {
 header#header .header-inner .header-content .menu-top-container-wrapper .menu a {
   display: block;
   position: relative;
-  color: #000000;
+  color: #333;
   font-size: 16px;
 }
 header#header .header-inner .header-content .menu-top-container-wrapper .menu a:hover {
@@ -2190,7 +2743,7 @@ header#header .header-inner .header-content .menu-top-container-wrapper .menu .m
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1330px) {
   header#header {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -2221,8 +2774,8 @@ header#header .header-inner .header-mobile [data-hide-menu] {
   header#header .header-inner .header-mobile .header-mobile-overlay {
     z-index: 90;
     position: fixed;
-    background-color: #66DB3B;
-    inset: 0 0 0 0;
+    background-color: #FFFFFF;
+    inset: 0;
     display: none;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay .icon-x {
@@ -2235,6 +2788,11 @@ header#header .header-inner .header-mobile [data-hide-menu] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow: auto;
+    max-height: 100%;
+    width: calc(100% - 100px);
+    padding-block: 1em;
+    text-align: center;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container {
     margin-bottom: 24px;
@@ -2243,13 +2801,28 @@ header#header .header-inner .header-mobile [data-hide-menu] {
     list-style-type: none;
     text-align: center;
   }
-  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul li {
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.menu > li {
     font-size: 18px;
     font-weight: 600;
     padding-bottom: 24px;
   }
-  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul li a {
-    color: #000000;
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.menu > li a {
+    color: #333;
+  }
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.sub-menu {
+    padding: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: fit-content;
+    margin-inline: auto;
+    border-radius: 8px;
+  }
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.sub-menu > li {
+    list-style-type: circle;
+    margin-left: 20px;
+  }
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.sub-menu > li a {
+    padding-block: 0.2em;
+    display: inline-block;
   }
 }
 #hero {
@@ -2264,6 +2837,10 @@ header#header .header-inner .header-mobile [data-hide-menu] {
   margin: 0 auto;
   gap: 20px;
 }
+#hero.hero-wrapper .hero-text:only-child h1,
+#hero.hero-wrapper .hero-text:only-child .secondary-title {
+  text-align: center;
+}
 #hero.hero-wrapper .hero-text h1,
 #hero.hero-wrapper .hero-text .secondary-title {
   text-align: left;
@@ -2273,6 +2850,7 @@ header#header .header-inner .header-mobile [data-hide-menu] {
   height: auto;
   min-width: 256px;
   max-height: 296px;
+  object-fit: contain;
 }
 #hero h1:not(.post-title) {
   text-align: center;
@@ -2281,6 +2859,30 @@ header#header .header-inner .header-mobile [data-hide-menu] {
 #hero .secondary-title {
   text-align: center;
   font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  #hero .hero-image:not(main.main-content.front-page #hero .hero-image) {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  #hero.hero-wrapper .hero-text h1.post-title {
+    font-size: 40px;
+  }
+  #hero.hero-wrapper .hero-text .secondary-title {
+    font-size: 18px;
+  }
+}
+iframe {
+  max-width: 100%;
+  display: block;
+}
+iframe.iframe-loading {
+  background-image: url("https://c.tenor.com/K2UGDd4acJUAAAAC/tenor.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40px;
 }
 
 .m-0 {
@@ -2679,145 +3281,329 @@ body.christmas #page {
   background-repeat: repeat-x;
 }
 
-.page-template-landing-page .custom-logo {
+.page-template-landing-page-grundsteuer .custom-logo,
+.page-template-landing-page-safetax .custom-logo,
+.page-template-landing-page-steuereasy .custom-logo,
+.page-template-landing-page-steuererklaerung .custom-logo,
+.page-template-landing-page-einkommensteuer .custom-logo {
   max-height: 90px;
 }
-.page-template-landing-page.christmas .landing-page .countdown-wrapper {
+.page-template-landing-page-grundsteuer.christmas .landing-page .countdown-wrapper,
+.page-template-landing-page-safetax.christmas .landing-page .countdown-wrapper,
+.page-template-landing-page-steuereasy.christmas .landing-page .countdown-wrapper,
+.page-template-landing-page-steuererklaerung.christmas .landing-page .countdown-wrapper,
+.page-template-landing-page-einkommensteuer.christmas .landing-page .countdown-wrapper {
   position: relative;
 }
-.page-template-landing-page.christmas .landing-page .countdown-wrapper::before {
+.page-template-landing-page-grundsteuer.christmas .landing-page .countdown-wrapper::before,
+.page-template-landing-page-safetax.christmas .landing-page .countdown-wrapper::before,
+.page-template-landing-page-steuereasy.christmas .landing-page .countdown-wrapper::before,
+.page-template-landing-page-steuererklaerung.christmas .landing-page .countdown-wrapper::before,
+.page-template-landing-page-einkommensteuer.christmas .landing-page .countdown-wrapper::before {
   position: absolute;
   top: -55px;
   left: -55px;
   content: url("./img/christmas-bells.png");
 }
-.page-template-landing-page .landing-page .h1, .page-template-landing-page .landing-page h1,
-.page-template-landing-page .landing-page .h2, .page-template-landing-page .landing-page h2,
-.page-template-landing-page .landing-page .h3, .page-template-landing-page .landing-page h3,
-.page-template-landing-page .landing-page .h4, .page-template-landing-page .landing-page h4,
-.page-template-landing-page .landing-page .h5, .page-template-landing-page .landing-page h5 {
+.page-template-landing-page-grundsteuer .landing-page .h1, .page-template-landing-page-grundsteuer .landing-page h1,
+.page-template-landing-page-grundsteuer .landing-page .h2, .page-template-landing-page-grundsteuer .landing-page h2,
+.page-template-landing-page-grundsteuer .landing-page .h3, .page-template-landing-page-grundsteuer .landing-page h3,
+.page-template-landing-page-grundsteuer .landing-page .h4, .page-template-landing-page-grundsteuer .landing-page h4,
+.page-template-landing-page-grundsteuer .landing-page .h5, .page-template-landing-page-grundsteuer .landing-page h5,
+.page-template-landing-page-safetax .landing-page .h1,
+.page-template-landing-page-safetax .landing-page h1,
+.page-template-landing-page-safetax .landing-page .h2,
+.page-template-landing-page-safetax .landing-page h2,
+.page-template-landing-page-safetax .landing-page .h3,
+.page-template-landing-page-safetax .landing-page h3,
+.page-template-landing-page-safetax .landing-page .h4,
+.page-template-landing-page-safetax .landing-page h4,
+.page-template-landing-page-safetax .landing-page .h5,
+.page-template-landing-page-safetax .landing-page h5,
+.page-template-landing-page-steuereasy .landing-page .h1,
+.page-template-landing-page-steuereasy .landing-page h1,
+.page-template-landing-page-steuereasy .landing-page .h2,
+.page-template-landing-page-steuereasy .landing-page h2,
+.page-template-landing-page-steuereasy .landing-page .h3,
+.page-template-landing-page-steuereasy .landing-page h3,
+.page-template-landing-page-steuereasy .landing-page .h4,
+.page-template-landing-page-steuereasy .landing-page h4,
+.page-template-landing-page-steuereasy .landing-page .h5,
+.page-template-landing-page-steuereasy .landing-page h5,
+.page-template-landing-page-steuererklaerung .landing-page .h1,
+.page-template-landing-page-steuererklaerung .landing-page h1,
+.page-template-landing-page-steuererklaerung .landing-page .h2,
+.page-template-landing-page-steuererklaerung .landing-page h2,
+.page-template-landing-page-steuererklaerung .landing-page .h3,
+.page-template-landing-page-steuererklaerung .landing-page h3,
+.page-template-landing-page-steuererklaerung .landing-page .h4,
+.page-template-landing-page-steuererklaerung .landing-page h4,
+.page-template-landing-page-steuererklaerung .landing-page .h5,
+.page-template-landing-page-steuererklaerung .landing-page h5,
+.page-template-landing-page-einkommensteuer .landing-page .h1,
+.page-template-landing-page-einkommensteuer .landing-page h1,
+.page-template-landing-page-einkommensteuer .landing-page .h2,
+.page-template-landing-page-einkommensteuer .landing-page h2,
+.page-template-landing-page-einkommensteuer .landing-page .h3,
+.page-template-landing-page-einkommensteuer .landing-page h3,
+.page-template-landing-page-einkommensteuer .landing-page .h4,
+.page-template-landing-page-einkommensteuer .landing-page h4,
+.page-template-landing-page-einkommensteuer .landing-page .h5,
+.page-template-landing-page-einkommensteuer .landing-page h5 {
   font-style: normal;
   font-weight: 700;
   margin-bottom: 0;
   line-height: 1 !important;
+  text-transform: initial;
 }
-.page-template-landing-page .landing-page .h1, .page-template-landing-page .landing-page h1 {
+.page-template-landing-page-grundsteuer .landing-page .h1, .page-template-landing-page-grundsteuer .landing-page h1,
+.page-template-landing-page-safetax .landing-page .h1,
+.page-template-landing-page-safetax .landing-page h1,
+.page-template-landing-page-steuereasy .landing-page .h1,
+.page-template-landing-page-steuereasy .landing-page h1,
+.page-template-landing-page-steuererklaerung .landing-page .h1,
+.page-template-landing-page-steuererklaerung .landing-page h1,
+.page-template-landing-page-einkommensteuer .landing-page .h1,
+.page-template-landing-page-einkommensteuer .landing-page h1 {
   font-size: 56px;
 }
-.page-template-landing-page .landing-page .h2, .page-template-landing-page .landing-page h2 {
+.page-template-landing-page-grundsteuer .landing-page .h2, .page-template-landing-page-grundsteuer .landing-page h2,
+.page-template-landing-page-safetax .landing-page .h2,
+.page-template-landing-page-safetax .landing-page h2,
+.page-template-landing-page-steuereasy .landing-page .h2,
+.page-template-landing-page-steuereasy .landing-page h2,
+.page-template-landing-page-steuererklaerung .landing-page .h2,
+.page-template-landing-page-steuererklaerung .landing-page h2,
+.page-template-landing-page-einkommensteuer .landing-page .h2,
+.page-template-landing-page-einkommensteuer .landing-page h2 {
   font-size: 40px;
 }
-.page-template-landing-page .landing-page .h3, .page-template-landing-page .landing-page h3 {
+.page-template-landing-page-grundsteuer .landing-page .h3, .page-template-landing-page-grundsteuer .landing-page h3,
+.page-template-landing-page-safetax .landing-page .h3,
+.page-template-landing-page-safetax .landing-page h3,
+.page-template-landing-page-steuereasy .landing-page .h3,
+.page-template-landing-page-steuereasy .landing-page h3,
+.page-template-landing-page-steuererklaerung .landing-page .h3,
+.page-template-landing-page-steuererklaerung .landing-page h3,
+.page-template-landing-page-einkommensteuer .landing-page .h3,
+.page-template-landing-page-einkommensteuer .landing-page h3 {
   font-size: 36px;
   font-weight: 600;
 }
-.page-template-landing-page .landing-page .h4, .page-template-landing-page .landing-page h4 {
+.page-template-landing-page-grundsteuer .landing-page .h4, .page-template-landing-page-grundsteuer .landing-page h4,
+.page-template-landing-page-safetax .landing-page .h4,
+.page-template-landing-page-safetax .landing-page h4,
+.page-template-landing-page-steuereasy .landing-page .h4,
+.page-template-landing-page-steuereasy .landing-page h4,
+.page-template-landing-page-steuererklaerung .landing-page .h4,
+.page-template-landing-page-steuererklaerung .landing-page h4,
+.page-template-landing-page-einkommensteuer .landing-page .h4,
+.page-template-landing-page-einkommensteuer .landing-page h4 {
   font-size: 24px;
   letter-spacing: 0.1em;
 }
-.page-template-landing-page .landing-page .h5, .page-template-landing-page .landing-page h5 {
+.page-template-landing-page-grundsteuer .landing-page .h5, .page-template-landing-page-grundsteuer .landing-page h5,
+.page-template-landing-page-safetax .landing-page .h5,
+.page-template-landing-page-safetax .landing-page h5,
+.page-template-landing-page-steuereasy .landing-page .h5,
+.page-template-landing-page-steuereasy .landing-page h5,
+.page-template-landing-page-steuererklaerung .landing-page .h5,
+.page-template-landing-page-steuererklaerung .landing-page h5,
+.page-template-landing-page-einkommensteuer .landing-page .h5,
+.page-template-landing-page-einkommensteuer .landing-page h5 {
   font-size: 20px;
   font-weight: 600;
 }
-.page-template-landing-page .landing-page header#hero {
+.page-template-landing-page-grundsteuer .landing-page header#hero,
+.page-template-landing-page-safetax .landing-page header#hero,
+.page-template-landing-page-steuereasy .landing-page header#hero,
+.page-template-landing-page-steuererklaerung .landing-page header#hero,
+.page-template-landing-page-einkommensteuer .landing-page header#hero {
   padding: 0 70px 40px;
   margin-top: 40px;
   margin-bottom: -40px;
 }
-.page-template-landing-page .landing-page header#hero .hero-inner {
-  padding: 70px 0;
+.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner,
+.page-template-landing-page-safetax .landing-page header#hero .hero-inner,
+.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner,
+.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner,
+.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
 }
-.page-template-landing-page .landing-page header#hero .hero-inner img {
+.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
+.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
+.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
+.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
+.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots {
+  position: relative;
+  display: inline-block;
+}
+.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before, .page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  display: block;
+  background: linear-gradient(180deg, rgba(166, 255, 134, 0.3) 0%, rgba(251, 255, 250, 0.3) 100%);
+  width: 75%;
+  height: auto;
+  aspect-ratio: 1/1;
+  border-radius: 99rem;
+}
+.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before {
+  inset: 0 0 auto auto;
+}
+.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after {
+  inset: auto auto 0 0;
+}
+.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner img,
+.page-template-landing-page-safetax .landing-page header#hero .hero-inner img,
+.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner img,
+.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner img,
+.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner img {
   width: 400px;
   display: block;
 }
-.page-template-landing-page .landing-page section {
+.page-template-landing-page-grundsteuer .landing-page section,
+.page-template-landing-page-safetax .landing-page section,
+.page-template-landing-page-steuereasy .landing-page section,
+.page-template-landing-page-steuererklaerung .landing-page section,
+.page-template-landing-page-einkommensteuer .landing-page section {
   margin-bottom: 75px;
 }
-.page-template-landing-page .landing-page section.section-price #calculator {
+.page-template-landing-page-grundsteuer .landing-page section.section-price #calculator,
+.page-template-landing-page-safetax .landing-page section.section-price #calculator,
+.page-template-landing-page-steuereasy .landing-page section.section-price #calculator,
+.page-template-landing-page-steuererklaerung .landing-page section.section-price #calculator,
+.page-template-landing-page-einkommensteuer .landing-page section.section-price #calculator {
   width: 512px;
   max-width: 100%;
 }
-.page-template-landing-page .landing-page section.section-price #calculator #bjeResult {
+.page-template-landing-page-grundsteuer .landing-page section.section-price #calculator #bjeResult,
+.page-template-landing-page-safetax .landing-page section.section-price #calculator #bjeResult,
+.page-template-landing-page-steuereasy .landing-page section.section-price #calculator #bjeResult,
+.page-template-landing-page-steuererklaerung .landing-page section.section-price #calculator #bjeResult,
+.page-template-landing-page-einkommensteuer .landing-page section.section-price #calculator #bjeResult {
   font-size: 2rem;
 }
-.page-template-landing-page .landing-page section.section-benefits .benefits-box {
-  border-radius: 24px;
-  background-color: #F7F8FA;
+.page-template-landing-page-grundsteuer .landing-page section.section-explanation h5,
+.page-template-landing-page-safetax .landing-page section.section-explanation h5,
+.page-template-landing-page-steuereasy .landing-page section.section-explanation h5,
+.page-template-landing-page-steuererklaerung .landing-page section.section-explanation h5,
+.page-template-landing-page-einkommensteuer .landing-page section.section-explanation h5 {
+  margin-bottom: 1rem;
 }
-.page-template-landing-page .landing-page section.section-benefits .benefits-box .header {
-  border-radius: 24px 24px 0 0;
-}
-.page-template-landing-page .landing-page section.section-benefits .benefits-box .main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.page-template-landing-page .landing-page section.section-benefits .benefits-box .main ul.benefits {
-  padding: 20px 0;
-}
-.page-template-landing-page .landing-page section.section-benefits .benefits-box .main ul.benefits li {
-  font-size: 24px;
-  font-weight: 500;
-  margin: 20px 20px 20px 60px;
-  padding-left: 10px;
-}
-.page-template-landing-page .landing-page section.section-benefits .benefits-box .main ul.benefits li::marker {
-  font-family: "STM-Icons";
-  content: "\e90e";
-  color: #66DB3B;
-}
-.page-template-landing-page footer {
+.page-template-landing-page-grundsteuer footer,
+.page-template-landing-page-safetax footer,
+.page-template-landing-page-steuereasy footer,
+.page-template-landing-page-steuererklaerung footer,
+.page-template-landing-page-einkommensteuer footer {
   padding: 40px;
   font-size: 12px;
 }
-.page-template-landing-page footer .custom-logo {
+.page-template-landing-page-grundsteuer footer .custom-logo,
+.page-template-landing-page-safetax footer .custom-logo,
+.page-template-landing-page-steuereasy footer .custom-logo,
+.page-template-landing-page-steuererklaerung footer .custom-logo,
+.page-template-landing-page-einkommensteuer footer .custom-logo {
   padding-bottom: 20px;
 }
-.page-template-landing-page footer ul {
+.page-template-landing-page-grundsteuer footer ul,
+.page-template-landing-page-safetax footer ul,
+.page-template-landing-page-steuereasy footer ul,
+.page-template-landing-page-steuererklaerung footer ul,
+.page-template-landing-page-einkommensteuer footer ul {
   padding-top: 10px;
   list-style-type: none;
   display: flex;
   flex-direction: row;
 }
-.page-template-landing-page footer ul li:not(:last-child) {
+.page-template-landing-page-grundsteuer footer ul li:not(:last-child),
+.page-template-landing-page-safetax footer ul li:not(:last-child),
+.page-template-landing-page-steuereasy footer ul li:not(:last-child),
+.page-template-landing-page-steuererklaerung footer ul li:not(:last-child),
+.page-template-landing-page-einkommensteuer footer ul li:not(:last-child) {
   padding-right: 10px;
 }
 
 @media (max-width: 1280px) {
-  .page-template-landing-page .max-width {
+  .page-template-landing-page-grundsteuer .max-width,
+.page-template-landing-page-safetax .max-width,
+.page-template-landing-page-steuereasy .max-width,
+.page-template-landing-page-steuererklaerung .max-width,
+.page-template-landing-page-einkommensteuer .max-width {
     max-width: 100%;
   }
 }
 @media (min-width: 1024px) {
-  .page-template-landing-page .max-width {
+  .page-template-landing-page-grundsteuer .max-width,
+.page-template-landing-page-safetax .max-width,
+.page-template-landing-page-steuereasy .max-width,
+.page-template-landing-page-steuererklaerung .max-width,
+.page-template-landing-page-einkommensteuer .max-width {
     padding-right: 32px;
     padding-left: 32px;
   }
 }
 @media (max-width: 1024px) {
-  .page-template-landing-page .max-width {
+  .page-template-landing-page-grundsteuer #hero .hero-inner .hero-image-wrapper,
+.page-template-landing-page-safetax #hero .hero-inner .hero-image-wrapper,
+.page-template-landing-page-steuereasy #hero .hero-inner .hero-image-wrapper,
+.page-template-landing-page-steuererklaerung #hero .hero-inner .hero-image-wrapper,
+.page-template-landing-page-einkommensteuer #hero .hero-inner .hero-image-wrapper {
+    display: none !important;
+  }
+  .page-template-landing-page-grundsteuer .max-width,
+.page-template-landing-page-safetax .max-width,
+.page-template-landing-page-steuereasy .max-width,
+.page-template-landing-page-steuererklaerung .max-width,
+.page-template-landing-page-einkommensteuer .max-width {
     padding-right: 8px;
     padding-left: 8px;
   }
-  .page-template-landing-page header#hero .hero-inner {
+  .page-template-landing-page-grundsteuer header#hero .hero-inner,
+.page-template-landing-page-safetax header#hero .hero-inner,
+.page-template-landing-page-steuereasy header#hero .hero-inner,
+.page-template-landing-page-steuererklaerung header#hero .hero-inner,
+.page-template-landing-page-einkommensteuer header#hero .hero-inner {
     flex-direction: column !important;
     padding: 20px !important;
   }
-  .page-template-landing-page header#hero .hero-inner h1 {
+  .page-template-landing-page-grundsteuer header#hero .hero-inner h1,
+.page-template-landing-page-safetax header#hero .hero-inner h1,
+.page-template-landing-page-steuereasy header#hero .hero-inner h1,
+.page-template-landing-page-steuererklaerung header#hero .hero-inner h1,
+.page-template-landing-page-einkommensteuer header#hero .hero-inner h1 {
     font-size: 40px;
     padding: 0px 0px 10px;
   }
-  .page-template-landing-page header#hero .hero-inner img {
+  .page-template-landing-page-grundsteuer header#hero .hero-inner img,
+.page-template-landing-page-safetax header#hero .hero-inner img,
+.page-template-landing-page-steuereasy header#hero .hero-inner img,
+.page-template-landing-page-steuererklaerung header#hero .hero-inner img,
+.page-template-landing-page-einkommensteuer header#hero .hero-inner img {
     margin-top: 2rem;
   }
-  .page-template-landing-page section.section-benefits .benefits-box .main img {
-    display: none;
+  .page-template-landing-page-safetax #hero {
+    margin-bottom: 3rem !important;
   }
 }
 a,
@@ -2882,7 +3668,7 @@ a:not(.btn):active,
   margin: 20px 0;
 }
 
-#modal {
+#modal-wrapper {
   display: none;
   position: fixed;
   top: 0;
@@ -2893,24 +3679,307 @@ a:not(.btn):active,
   height: 100%;
   background-color: #FFFFFF;
 }
-#modal #modalClose {
+#modal-wrapper #modal-close {
   position: fixed;
   top: 20px;
   right: 20px;
   padding: 5px 10px;
 }
-#modal .loader {
+#modal-wrapper .loader {
   z-index: -1;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#modal iframe#modalFrame {
+#modal-wrapper iframe#modal-frame {
   width: 100%;
   height: 100%;
 }
 
+dialog.modal {
+  margin: auto;
+  min-width: 250px;
+  max-width: 500px;
+  border: 0;
+  padding: 2em;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+dialog.modal:not([open]) {
+  display: none;
+}
+dialog.modal .modal-icon {
+  text-align: center;
+  font-size: 4em;
+}
+dialog.modal .modal-icon.modal-theme-success {
+  color: #a5dc86;
+}
+dialog.modal .modal-icon.modal-theme-warning {
+  color: #f8bb86;
+}
+dialog.modal .modal-icon.modal-theme-error {
+  color: #f27474;
+}
+dialog.modal .modal-title {
+  font-size: 2em;
+  font-weight: 500;
+}
+dialog.modal .modal-main {
+  padding-bottom: 1em;
+}
+dialog.modal .modal-main ul, dialog.modal .modal-main ol {
+  padding-left: 20px;
+}
+dialog.modal .modal-footer {
+  display: flex;
+  gap: 0.5em;
+}
+dialog.modal .modal-footer button {
+  font-size: 1em;
+  padding: 0.4em;
+}
+
+#order-form {
+  padding-inline: 50px;
+}
+
+body:not(.frame-mode) #page {
+  padding-top: 143px;
+}
+
+@media (max-width: 1240px) {
+  body:not(.frame-mode) #page {
+    padding-top: 88px;
+  }
+}
+/* Steuerratgeber child pages */
+.parent-pageid-28564 article.page ul,
+.parent-pageid-28564 article.page ol {
+  padding-left: 20px;
+  margin: 1.5em;
+}
+.parent-pageid-28564 article.page ul li,
+.parent-pageid-28564 article.page ol li {
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+/* Formulare */
+.page-id-32526 .post-content article {
+  width: fit-content;
+}
+.page-id-32526 .post-content h2 {
+  margin-bottom: 40px;
+  padding: 10px 20px;
+  background-color: #ff6138;
+  color: #FFFFFF;
+  position: relative;
+}
+.page-id-32526 .post-content h2::before {
+  position: absolute;
+  content: "";
+  transform: rotate(-90deg);
+  top: -5px;
+  left: -5px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ff6138;
+}
+.page-id-32526 .post-content h2::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 10px;
+  width: 0;
+  height: 110px;
+  border-left: 1px solid #ff6138;
+}
+.page-id-32526 .post-content details {
+  margin-left: 5px;
+}
+.page-id-32526 .post-content details summary {
+  color: #ff6138;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.page-id-32526 .post-content details summary::marker {
+  opacity: 0;
+  display: none;
+  color: #FFFFFF;
+}
+
+/* Newsletter page */
+.page-id-32990 main {
+  width: min(100%, 400px);
+  padding-top: 12px;
+}
+.page-id-32990 main .newsletter-final img {
+  width: 100px;
+}
+
+/* steuerEASY page */
+.page-id-28426 section.section-price {
+  margin-block: 4rem;
+}
+.page-id-28426 section.section-price .section-inner {
+  width: min(100%, 600px);
+  border-radius: 30px;
+  background-color: #F1F6FC;
+  overflow: hidden;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+.page-id-28426 section.section-price .section-inner .img-label-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1em;
+  padding: 1em 2em;
+}
+.page-id-28426 section.section-price .section-inner .img-label-wrapper img {
+  width: 150px;
+}
+.page-id-28426 section.section-price .section-inner .price-wrapper {
+  background-color: #66DB3B;
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 0.5em 2em;
+}
+
+.page-id-28426 .info ul {
+  list-style-type: none;
+  padding-left: 0.3em;
+}
+
+.page-id-28426 .info li {
+  margin-left: 0;
+}
+
+.page-id-28426 .info ul .fa {
+  color: #66DB3B;
+  padding-right: 0.5em;
+  font-size: 1.2rem;
+}
+
+/* steuerEASY form */
+.easy-form {
+  margin-bottom: 3em;
+}
+
+.page-id-28426 main.main-content .container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .page-id-28426 main.main-content .container {
+    width: 720px;
+    max-width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .page-id-28426 main.main-content .container {
+    width: 540px;
+    max-width: 100%;
+  }
+}
+.page-id-75 #order-form {
+  background-color: #FFFFFF;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.page-id-75 #order-form .loading-screen {
+  z-index: 9;
+  position: absolute;
+  inset: 0;
+  background-color: #FFFFFF;
+  display: grid;
+  place-items: center;
+}
+.page-id-75 #order-form .loading-screen .icon-loader {
+  font-size: 3em;
+}
+.page-id-75 #page-2 {
+  max-width: 600px;
+  margin-inline: auto;
+}
+.page-id-75 #page-2 .price-calculator .calc .field-wrapper {
+  width: 100%;
+}
+.page-id-75 #page-2 .price-calculator .calc .field-wrapper input {
+  width: 100%;
+}
+.page-id-75 #page-3 .fields-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5em;
+}
+.page-id-75 #page-3 .fields-wrapper .field-wrapper {
+  width: 100%;
+  margin-bottom: 0;
+}
+.page-id-75 #page-3 .fields-wrapper .field-wrapper input {
+  width: 100%;
+}
+.page-id-75 .radio-boxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  text-align: center;
+  justify-content: space-between;
+}
+.page-id-75 .radio-boxes label input {
+  display: none;
+}
+.page-id-75 .radio-boxes label input:checked + .radio-box {
+  background-color: #66DB3B;
+}
+.page-id-75 .radio-boxes label .radio-box {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.1s all ease-in-out;
+}
+.page-id-75 .radio-boxes label .radio-box span {
+  font-size: 24px;
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.page-id-75 .radio-boxes label .radio-box img {
+  padding: 1em;
+}
+.page-id-75 .radio-boxes label .label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .page-id-75 .pagination-wrapper,
+.page-id-33519 .pagination-wrapper {
+    flex-direction: column;
+    gap: 2em !important;
+  }
+  .page-id-75 #page-3 .fields-wrapper,
+.page-id-33519 #page-3 .fields-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
 #post-400 .wp-caption {
   margin: 82px auto;
   width: 800px !important;
@@ -2924,12 +3993,11 @@ a:not(.btn):active,
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 100px;
+  gap: 50px;
 }
 .post-wrapper.single-post .post-content-wrapper .post-sidebar {
-  min-width: 300px;
   display: flex;
-  flex-flow: wrap column;
+  flex-direction: column;
   gap: 3rem;
 }
 .post-wrapper.single-post .post-content-wrapper .post-sidebar .header {
@@ -2955,7 +4023,7 @@ a:not(.btn):active,
 .post-wrapper.single-post .post-content-wrapper .post-content ul,
 .post-wrapper.single-post .post-content-wrapper .post-content ol {
   padding-left: 20px;
-  margin: 1.5em;
+  margin: 1.3em;
 }
 .post-wrapper.single-post .post-content-wrapper .post-content ul li,
 .post-wrapper.single-post .post-content-wrapper .post-content ol li {
@@ -2968,6 +4036,100 @@ a:not(.btn):active,
   font-style: italic;
   background-color: #F1F6FC;
   margin: 20px 0;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper {
+  flex: 1;
+  position: relative;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper .recommended-posts-inner {
+  position: absolute;
+  scroll-behavior: smooth;
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+  overflow-x: scroll;
+  gap: 20px;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper .recommended-post {
+  padding-bottom: 10px;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper .recommended-post .recommended-post-thumbnail {
+  width: 240px;
+  height: 160px;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper .recommended-post .recommended-post-thumbnail:hover img {
+  scale: 1.2;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper .recommended-post .recommended-post-thumbnail img {
+  display: block;
+  transition: ease-in-out 0.3s scale;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-left],
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-right] {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  border-radius: 99rem;
+  width: 60px;
+  height: 60px;
+  border: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  padding: 10px;
+  overflow: hidden;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-left]:hover .button-overlay,
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-right]:hover .button-overlay {
+  transform: translateX(0);
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-left]:active .button-overlay,
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-right]:active .button-overlay {
+  background-color: #CC5637;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-left] .button-overlay,
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-right] .button-overlay {
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background-color: #ff6138;
+  transition: transform 0.1s ease-in-out;
+  mix-blend-mode: multiply;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-left] {
+  left: -30px;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-left] .button-overlay {
+  transform: translateX(100%);
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-right] {
+  right: -30px;
+}
+.post-wrapper.single-post .post-content-wrapper .post-content .recommended-posts-wrapper [data-rss-right] .button-overlay {
+  transform: translateX(-100%);
+}
+
+body.frame-mode .post-wrapper.single-post {
+  margin-bottom: 4rem;
 }
 
 /* PAGE */
@@ -3005,7 +4167,22 @@ a:not(.btn):active,
   border-radius: 60px;
 }
 
+@media (min-width: 1024px) {
+  .post-wrapper .post-content-wrapper .post-sidebar {
+    max-width: 375px;
+  }
+}
 @media (max-width: 1024px) {
+  .post-wrapper .post-content-wrapper {
+    flex-direction: column;
+  }
+  .post-wrapper .post-content-wrapper .post-sidebar {
+    order: 0;
+  }
+  .post-wrapper .post-content-wrapper .post-content {
+    max-width: 100% !important;
+    order: 1;
+  }
   .post-wrapper .post-content-wrapper .post-image::before, .post-wrapper .post-content-wrapper .post-image::after {
     background-size: 90px 75px;
     width: 90px;
@@ -3044,7 +4221,7 @@ a:not(.btn):active,
   transform: scale(1.1);
 }
 .posts-wrapper .list-article .list-article-content a.list-article-link {
-  color: #000000;
+  color: #333;
 }
 .posts-wrapper .list-article .list-article-content a.list-article-link:hover {
   color: #CC5637;
@@ -3090,6 +4267,21 @@ a:not(.btn):active,
   order: 0;
 }
 
+@media (max-width: 1280px) {
+  .posts-wrapper {
+    gap: 20px 40px;
+  }
+}
+@media (max-width: 1024px) {
+  .posts-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .posts-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
 .price-card {
   display: flex;
   flex-flow: row nowrap;
@@ -3116,7 +4308,7 @@ a:not(.btn):active,
   margin-bottom: 10px;
 }
 .price-card ul.description li::marker {
-  content: "\e904  ";
+  content: "\e90e  ";
   font-family: "STM-Icons";
   color: #66DB3B;
   padding-right: 5px;
@@ -3149,12 +4341,98 @@ a:not(.btn):active,
 /* /preise */
 #post-28374 .section-seals .flex-wrapper {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 #post-28374 .section-seals .trusted-shops-wrapper {
   display: flex;
   flex-flow: row nowrap;
   gap: 15px;
+}
+
+@media (max-width: 1024px) {
+  #post-28374 .section-seals img {
+    height: 100px;
+  }
+}
+@media (max-width: 768px) {
+  #post-28374 .section-seals .flex-wrapper {
+    flex-direction: column;
+  }
+  #post-28374 .section-seals img {
+    height: auto;
+  }
+}
+.progress-bar-wrapper {
+  background-color: #E2E2E2;
+  height: 5px;
+  border-radius: 99rem;
+  overflow: hidden;
+}
+.progress-bar-wrapper .progress-bar {
+  height: 100%;
+  width: var(--progress, 0%);
+  border-radius: 99rem;
+  transition: ease-in-out 0.4s width;
+}
+
+.radio-button-wrapper {
+  cursor: pointer;
+}
+.radio-button-wrapper:not(:last-child) {
+  margin-right: 20px;
+}
+.radio-button-wrapper:hover .radio-button {
+  border-color: #66DB3B;
+}
+.radio-button-wrapper input[type=radio] {
+  display: none;
+}
+.radio-button-wrapper input[type=radio]:checked + .radio-button {
+  border-color: #66DB3B;
+}
+.radio-button-wrapper input[type=radio]:checked + .radio-button::before {
+  background-color: #66DB3B;
+}
+.radio-button-wrapper .radio-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000000;
+  transition: 0.2s all ease;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+}
+.radio-button-wrapper .radio-button::before {
+  content: "";
+  background-color: transparent;
+  transition: 0.2s all ease;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+}
+.radio-button-wrapper .radio-button + .label {
+  display: inline-block;
+  font-size: 18px;
+  padding-left: 5px;
+}
+
+.read-more-checkbox {
+  display: none;
+}
+.read-more-checkbox:not(:checked) + .read-more-wrapper .read-more-text {
+  display: none;
+}
+.read-more-checkbox:checked + .read-more-wrapper .read-more-excerpt {
+  display: none;
+}
+
+.read-more-excerpt label.read-more {
+  color: #ff6138;
+  cursor: pointer;
 }
 
 .search-form-wrapper {
@@ -3217,6 +4495,114 @@ a:not(.btn):active,
   padding-bottom: 82px;
 }
 
+@media (max-width: 1024px) {
+  .section-mt {
+    margin-top: 62px;
+  }
+  .section-mb {
+    margin-bottom: 62px;
+  }
+  .section-my {
+    margin-top: 62px;
+    margin-bottom: 62px;
+  }
+  .section-pt {
+    padding-top: 62px;
+  }
+  .section-pb {
+    padding-bottom: 62px;
+  }
+  .section-py {
+    padding-top: 62px;
+    padding-bottom: 62px;
+  }
+}
+@media (max-width: 768px) {
+  .section-mt {
+    margin-top: 42px;
+  }
+  .section-mb {
+    margin-bottom: 42px;
+  }
+  .section-my {
+    margin-top: 42px;
+    margin-bottom: 42px;
+  }
+  .section-pt {
+    padding-top: 42px;
+  }
+  .section-pb {
+    padding-bottom: 42px;
+  }
+  .section-py {
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+}
+@media (min-width: 1310px) {
+  .sidebar-content-wrapper {
+    display: flex;
+    gap: 2rem;
+  }
+  .sidebar-content-wrapper .sidebar-front-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    min-width: 290px;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item {
+    border-radius: 10px;
+    border: 1px solid #E2E2E2;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item-title {
+    padding: 0.5em;
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item-content {
+    padding: 1em;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.newsletter .sidebar-item-title {
+    background-color: rgba(102, 219, 59, 0.4);
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.newsletter .sidebar-item-content img {
+    width: 100px;
+    margin-bottom: 1em;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.newsletter .sidebar-item-content .newsletter-frame {
+    max-width: 100%;
+    display: block;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.qr-code-app-download img {
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.contact-form .sidebar-item-content {
+    padding: 1em;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.steuerratgeber .sidebar-item-content .latest-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.steuerratgeber .sidebar-item-content .latest-posts .image {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.steuerratgeber .sidebar-item-content .latest-posts .image img {
+    width: 100%;
+    display: block;
+    transition: ease-in-out 0.3s transform;
+  }
+  .sidebar-content-wrapper .sidebar-front-page .sidebar-item.steuerratgeber .sidebar-item-content .latest-posts .image img:hover {
+    transform: scale(1.1);
+  }
+}
+@media (max-width: 1310px) {
+  .sidebar-content-wrapper .sidebar-front-page {
+    display: none;
+  }
+}
 .stars {
   font-size: 32px;
   position: relative;
@@ -3239,19 +4625,57 @@ a:not(.btn):active,
   width: var(--stars-width);
 }
 
-.table-of-contents li {
+#steuerrechner h3 {
+  margin-bottom: 1em;
+}
+#steuerrechner form {
+  margin: 0 auto;
+  padding-inline: 0;
+  max-width: 820px;
+}
+#steuerrechner .radio-wrapper {
+  gap: 10px;
+}
+#steuerrechner .radio-wrapper.radio-triple {
+  gap: 16px;
+}
+#steuerrechner .radio-wrapper label {
+  padding: 20px 24px;
+  font-size: 24px;
+  display: grid;
+  place-items: center;
+}
+#steuerrechner .radio-wrapper label .label {
+  white-space: nowrap;
+}
+#steuerrechner .number-wrapper input {
+  font-size: 24px;
+}
+
+._table-of-contents li {
   list-style: none;
   border-bottom: 1px solid #000000;
 }
-.table-of-contents li:first-child {
+._table-of-contents li:first-child {
   border-top: 1px solid #000000;
 }
-.table-of-contents li:hover {
+._table-of-contents li:hover {
   background-color: #F1F6FC;
 }
-.table-of-contents li a {
+._table-of-contents li a {
   padding: 10px;
   display: block;
+}
+
+.post-table-of-contents {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 1.3em;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.post-table-of-contents ul.table-of-contents {
+  margin: 0 !important;
+  margin-left: 1em !important;
 }
 
 /**

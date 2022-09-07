@@ -39,3 +39,18 @@ $wp_customize->add_control(
         'type' => 'textarea',
     )
 );
+
+$wp_customize->add_setting(
+    'banner_link'
+);
+
+$wp_customize->add_control(
+    'banner_link',
+    array(
+        'label' => 'Bannerverlinkung',
+        'description' => 'Leer lassen um den Banner <strong>nicht</strong> zu verlinken.',
+        'section' => 'banner_section',
+        'type' => 'url',
+        // 'type' => 'dropdown-pages',
+    )
+);

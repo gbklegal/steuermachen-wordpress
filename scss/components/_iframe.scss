@@ -1,0 +1,17 @@
+iframe {
+    max-width: 100%;
+    display: block;
+    
+    &.iframe-loading {
+        background-image: url('https://c.tenor.com/K2UGDd4acJUAAAAC/tenor.gif');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 40px;
+        // display: grid;
+        // place-items: center;
+
+        // &::before {
+        //     content: 'Lädt...';
+        // }
+    }
+}

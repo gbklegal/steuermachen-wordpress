@@ -1,0 +1,56 @@
+.box-txt-small {
+    font-size: 12px;
+    // padding: 10px; // optional feature (idea)
+}
+
+.box-info {
+    padding: 20px;
+    background: #C4ED8E;
+    border-radius: 4px;
+}
+
+
+
+.benefits-box {
+    border-radius: 24px;
+    background-color: #F7F8FA;
+
+    .header {
+        border-radius: 24px 24px 0 0;
+
+        h3 {
+            line-height: 1.2em !important;
+        }
+    }
+
+    .main {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        ul.benefits {
+            padding: 20px 0;
+
+            li {
+                font-size: 24px;
+                font-weight: 500;
+                margin: 20px 20px 20px 60px;
+                padding-left: 10px;
+
+                &::marker {
+                    font-family: $font-icons;
+                    content: '\e90e';
+                    color: $clr-secondary;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-lg) {
+    .benefits-box .main img {
+        display: none;
+    }
+}

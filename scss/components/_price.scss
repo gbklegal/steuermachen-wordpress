@@ -3,13 +3,42 @@
     .section-seals {
         .flex-wrapper {
             display: flex;
+            flex-flow: row wrap;
             justify-content: space-between;
+            align-items: center;
+            gap: 20px;
         }
 
         .trusted-shops-wrapper {
             display: flex;
             flex-flow: row nowrap;
             gap: 15px;
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-lg) {
+    #post-28374 {
+        .section-seals {
+            img {
+                height: 100px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-md) {
+    #post-28374 {
+        .section-seals {
+            .flex-wrapper {
+                flex-direction: column;
+            }
+
+            img {
+                height: auto;
+            }
         }
     }
 }

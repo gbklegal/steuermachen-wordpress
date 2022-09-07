@@ -3,7 +3,7 @@
         <a href="<?php echo esc_url( get_permalink() ); ?>">
             <?php
             if ( has_post_thumbnail() )
-                the_post_thumbnail( 'medium' );
+                the_post_thumbnail( 'large' );
             else
                 echo '<img alt="" src="' . get_template_directory_uri() . '/assets/images/placholder2.png">';
             ?>

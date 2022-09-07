@@ -2,22 +2,25 @@
  * Countdown
  */
 function countdown() {
-    const countdownElmts = document.querySelectorAll('.countdown');
+    const countdownElmts = document.querySelectorAll('[data-countdown]');
 
-    countdownElmts.forEach((countdownElmt, index) => {
+    countdownElmts.forEach(countdownElmt => {
         let countdownEnd = countdownElmt.dataset.countdownEnd;
         if (!countdownEnd)
             return;
 
         // Set the date we're counting down to
+        countdownEnd = countdownEnd.replace(/-/g, '/');
         let countdownDate = new Date(countdownEnd).getTime();
+
         // simple check length function
         const cl = n => n < 10 ? '0' + n : n;
+
         // all elements
-        daysElmt = countdownElmt.querySelector('.countdown-days');
-        hoursElmt = countdownElmt.querySelector('.countdown-hours');
-        minutesElmt = countdownElmt.querySelector('.countdown-minutes');
-        secondsElmt = countdownElmt.querySelector('.countdown-seconds');
+        daysElmt = countdownElmt.querySelector('[data-countdown-days]');
+        hoursElmt = countdownElmt.querySelector('[data-countdown-hours]');
+        minutesElmt = countdownElmt.querySelector('[data-countdown-minutes]');
+        secondsElmt = countdownElmt.querySelector('[data-countdown-seconds]');
 
         // Update the count down every 1 second
         const countDown = setInterval(() => {
@@ -38,6 +41,9 @@ function countdown() {
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+            // console.log(days, hours, minutes, seconds);
+            // console.log(countdownDate, now);
+
             // If the count down is finished, write some text
             if (distance < 1000)
                 // this let the countdown stay at 0
@@ -51,4 +57,4 @@ function countdown() {
     });
 }
 
-countdown();
+window.addEventListener('load', countdown);

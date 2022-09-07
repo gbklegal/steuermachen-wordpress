@@ -1,25 +1,40 @@
-.section-mt {
-    margin-top: 82px;
+@mixin section($section-distance) {
+    .section-mt {
+        margin-top: $section-distance;
+    }
+
+    .section-mb {
+        margin-bottom: $section-distance;
+    }
+
+    .section-my {
+        margin-top: $section-distance;
+        margin-bottom: $section-distance;
+    }
+
+    .section-pt {
+        padding-top: $section-distance;
+    }
+
+    .section-pb {
+        padding-bottom: $section-distance;
+    }
+
+    .section-py {
+        padding-top: $section-distance;
+        padding-bottom: $section-distance;
+    }
 }
 
-.section-mb {
-    margin-bottom: 82px;
+
+@include section(82px);
+
+
+@media (max-width: $breakpoint-lg) {
+    @include section(62px);
 }
 
-.section-my {
-    margin-top: 82px;
-    margin-bottom: 82px;
-}
 
-.section-pt {
-    padding-top: 82px;
-}
-
-.section-pb {
-    padding-bottom: 82px;
-}
-
-.section-py {
-    padding-top: 82px;
-    padding-bottom: 82px;
+@media (max-width: $breakpoint-md) {
+    @include section(42px);
 }

@@ -7,7 +7,22 @@ body.christmas #page {
     background-repeat: repeat-x;
 }
 
-.page-template-landing-page {
+// .page-template-landing-page-steuererklaerung {
+//     .landing-page {
+//         header#hero {
+//             .hero-inner {
+//                 padding-bottom: 70px;
+//             }
+//         }
+//     }
+// }
+
+.page-template-landing-page-grundsteuer,
+.page-template-landing-page-safetax,
+.page-template-landing-page-steuereasy,
+.page-template-landing-page-steuererklaerung, // backward campatiblity
+.page-template-landing-page-einkommensteuer {
+// .page-template-landing-page {
     .custom-logo {
         max-height: 90px;
     }
@@ -37,6 +52,7 @@ body.christmas #page {
             font-weight: 700;
             margin-bottom: 0;
             line-height: 1 !important;
+            text-transform: initial;
         }
         
         .h1, h1 {
@@ -68,12 +84,39 @@ body.christmas #page {
             margin-bottom: -40px;
         
             .hero-inner {
-                padding: 70px 0;
+                // padding: 70px 0;
+                // padding-bottom: 70px;
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
                 align-items: center;
         
+                .hero-image-wrapper.dots {
+                    position: relative;
+                    display: inline-block;
+                    
+                    &::before,
+                    &::after {
+                        z-index: -1;
+                        position: absolute;
+                        content: '';
+                        display: block;
+                        background: linear-gradient(180deg, rgba(166, 255, 134, 0.3) 0%, rgba(251, 255, 250, 0.3) 100%);
+                        width: 75%;
+                        height: auto;
+                        aspect-ratio: 1 / 1;
+                        border-radius: 99rem;
+                    }
+                    
+                    &::before {
+                        inset: 0 0 auto auto;
+                    }
+                    
+                    &::after {
+                        inset: auto auto 0 0;
+                    }
+                }
+
                 img {
                     width: 400px;
                     display: block;
@@ -94,39 +137,10 @@ body.christmas #page {
                     }
                 }
             }
-        
-            &.section-benefits {
-                .benefits-box {
-                    border-radius: 24px;
-                    background-color: #F7F8FA;
-        
-                    .header {
-                        border-radius: 24px 24px 0 0;
-                    }
-        
-                    .main {
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        justify-content: space-between;
-        
-                        ul.benefits {
-                            padding: 20px 0;
-        
-                            li {
-                                font-size: 24px;
-                                font-weight: 500;
-                                margin: 20px 20px 20px 60px;
-                                padding-left: 10px;
-                                
-                                &::marker {
-                                    font-family: $font-icons;
-                                    content: '\e90e';
-                                    color: $clr-secondary;
-                                }
-                            }
-                        }
-                    }
+
+            &.section-explanation {
+                h5 {
+                    margin-bottom: 1rem;
                 }
             }
         }
@@ -156,7 +170,11 @@ body.christmas #page {
 
 
 @media (max-width: $breakpoint-xl) {
-    .page-template-landing-page {
+    .page-template-landing-page-grundsteuer,
+    .page-template-landing-page-safetax,
+    .page-template-landing-page-steuereasy,
+    .page-template-landing-page-steuererklaerung, // backward campatiblity
+    .page-template-landing-page-einkommensteuer {
         .max-width {
             max-width: 100%;
         }
@@ -164,7 +182,11 @@ body.christmas #page {
 }
 
 @media (min-width: $breakpoint-lg) {
-    .page-template-landing-page {
+    .page-template-landing-page-grundsteuer,
+    .page-template-landing-page-safetax,
+    .page-template-landing-page-steuereasy,
+    .page-template-landing-page-steuererklaerung, // backward campatiblity
+    .page-template-landing-page-einkommensteuer {
         .max-width {
             $n: 32px;
 
@@ -177,7 +199,19 @@ body.christmas #page {
 }
 
 @media (max-width: $breakpoint-lg) {
-    .page-template-landing-page {
+    .page-template-landing-page-grundsteuer,
+    .page-template-landing-page-safetax,
+    .page-template-landing-page-steuereasy,
+    .page-template-landing-page-steuererklaerung, // backward campatiblity
+    .page-template-landing-page-einkommensteuer {
+        #hero {
+            .hero-inner {
+                .hero-image-wrapper {
+                    display: none !important;
+                }
+            }
+        }
+
         .max-width {
             $n: 8px;
 
@@ -202,9 +236,11 @@ body.christmas #page {
                 }
             }
         }
+    }
 
-        section.section-benefits .benefits-box .main img {
-            display: none;
+    .page-template-landing-page-safetax {
+        #hero {
+            margin-bottom: 3rem !important;
         }
     }
 }

@@ -1,4 +1,4 @@
-.table-of-contents {
+._table-of-contents {
     // border: 2px solid blue;
 
     li {
@@ -17,5 +17,18 @@
             padding: 10px;
             display: block;
         }
+    }
+}
+
+.post-table-of-contents {
+    // border: 2px solid $clr-bg-black;
+    box-shadow: 0 4px 16px rgba($clr-bg-black, 0.2);
+    padding: 1.3em;
+    border-radius: $br-4;
+    margin-bottom: 20px;
+
+    ul.table-of-contents {
+        margin: 0 !important;
+        margin-left: 1em !important;
     }
 }

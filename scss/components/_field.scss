@@ -169,7 +169,8 @@
 
 .field-wrapper {
     display: inline-block;
-    // width: 100%;
+    width: fit-content;
+    max-width: 100%;
     position: relative;
     margin-bottom: 20px;
 
@@ -190,6 +191,8 @@
         [type='reset']
     ),
     textarea {
+        min-height: 42px; // TODO: check if this makes any issues before publishing
+
         &:focus ~ label,
         &:valid:not(:placeholder-shown) ~ label,
         &:invalid:not(:placeholder-shown) ~ label {

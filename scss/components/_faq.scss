@@ -14,8 +14,15 @@
                     display: none;
                 }
 
-                img {
-                    border-radius: $br-2;
+                .content {
+                    height: 100%;
+                    display: grid;
+                    place-items: center;
+
+                    img {
+                        max-width: 300px;
+                        border-radius: $br-2;
+                    }
                 }
             }
 
@@ -65,3 +72,32 @@
         }
     }
 // }
+
+
+
+@media (max-width: $breakpoint-md) {
+    .easy-with-tax-section main .tabs-wrapper {
+        grid-template-columns: 1fr;
+
+        .changeable-part {
+            display: none;
+        }
+
+        .selections {
+            margin-bottom: 72px;
+
+            .item {
+                cursor: default;
+
+                &:hover {
+                    color: inherit;
+                }
+
+                &-selected {
+                    color: inherit;
+                    border: none;
+                }
+            }
+        }
+    }
+}

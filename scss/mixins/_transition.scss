@@ -1,0 +1,15 @@
+@mixin transition($duration, $property: all, $timing: ease) {
+    @if ($duration == fast) {
+        $duration: 0.1s;
+    }
+
+    @else if ($duration == smooth) {
+        $duration: 0.2s;
+    }
+
+    @else if ($duration == smoother) {
+        $duration: 0.4s;
+    }
+
+    transition: $duration $property $timing;
+}

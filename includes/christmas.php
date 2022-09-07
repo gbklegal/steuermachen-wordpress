@@ -41,7 +41,7 @@ function is_christmas_time():bool {
     $now = date('Y-m-d');
     $year_now = date('Y');
     $christmas_time_start = get1st_advent($year_now . '-12-24', 'Y-m-d');
-    $christmas_time_end = date($yearNow . '-12-26');
+    $christmas_time_end = date($year_now . '-12-26');
 
     return $now >= $christmas_time_start && $now <= $christmas_time_end;
 }

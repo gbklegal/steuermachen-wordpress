@@ -3,6 +3,7 @@
     top: 120vh;
     bottom: 3rem;
     right: 2rem;
+    pointer-events: none;
 }
 
 #back-to-top {
@@ -11,7 +12,9 @@
     // bottom: 20px;
     position: -webkit-sticky;
     position: sticky;
-    top: 90vh;
+    // top: 90vh;
+    top: calc(100vh - 6rem);
+    pointer-events: auto;
 
     background-color: $clr-bg-blue;
     width: 62px;
@@ -28,3 +31,11 @@
 #page {
     position: relative;
 }
+
+
+// --scroll-length: 100vh;
+// top: var(--scroll-length);
+// right: 2rem;
+// bottom: -1rem;
+// width: 3em;
+// pointer-events: none;

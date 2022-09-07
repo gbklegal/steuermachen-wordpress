@@ -5,6 +5,13 @@
         justify-content: space-between;
         list-style-type: none;
         gap: 2px;
+        // the following lines are for future implementations
+        // position: -webkit-sticky;
+        // position: sticky;
+        // padding: 0 10px 10px;
+        // background-color: $clr-bg-white;
+        // z-index: 99;
+        // top: 120px;
 
         li {
             width: 100%;
@@ -32,7 +39,7 @@
     section {
         .section-inner {
             display: flex;
-            margin-top: 4rem;
+            margin-block: 4rem;
             gap: 3rem;
 
             .master-letter {
@@ -42,7 +49,7 @@
 
                 // background-color: $clr-primary;
                 position: relative;
-                margin-top: 30px;
+                margin-top: -4pxpx; // 30px
 
                 &::before {
                     position: absolute;

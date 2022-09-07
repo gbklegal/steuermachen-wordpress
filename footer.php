@@ -1,19 +1,35 @@
-<?php if ( false === is_frame_mode() ): ?>
+<?php if (false === is_frame_mode()): ?>
     <footer id="footer" class="mx-auto max-width">
         <div class="footer-top">
-            <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 25]); ?>
+            <?php echo get_image_tag(31979, 'steuermachen', 'steuermachen', 'left', [0, 25]); ?>
             <div class="social">
-                <i class="icon-instagram"></i>
-                <i class="icon-facebook"></i>
+                <!-- <a href="#"><i class="icon-instagram"></i></a>
+                <a href="#"><i class="icon-facebook"></i></a> -->
+                <a href="https://www.instagram.com/steuermachen.de/" title="@steuermachen.de - Instagram"><?php echo get_image_tag(33018, 'Instagram', '', 'left', 32); ?></a>
+                <a href="https://www.facebook.com/steuermachen.de/" title="@steuermachen.de - Facebook"><?php echo get_image_tag(33017, 'Facebook', '', 'left', 32); ?></a>
+                <a href="https://www.pinterest.de/steuermachen/" title="@steuermachen - Pinterest"><?php echo get_image_tag(33019, 'Pinterest', '', 'left', 32); ?></a>
+                <a href="https://www.linkedin.com/company/steuermachen/" title="@steuermachen - LinkedIn"><?php echo get_image_tag(33016, 'LinkedIn', '', 'left', 32); ?></a>
             </div>
         </div>
+
         <hr>
+
         <div class="text-center sign-up">
-            <h2 class="uppercase">Jetzt registrieren! Keine Verpflichtung kostenlose Testverion (ist dieser Text wirklich final?)</h2>
+            <!-- <h2 class="uppercase">Jetzt registrieren! Keine Verpflichtung kostenlose Testverion (ist dieser Text wirklich final?)</h2>
             <p>Melde Dich bei Think-Tax an und mache deine persönliche Tour durch Think-Tax (ist auch dieser Text wirklich final?)</p>
-            <a href="/dashboard" class="btn btn-secondary btn-lg">Anmelden</a>
+            <a href="/dashboard" class="btn btn-secondary btn-lg">Anmelden</a> -->
+            <iframe src="https://tf53be01c.emailsys1a.net/139/6219/913c50802d/subscribe/form.html?_g=1651052315" frameborder="0" width="100%" height="345" id="newsletter"></iframe>
         </div>
-        <!-- <iframe src="https://tf53be01c.emailsys1a.net/139/6219/913c50802d/subscribe/form.html?_g=1640003230" frameborder="0" width="100%" height="449"></iframe> -->
+
+        <div class="text-center app-badges">
+            <a href="/app/ios">
+                <?php echo stm_get_image_tag(32577, 'App Store', 'steuermachen - App Store', 'left', [200]); ?>
+            </a>
+            <a href="/app/android">
+                <?php echo stm_get_image_tag(32578, 'Play Store', 'steuermachen - Play Store', 'left', [200]); ?>
+            </a>
+        </div>
+
         <div class="footer-navs">
             <div class="footer-nav">
                 <h3>Über steuermachen</h3>
@@ -31,8 +47,8 @@
                 <?php the_attachment('442', 'thumbnail'); ?>
             </div>
         </div>
-        <div class="footer-text">
-            <p>Copyright &copy; steuermachen.de (GDF). Sämtliche Inhalte, Fotos, Texte und Graphiken sind urheberrechtlich geschützt. Sie dürfen ohne vorherige schriftliche Zustimmung oder Genehmigung der GDF weder ganz noch auszugsweise kopiert, verändert, vervielfältigt oder veröffentlicht werden.</p>
+        <div class="footer-text" id="copyright">
+            <p>Copyright &copy; steuermachen (GDF). Sämtliche Inhalte, Fotos, Texte und Graphiken sind urheberrechtlich geschützt. Sie dürfen ohne vorherige schriftliche Zustimmung oder Genehmigung der GDF weder ganz noch auszugsweise kopiert, verändert, vervielfältigt oder veröffentlicht werden.</p>
             <p>&ldquo;TaxGreen – Papierlos glücklich&rdquo; ist die Kampagne von steuermachen.de, die den Plan und die Maßnahmen von steuermachen.de zum Schutz dieser Erde und Umwelt umfasst.</p>
         </div>
         <p><small>* Preise inkl. 19% Mwst. *** Preise netto zzgl. der gesetzlichen Mehrwertsteuer von 19%.<br>

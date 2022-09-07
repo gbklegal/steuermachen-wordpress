@@ -1,10 +1,16 @@
 <?php get_header(); ?>
 
-<?php // var_dump(get_the_ID()); ?>
-<?php // var_dump(have_posts()); ?>
+<?php
+// var_dump(get_the_ID());
+?>
+<?php
+// var_dump(have_posts());
+?>
 
-<?php if (is_home() || is_category()): ?>
 <main class="main-content">
+
+<?php if (is_home() || is_category() || is_author()): ?>
+
     <?php if (have_posts()): ?>
         <header>
             <?php if (is_category()): ?>
@@ -19,24 +25,22 @@
             <?php get_template_part('/template-parts/content-list-posts'); ?>
         <?php endwhile; ?>
         </div>
-        <?php the_posts_navigation([
-            'prev_text' => 'Ältere Beiträge <i class="icon-chevrons-right"></i>',
-            'next_text' => '<i class="icon-chevrons-left"></i> Neuere Beiträge',
-        ]); ?>
+        <?php the_posts_navigation(['prev_text' => 'Ältere Beiträge <i class="icon-chevrons-right"></i>', 'next_text' => '<i class="icon-chevrons-left"></i> Neuere Beiträge']); ?>
+
     <?php endif; ?>
-</main>
+
 <?php elseif (is_single()): ?>
-<main class="main-content">
     <?php the_post(); ?>
     <?php get_template_part('/template-parts/content-single'); ?>
-</main>
 <?php else: ?>
-<main class="main-content">
+
     <?php while (have_posts()): ?>
         <?php the_post(); ?>
         <?php get_template_part('/template-parts/content-default'); ?>
     <?php endwhile; ?>
-</main>
+
 <?php endif; ?>
+
+</main>
 
 <?php get_footer(); ?>

@@ -1,17 +1,17 @@
 <?php
 /**
  * The header for the steuermachen theme.
- * 
+ *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
- * 
+ *
  * @see https://developer.wordpress.org/themes/basics/template-files/#template-partials
  */
 
 // add_enqueue_script_attributes(, 'defer');
 // wp_enqueue_style('steuermachen-style-old', 'https://steuermachen.de/wp-content/themes/onepress-child/style.css');
 wp_enqueue_style('steuermachen-style', get_bloginfo('stylesheet_url'));
+// wp_enqueue_script_footer('steuermachen-cookie-script', get_template_directory_uri() . '/js/js.cookie.min.js');
 wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '/js/script.js');
-
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -24,7 +24,7 @@ wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '
 
     <!-- <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>"> -->
 
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?php echo wp_get_document_title(); ?></title>
@@ -37,18 +37,21 @@ wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '
 <body <?php body_class(); ?>>
 
     <div id="page">
-        <?php if ( false === is_frame_mode() ): ?>
+        <?php if (false === is_frame_mode()): ?>
         <header id="header">
             <div class="header-inner">
                 <div class="header-content">
                     <div class="header-part">
                         <a href="<?php echo home_url(); ?>">
                             <?php if (has_custom_logo()): ?>
-                                <?php # the_custom_logo(); ?>
                                 <?php
-                                    $custom_logo_srcset = '';
-                                    if ( has_custom_retina_logo() )
-                                        $custom_logo_srcset = wp_get_attachment_url( get_custom_retina_logo() ) . ' 2x';
+                                # the_custom_logo();
+                                ?>
+                                <?php
+                                $custom_logo_srcset = '';
+                                if (has_custom_retina_logo()) {
+                                    $custom_logo_srcset = wp_get_attachment_url(get_custom_retina_logo()) . ' 2x';
+                                }
                                 ?>
                                 <?php echo stm_get_image_tag(get_theme_mod('custom_logo'), 'steuermachen', 'steuermachen', 'left', [0, 42], 'custom-logo', $custom_logo_srcset); ?>
                             <?php endif; ?>
@@ -59,8 +62,7 @@ wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '
                     </div>
                     <div class="header-part">
                         <div class="hidden-on-mobile">
-                            <!-- TODO: convert button to a link button -->
-                            <button class="btn btn-primary">Anmelden</button>
+                            <a href="/beauftragen" class="btn btn-primary">Beauftragen</a>
                         </div>
                     </div>
                 </div>
@@ -73,7 +75,7 @@ wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '
                         <div class="header-mobile-overlay-inner">
                             <?php get_nav_menu('primary'); ?>
                             <!-- TODO: convert button to a link button -->
-                            <button class="btn btn-primary">Anmelden</button>
+                            <a href="/beauftragen" class="btn btn-primary">Beauftragen</a>
                         </div>
                     </div>
                 </div>

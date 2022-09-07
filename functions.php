@@ -33,6 +33,32 @@ function random_id( int $length ):string {
 
 
 
+/**
+ * utility function to manipulate get parameters from url
+ * 
+ * @param array $add_params - optional
+ * @param array $remove_params - optional
+ * @param string $url - optional
+ */
+function manipulate_get_params( array $add_params = [], array $remove_params = [], ?string $url = null ) {
+    $get_params = $_GET ?? [];
+    if (is_null($url))
+        $url = get_permalink(get_the_ID());
+
+    foreach ($add_params as $key => $param) {
+        $get_params[$key] = $param;
+        // array_push($get_params, $param);
+    }
+
+    foreach ($remove_params as $param) {
+        unset($get_params[$param]);
+    }
+
+    return $url . '?' . http_build_query($get_params);
+}
+
+
+
 function add_enqueue_script_attributes( $tag, $handle ) {
     // Add defer
     if( 'defer' === $handle ) {
@@ -46,8 +72,7 @@ function add_enqueue_script_attributes( $tag, $handle ) {
 
     return $tag;
 }
-
-add_filter('script_loader_tag', 'add_enqueue_script_attributes', 10, 2);
+add_filter( 'script_loader_tag', 'add_enqueue_script_attributes', 10, 2 );
 
 
 function steuermachen_theme_setup() {
@@ -70,7 +95,211 @@ function steuermachen_theme_setup() {
     // remove read more on the_excerpt but keep the three dots
     add_filter('excerpt_more', function() { return '...'; });
 }
-add_action( 'init', 'steuermachen_theme_setup');
+add_action( 'init', 'steuermachen_theme_setup' );
+
+
+// TODO add this after your holiday, so the others and yourself can edit the sidebar simply in the widgets section
+// function steuermachen_widgets_init() {
+//     register_sidebar([
+//         'id'            => 'front-page-sidebar',
+//         'name'          => 'Startseite Sidebar',
+//         'description'   => 'A short description of the sidebar.',
+//         'before_widget' => '<div id="%1$s" class="widget %2$s">',
+//         'after_widget'  => '</div>',
+//         'before_title'  => '<h3 class="widget-title">',
+//         'after_title'   => '</h3>',
+//     ]);
+// }
+// add_action( 'widgets_init', 'steuermachen_widgets_init' );
+
+
+// function add_mobile_nav_support( $items, $args ) {
+//     var_dump($items);
+//     var_dump($args);
+
+//     return $items;
+// }
+// // wp_nav_menu_items | nav_menu_item_id
+// add_filter( 'wp_nav_menu_items', 'add_mobile_nav_support' );
+// // add_action( 'wp_add_nav_menu_item', 'add_mobile_nav_support' );
+
+
+/**
+ * remove all links from the post content
+ * frame mode related
+ */
+function the_content_frame_mode( $content ) {
+    $allowed_tags = [
+        // 'a',
+        'abbr',
+        'acronym',
+        'address',
+        'applet',
+        'area',
+        'article',
+        'aside',
+        'audio',
+        'b',
+        'base',
+        'basefont',
+        'bb',
+        'bdo',
+        'big',
+        'blockquote',
+        'body',
+        'br',
+        'button',
+        'canvas',
+        'caption',
+        'center',
+        'cite',
+        'code',
+        'col',
+        'colgroup',
+        'command',
+        'datagrid',
+        'datalist',
+        'dd',
+        'del',
+        'details',
+        'dfn',
+        'dialog',
+        'dir',
+        'div',
+        'dl',
+        'dt',
+        'em',
+        'embed',
+        'eventsource',
+        'fieldset',
+        'figcaption',
+        'figure',
+        'font',
+        'footer',
+        'form',
+        'frame',
+        'frameset',
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'head',
+        'header',
+        'hgroup',
+        'hr',
+        'html',
+        'i',
+        'iframe',
+        'img',
+        'input',
+        'ins',
+        'isindex',
+        'kbd',
+        'keygen',
+        'label',
+        'legend',
+        'li',
+        'link',
+        'map',
+        'mark',
+        'menu',
+        'meta',
+        'meter',
+        'nav',
+        'noframes',
+        'noscript',
+        'object',
+        'ol',
+        'optgroup',
+        'option',
+        'output',
+        'p',
+        'param',
+        'pre',
+        'progress',
+        'q',
+        'rp',
+        'rt',
+        'ruby',
+        's',
+        'samp',
+        'script',
+        'section',
+        'select',
+        'small',
+        'source',
+        'span',
+        'strike',
+        'strong',
+        'style',
+        'sub',
+        'sup',
+        'table',
+        'tbody',
+        'td',
+        'textarea',
+        'tfoot',
+        'th',
+        'thead',
+        'time',
+        'title',
+        'tr',
+        'track',
+        'tt',
+        'u',
+        'ul',
+        'var',
+        'video',
+        'wbr'
+    ];
+
+    if ( is_frame_mode( 'remove-links', 'app' ) )
+        $content = strip_tags( $content, $allowed_tags );
+
+    if ( is_frame_mode( 'remove-affiliate', 'app' ) )
+        $content = preg_replace('#<div\s+class="box-info(.*)">[\S\s]*?<\/div>#', '', $content);
+
+    return $content;
+}
+add_filter( 'the_content', 'the_content_frame_mode' );
+
+
+/**
+ * add frame-mode class to the body
+ */
+add_filter( 'body_class', function( $body_class ) {
+    if ( is_frame_mode() )
+        $body_class[] = 'frame-mode';
+
+    return $body_class;
+} );
+
+
+/**
+ * Contact Form 7 Spam Filter
+ */
+add_filter( 'wpcf7_spam', function( $spam ) {
+    if ( $spam )
+        return $spam;
+
+    $spam_key_words = array_map( 'trim', explode( ',', get_theme_mod( 'wpcf7_spam_filter_key_words' ) ) );
+
+    $found_spam_key_word = function ( $string, $spam_key_words ) {
+        foreach ( $spam_key_words as $spam_key_word )
+            if ( stripos( $string, $spam_key_word ) !== false )
+                return true;
+
+        return false;
+    };
+
+    return (
+        $found_spam_key_word( $_POST['subject'], $spam_key_words )
+        ||
+        $found_spam_key_word( $_POST['message'], $spam_key_words )
+    );
+}, 10, 1 );
 
 
 /**
@@ -189,16 +418,16 @@ function get_search_results( string $query, ?string $post_type = null ):array {
  * helper function
  * 
  * @param string $theme_location_name
- * @param array $args
+ * @param array $args - optional
  * 
  * @return void
  */
-function get_nav_menu( string $theme_location_name, array $args = array() ):void {
-    $array = array(
+function get_nav_menu( string $theme_location_name, array $args = [] ):void {
+    $array = [
         'theme_location' => $theme_location_name
-    );
+    ];
     $array = array_merge($array, $args);
-    
+
     wp_nav_menu($array);
 }
 
@@ -388,7 +617,7 @@ function cta_button_shortcode( $atts ) {
     if ($theme !== false)
         $theme = ' btn-' . $theme;
 
-    echo '<a class="btn' . $size . $theme . '" href="' . $href . '">' . $value . '</a>';
+    return '<a class="btn' . $size . $theme . '" href="' . $href . '">' . $value . '</a>';
 }
 add_shortcode('cta_button', 'cta_button_shortcode');
 
@@ -416,6 +645,151 @@ function post_link_attributes($output) {
 
 
 /**
+ * helper function to set cookies for an hour
+ * 
+ * @param string $cookie_name
+ * @param string $cookie_value
+ * 
+ * @return bool
+ */
+function create_one_hour_cookie( $cookie_name, $cookie_value ):bool {
+    // set cookie for 1 hour (3600 seconds)
+    return setcookie($cookie_name, $cookie_value, time() + 3600, '/');
+}
+
+
+/**
+ * get the eTrusted (Trusted Shops) access token via oauth
+ * 
+ * @return string - access token
+ */
+function get_etrusted_access_token() {
+    $url = 'https://login.etrusted.com/oauth/token';
+    $data = [
+        'client_id' => '1478bf1ccf6b__steuermachen-website',
+        'client_secret' => '382ff162-100e-4d87-96b0-b3777c41ba2b',
+        'grant_type' => 'client_credentials',
+        'audience' => 'https://api.etrusted.com'
+    ];
+    $post_data = http_build_query($data);
+    $options = [
+        'http' => [
+            'method'  => 'POST',
+            'content' => $post_data
+        ]
+    ];
+
+    $stream_context = stream_context_create($options);
+    $result = @file_get_contents($url, false, $stream_context);
+
+    $result_json = json_decode($result);
+
+    $access_token = $result_json->access_token;
+
+    // TODO add error fallback
+
+    return $access_token;
+}
+
+
+/**
+ * get rating from trusted shops api
+ * 
+ * @param string $period
+ * 
+ * @return string
+ */
+function get_etrusted_rating( string $period ):string {
+    $url = 'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
+    // $url = 'https://code.tobias-roeder.de/http_response_code/http_response_code.php?response_code=418';
+    $options = [
+        'http' => [
+            'method'  => 'GET',
+            'header'  => 'Authorization: Bearer ' . get_etrusted_access_token()
+        ]
+    ];
+
+    $stream_context = stream_context_create($options);
+    $result = @file_get_contents($url, false, $stream_context);
+
+    // filter the response code out of the http response header as integer
+    $response_code = (int) explode(' ', $http_response_header[0])[1];
+
+    // var_dump($response_code);
+
+    if ($response_code === 200) {
+        $json = json_decode($result, true);
+
+        if ($period === 'all')
+            $period = 'overall';
+        else
+            $period .= 'days';
+
+        return $json[$period]['rating'];
+    }
+
+    return '0';
+}
+
+
+/**
+ * get eTrusted (Trusted Shops) reviews
+ * 
+ * further details
+ * @see https://developers.etrusted.com/reviews-api/reviews-api.html#getReviews
+ * 
+ * @param int $count - optional
+ * @param string $rating - optional
+ * 
+ * @return array
+ */
+function get_etrusted_reviews( int $count = 3, $rating = '4,5' ):array {
+    $queries = [
+        'channels' => 'chl-dd15a939-2472-443a-95cd-157c853459cb',
+        'count' => $count,
+        'rating' => (string) $rating
+    ];
+    $queries = http_build_query($queries);
+
+    $url = 'https://api.etrusted.com/reviews?' . $queries;
+    // $url = 'https://code.tobias-roeder.de/http_response_code/http_response_code.php?response_code=418';
+    $options = [
+        'http' => [
+            'method'  => 'GET',
+            'header'  => 'Authorization: Bearer ' . get_etrusted_access_token()
+        ]
+    ];
+
+    $stream_context = stream_context_create($options);
+    $result = @file_get_contents($url, false, $stream_context);
+
+    // filter the response code out of the http response header as integer
+    $response_code = (int) explode(' ', $http_response_header[0])[1];
+
+    // var_dump($response_code);
+
+    if ($response_code === 200) {
+        $json = json_decode($result);
+        $reviews = [];
+
+        foreach ($json->items as $item) {
+            $reviews[] = [
+                'rating' => $item->rating,
+                'title' => $item->title,
+                'comment' => $item->comment,
+                'date' => date_format( date_create( $item->updatedAt ), 'd.m.Y' )
+            ];
+        }
+
+        return $reviews;
+    }
+
+    return [];
+}
+
+
+
+/**
  * get the trusted shops rating from the last year
  * 
  * TODO add optional error resporting (show response_code)
@@ -433,104 +807,13 @@ function post_link_attributes($output) {
 function trusted_shops_rating( array $attr = [] ):string {
     $period = $attr['period'] ?? 'all';
 
-    /**
-     * helper function to set cookies for 1 hour
-     * 
-     * @param string $cookie_name
-     * @param string $cookie_value
-     * 
-     * @return bool
-     */
-    if (false === function_exists('create_cookie')) {
-        function create_cookie( $cookie_name, $cookie_value ):bool {
-            // set cookie for 1 hour (3600 seconds)
-            return setcookie($cookie_name, $cookie_value, time() + 3600, '/');
-        }
-    }
-
-    /**
-     * get the access token via oauth
-     * 
-     * @return string - access token
-     */
-    if (false === function_exists('get_access_token')) {
-        function get_access_token() {
-            $url = 'https://login.etrusted.com/oauth/token';
-            $data = [
-                'client_id' => '1478bf1ccf6b__steuermachen-website',
-                'client_secret' => '382ff162-100e-4d87-96b0-b3777c41ba2b',
-                'grant_type' => 'client_credentials',
-                'audience' => 'https://api.etrusted.com'
-            ];
-            $post_data = http_build_query($data);
-            $options = [
-                'http' => [
-                    'method'  => 'POST',
-                    'content' => $post_data
-                ]
-            ];
-
-            $stream_context = stream_context_create($options);
-            $result = @file_get_contents($url, false, $stream_context);
-
-            $result_json = json_decode($result);
-
-            $access_token = $result_json->access_token;
-
-            // TODO add error fallback
-
-            return $access_token;
-        }
-    }
-
-    /**
-     * get rating from trusted shops api
-     * 
-     * @param string $period
-     * 
-     * @return string
-     */
-    if (false === function_exists('get_rating')) {
-        function get_rating( string $period ):string {
-            $url = 'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
-            // $url = 'https://code.tobias-roeder.de/http_response_code/http_response_code.php?response_code=418';
-            $options = [
-                'http' => [
-                    'method'  => 'GET',
-                    'header'  => 'Authorization: Bearer ' . get_access_token()
-                ]
-            ];
-
-            $stream_context = stream_context_create($options);
-            $result = @file_get_contents($url, false, $stream_context);
-
-            // filter the response code out of the http response header as integer
-            $response_code = (int) explode(' ', $http_response_header[0])[1];
-
-            // var_dump($response_code);
-
-            if ($response_code === 200) {
-                $json = json_decode($result, true);
-
-                if ($period === 'all')
-                    $period = 'overall';
-                else
-                    $period .= 'days';
-
-                return $json[$period]['rating'];
-            }
-
-            return '0';
-        }
-    }
-
     // check if cookie already exists
     $trusted_shops_rating = $_COOKIE['trusted_shops_rating'] ?? null;
 
     // if cookie not exists create and return lastest rating
     if (is_null($trusted_shops_rating)) {
-        $_trusted_shops_rating = get_rating($period);
-        create_cookie('trusted_shops_rating', $_trusted_shops_rating);
+        $_trusted_shops_rating = get_etrusted_rating($period);
+        create_one_hour_cookie('trusted_shops_rating', $_trusted_shops_rating);
 
         return $_trusted_shops_rating;
     }
@@ -575,6 +858,9 @@ function the_trusted_shops_rating( string $period = 'all' ) {
 function trusted_shops_rating_stars( $period = '365' ):array {
     $rating = (float) get_trusted_shops_rating($period);
     $max_rating = 0.05;
+
+    // format rating (5 => 5.00)
+    $rating = number_format($rating, 2);
 
     // $rating_rounded = number_format(round($rating, 1), 2);
     $star_length = $rating / $max_rating;
@@ -637,6 +923,12 @@ function the_trusted_shops() {
  * @return string
  */
 function get_trusted_shops_logo( $attr ):string {
+    /**
+     * disable the trusted shops logo shortcode when frame mode is active
+     */
+    if ( is_frame_mode() )
+        return '';
+
     $attachment_id = 442;
     $image_size = $attr['size'] ?? 100;
     $url = $attr['url'] ?? 'https://www.trustedshops.de/bewertung/info_X24AEB26CBD9A2EBDB8A0AC232A1BB7F9.html';
@@ -660,7 +952,7 @@ function get_trusted_shops_logo( $attr ):string {
     $content .= '<a href="' . $url . '" rel="noopener noreferrer nofollow" target="_blank">';
 
     // image as HTML string or a empty string if failed
-    $content .= wp_get_attachment_image( $attachment_id, $size);
+    $content .= wp_get_attachment_image( $attachment_id, $size );
 
     // close wrapper (anchor tag)
     $content .= '</a>';
@@ -685,6 +977,12 @@ add_shortcode('trusted_shops_logo', 'get_trusted_shops_logo');
  * @param bool $wrap_p - optional (Default: true)
  */
 function get_cta_button( $attr ):string {
+    /**
+     * disable the cta button shortcode when frame mode is active
+     */
+    if ( is_frame_mode() )
+        return '';
+
     $value = $attr['value'] ?? '';
     $link_to = $attr['link_to'] ?? 'order';
     $url = $attr['url'] ?? '';
@@ -802,27 +1100,27 @@ function get_steuerrechner() {
                 <div class="radio-wrapper radio-triple">
                     <label>
                         <input type="radio" name="bje" value="8tgohapk">
-                        <div class="label">0 - 9k &euro;</div>
+                        <div class="label">Bis 9.999 &euro;</div>
                     </label>
                     <label>
                         <input type="radio" name="bje" value="f0ps693k">
-                        <div class="label">10k - 14k &euro;</div>
+                        <div class="label">10.000 - 14.999 &euro;</div>
                     </label>
                     <label>
                         <input type="radio" name="bje" value="gdh4wo35">
-                        <div class="label">15k - 34k &euro;</div>
+                        <div class="label">15.000 - 34.999 &euro;</div>
                     </label>
                     <label>
                         <input type="radio" name="bje" value="28bdv9ct">
-                        <div class="label">35k - 54k &euro;</div>
+                        <div class="label">35.000 - 54.999 &euro;</div>
                     </label>
                     <label>
                         <input type="radio" name="bje" value="iqt18dgo">
-                        <div class="label">55k - 69k &euro;</div>
+                        <div class="label">55.000 - 69.999 &euro;</div>
                     </label>
                     <label>
                         <input type="radio" name="bje" value="8cj3sdaf">
-                        <div class="label">> 70k &euro;</div>
+                        <div class="label">Über 70.000 &euro;</div>
                     </label>
                 </div>
             </section>
@@ -933,7 +1231,7 @@ function get_steuerrechner() {
             <!-- (FINAL RESULT) -->
             <section data-step="final" hidden>
                 <div class="section-inner">
-                    <p>Bitte haben Sie einen Moment Geduld, Ihre geschätzte Steuerrückerstattung wird gerade berechnet...</p>
+                    <p>Bitte habe einen Moment Geduld, deine geschätzte Steuerrückerstattung wird gerade berechnet ...</p>
                     <div class="spinner"></div>
                 </div>
             </section>
@@ -955,7 +1253,7 @@ add_shortcode('steuerrechner', 'get_steuerrechner');
  * 
  * @return void
  */
-function the_steuerrecher() {
+function the_steuerrechner() {
     echo get_steuerrechner();
 }
 
@@ -979,9 +1277,12 @@ function the_author_info() {
         <h3 class="text-center"><?php echo $author_name; ?></h3>
         <?php echo $author_avatar; ?>
         <p><?php echo $author_description; ?></p>
+        <?php // if ( false === is_frame_mode() ): ?>
+        <?php if ( false ): ?>
         <p>
-            <a href="<?php echo $author_posts_url; ?>"><?php echo $author_first_name; ?><?php echo $_author_s; ?> Artikel</a>
+            <a href="<?php echo $author_posts_url; ?>"><?php echo $author_first_name . $_author_s; ?> Artikel</a>
         </p>
+        <?php endif; ?>
     </div>
     <?php
 }
@@ -1037,6 +1338,59 @@ add_shortcode('price_calculator', 'get_price_calculator');
  */
 function the_price_calculator( $args = [] ) {
     echo get_price_calculator( $args );
+}
+
+
+/**
+ * Property Tax Price Calculator Shortcode
+ * 
+ * @author Tobias Röder
+ * @version 0.1.1
+ * 
+ * @param array $args - optional
+ * 
+ * @return string
+ */
+function get_property_tax_price_calculator( $args = [] ) {
+    $url = $args['url'] ?? '/steuererklaerung-beauftragen/?property_value=';
+    $position = $args['position'] ?? 'center';
+
+    $content = '';
+
+    wp_enqueue_style('price-calculator-style', STM_THEME_URL . '/css/price-calculator.css');
+    wp_enqueue_script('calculator-script', STM_THEME_URL . '/js/calculator.js');
+    wp_enqueue_script('property-tax-price-calculator-script', STM_THEME_URL . '/js/property-tax-price-calculator.js');
+
+    $content .= '
+    <div id="priceCalculator" class="position-'.$position.'">
+    <div class="bje-wrapper">
+    <label for="bje">Wie hoch ist dein Grundstückswert?</label>
+    <input type="text" id="bje" placeholder="Dein Grundstückswert" data-property-tax-calc->
+    </div>
+    <div class="bje-price-wrapper">
+    <label>Dein voraussichtlicher Preis (inkl. MwSt.)</label>
+    <div id="bjePrice">&nbsp;</div>
+    </div>
+    <a href="'.$url.'" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+    </div>';
+
+    return $content;
+}
+
+add_shortcode('property_tax_price_calculator', 'get_property_tax_price_calculator');
+
+/**
+ * Property Tax Price Calculator
+ * echos the property tax price calculator
+ * 
+ * @param array $args - optional
+ * ! @param string $url - optional (might coming soon)
+ * ! @param string $position - optional (might coming soon)
+ * 
+ * @return void
+ */
+function the_property_tax_price_calculator( $args = [] ) {
+    echo get_property_tax_price_calculator( $args );
 }
 
 
@@ -1130,8 +1484,10 @@ require trailingslashit( get_template_directory() ) . 'includes/init.php';
 /**
  * include this files if a user is logged in
  */
-if (true === is_user_logged_in()) {
-    wp_enqueue_style( 'admin-style', trailingslashit( get_template_directory_uri() ) . 'css/admin.css');
+if ( is_user_logged_in() ) {
+    add_action('admin_enqueue_scripts', function() {
+        wp_enqueue_style( 'admin-style', trailingslashit( get_template_directory_uri() ) . 'css/admin.css');
+    });
 }
 
 
@@ -1165,13 +1521,13 @@ function get_attachment_details( $attachment_id = 28504 ) {
           'post_type' => 'attachment'
      ];
      $query = new WP_Query( $args );
-     $post = (array) $query->posts[0];
+     $posts = (array) $query->posts[0];
 
-     $post['pathinfo'] = pathinfo($post['guid']);
-     $post['filesize'] = get_attachment_filesize( (int) $attachment_id, false );
-     $post['filesize_human_readable'] = get_attachment_filesize( (int) $attachment_id );
+     $posts['pathinfo'] = pathinfo($posts['guid']);
+     $posts['filesize'] = get_attachment_filesize( (int) $attachment_id, false );
+     $posts['filesize_human_readable'] = get_attachment_filesize( (int) $attachment_id );
 
-     return $post;
+     return $posts;
 }
 
 
@@ -1205,7 +1561,7 @@ function get_attachment_filesize( int $attachment_id, $human_readable = true ) {
 function download_pdf( $args ) {
      $attachment_id = $args[0] ?? null;
 
-     if ( true === is_null( $attachment_id ) )
+     if ( is_null( $attachment_id ) )
           return '';
 
      $content = '';
@@ -1259,16 +1615,16 @@ function get_countdown( $args = [] ):string {
 
     $content = '';
 
-    if ( true === empty( $end ) )
+    if ( empty( $end ) )
         return $content;
 
     wp_enqueue_style('steuermachen-countdown-style', get_template_directory_uri() . '/css/countdown.min.css');
     wp_enqueue_script_footer('steuermachen-countdown-script', get_template_directory_uri() . '/js/countdown.js');
 
     $content .= '
-        <div class="countdown" data-countdown-end="' . $end . '">
+        <div class="countdown" data-countdown-end="' . $end . '" data-countdown>
             <div class="col">
-                <div class="number countdown-days">
+                <div class="number countdown-days" data-countdown-days>
                     <span class="countdown-loader"></span>
                 </div>
                 <div class="label">
@@ -1277,7 +1633,7 @@ function get_countdown( $args = [] ):string {
                 </div>
             </div>
             <div class="col">
-                <div class="number countdown-hours">
+                <div class="number countdown-hours" data-countdown-hours>
                     <span class="countdown-loader"></span>
                 </div>
                 <div class="label">
@@ -1286,7 +1642,7 @@ function get_countdown( $args = [] ):string {
                 </div>
             </div>
             <div class="col">
-                <div class="number countdown-minutes">
+                <div class="number countdown-minutes" data-countdown-minutes>
                     <span class="countdown-loader"></span>
                 </div>
                 <div class="label">
@@ -1295,7 +1651,7 @@ function get_countdown( $args = [] ):string {
                 </div>
             </div>
             <div class="col">
-                <div class="number countdown-seconds">
+                <div class="number countdown-seconds" data-countdown-seconds>
                     <span class="countdown-loader"></span>
                 </div>
                 <div class="label">
@@ -1339,14 +1695,36 @@ function wp_enqueue_script_footer( string $handle, string $src = '' ) {
 /**
  * checks if frame mode is active
  * 
+ * @param string $parameters - optional
+ * 
  * @return bool
  */
-function is_frame_mode() {
-    return isset( $_GET['frame_mode'] );
+function is_frame_mode( string ...$parameters ):bool {
+    $is_frame_mode = isset( $_GET['frame_mode'] );
+
+    if ( empty( $parameters ) && $is_frame_mode )
+        return true;
+
+    foreach ( $parameters as $parameter ) {
+        if ( false === empty( $parameter ) && $_GET['frame_mode'] === $parameter )
+            return true;
+    }
+
+    return false;
+}
+
+/**
+ * returns the frame mode parameter value on success else it returns false
+ * 
+ * @return string|bool
+ */
+function get_frame_mode_param() {
+    return $_GET['frame_mode'] ?? false;
 }
 
 
 /**
+ * TODO rename echo_if to return_if and add a utility function called echo_if
  * utility function for if else shorthand
  * 
  * @param bool $condition
@@ -1355,9 +1733,143 @@ function is_frame_mode() {
  * 
  * @return mixed
  */
-function echo_if( bool $condition, $if_text, $else_text = '' ) {
-    if ( true === $condition )
+function return_if( bool $condition, $if_text, $else_text = '' ) {
+    if ( $condition )
         return $if_text;
 
     return $else_text;
+}
+
+
+/**
+ * ! Currently DEV only!
+ * log data
+ * 
+ * @param string $level
+ * @param string $message
+ * @param array/null $data (optional)
+ * 
+ * @return void
+ */
+function log_data( string $level, string $message, ?array $data = null ):void {
+    $today = date('Y-m-d');
+    $now = date('Y-m-d H:i:s');
+	$logFile = __DIR__ . '/log/log-'.$today.'.log';
+
+    $logData = '[' . $now . ' - ' . $level . '] ' . $message . "\n";
+
+    if ($data) {
+        $dataString = print_r($data, true) . "\n";
+        $logData .= $dataString;
+    }
+    $logData .= str_repeat('*', 100) . "\n";
+
+    $result = file_put_contents($logFile, $logData, FILE_APPEND);
+    // var_dump($logData);
+}
+
+
+/**
+ * validates the hCaptcha
+ * 
+ * @param string $hCaptchaResponse
+ * 
+ * @return array
+ */
+function validate_h_captcha( string $h_captcha_response ):array {
+    $data = array(
+        'secret' => '0x9F80bc3d296b45026CBC73198D18B0a835BDA636',
+        'response' => $h_captcha_response
+    );
+    $verify = curl_init();
+    curl_setopt($verify, CURLOPT_URL, 'https://hcaptcha.com/siteverify');
+    curl_setopt($verify, CURLOPT_POST, true);
+    curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($verify);
+    $response_data = json_decode($response, true);
+
+    return $response_data;
+}
+
+
+/**
+ * esc_html but this function ensures it returns a null not a empty string
+ * before the text gets escaped, it's get checked if it's null
+ * 
+ * @param mixed $text
+ * 
+ * @return mixed
+ */
+function esc_html_null( $text ) {
+    return is_null($text) ? null : esc_html($text);
+}
+
+
+/**
+ * esc_html advanced
+ * 
+ * @param mixed $text
+ * @param bool $empty_fallback - optional
+ * 
+ * @return mixed
+ */
+function esc_html_adv( $text, bool $empty_fallback = false ) {
+    switch (gettype($text)) {
+        case 'array':
+            return [];
+            break;
+
+        case 'null':
+            return null;
+            break;
+
+        case 'boolean':
+            return $text;
+            break;
+    }
+
+    if ($empty_fallback === true && empty($text))
+        return null;
+
+    return esc_html($text);
+}
+
+
+/**
+ * create newsletter rapidmail recipient
+ * 
+ * @param string $email
+ * @param string $firstname
+ * @param string $lastname
+ * 
+ * @return array
+ */
+function create_newsletter_recipient( string $email, string $firstname, string $lastname ):array {
+    $post_data = http_build_query([
+        'email' => $email,
+        'firstname' => $firstname,
+        'lastname' => $lastname,
+        'newsletter_name' => 'dev_test', // dev_test // TODO replace dev_test with steuermachen
+        'test_mode' => 'yes'
+    ]);
+
+    $options = ['http' => [
+            'method'  => 'POST',
+            'header'  => [
+                'Content-Type: application/x-www-form-urlencoded',
+                'Authorization: Bearer trDd99BRgxyhRK8TFPvWPRJtrkOCFchRZMk40etjz2YPO0NEaYXosTyJvKK7UxxTl3zGEvPe0Vjef1F2lWlfoIy4vDmS7yak46ZRnaKcNNoTpH6TXu4mTSXx2Bi8IZTGo7JkvmMdUGn0iDsIPSRnAMi0uLDkrH9gF2IgzOiXWrTrGVlG2MVlPPrNFiLJ2Cuniuqe8dt8JId6Egog95GwxkLE8uedKHOnsSqunFEmaY20f8BfNt7azaB47cAjM4JgKtPCQBOYtTBEbni4UFLi2rHEuvYVG7GreppaDzYbJGTjvW9oJtpSKQ8GeXNbA39AfLYa6cGTui8ZL4EdAX48h13Run9Fcq7nFNjfBOkLppJrdXCWfWXHBSvY1BJHWKmKo7vrflHCxeisbZb4BcCJaUNntRiYHaDL2487uuwSOTJWZ9ORsXkAtoihhYnRcQojkvZgJoEkkphJxwf4DAK5jZE61EBRdShjuTUcRcLyAS8tHKMmJEHtC3ipM5WQkNmE'
+            ],
+            'content' => $post_data,
+            'ignore_errors' => true
+        ]
+    ];
+
+    $context  = stream_context_create($options);
+
+    $result = file_get_contents('https://api.gbk-rae.de/newsletter/rapidmail/', false, $context);
+
+    $json_result = json_decode($result, true);
+
+    return $json_result;
 }

@@ -23,8 +23,12 @@ function first_letter( string $string ):string {
  * 
  * @return string
  */
-function fix_umlaut( string $string ):string {
-    return strtr($string, 'ÄÖÜ', 'AOU');
+function fix_umlaut( string $string ) {
+    return strtr($string, array(
+        'Ä' => 'A',
+        'Ü' => 'U',
+        'Ö' => 'O'
+    ));
 }
 
 
@@ -68,7 +72,7 @@ function get_lexicon_articles_sorted():array {
 
     foreach($lexicon_articles as $lexicon_article) {
         $article_title = $lexicon_article['title'];
-        $sorted_lexicon_articles[fix_umlaut(first_letter($article_title))][] = $lexicon_article;
+        $sorted_lexicon_articles[first_letter(fix_umlaut($article_title))][] = $lexicon_article;
     }
 
     return $sorted_lexicon_articles;
@@ -81,7 +85,7 @@ get_header();
     <div id="hero" class="hero-wrapper">
         <div class="hero-text">
             <h1>Steuerlexikon</h1>
-            <p>Alles, was Sie über Steuern wissen müssen, findest Du in unserem Steuerlexikon.</p>
+            <div class="secondary-title">Alles, was Du über Steuern wissen müssen, findest Du in unserem Steuerlexikon.</div>
         </div>
         <div class="hero-image">
             <img src="<?php echo STM_THEME_URL; ?>/img/dictionary.png" alt="" srcset="<?php echo STM_THEME_URL; ?>/img/dictionary@2x.png 2x">

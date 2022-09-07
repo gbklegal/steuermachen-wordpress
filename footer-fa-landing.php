@@ -27,6 +27,11 @@
 </div>
 </div>
 
+<script>
+var faCookieExp = 90;
+</script>
+<script src="https://fat.financeads.net/fpc.js"></script>
+
 <?php wp_footer(); ?>
 
 </body>

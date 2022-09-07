@@ -1,5 +1,5 @@
 <div class="post-wrapper">
-    <header id="hero" class="post-header<?php if (has_title_image()) echo ' hero-wrapper' ?>">
+    <header id="hero" class="post-header hero-wrapper"><?php // if (has_title_image()) echo ' hero-wrapper' ?>
         <div class="hero-text">
             <?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
             <?php if (has_secondary_title()): ?>

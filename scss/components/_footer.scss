@@ -3,7 +3,13 @@ footer#footer {
 
     .footer-top {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        max-width: 100%;
+        text-align: center;
+        // border: 2px solid blue;
     }
 
     hr {
@@ -13,9 +19,21 @@ footer#footer {
     }
 
     .social {
-        i {
-            font-size: 22px;
+        // white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        // min-width: 140px;
+
+        img {
+            width: 32px;
+            height: 32px;
+            display: block;
         }
+
+        // i {
+        //     font-size: 22px;
+        // }
     }
 
     .footer-navs {
@@ -25,7 +43,7 @@ footer#footer {
         gap: 1rem;
 
         a {
-            color: $clr-text;
+            // color: $clr-text;
             padding: 2px 0;
             display: inline-block;
 
@@ -39,11 +57,50 @@ footer#footer {
         }
     }
 
-    .sign-up{
-        margin-bottom: 4rem;
+    // .sign-up {
+    //     margin-bottom: 4rem;
+    // }
+
+    .app-badges {
+        margin-bottom: 1rem;
+
+        img {
+            width: 200px;
+        }
     }
 
     .footer-text {
         margin: 30px 0;
+    }
+}
+
+
+@media (max-width: 867px) {
+    footer#footer .sign-up iframe#newsletter {
+        height: 587px;
+    }
+}
+
+@media (max-width: 618px) {
+    footer#footer .sign-up iframe#newsletter {
+        height: 632px;
+    }
+}
+
+@media (max-width: 449px) {
+    footer#footer .sign-up iframe#newsletter {
+        height: 645px;
+    }
+}
+
+@media (max-width: 410px) {
+    footer#footer .sign-up iframe#newsletter {
+        height: 690px;
+    }
+}
+
+@media (max-width: 381px) {
+    footer#footer .sign-up iframe#newsletter {
+        height: 720px;
     }
 }

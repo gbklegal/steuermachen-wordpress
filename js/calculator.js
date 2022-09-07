@@ -1,7 +1,8 @@
 /**
+ * ! DEPRECATED - Use PriceCalc from script.js instead
  * Price Calculator
  * @author Tobias Röder
- * @version 0.1.0
+ * @version 0.2.0
  */
 class PriceCalculator {
     constructor() {
@@ -16,6 +17,16 @@ class PriceCalculator {
             319,
             369,
             429
+        ];
+
+        this.propertyTaxPrices = [
+            89,
+            119,
+            169,
+            189,
+            229,
+            249,
+            309
         ];
     }
 
@@ -69,17 +80,46 @@ class PriceCalculator {
         else if (bje > 150000 && bje <= 200000) {
             priceIndex = 8;
         }
-        else if (bje > 200000 && bje <= 250000) {
+        // else if (bje > 200000 && bje <= 250000) {
+        else if (bje > 200000) {
             priceIndex = 9;
         }
-        else if (bje > 250000) {
-            return false;
-        }
+        // else if (bje > 250000) {
+        //     return false;
+        // }
         else {
-            return 0;
+            return false;
         }
 
         return this.prices[priceIndex];
+    }
+
+    getPropertyTaxPrice(propertyTaxString = 0) {
+        let propertyTax = this.extractNumber(propertyTaxString);
+        let priceIndex = 0;
+
+        if (propertyTax === NaN)
+            return 0;
+
+        if (propertyTax <= 65000)
+            priceIndex = 0;
+        else if (propertyTax <= 125000)
+            priceIndex = 1;
+        else if (propertyTax <= 200000)
+            priceIndex = 2;
+        else if (propertyTax <= 350000)
+            priceIndex = 3;
+        else if (propertyTax <= 500000)
+            priceIndex = 4;
+        else if (propertyTax <= 1000000)
+            priceIndex = 5;
+        // else if (propertyTax <= 5000000)
+        else if (propertyTax > 1000000)
+            priceIndex = 6;
+        else
+            return false;
+
+        return this.propertyTaxPrices[priceIndex];
     }
 
     render() {

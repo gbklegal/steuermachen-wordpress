@@ -1,0 +1,709 @@
+body:not(.frame-mode) #page {
+    padding-top: $header-size;
+}
+
+@media (max-width: 1240px) {
+    body:not(.frame-mode) #page {
+        padding-top: $header-size-mobile;
+    }
+}
+
+
+
+/* Steuerratgeber child pages */
+// * maybe it will be available for all article.page
+// * this means without the explicit parent-pageid
+.parent-pageid-28564 {
+    article.page {
+        ul,
+        ol {
+            padding-left: 20px;
+            margin: 1.5em;
+    
+            li {
+                padding: 0;
+                margin-bottom: 6px;
+            }
+        }
+    }
+}
+
+
+
+/* Formulare */
+// lokal  32531
+// public 32526
+.page-id-32526 .post-content {
+    article {
+        width: fit-content;
+    }
+
+    h2 {
+        $pointSize: 10px;
+        $pointSizeHalf: calc($pointSize * 0.5);
+        $pointSizeHalfNeg: calc($pointSize * -0.5);
+
+        margin-bottom: 40px;
+        padding: 10px 20px;
+        background-color: $clr-primary;
+        color: $clr-text-white;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            content: '';
+            transform: rotate(-90deg);
+
+            top: $pointSizeHalfNeg;
+            left: $pointSizeHalfNeg;
+            width: 0;
+            height: 0;
+            border-left: $pointSize solid transparent;
+            border-right: $pointSize solid transparent;
+            border-bottom: $pointSize solid $clr-primary;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: $pointSize;
+            width: 0;
+            height: 110px;
+            border-left: 1px solid $clr-primary;
+        }
+    }
+
+    details {
+        margin-left: 5px;
+
+        summary {
+            color: $clr-primary;
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+
+            &::marker {
+                opacity: 0;
+                display: none;
+                color: $clr-text-white;
+            }
+        }
+    }
+}
+
+
+/* Newsletter page */
+.page-id-32990 {
+    main {
+        width: min(100%, 400px);
+        padding-top: 12px;
+
+        .newsletter-final {
+            img {
+                width: 100px;
+            }
+        }
+    }
+}
+
+
+/* steuerEASY page */
+.page-id-28426 {
+    section.section-price {
+        margin-block: 4rem;
+
+        .section-inner {
+            width: min(100%, 600px);
+            border-radius: $br-5;
+            background-color: $clr-bg-blue;
+            overflow: hidden;
+            font-size: 2rem;
+            line-height: 1.2;
+
+            .img-label-wrapper {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                gap: 1em;
+                padding: 1em 2em;
+        
+                img {
+                    width: 150px;
+                }
+
+                // .label {
+                    // font-size: 
+                // }
+            }
+
+            .price-wrapper {
+                background-color: $clr-secondary;
+                text-align: center;
+                color: $clr-text-white;
+                font-weight: bold;
+                padding: 0.5em 2em;
+            }
+        }
+    }
+}
+//     .site-content {
+//         border-top: none;
+//     }
+
+//     #hero {
+//         display: none;
+//     }
+
+//     main.main-content header {
+//         background-image: url('/wp-content/uploads/2021/01/money-2724235_1920.jpg');
+//         background-size: cover;
+//         height: 776px;
+//         background-repeat: no-repeat;
+//         color: $clr-text-white;
+//     }
+
+//     h1 {
+//         font-weight: 600;
+//         color: var(--clr-white);
+//         font-size: 4rem;
+//         padding-top: 3em;
+
+//         span {
+//             font-weight: 400;
+//             color: var(--clr-white);
+//             display: block;
+//             font-size: 1.5rem;
+//         }
+//     }
+
+//     section {
+//         margin-top: 4.5em;
+//         margin-bottom: 3em;
+//     }
+
+//     h2 {
+//         font-size: 1.4375rem;
+//         margin-bottom: 1.5em;
+//     }
+
+//     table {
+//         text-align: center;
+//         max-width: max-content;
+
+//         border: 1px solid $clr-bg-grey-light;
+//         border-collapse: collapse;
+
+//         th,
+//         td {
+//             border: 1px solid $clr-bg-grey-light;
+//         }
+
+//         th {
+//             text-transform: none;
+//             text-align: center;
+//             padding: 0.5em 1em;
+//             font-weight: 600;
+//         }
+
+//         td {
+//             padding: 5px 15px;
+//         }
+
+//         .table-background {
+//             background-color: $clr-secondary;
+//             color: $clr-text-white;
+//         }
+//     }
+
+//     form {
+//         font-weight: 400;
+//         text-transform: none;
+//         font-size: inherit;
+//         letter-spacing: normal;
+
+//         fieldset {
+//             border: none;
+//             padding: 0;
+//             margin: 2em 0;
+//         }
+
+//         legend {
+//             display: block;
+//             width: 100%;
+//             padding: 0;
+//             margin-bottom: 0.5rem;
+//             font-size: 1.5rem;
+//             line-height: inherit;
+//             box-sizing: border-box;
+//             color: inherit;
+//             max-width: 100%;
+//             white-space: normal;
+//         }
+
+//         label {
+//             width: 100%;
+//             display: inline-block;
+//             margin-bottom: 0.5rem;
+//         }
+
+//         .wpcf7-form-control-wrap {
+//             position: relative;
+//         }
+
+//         &.wpcf7-form select,
+//         &.wpcf7-form textarea {
+//             margin-bottom: 1em;
+//             max-width: 100%;
+//             overflow: auto;
+//             vertical-align: top;
+//             outline: none;
+//             border: 1px solid #e9e9e9;
+//             padding: 10px;
+//         }
+
+//         textarea:not(.editor-post-title__input),
+//         input[type="date"],
+//         input[type="datetime"],
+//         input[type="datetime-local"],
+//         input[type="email"],
+//         input[type="month"],
+//         input[type="number"],
+//         input[type="password"],
+//         input[type="search"],
+//         input[type="tel"],
+//         input[type="text"],
+//         input[type="time"],
+//         input[type="url"],
+//         input[type="week"] {
+//             padding: 10px;
+//             max-width: 100%;
+//             border: 0px;
+//             font-size: 15px;
+//             font-weight: normal;
+//             line-height: 22px;
+//             box-shadow: 0 1px 2px rgb(0 0 0 / 12%) inset;
+//             -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+//             -webkit-box-shadow: 0 1px 2px rgb(0 0 0 / 12%) inset;
+//             -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+//             transition: all 0.2s linear;
+//             -moz-transition: all 0.2s linear;
+//             -webkit-transition: all 0.2s linear;
+//             -o-transition: all 0.2s linear;
+//             background-color: #f2f2f2;
+//             border-bottom: 1px solid #fff;
+//             box-sizing: border-box;
+//             color: #000000;
+//         }
+
+//         textarea:not(.editor-post-title__input),
+//         input[type="date"],
+//         input[type="datetime"],
+//         input[type="datetime-local"],
+//         input[type="email"],
+//         input[type="month"],
+//         input[type="number"],
+//         input[type="password"],
+//         input[type="search"],
+//         input[type="tel"],
+//         input[type="text"],
+//         input[type="time"],
+//         input[type="url"],
+//         input[type="week"] {
+//             padding: 10px;
+//             max-width: 100%;
+//             border: 0px;
+//             font-size: 15px;
+//             font-weight: normal;
+//             line-height: 22px;
+//             box-shadow: 0 1px 2px rgb(0 0 0 / 12%) inset;
+//             -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+//             -webkit-box-shadow: 0 1px 2px rgb(0 0 0 / 12%) inset;
+//             -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+//             transition: all 0.2s linear;
+//             -moz-transition: all 0.2s linear;
+//             -webkit-transition: all 0.2s linear;
+//             -o-transition: all 0.2s linear;
+//             background-color: #f2f2f2;
+//             border-bottom: 1px solid #fff;
+//             box-sizing: border-box;
+//             color: #000000;
+//         }
+
+//         input[type="radio"],
+//         input[type="checkbox"] {
+//             margin: 0 12px 0 0;
+//         }
+
+//         &.wpcf7-form .bestellen {
+//             margin-top: 3em;
+//             margin-bottom: 3em;
+//         }
+//     }
+
+//     /* Contact Form 7 redesign */
+    
+//     // .wpcf7-form {
+//     //     font-weight: 400;
+//     //     text-transform: none;
+//     //     font-size: inherit;
+//     //     letter-spacing: normal;
+//     // }
+    
+//     // .wpcf7-form fieldset {
+//     //     border: none;
+//     //     padding: 0;
+//     //     margin: 2em 0;
+//     // }
+    
+//     // .wpcf7-form legend span {
+//     //     font-size: 1rem;
+//     // }
+    
+//     // .wpcf7-form select,
+//     // .wpcf7-form textarea {
+//     //     margin-bottom: 1em;
+//     // }
+    
+//     // .wpcf7-form .wpcf7-checkbox span {
+//     //     margin-left: 0;
+//     // }
+    
+//     // .wpcf7-form input[type=checkbox] {
+//     //     margin-left: 0;
+//     // }
+    
+//     // .wpcf7-form input[type=submit] {
+//     //     background-color: var(--clr-orange);
+//     //     font-size: 1rem;
+//     //     font-weight: 600;
+//     //     color: var(--clr-white);
+//     //     padding: 0.8em 2em;
+//     //     border-radius: 5px;
+//     //     border: none;
+//     //     text-transform: none;
+//     //     margin-left: 1em;
+//     // }
+    
+//     // .wpcf7-form input[type=submit]:hover {
+//     //     background-color: var(--clr-orange-dark);
+//     //     text-decoration: none;
+//     // }
+    
+//     // .wpcf7-form.checkbox-last {
+//     //     margin-bottom: 0;
+//     // }
+    
+    
+//     // .wpcf7-form a {
+//     //     color: var(--clr-secondary);
+//     //     text-decoration: none;
+//     // }
+    
+//     // .wpcf7-form a:hover {
+//     //     color: var(--clr-secondary-dark);
+//     //     text-decoration: underline;
+//     // }
+    
+//     // .wpcf7-form .bestellen {
+//     //     margin-top: 3em;
+//     //     margin-bottom: 3em;
+//     // }
+    
+//     // .wpcf7-form .bestellen img {
+//     //     margin-right: 1em;
+//     //     margin-bottom: 4em;
+//     // }
+    
+//     // span.wpcf7-list-item {
+//     //     display: grid;
+//     //     grid-template-columns: auto 1fr;
+//     //     margin: 0;
+//     // }
+    
+//     // span.wpcf7-list-item input {
+//     //     place-self: center;
+//     // }
+    
+//     // .inline .wpcf7-list-item {
+//     //     display: inline;
+//     // }
+    
+//     // .wpcf7-form.text-area {
+//     //     margin-top: 2em;
+//     // }
+    
+//     // .wpcf7-form .inline {
+//     //     margin-bottom: .9375rem;
+//     // }
+    
+//     // .wpcf7-form .inline a {
+//     //     margin-left: 2em;
+//     //     display: block;
+//     // }
+    
+//     // input[type="radio"],
+//     // input[type="checkbox"] {
+//     //     margin: 0 12px 0 0;
+//     // }
+    
+//     // .wpcf7-form-control-wrap.ziel .wpcf7-list-item {
+//     //     margin-bottom: 0.5rem;
+//     // }
+    
+    
+//     // @media (min-width: 992px) {
+//     //     .wpcf7-form fieldset .formfield {
+//     //         display: grid;
+//     //         grid-template-columns: 1fr 1fr;
+//     //     }
+    
+//     //     /* Klage Finanzgericht Form / Ihr Antrag auf Soforthilfe zum Thema Steuerrecht */
+//     //     .page-id-28486 .wpcf7-form fieldset .formfield {
+//     //         display: block;
+//     //     }
+    
+//     //     /* steuerEASY */
+//     //     .page-id-28426 .wpcf7-form fieldset .formfield {
+//     //         display: block;
+//     //     }
+    
+//     //     .wpcf7-form fieldset .formfield.formfield-small {
+//     //         max-width: min-content;
+//     //         grid-column-gap: 2em;
+//     //     }
+    
+//     //     label.span {
+//     //         grid-column: 1 / 3;
+//     //     }
+    
+//     //     /* one column */
+    
+//     //     /* Klage Finanzgericht Form / Ihr Antrag auf Soforthilfe zum Thema Steuerrecht */
+//     //     .page-id-28486 .wpcf7-form fieldset .formfield {
+//     //         grid-template-columns: 1fr;
+//     //     }
+//     // }
+    
+    
+//     // @media (min-width: 1240px) {
+    
+//     //     /* Klage Finanzgericht Form / Ihr Antrag auf Soforthilfe zum Thema Steuerrecht */
+//     //     .page-id-28486 .wpcf7-form fieldset .formfield {
+//     //         display: grid;
+//     //         grid-template-columns: 1fr 1fr;
+//     //     }
+//     // }
+    
+//     // .h-captcha {
+//     //     margin-top: 2em;
+//     //     margin-bottom: 0;
+//     // }
+// }
+
+
+.page-id-28426 .info ul {
+    list-style-type: none;
+    padding-left: 0.3em;
+}
+
+.page-id-28426 .info li {
+    margin-left: 0;
+}
+
+.page-id-28426 .info ul .fa {
+    color: $clr-secondary;
+    padding-right: .5em;
+    font-size: 1.2rem;
+}
+
+/* steuerEASY form */
+.easy-form {
+    margin-bottom: 3em;
+}
+
+
+
+.page-id-28426 main.main-content .container {
+    margin-left: auto;
+    margin-right: auto;
+    // padding-right: 15px;
+    // padding-left: 15px;
+    width: 960px;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .page-id-28426 main.main-content .container {
+        width: 720px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-id-28426 main.main-content .container {
+        width: 540px;
+        max-width: 100%;
+    }
+}
+
+
+// Order Form (Bestellformular)
+.page-id-75 {
+    #order-form {
+        background-color: $clr-bg-white;
+        border-radius: $br-4 $br-4 0 0;
+        position: relative;
+        overflow: hidden;
+
+        .loading-screen {
+            z-index: 9;
+            position: absolute;
+            inset: 0;
+            background-color: $clr-bg-white;
+            display: grid;
+            place-items: center;
+
+            .icon-loader {
+                font-size: 3em;
+            }
+        }
+    }
+
+    #page-2 {
+        max-width: 600px;
+        margin-inline: auto;
+
+        .price-calculator {
+
+            .calc {
+                .field-wrapper {
+                    width: 100%;
+
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    #page-3 {
+        .fields-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5em;
+
+            .field-wrapper {
+                width: 100%;
+                margin-bottom: 0;
+
+                input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .radio-boxes {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 50px;
+        text-align: center;
+        justify-content: space-between;
+
+        label {
+            input {
+                display: none;
+
+                &:checked + .radio-box {
+                    // border-color: $clr-secondary;
+                    // color: $clr-secondary;
+                    background-color: $clr-secondary;
+
+                    // .img {
+                    //     background-color: $clr-secondary;
+                    // }
+                }
+            }
+
+            .radio-box {
+                width: 100px;
+                height: 100px;
+                border: 2px solid $clr-text-black;
+                border-radius: $br-2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                @include transition(fast, all, ease-in-out);
+
+                span {
+                    // font-weight: 400;
+                    font-size: 24px;
+                    font-family: $font-default;
+                }
+
+                // .img,
+                img {
+                    // width: 65%;
+                    // height: 65%;
+                    padding: 1em;
+                    // background-color: $clr-text-black;
+                    // mask-position: center;
+                    // mask-repeat: no-repeat;
+                    // mask-size: contain;
+                    // -webkit-mask-position: center;
+                    // -webkit-mask-repeat: no-repeat;
+                    // -webkit-mask-size: contain;
+                    // @include transition(fast, background-color, ease-in-out);
+
+                    // &.stickman {
+                    //     mask-image: url(/wp-content/themes/steuermachen/order-form/img/stickman.png);
+                    //     -webkit-mask-image: url(/wp-content/themes/steuermachen/order-form/img/stickman.png);
+                    // }
+
+                    // &.wedding-rings {
+                    //     mask-image: url(/wp-content/themes/steuermachen/order-form/img/wedding-rings.png);
+                    //     -webkit-mask-image: url(/wp-content/themes/steuermachen/order-form/img/wedding-rings.png);
+                    // }
+
+                    // &.broken {
+                    //     mask-image: url(/wp-content/themes/steuermachen/order-form/img/broken.png);
+                    //     -webkit-mask-image: url(/wp-content/themes/steuermachen/order-form/img/broken.png);
+                    // }
+
+                    // &.widowed {
+                    //     mask-image: url(/wp-content/themes/steuermachen/order-form/img/widowed.png);
+                    //     -webkit-mask-image: url(/wp-content/themes/steuermachen/order-form/img/widowed.png);
+                    // }
+                }
+            }
+
+            .label {
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-sm) {
+    // Order Form (Bestellformular)
+    .page-id-75,
+    .page-id-33519 {
+        .pagination-wrapper {
+            flex-direction: column;
+            gap: 2em !important;
+        }
+
+        #page-3 {
+            .fields-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+        // this one is the test page
+}
