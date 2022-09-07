@@ -1,4 +1,4 @@
-#modal {
+#modal-wrapper {
     display: none;
     position: fixed;
     top: 0;
@@ -9,7 +9,7 @@
     height: 100%;
     background-color: $clr-bg-white;
 
-    #modalClose {
+    #modal-close {
         position: fixed;
         top: 20px;
         right: 20px;
@@ -24,8 +24,67 @@
         transform: translate(-50%, -50%);
     }
 
-    iframe#modalFrame {
+    iframe#modal-frame {
         width: 100%;
         height: 100%;
+    }
+}
+
+// dialog modal
+dialog.modal {
+    margin: auto;
+    // border: 2px solid blue;
+    min-width: 250px;
+    max-width: 500px; // 50ch
+    border: 0;
+    // background-color: $clr-bg-grey-light;
+    padding: 2em;
+    border-radius: $br-4;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    &:not([open]) {
+        display: none;
+    }
+
+    .modal-icon {
+        text-align: center;
+        font-size: 4em;
+
+        &.modal-theme {
+            &-success {
+                color: $clr-success;
+            }
+            &-warning {
+                color: $clr-warn;
+            }
+            &-error {
+                color: $clr-danger;
+            }
+        }
+    }
+
+    .modal-title {
+        font-size: 2em;
+        font-weight: 500;
+    }
+
+    .modal-main {
+        padding-bottom: 1em;
+
+        ul, ol {
+            padding-left: 20px;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        gap: 0.5em;
+
+        button {
+            font-size: 1em;
+            padding: 0.4em;
+        }
     }
 }
