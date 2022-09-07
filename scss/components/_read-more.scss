@@ -1,0 +1,20 @@
+.read-more-checkbox {
+    display: none;
+
+    &:not(:checked) {
+        &+.read-more-wrapper .read-more-text {
+            display: none;
+        }
+    }
+
+    &:checked {
+        &+.read-more-wrapper .read-more-excerpt {
+            display: none;
+        }
+    }
+}
+
+.read-more-excerpt label.read-more {
+    color: $clr-primary;
+    cursor: pointer;
+}
