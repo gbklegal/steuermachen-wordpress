@@ -71,6 +71,30 @@ function steuermachen_theme_setup() {
     add_filter('excerpt_more', function() { return '...'; });
 }
 add_action( 'init', 'steuermachen_theme_setup');
+// TODO add this after your holiday, so the others and yourself can edit the sidebar simply in the widgets section
+// function steuermachen_widgets_init() {
+//     register_sidebar([
+//         'id'            => 'front-page-sidebar',
+//         'name'          => 'Startseite Sidebar',
+//         'description'   => 'A short description of the sidebar.',
+//         'before_widget' => '<div id="%1$s" class="widget %2$s">',
+//         'after_widget'  => '</div>',
+//         'before_title'  => '<h3 class="widget-title">',
+//         'after_title'   => '</h3>',
+//     ]);
+// }
+// add_action( 'widgets_init', 'steuermachen_widgets_init' );
+
+
+// function add_mobile_nav_support( $items, $args ) {
+//     var_dump($items);
+//     var_dump($args);
+
+//     return $items;
+// }
+// // wp_nav_menu_items | nav_menu_item_id
+// add_filter( 'wp_nav_menu_items', 'add_mobile_nav_support' );
+// // add_action( 'wp_add_nav_menu_item', 'add_mobile_nav_support' );
 
 
 /**

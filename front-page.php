@@ -91,6 +91,7 @@
                 <div class="item">
                     <div class="item-title h2">5</div>
                     <div class="item-content">Jeder fünfte Steuerbescheid ist falsch</div>
+    <div class="sidebar-content-wrapper">
                 </div>
                 <div class="item">
                     <div class="item-title h2">1047 &euro;</div>
@@ -208,6 +209,8 @@
             </div>
         </div>
     </section>
+        <?php get_sidebar('front-page'); ?>
+    </div>
 </main>
 
 <?php get_footer(); ?>

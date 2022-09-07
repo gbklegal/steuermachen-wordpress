@@ -1,0 +1,93 @@
+@media (min-width: 1310px) {
+    .sidebar-content-wrapper {
+        display: flex;
+        gap: 2rem;
+
+        .sidebar {
+            &-front-page {
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+
+                min-width: 290px;
+
+                .sidebar-item {
+                    border-radius: $br-3;
+                    border: 1px solid $clr-bg-grey-light;
+
+                    &-title {
+                        padding: 0.5em;
+                        margin-bottom: 0;
+                        font-size: 1rem;
+                    }
+
+                    &-content {
+                        padding: 1em;
+                    }
+
+                    &.newsletter {
+                        .sidebar-item {
+                            &-title {
+                                background-color: rgba($clr-secondary, 0.4);
+                            }
+
+                            &-content {
+                                img {
+                                    width: 100px;
+                                    margin-bottom: 1em;
+                                }
+
+                                .newsletter-frame {
+                                    max-width: 100%;
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+
+                    &.qr-code-app-download {
+                        img {
+                            border-radius: $br-1;
+                            box-shadow: 0 0 4px rgba($clr-bg-black, 0.2);
+                        }
+                    }
+
+                    &.contact-form .sidebar-item-content {
+                        padding: 1em;
+                    }
+
+                    &.steuerratgeber .sidebar-item-content {
+                        .latest-posts {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1em;
+
+                            .image {
+                                border-radius: $br-4;
+                                overflow: hidden;
+                        
+                                img {
+                                    width: 100%;
+                                    display: block;
+                                    transition: ease-in-out 0.3s transform;
+                        
+                                    &:hover {
+                                        transform: scale(1.1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1310px) {
+    .sidebar-content-wrapper {
+        .sidebar-front-page {
+            display: none;
+        }
+    }
+}
