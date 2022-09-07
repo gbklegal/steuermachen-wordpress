@@ -1,4 +1,6 @@
 main.main-content.front-page {
+    max-width: 1500px;
+
     .hero-wrapper {
         width: 100% !important;
 
@@ -8,6 +10,13 @@ main.main-content.front-page {
         }
 
         .hero-text {
+            h1 {
+                img {
+                    height: 40px;
+                    margin-right: 20px;
+                }
+            }
+
             .seals {
                 display: flex;
                 flex-flow: row nowrap;
@@ -54,51 +63,82 @@ main.main-content.front-page {
             // border: 15px solid $clr-bg-grey-light;
             // border-radius: $br-4;
             // background-color: $clr-bg-grey-light;
-            
+
             img {
                 // display: block;
                 // border-radius: $br-3;
-                min-width: 440px !important;
-                max-height: 440px !important;
+                min-width: 512px !important;
+                max-height: 512px !important;
             }
         }
     }
 
-    #quicktax {
-        #steuerrechner {
+    // #quicktax {
+    //     #steuerrechner {
 
-            form {
-                margin: 0 auto;
-                max-width: 790px;
-            }
+    //         form {
+    //             margin: 0 auto;
+    //             padding-inline: 0;
+    //             max-width: 820px; // 790px
+    //         }
 
-            .radio-wrapper {
-                gap: 10px;
+    //         .radio-wrapper {
+    //             gap: 10px;
 
-                label {
-                    // width: 237px;
-                    // height: 77px;
-                    padding: 20px 24px;
-                    font-size: 24px;
-                    display: grid;
-                    place-items: center;
-                }
-            }
+    //             label {
+    //                 // width: 237px;
+    //                 // height: 77px;
+    //                 padding: 20px 24px;
+    //                 font-size: 24px;
+    //                 display: grid;
+    //                 place-items: center;
+    //             }
+    //         }
 
-            .number-wrapper {
-                input {
-                    font-size: 24px;
-                }
-            }
-        }
-    }
+    //         .number-wrapper {
+    //             input {
+    //                 font-size: 24px;
+    //             }
+    //         }
+    //     }
+    // }
 
     #steps {
+        // border: 2px solid blue;
         $gap: 40px;
 
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: $gap;
+        .flip-cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: $gap;
+        }
+
+        .flip-card-inner {
+            border-radius: $br-2;
+            box-shadow: 0 2px 8px rgba($clr-bg-black, 0.25);
+
+            img {
+                margin: 0 auto;
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            .flip-card-front,
+            .flip-card-back {
+                border-radius: $br-2;
+                padding: 20px;
+                height: 100%;
+            }
+
+            .flip-card-back {
+                display: grid;
+                place-items: center;
+            }
+
+            // summary {
+            //     text-align: center;
+            // }
+        }
 
         .step {
             position: relative;
@@ -146,6 +186,39 @@ main.main-content.front-page {
                     .details-content {
                         opacity: 1;
                     }
+                }
+            }
+        }
+    }
+
+    #app {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-items: center;
+        background-color: $clr-secondary;
+        border-radius: $br-4;
+        overflow: hidden;
+
+        .app-mockup {
+            height: 100%;
+
+            img {
+                display: block;
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+
+        .app-text {
+            padding: 20px;
+
+            h3 {
+                margin-top: 0.9375rem;
+            }
+
+            .store-badges {
+                img {
+                    width: 200px;
                 }
             }
         }
@@ -240,12 +313,19 @@ main.main-content.front-page {
                 border-radius: $br-4;
                 padding: 22px 24px;
                 background-color: $clr-bg-blue;
+                display: flex;
+                flex-flow: column wrap;
 
                 &:nth-child(1) {
                     background: linear-gradient(to left, $clr-bg-blue, transparent);
                 }
+
                 &:nth-child(3) {
                     background: linear-gradient(to right, $clr-bg-blue, transparent);
+                }
+
+                .details-wrapper {
+                    flex: 1;
                 }
 
                 .title {
@@ -257,7 +337,7 @@ main.main-content.front-page {
                     font-size: 18px;
                     font-weight: 700;
                     color: $clr-primary;
-                    font-family: 'Helvetica', sans-serif;
+                    font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
                 }
 
                 q.content {
@@ -280,12 +360,16 @@ main.main-content.front-page {
             }
         }
     }
-    
+
     #steuerratgeber {
+        h2 {
+            margin-bottom: 40px;
+        }
+
         .recent-posts {
             display: grid;
             grid-template-columns: 4fr 3fr;
-            gap: 12px;
+            gap: 30px;
 
             .image {
                 border-radius: $br-4;
@@ -323,7 +407,7 @@ main.main-content.front-page {
             .latest-posts {
                 display: flex;
                 flex-flow: column wrap;
-                gap: 12px;
+                gap: 30px;
 
                 .post {
                     display: flex;
@@ -334,16 +418,16 @@ main.main-content.front-page {
                         $size: 200px;
 
                         width: $size;
-                        min-width: $size !important;
+                        min-width: $size  !important;
                     }
 
-                    .content {
-                        .title {
-                            a {
-                                color: $clr-text-black;
-                            }
-                        }
-                    }
+                    // .content {
+                    //     .title {
+                    //         a {
+                    //             color: $clr-text-black;
+                    //         }
+                    //     }
+                    // }
                 }
             }
         }
@@ -412,11 +496,13 @@ main.main-content.front-page {
                 }
 
                 &:nth-child(1) {
-                text-align: left;
+                    text-align: left;
                 }
+
                 &:nth-child(2) {
                     text-align: center;
                 }
+
                 &:nth-child(3) {
                     text-align: right;
                 }
@@ -439,7 +525,7 @@ main.main-content.front-page {
     main.main-content.front-page {
         .hero-wrapper {
             .hero-image img {
-                min-width: auto !important;
+                min-width: 350px !important;
             }
         }
 
@@ -471,26 +557,27 @@ main.main-content.front-page {
 
         #bewertungen {
             .rating-boxes {
-                overflow: hidden;
-                overflow-x: scroll;
-            }
-            //     grid-template-columns: 1fr;
-            //     justify-items: center;
+                // overflow: hidden;
+                // overflow-x: scroll;
 
-            //     .rating-box {
-            //         // width: 420px;
-            //         // max-width: 100%;
-            //         width: 100%;
-            //         max-width: 420px;
-                    
-            //         &:nth-child(1) {
-            //             background: linear-gradient(to top, $clr-bg-blue, transparent);
-            //         }
-            //         &:nth-child(3) {
-            //             background: linear-gradient(to bottom, $clr-bg-blue, transparent);
-            //         }
-            //     }
-            // }
+                grid-template-columns: 1fr;
+                justify-items: center;
+
+                .rating-box {
+                    // width: 420px;
+                    // max-width: 100%;
+                    width: 100%;
+                    max-width: 420px;
+
+                    &:nth-child(1) {
+                        background: linear-gradient(to top, $clr-bg-blue, transparent);
+                    }
+
+                    &:nth-child(3) {
+                        background: linear-gradient(to bottom, $clr-bg-blue, transparent);
+                    }
+                }
+            }
         }
     }
 }
@@ -498,7 +585,15 @@ main.main-content.front-page {
 
 @media (max-width: 835px) {
     main.main-content.front-page {
-        #steps {
+        .hero-wrapper {
+            flex-direction: column;
+
+            .hero-image img {
+                max-height: 100% !important;
+            }
+        }
+
+        #steps .flip-cards-wrapper {
             grid-template-columns: repeat(2, 1fr);
 
             .step:nth-child(even)::after {
@@ -527,16 +622,16 @@ main.main-content.front-page {
                 display: flex;
                 flex-flow: column wrap;
                 align-items: center;
-                
+
                 h1 {
                     font-size: 30px;
                     text-align: center;
                 }
             }
+        }
 
-            .hero-image {
-                display: none;
-            }
+        #app {
+            grid-template-columns: 1fr;
         }
 
         #zahlen-und-fakten {
@@ -556,8 +651,8 @@ main.main-content.front-page {
                     }
 
                     // .item {
-                        // width: 100%;
-                        // height: auto;
+                    // width: 100%;
+                    // height: auto;
                     // }
                 }
             }
@@ -588,7 +683,7 @@ main.main-content.front-page {
 
 @media (max-width: $breakpoint-sm) {
     main.main-content.front-page {
-        #steps {
+        #steps .flip-cards-wrapper {
             grid-template-columns: 1fr;
 
             .step::after {
@@ -596,8 +691,18 @@ main.main-content.front-page {
             }
         }
 
+        #quicktax {
+            #steuerrechner {
+                .radio-wrapper {
+                    label {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
         #zahlen-und-fakten {
-            .body {
+            .box {
                 padding: 20px;
             }
         }
@@ -633,10 +738,45 @@ main.main-content.front-page {
                         display: flex;
                         flex-flow: column wrap;
                         gap: 5px;
-                        
+
                         .image {
                             width: fit-content;
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-xs) {
+    main.main-content.front-page {
+        .hero-wrapper .hero-text {
+            .seals {
+                flex-direction: column;
+            }
+
+            .advantages {
+                ul {
+                    flex-direction: column;
+                }
+            }
+
+            .cta-button {
+                width: 100%;
+
+                .btn-lg {
+                    width: 100%;
+                }
+            }
+        }
+
+        #quicktax {
+            #steuerrechner {
+                .radio-wrapper {
+                    label {
+                        font-size: 16px;
                     }
                 }
             }
