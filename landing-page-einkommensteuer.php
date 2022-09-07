@@ -1,19 +1,8 @@
 <?php
 
 /**
- * Template Name: Landing Page
+ * Template Name: Landing Page - Einkommensteuer
  */
-
-/**
- * TODO List
- * create two files
- * - 1: header-fa-landing.php
- * - 2: footer-fa-landing.php
- * include them with get_header( 'fa-landing' ) and so on.
- * Add Christmas Support (fa-landing template from live site)
- */
-
-// echo 'Landing Page ()';
 
 function is_fa_landing() {
     global $post;
@@ -40,10 +29,12 @@ get_header( $_fa_landing );
     <header id="hero">
         <div class="hero-inner max-width">
             <div>
-                <h1 class="text-left"><span class="h2 text-primary<?php echo echo_if( is_christmas_time(), ' text-christmas' ); ?>">Deine Einkommen&shy;steuer&shy;erklärung</span><br><span class="font-medium h3">Jetzt einfach von Steuer&shy;experten machen lassen</span></h1>
-                <a href="/steuererklaerung-beauftragen/?p_id=4231" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <h1 class="text-left"><span class="h2 text-primary<?php echo return_if( is_christmas_time(), ' text-christmas' ); ?>">Deine Einkommen&shy;steuer&shy;erklärung</span><br><span class="font-medium h3">Jetzt einfach von Steuer&shy;experten machen lassen</span></h1>
+                <a href="/steuererklaerung-beauftragen/<?=return_if( is_fa_landing(), '?p_id=4231' )?>" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
-            <img src="<?php echo STM_THEME_IMG; ?>/hero-icon<?php echo echo_if( is_christmas_time(), '-christmas' ); ?>.svg">
+            <div class="hero-image-wrapper dots">
+                <?php echo get_image_tag(33615, 'Begeisterte Frau', 'Einkommensteuer', 'left', 'full'); ?>
+            </div>
         </div>
     </header>
 
