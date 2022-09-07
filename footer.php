@@ -3,8 +3,12 @@
         <div class="footer-top">
             <?php echo get_image_tag('31979', 'steuermachen', 'steuermachen', 'left', [0, 25]); ?>
             <div class="social">
-                <i class="icon-instagram"></i>
-                <i class="icon-facebook"></i>
+                <!-- <a href="#"><i class="icon-instagram"></i></a>
+                <a href="#"><i class="icon-facebook"></i></a> -->
+                <a href="https://www.instagram.com/steuermachen.de/" title="@steuermachen.de - Instagram"><?php echo get_image_tag(33018, 'Instagram', '', 'left', 32); ?></a>
+                <a href="https://www.facebook.com/steuermachen.de/" title="@steuermachen.de - Facebook"><?php echo get_image_tag(33017, 'Facebook', '', 'left', 32); ?></a>
+                <a href="https://www.pinterest.de/steuermachen/" title="@steuermachen - Pinterest"><?php echo get_image_tag(33019, 'Pinterest', '', 'left', 32); ?></a>
+                <a href="https://www.linkedin.com/company/steuermachen/" title="@steuermachen - LinkedIn"><?php echo get_image_tag(33016, 'LinkedIn', '', 'left', 32); ?></a>
             </div>
         </div>
         <hr>
