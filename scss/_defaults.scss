@@ -10,11 +10,25 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-padding-top: $header-size + 20px;
+}
+
+@media (max-width: 1240px) {
+    html {
+        scroll-padding-top: calc($header-size-mobile) + 30px;
+    }
+}
+
 body {
     background-color: $clr-bg-white;
     color: $clr-text-black;
-    font-size: 14px; // 16
+    font-size: 16px; // 16 - 14 seems to be too small
     line-height: 1.5;
+}
+
+[hidden] {
+    display: none !important;
 }
 
 
