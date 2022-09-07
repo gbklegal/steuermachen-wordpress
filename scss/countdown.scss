@@ -25,6 +25,8 @@
                 font-family: 'Source Sans Pro', sans-serif;
                 font-weight: 600;
                 font-size: 60px;
+                line-height: 1em;
+                padding-bottom: 0.2em;
 
                 .countdown-loader {
                     line-height: 1;
@@ -51,6 +53,7 @@
     .countdown-wrapper {
         display: grid;
         grid-template-columns: repeat(2, 50fr);
+        align-items: center;
         
         .countdown .label .label-content-mobile {
             display: none;
