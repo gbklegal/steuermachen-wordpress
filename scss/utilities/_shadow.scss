@@ -1,0 +1,7 @@
+.box-shadow {
+    box-shadow: $box-shadow;
+
+    &-soft {
+        box-shadow: $box-shadow-soft;
+    }
+}
