@@ -1,0 +1,56 @@
+.alert {
+    border: 2px solid;
+    border-radius: $br-2;
+    padding: 0.4em 0.8em;
+
+    .alert-icon::before {
+        display: inline-block;
+        font-family: $font-icons;
+        vertical-align: baseline;
+    }
+
+    // default
+    color: $clr-alert-secondary-color;
+    background-color: $clr-alert-secondary-bg;
+    border-color: $clr-alert-secondary-border-color;
+
+    &-success {
+        color: $clr-alert-success-color;
+        background-color: $clr-alert-success-bg;
+        border-color: $clr-alert-success-border-color;
+
+        .alert-icon::before {
+            content: '\e90e';
+        }
+    }
+
+    &-danger {
+        color: $clr-alert-danger-color;
+        background-color: $clr-alert-danger-bg;
+        border-color: $clr-alert-danger-border-color;
+
+        .alert-icon::before {
+            content: '\e944';
+        }
+    }
+
+    &-warning {
+        color: $clr-alert-warning-color;
+        background-color: $clr-alert-warning-bg;
+        border-color: $clr-alert-warning-border-color;
+
+        .alert-icon::before {
+            content: '\e901';
+        }
+    }
+
+    &-info {
+        color: $clr-alert-info-color;
+        background-color: $clr-alert-info-bg;
+        border-color: $clr-alert-info-border-color;
+
+        .alert-icon::before {
+            content: '\e928';
+        }
+    }
+}
