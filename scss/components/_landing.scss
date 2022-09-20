@@ -17,12 +17,12 @@ body.christmas #page {
 //     }
 // }
 
-.page-template-landing-page-grundsteuer,
-.page-template-landing-page-safetax,
-.page-template-landing-page-steuereasy,
-.page-template-landing-page-steuererklaerung, // backward campatiblity
-.page-template-landing-page-einkommensteuer {
-// .page-template-landing-page {
+.page-template-template-landing-page-grundsteuer,
+.page-template-template-landing-page-safetax,
+.page-template-template-landing-page-steuereasy,
+.page-template-template-landing-page-steuererklaerung, // * backward campatiblity
+.page-template-template-landing-page-einkommensteuer {
+    // .page-template-landing-page {
     .custom-logo {
         max-height: 90px;
     }
@@ -43,37 +43,47 @@ body.christmas #page {
     }
 
     .landing-page {
-        .h1, h1,
-        .h2, h2,
-        .h3, h3,
-        .h4, h4,
-        .h5, h5 {
+        .h1,
+        h1,
+        .h2,
+        h2,
+        .h3,
+        h3,
+        .h4,
+        h4,
+        .h5,
+        h5 {
             font-style: normal;
             font-weight: 700;
             margin-bottom: 0;
             line-height: 1 !important;
             text-transform: initial;
         }
-        
-        .h1, h1 {
+
+        .h1,
+        h1 {
             font-size: 56px;
         }
-        
-        .h2, h2 {
+
+        .h2,
+        h2 {
             font-size: 40px;
         }
-        
-        .h3, h3 {
+
+        .h3,
+        h3 {
             font-size: 36px;
             font-weight: 600;
         }
-        
-        .h4, h4 {
+
+        .h4,
+        h4 {
             font-size: 24px;
             letter-spacing: 0.1em;
         }
-        
-        .h5, h5 {
+
+        .h5,
+        h5 {
             font-size: 20px;
             font-weight: 600;
         }
@@ -82,7 +92,7 @@ body.christmas #page {
             padding: 0 70px 40px;
             margin-top: 40px;
             margin-bottom: -40px;
-        
+
             .hero-inner {
                 // padding: 70px 0;
                 // padding-bottom: 70px;
@@ -90,11 +100,11 @@ body.christmas #page {
                 flex-direction: row;
                 flex-wrap: nowrap;
                 align-items: center;
-        
+
                 .hero-image-wrapper.dots {
                     position: relative;
                     display: inline-block;
-                    
+
                     &::before,
                     &::after {
                         z-index: -1;
@@ -107,11 +117,11 @@ body.christmas #page {
                         aspect-ratio: 1 / 1;
                         border-radius: 99rem;
                     }
-                    
+
                     &::before {
                         inset: 0 0 auto auto;
                     }
-                    
+
                     &::after {
                         inset: auto auto 0 0;
                     }
@@ -123,15 +133,15 @@ body.christmas #page {
                 }
             }
         }
-        
+
         section {
             margin-bottom: 75px;
-        
+
             &.section-price {
                 #calculator {
                     width: 512px;
                     max-width: 100%;
-        
+
                     #bjeResult {
                         font-size: 2rem;
                     }
@@ -145,7 +155,6 @@ body.christmas #page {
             }
         }
     }
-
 
     footer {
         padding: 40px;
@@ -167,7 +176,6 @@ body.christmas #page {
         }
     }
 }
-
 
 @media (max-width: $breakpoint-xl) {
     .page-template-landing-page-grundsteuer,
