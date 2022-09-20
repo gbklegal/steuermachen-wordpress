@@ -571,20 +571,13 @@ class PriceCalc {
         if (propertyTax !== NaN) {
             let priceIndex = 0;
 
-            if (propertyTax <= 65000)
-                priceIndex = 0;
-            else if (propertyTax <= 125000)
-                priceIndex = 1;
-            else if (propertyTax <= 200000)
-                priceIndex = 2;
-            else if (propertyTax <= 350000)
-                priceIndex = 3;
-            else if (propertyTax <= 500000)
-                priceIndex = 4;
-            else if (propertyTax <= 1000000)
-                priceIndex = 5;
-            else if (propertyTax <= 5000000)
-                priceIndex = 6;
+            if (propertyTax <= 65000) priceIndex = 0;
+            else if (propertyTax <= 125000) priceIndex = 1;
+            else if (propertyTax <= 200000) priceIndex = 2;
+            else if (propertyTax <= 350000) priceIndex = 3;
+            else if (propertyTax <= 500000) priceIndex = 4;
+            else if (propertyTax <= 1000000) priceIndex = 5;
+            else if (propertyTax <= 5000000) priceIndex = 6;
             else {
                 price = 0;
                 return false;
