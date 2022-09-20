@@ -4,7 +4,15 @@
  * Template Name: Landing Page - steuerEASY
  */
 
-get_header();
+$_publisher_mode = '';
+$publisher_id = $_GET['p_id'] ?? null;
+$publisher_id_param = !empty($publisher_id) ? "&p_id={$publisher_id}" : '';
+
+if (true === is_publisher_mode()) {
+    $_publisher_mode = 'publisher';
+}
+
+get_header($_publisher_mode);
 ?>
 
 <main class="main-content landing-page">
@@ -12,7 +20,7 @@ get_header();
         <div class="hero-inner max-width">
             <div>
                 <h1 class="text-left"><span class="h2 text-primary">steuerEASY</span><br><span class="font-medium h3">Deine kostengünstige Erstberatung von Steuerexperten</span></h1>
-                <a href="/steuererklaerung-beauftragen/?product=steuerEASY" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <a href="/steuererklaerung-beauftragen/?product=steuerEASY<?= $publisher_id_param ?>" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
             <!-- <img src="<?php echo STM_THEME_IMG; ?>/mortgage-loan.svg" alt="Grundsteuererklärung"> -->
             <div class="hero-image-wrapper dots">
@@ -25,7 +33,9 @@ get_header();
         <div class="text-center section-inner max-width">
             <div class="p-5 text-white countdown-wrapper box-shadow">
                 <h4 class="text-left">Keine Frist verpassen. Der Countdown für die Abgabe deiner Steuererklärung 2021 läuft!</h4>
-                <?php # the_countdown('October 31, 2022 23:59:59'); ?>
+                <?php
+# the_countdown('October 31, 2022 23:59:59');
+?>
                 <?php the_countdown(); ?>
             </div>
         </div>
@@ -53,7 +63,7 @@ get_header();
                     <div class="vat-info">(inkl. MwSt.)</div>
                 </div>
                 <div class="cta-wrapper">
-                    <a class="btn btn-primary btn-mdxl" href="/steuererklaerung-beauftragen/?product=steuerEASY">Jetzt beauftragen</a></div>
+                    <a class="btn btn-primary btn-mdxl" href="/steuererklaerung-beauftragen/?product=steuerEASY<?= $publisher_id_param ?>">Jetzt beauftragen</a></div>
                 </div>
             </div>
         <div>
@@ -79,12 +89,10 @@ get_header();
             </div>
 
             <div class="mt-5 text-center order-now">
-                <a href="/steuererklaerung-beauftragen/?product=steuerEASY" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <a href="/steuererklaerung-beauftragen/?product=steuerEASY<?= $publisher_id_param ?>" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
         </div>
     </section>
 </main>
 
-<?php
-
-get_footer();
+<?php get_footer($_publisher_mode);

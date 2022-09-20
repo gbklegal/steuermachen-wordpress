@@ -4,36 +4,26 @@
  * Template Name: Landing Page - Einkommensteuer
  */
 
-function is_fa_landing() {
-    global $post;
+$_publisher_mode = '';
+$publisher_id = $_GET['p_id'] ?? null;
+$publisher_id_param = !empty($publisher_id) ? "&p_id={$publisher_id}" : '';
 
-    if ($post->post_name === 'steuererklaerung-beauftragen-fa-landing')
-        return true;
-
-    return false;
+if (true === is_publisher_mode()) {
+    $_publisher_mode = 'publisher';
 }
 
-/**
- * this variable if empty but if it is 'fa landing'
- * the value will conain the 'fa-landing' value
- */
-$_fa_landing = '';
-
-if ( true === is_fa_landing() )
-    $_fa_landing = 'fa-landing';
-
-get_header( $_fa_landing );
+get_header($_publisher_mode);
 ?>
 
 <main class="main-content landing-page">
     <header id="hero">
         <div class="hero-inner max-width">
             <div>
-                <h1 class="text-left"><span class="h2 text-primary<?php echo return_if( is_christmas_time(), ' text-christmas' ); ?>">Deine Einkommen&shy;steuer&shy;erklärung</span><br><span class="font-medium h3">Jetzt einfach von Steuer&shy;experten machen lassen</span></h1>
-                <a href="/steuererklaerung-beauftragen/<?=return_if( is_fa_landing(), '?p_id=4231' )?>" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <h1 class="text-left"><span class="h2 text-primary<?php echo return_if(is_christmas_time(), ' text-christmas'); ?>">Deine Einkommen&shy;steuer&shy;erklärung</span><br><span class="font-medium h3">Jetzt einfach von Steuer&shy;experten machen lassen</span></h1>
+                <a href="/steuererklaerung-beauftragen/?product=steuererklärungMACHEN<?= $publisher_id_param ?>" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
             <div class="hero-image-wrapper dots">
-                <?php echo get_image_tag(33615, 'Begeisterte Frau', 'Einkommensteuer', 'left', 'full'); ?>
+                <?php echo get_image_tag(33022, 'Begeisterte Frau', 'Einkommensteuer', 'left', 'full'); ?>
             </div>
         </div>
     </header>
@@ -43,7 +33,9 @@ get_header( $_fa_landing );
             
             <div class="p-5 text-white countdown-wrapper box-shadow">
                 <h4 class="text-left">Keine Frist verpassen. Der Countdown für die Abgabe deiner Steuererklärung 2021 läuft!</h4>
-                <?php # the_countdown('October 31, 2022 23:59:59'); ?>
+                <?php
+# the_countdown('October 31, 2022 23:59:59');
+?>
                 <?php the_countdown(); ?>
             </div>
         </div>
@@ -58,7 +50,9 @@ get_header( $_fa_landing );
                     <p class="mb-2">Unsere Preise sind gestaffelt, für die Einkommensteuererklärung nach Bruttojahreseinkommen</p>
                     <p class="mb-4">Mit unserem Beitragsrechner kannst du deinen voraussichtlichen Preis berechnen</p>
 
-                    <?php the_price_calculator(); ?>
+                    <?php the_price_calculator([
+                        'url' => "/steuererklaerung-beauftragen/?product=steuererklärungMACHEN{$publisher_id_param}&bje=",
+                    ]); ?>
                 </div>
             </div>
         </div>
@@ -84,12 +78,10 @@ get_header( $_fa_landing );
             </div>
 
             <div class="mt-5 text-center order-now">
-                <a href="/steuererklaerung-beauftragen/?p_id=4231" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <a href="/steuererklaerung-beauftragen/?product=steuererklärungMACHEN<?= $publisher_id_param ?>" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
         </div>
     </section>
 </main>
 
-<?php
-
-get_footer( $_fa_landing );
+<?php get_footer($_publisher_mode);

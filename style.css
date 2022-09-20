@@ -3281,175 +3281,185 @@ body.christmas #page {
   background-repeat: repeat-x;
 }
 
-.page-template-landing-page-grundsteuer .custom-logo,
-.page-template-landing-page-safetax .custom-logo,
-.page-template-landing-page-steuereasy .custom-logo,
-.page-template-landing-page-steuererklaerung .custom-logo,
-.page-template-landing-page-einkommensteuer .custom-logo {
+.page-template-template-landing-page-grundsteuer .custom-logo,
+.page-template-template-landing-page-safetax .custom-logo,
+.page-template-template-landing-page-steuereasy .custom-logo,
+.page-template-template-landing-page-steuererklaerung .custom-logo,
+.page-template-template-landing-page-einkommensteuer .custom-logo {
   max-height: 90px;
 }
-.page-template-landing-page-grundsteuer.christmas .landing-page .countdown-wrapper,
-.page-template-landing-page-safetax.christmas .landing-page .countdown-wrapper,
-.page-template-landing-page-steuereasy.christmas .landing-page .countdown-wrapper,
-.page-template-landing-page-steuererklaerung.christmas .landing-page .countdown-wrapper,
-.page-template-landing-page-einkommensteuer.christmas .landing-page .countdown-wrapper {
+.page-template-template-landing-page-grundsteuer.christmas .landing-page .countdown-wrapper,
+.page-template-template-landing-page-safetax.christmas .landing-page .countdown-wrapper,
+.page-template-template-landing-page-steuereasy.christmas .landing-page .countdown-wrapper,
+.page-template-template-landing-page-steuererklaerung.christmas .landing-page .countdown-wrapper,
+.page-template-template-landing-page-einkommensteuer.christmas .landing-page .countdown-wrapper {
   position: relative;
 }
-.page-template-landing-page-grundsteuer.christmas .landing-page .countdown-wrapper::before,
-.page-template-landing-page-safetax.christmas .landing-page .countdown-wrapper::before,
-.page-template-landing-page-steuereasy.christmas .landing-page .countdown-wrapper::before,
-.page-template-landing-page-steuererklaerung.christmas .landing-page .countdown-wrapper::before,
-.page-template-landing-page-einkommensteuer.christmas .landing-page .countdown-wrapper::before {
+.page-template-template-landing-page-grundsteuer.christmas .landing-page .countdown-wrapper::before,
+.page-template-template-landing-page-safetax.christmas .landing-page .countdown-wrapper::before,
+.page-template-template-landing-page-steuereasy.christmas .landing-page .countdown-wrapper::before,
+.page-template-template-landing-page-steuererklaerung.christmas .landing-page .countdown-wrapper::before,
+.page-template-template-landing-page-einkommensteuer.christmas .landing-page .countdown-wrapper::before {
   position: absolute;
   top: -55px;
   left: -55px;
   content: url("./img/christmas-bells.png");
 }
-.page-template-landing-page-grundsteuer .landing-page .h1, .page-template-landing-page-grundsteuer .landing-page h1,
-.page-template-landing-page-grundsteuer .landing-page .h2, .page-template-landing-page-grundsteuer .landing-page h2,
-.page-template-landing-page-grundsteuer .landing-page .h3, .page-template-landing-page-grundsteuer .landing-page h3,
-.page-template-landing-page-grundsteuer .landing-page .h4, .page-template-landing-page-grundsteuer .landing-page h4,
-.page-template-landing-page-grundsteuer .landing-page .h5, .page-template-landing-page-grundsteuer .landing-page h5,
-.page-template-landing-page-safetax .landing-page .h1,
-.page-template-landing-page-safetax .landing-page h1,
-.page-template-landing-page-safetax .landing-page .h2,
-.page-template-landing-page-safetax .landing-page h2,
-.page-template-landing-page-safetax .landing-page .h3,
-.page-template-landing-page-safetax .landing-page h3,
-.page-template-landing-page-safetax .landing-page .h4,
-.page-template-landing-page-safetax .landing-page h4,
-.page-template-landing-page-safetax .landing-page .h5,
-.page-template-landing-page-safetax .landing-page h5,
-.page-template-landing-page-steuereasy .landing-page .h1,
-.page-template-landing-page-steuereasy .landing-page h1,
-.page-template-landing-page-steuereasy .landing-page .h2,
-.page-template-landing-page-steuereasy .landing-page h2,
-.page-template-landing-page-steuereasy .landing-page .h3,
-.page-template-landing-page-steuereasy .landing-page h3,
-.page-template-landing-page-steuereasy .landing-page .h4,
-.page-template-landing-page-steuereasy .landing-page h4,
-.page-template-landing-page-steuereasy .landing-page .h5,
-.page-template-landing-page-steuereasy .landing-page h5,
-.page-template-landing-page-steuererklaerung .landing-page .h1,
-.page-template-landing-page-steuererklaerung .landing-page h1,
-.page-template-landing-page-steuererklaerung .landing-page .h2,
-.page-template-landing-page-steuererklaerung .landing-page h2,
-.page-template-landing-page-steuererklaerung .landing-page .h3,
-.page-template-landing-page-steuererklaerung .landing-page h3,
-.page-template-landing-page-steuererklaerung .landing-page .h4,
-.page-template-landing-page-steuererklaerung .landing-page h4,
-.page-template-landing-page-steuererklaerung .landing-page .h5,
-.page-template-landing-page-steuererklaerung .landing-page h5,
-.page-template-landing-page-einkommensteuer .landing-page .h1,
-.page-template-landing-page-einkommensteuer .landing-page h1,
-.page-template-landing-page-einkommensteuer .landing-page .h2,
-.page-template-landing-page-einkommensteuer .landing-page h2,
-.page-template-landing-page-einkommensteuer .landing-page .h3,
-.page-template-landing-page-einkommensteuer .landing-page h3,
-.page-template-landing-page-einkommensteuer .landing-page .h4,
-.page-template-landing-page-einkommensteuer .landing-page h4,
-.page-template-landing-page-einkommensteuer .landing-page .h5,
-.page-template-landing-page-einkommensteuer .landing-page h5 {
+.page-template-template-landing-page-grundsteuer .landing-page .h1,
+.page-template-template-landing-page-grundsteuer .landing-page h1,
+.page-template-template-landing-page-grundsteuer .landing-page .h2,
+.page-template-template-landing-page-grundsteuer .landing-page h2,
+.page-template-template-landing-page-grundsteuer .landing-page .h3,
+.page-template-template-landing-page-grundsteuer .landing-page h3,
+.page-template-template-landing-page-grundsteuer .landing-page .h4,
+.page-template-template-landing-page-grundsteuer .landing-page h4,
+.page-template-template-landing-page-grundsteuer .landing-page .h5,
+.page-template-template-landing-page-grundsteuer .landing-page h5,
+.page-template-template-landing-page-safetax .landing-page .h1,
+.page-template-template-landing-page-safetax .landing-page h1,
+.page-template-template-landing-page-safetax .landing-page .h2,
+.page-template-template-landing-page-safetax .landing-page h2,
+.page-template-template-landing-page-safetax .landing-page .h3,
+.page-template-template-landing-page-safetax .landing-page h3,
+.page-template-template-landing-page-safetax .landing-page .h4,
+.page-template-template-landing-page-safetax .landing-page h4,
+.page-template-template-landing-page-safetax .landing-page .h5,
+.page-template-template-landing-page-safetax .landing-page h5,
+.page-template-template-landing-page-steuereasy .landing-page .h1,
+.page-template-template-landing-page-steuereasy .landing-page h1,
+.page-template-template-landing-page-steuereasy .landing-page .h2,
+.page-template-template-landing-page-steuereasy .landing-page h2,
+.page-template-template-landing-page-steuereasy .landing-page .h3,
+.page-template-template-landing-page-steuereasy .landing-page h3,
+.page-template-template-landing-page-steuereasy .landing-page .h4,
+.page-template-template-landing-page-steuereasy .landing-page h4,
+.page-template-template-landing-page-steuereasy .landing-page .h5,
+.page-template-template-landing-page-steuereasy .landing-page h5,
+.page-template-template-landing-page-steuererklaerung .landing-page .h1,
+.page-template-template-landing-page-steuererklaerung .landing-page h1,
+.page-template-template-landing-page-steuererklaerung .landing-page .h2,
+.page-template-template-landing-page-steuererklaerung .landing-page h2,
+.page-template-template-landing-page-steuererklaerung .landing-page .h3,
+.page-template-template-landing-page-steuererklaerung .landing-page h3,
+.page-template-template-landing-page-steuererklaerung .landing-page .h4,
+.page-template-template-landing-page-steuererklaerung .landing-page h4,
+.page-template-template-landing-page-steuererklaerung .landing-page .h5,
+.page-template-template-landing-page-steuererklaerung .landing-page h5,
+.page-template-template-landing-page-einkommensteuer .landing-page .h1,
+.page-template-template-landing-page-einkommensteuer .landing-page h1,
+.page-template-template-landing-page-einkommensteuer .landing-page .h2,
+.page-template-template-landing-page-einkommensteuer .landing-page h2,
+.page-template-template-landing-page-einkommensteuer .landing-page .h3,
+.page-template-template-landing-page-einkommensteuer .landing-page h3,
+.page-template-template-landing-page-einkommensteuer .landing-page .h4,
+.page-template-template-landing-page-einkommensteuer .landing-page h4,
+.page-template-template-landing-page-einkommensteuer .landing-page .h5,
+.page-template-template-landing-page-einkommensteuer .landing-page h5 {
   font-style: normal;
   font-weight: 700;
   margin-bottom: 0;
   line-height: 1 !important;
   text-transform: initial;
 }
-.page-template-landing-page-grundsteuer .landing-page .h1, .page-template-landing-page-grundsteuer .landing-page h1,
-.page-template-landing-page-safetax .landing-page .h1,
-.page-template-landing-page-safetax .landing-page h1,
-.page-template-landing-page-steuereasy .landing-page .h1,
-.page-template-landing-page-steuereasy .landing-page h1,
-.page-template-landing-page-steuererklaerung .landing-page .h1,
-.page-template-landing-page-steuererklaerung .landing-page h1,
-.page-template-landing-page-einkommensteuer .landing-page .h1,
-.page-template-landing-page-einkommensteuer .landing-page h1 {
+.page-template-template-landing-page-grundsteuer .landing-page .h1,
+.page-template-template-landing-page-grundsteuer .landing-page h1,
+.page-template-template-landing-page-safetax .landing-page .h1,
+.page-template-template-landing-page-safetax .landing-page h1,
+.page-template-template-landing-page-steuereasy .landing-page .h1,
+.page-template-template-landing-page-steuereasy .landing-page h1,
+.page-template-template-landing-page-steuererklaerung .landing-page .h1,
+.page-template-template-landing-page-steuererklaerung .landing-page h1,
+.page-template-template-landing-page-einkommensteuer .landing-page .h1,
+.page-template-template-landing-page-einkommensteuer .landing-page h1 {
   font-size: 56px;
 }
-.page-template-landing-page-grundsteuer .landing-page .h2, .page-template-landing-page-grundsteuer .landing-page h2,
-.page-template-landing-page-safetax .landing-page .h2,
-.page-template-landing-page-safetax .landing-page h2,
-.page-template-landing-page-steuereasy .landing-page .h2,
-.page-template-landing-page-steuereasy .landing-page h2,
-.page-template-landing-page-steuererklaerung .landing-page .h2,
-.page-template-landing-page-steuererklaerung .landing-page h2,
-.page-template-landing-page-einkommensteuer .landing-page .h2,
-.page-template-landing-page-einkommensteuer .landing-page h2 {
+.page-template-template-landing-page-grundsteuer .landing-page .h2,
+.page-template-template-landing-page-grundsteuer .landing-page h2,
+.page-template-template-landing-page-safetax .landing-page .h2,
+.page-template-template-landing-page-safetax .landing-page h2,
+.page-template-template-landing-page-steuereasy .landing-page .h2,
+.page-template-template-landing-page-steuereasy .landing-page h2,
+.page-template-template-landing-page-steuererklaerung .landing-page .h2,
+.page-template-template-landing-page-steuererklaerung .landing-page h2,
+.page-template-template-landing-page-einkommensteuer .landing-page .h2,
+.page-template-template-landing-page-einkommensteuer .landing-page h2 {
   font-size: 40px;
 }
-.page-template-landing-page-grundsteuer .landing-page .h3, .page-template-landing-page-grundsteuer .landing-page h3,
-.page-template-landing-page-safetax .landing-page .h3,
-.page-template-landing-page-safetax .landing-page h3,
-.page-template-landing-page-steuereasy .landing-page .h3,
-.page-template-landing-page-steuereasy .landing-page h3,
-.page-template-landing-page-steuererklaerung .landing-page .h3,
-.page-template-landing-page-steuererklaerung .landing-page h3,
-.page-template-landing-page-einkommensteuer .landing-page .h3,
-.page-template-landing-page-einkommensteuer .landing-page h3 {
+.page-template-template-landing-page-grundsteuer .landing-page .h3,
+.page-template-template-landing-page-grundsteuer .landing-page h3,
+.page-template-template-landing-page-safetax .landing-page .h3,
+.page-template-template-landing-page-safetax .landing-page h3,
+.page-template-template-landing-page-steuereasy .landing-page .h3,
+.page-template-template-landing-page-steuereasy .landing-page h3,
+.page-template-template-landing-page-steuererklaerung .landing-page .h3,
+.page-template-template-landing-page-steuererklaerung .landing-page h3,
+.page-template-template-landing-page-einkommensteuer .landing-page .h3,
+.page-template-template-landing-page-einkommensteuer .landing-page h3 {
   font-size: 36px;
   font-weight: 600;
 }
-.page-template-landing-page-grundsteuer .landing-page .h4, .page-template-landing-page-grundsteuer .landing-page h4,
-.page-template-landing-page-safetax .landing-page .h4,
-.page-template-landing-page-safetax .landing-page h4,
-.page-template-landing-page-steuereasy .landing-page .h4,
-.page-template-landing-page-steuereasy .landing-page h4,
-.page-template-landing-page-steuererklaerung .landing-page .h4,
-.page-template-landing-page-steuererklaerung .landing-page h4,
-.page-template-landing-page-einkommensteuer .landing-page .h4,
-.page-template-landing-page-einkommensteuer .landing-page h4 {
+.page-template-template-landing-page-grundsteuer .landing-page .h4,
+.page-template-template-landing-page-grundsteuer .landing-page h4,
+.page-template-template-landing-page-safetax .landing-page .h4,
+.page-template-template-landing-page-safetax .landing-page h4,
+.page-template-template-landing-page-steuereasy .landing-page .h4,
+.page-template-template-landing-page-steuereasy .landing-page h4,
+.page-template-template-landing-page-steuererklaerung .landing-page .h4,
+.page-template-template-landing-page-steuererklaerung .landing-page h4,
+.page-template-template-landing-page-einkommensteuer .landing-page .h4,
+.page-template-template-landing-page-einkommensteuer .landing-page h4 {
   font-size: 24px;
   letter-spacing: 0.1em;
 }
-.page-template-landing-page-grundsteuer .landing-page .h5, .page-template-landing-page-grundsteuer .landing-page h5,
-.page-template-landing-page-safetax .landing-page .h5,
-.page-template-landing-page-safetax .landing-page h5,
-.page-template-landing-page-steuereasy .landing-page .h5,
-.page-template-landing-page-steuereasy .landing-page h5,
-.page-template-landing-page-steuererklaerung .landing-page .h5,
-.page-template-landing-page-steuererklaerung .landing-page h5,
-.page-template-landing-page-einkommensteuer .landing-page .h5,
-.page-template-landing-page-einkommensteuer .landing-page h5 {
+.page-template-template-landing-page-grundsteuer .landing-page .h5,
+.page-template-template-landing-page-grundsteuer .landing-page h5,
+.page-template-template-landing-page-safetax .landing-page .h5,
+.page-template-template-landing-page-safetax .landing-page h5,
+.page-template-template-landing-page-steuereasy .landing-page .h5,
+.page-template-template-landing-page-steuereasy .landing-page h5,
+.page-template-template-landing-page-steuererklaerung .landing-page .h5,
+.page-template-template-landing-page-steuererklaerung .landing-page h5,
+.page-template-template-landing-page-einkommensteuer .landing-page .h5,
+.page-template-template-landing-page-einkommensteuer .landing-page h5 {
   font-size: 20px;
   font-weight: 600;
 }
-.page-template-landing-page-grundsteuer .landing-page header#hero,
-.page-template-landing-page-safetax .landing-page header#hero,
-.page-template-landing-page-steuereasy .landing-page header#hero,
-.page-template-landing-page-steuererklaerung .landing-page header#hero,
-.page-template-landing-page-einkommensteuer .landing-page header#hero {
+.page-template-template-landing-page-grundsteuer .landing-page header#hero,
+.page-template-template-landing-page-safetax .landing-page header#hero,
+.page-template-template-landing-page-steuereasy .landing-page header#hero,
+.page-template-template-landing-page-steuererklaerung .landing-page header#hero,
+.page-template-template-landing-page-einkommensteuer .landing-page header#hero {
   padding: 0 70px 40px;
   margin-top: 40px;
   margin-bottom: -40px;
 }
-.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner,
-.page-template-landing-page-safetax .landing-page header#hero .hero-inner,
-.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner,
-.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner,
-.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner {
+.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner,
+.page-template-template-landing-page-safetax .landing-page header#hero .hero-inner,
+.page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner,
+.page-template-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner,
+.page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
 }
-.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
-.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
-.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
-.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
-.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots {
+.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
+.page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
+.page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
+.page-template-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
+.page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots {
   position: relative;
   display: inline-block;
 }
-.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before, .page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
-.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
-.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
-.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
-.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
-.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
-.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
-.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
-.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after {
+.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before, .page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after {
   z-index: -1;
   position: absolute;
   content: "";
@@ -3460,87 +3470,87 @@ body.christmas #page {
   aspect-ratio: 1/1;
   border-radius: 99rem;
 }
-.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
-.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
-.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
-.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
-.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before {
+.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before {
   inset: 0 0 auto auto;
 }
-.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
-.page-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
-.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
-.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
-.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after {
+.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after {
   inset: auto auto 0 0;
 }
-.page-template-landing-page-grundsteuer .landing-page header#hero .hero-inner img,
-.page-template-landing-page-safetax .landing-page header#hero .hero-inner img,
-.page-template-landing-page-steuereasy .landing-page header#hero .hero-inner img,
-.page-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner img,
-.page-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner img {
+.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner img,
+.page-template-template-landing-page-safetax .landing-page header#hero .hero-inner img,
+.page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner img,
+.page-template-template-landing-page-steuererklaerung .landing-page header#hero .hero-inner img,
+.page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner img {
   width: 400px;
   display: block;
 }
-.page-template-landing-page-grundsteuer .landing-page section,
-.page-template-landing-page-safetax .landing-page section,
-.page-template-landing-page-steuereasy .landing-page section,
-.page-template-landing-page-steuererklaerung .landing-page section,
-.page-template-landing-page-einkommensteuer .landing-page section {
+.page-template-template-landing-page-grundsteuer .landing-page section,
+.page-template-template-landing-page-safetax .landing-page section,
+.page-template-template-landing-page-steuereasy .landing-page section,
+.page-template-template-landing-page-steuererklaerung .landing-page section,
+.page-template-template-landing-page-einkommensteuer .landing-page section {
   margin-bottom: 75px;
 }
-.page-template-landing-page-grundsteuer .landing-page section.section-price #calculator,
-.page-template-landing-page-safetax .landing-page section.section-price #calculator,
-.page-template-landing-page-steuereasy .landing-page section.section-price #calculator,
-.page-template-landing-page-steuererklaerung .landing-page section.section-price #calculator,
-.page-template-landing-page-einkommensteuer .landing-page section.section-price #calculator {
+.page-template-template-landing-page-grundsteuer .landing-page section.section-price #calculator,
+.page-template-template-landing-page-safetax .landing-page section.section-price #calculator,
+.page-template-template-landing-page-steuereasy .landing-page section.section-price #calculator,
+.page-template-template-landing-page-steuererklaerung .landing-page section.section-price #calculator,
+.page-template-template-landing-page-einkommensteuer .landing-page section.section-price #calculator {
   width: 512px;
   max-width: 100%;
 }
-.page-template-landing-page-grundsteuer .landing-page section.section-price #calculator #bjeResult,
-.page-template-landing-page-safetax .landing-page section.section-price #calculator #bjeResult,
-.page-template-landing-page-steuereasy .landing-page section.section-price #calculator #bjeResult,
-.page-template-landing-page-steuererklaerung .landing-page section.section-price #calculator #bjeResult,
-.page-template-landing-page-einkommensteuer .landing-page section.section-price #calculator #bjeResult {
+.page-template-template-landing-page-grundsteuer .landing-page section.section-price #calculator #bjeResult,
+.page-template-template-landing-page-safetax .landing-page section.section-price #calculator #bjeResult,
+.page-template-template-landing-page-steuereasy .landing-page section.section-price #calculator #bjeResult,
+.page-template-template-landing-page-steuererklaerung .landing-page section.section-price #calculator #bjeResult,
+.page-template-template-landing-page-einkommensteuer .landing-page section.section-price #calculator #bjeResult {
   font-size: 2rem;
 }
-.page-template-landing-page-grundsteuer .landing-page section.section-explanation h5,
-.page-template-landing-page-safetax .landing-page section.section-explanation h5,
-.page-template-landing-page-steuereasy .landing-page section.section-explanation h5,
-.page-template-landing-page-steuererklaerung .landing-page section.section-explanation h5,
-.page-template-landing-page-einkommensteuer .landing-page section.section-explanation h5 {
+.page-template-template-landing-page-grundsteuer .landing-page section.section-explanation h5,
+.page-template-template-landing-page-safetax .landing-page section.section-explanation h5,
+.page-template-template-landing-page-steuereasy .landing-page section.section-explanation h5,
+.page-template-template-landing-page-steuererklaerung .landing-page section.section-explanation h5,
+.page-template-template-landing-page-einkommensteuer .landing-page section.section-explanation h5 {
   margin-bottom: 1rem;
 }
-.page-template-landing-page-grundsteuer footer,
-.page-template-landing-page-safetax footer,
-.page-template-landing-page-steuereasy footer,
-.page-template-landing-page-steuererklaerung footer,
-.page-template-landing-page-einkommensteuer footer {
+.page-template-template-landing-page-grundsteuer footer,
+.page-template-template-landing-page-safetax footer,
+.page-template-template-landing-page-steuereasy footer,
+.page-template-template-landing-page-steuererklaerung footer,
+.page-template-template-landing-page-einkommensteuer footer {
   padding: 40px;
   font-size: 12px;
 }
-.page-template-landing-page-grundsteuer footer .custom-logo,
-.page-template-landing-page-safetax footer .custom-logo,
-.page-template-landing-page-steuereasy footer .custom-logo,
-.page-template-landing-page-steuererklaerung footer .custom-logo,
-.page-template-landing-page-einkommensteuer footer .custom-logo {
+.page-template-template-landing-page-grundsteuer footer .custom-logo,
+.page-template-template-landing-page-safetax footer .custom-logo,
+.page-template-template-landing-page-steuereasy footer .custom-logo,
+.page-template-template-landing-page-steuererklaerung footer .custom-logo,
+.page-template-template-landing-page-einkommensteuer footer .custom-logo {
   padding-bottom: 20px;
 }
-.page-template-landing-page-grundsteuer footer ul,
-.page-template-landing-page-safetax footer ul,
-.page-template-landing-page-steuereasy footer ul,
-.page-template-landing-page-steuererklaerung footer ul,
-.page-template-landing-page-einkommensteuer footer ul {
+.page-template-template-landing-page-grundsteuer footer ul,
+.page-template-template-landing-page-safetax footer ul,
+.page-template-template-landing-page-steuereasy footer ul,
+.page-template-template-landing-page-steuererklaerung footer ul,
+.page-template-template-landing-page-einkommensteuer footer ul {
   padding-top: 10px;
   list-style-type: none;
   display: flex;
   flex-direction: row;
 }
-.page-template-landing-page-grundsteuer footer ul li:not(:last-child),
-.page-template-landing-page-safetax footer ul li:not(:last-child),
-.page-template-landing-page-steuereasy footer ul li:not(:last-child),
-.page-template-landing-page-steuererklaerung footer ul li:not(:last-child),
-.page-template-landing-page-einkommensteuer footer ul li:not(:last-child) {
+.page-template-template-landing-page-grundsteuer footer ul li:not(:last-child),
+.page-template-template-landing-page-safetax footer ul li:not(:last-child),
+.page-template-template-landing-page-steuereasy footer ul li:not(:last-child),
+.page-template-template-landing-page-steuererklaerung footer ul li:not(:last-child),
+.page-template-template-landing-page-einkommensteuer footer ul li:not(:last-child) {
   padding-right: 10px;
 }
 
@@ -3668,7 +3678,7 @@ a:not(.btn):active,
   margin: 20px 0;
 }
 
-#modal-wrapper {
+#modalWrapper {
   display: none;
   position: fixed;
   top: 0;
@@ -3679,20 +3689,25 @@ a:not(.btn):active,
   height: 100%;
   background-color: #FFFFFF;
 }
-#modal-wrapper #modal-close {
+#modalWrapper #modalClose {
   position: fixed;
   top: 20px;
   right: 20px;
   padding: 5px 10px;
 }
-#modal-wrapper .loader {
+#modalWrapper:not(.modalframe-loading) .loader {
+  display: none;
+}
+#modalWrapper .loader {
   z-index: -1;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#modal-wrapper iframe#modal-frame {
+#modalWrapper #modalFrame {
+  padding: 20px;
+  overflow-y: scroll;
   width: 100%;
   height: 100%;
 }
@@ -3731,7 +3746,8 @@ dialog.modal .modal-title {
 dialog.modal .modal-main {
   padding-bottom: 1em;
 }
-dialog.modal .modal-main ul, dialog.modal .modal-main ol {
+dialog.modal .modal-main ul,
+dialog.modal .modal-main ol {
   padding-left: 20px;
 }
 dialog.modal .modal-footer {

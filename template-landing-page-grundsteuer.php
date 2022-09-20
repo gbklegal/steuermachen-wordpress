@@ -4,7 +4,15 @@
  * Template Name: Landing Page - Grundsteuer
  */
 
-get_header();
+$_publisher_mode = '';
+$publisher_id = $_GET['p_id'] ?? null;
+$publisher_id_param = !empty($publisher_id) ? "&p_id={$publisher_id}" : '';
+
+if (true === is_publisher_mode()) {
+    $_publisher_mode = 'publisher';
+}
+
+get_header($_publisher_mode);
 ?>
 
 <main class="main-content landing-page">
@@ -12,7 +20,7 @@ get_header();
         <div class="hero-inner max-width">
             <div>
                 <h1 class="text-left"><span class="h2 text-primary">Deine Grund&shy;steuer&shy;erklärung</span><br><span class="font-medium h3">Jetzt einfach von Steuer&shy;experten machen lassen</span></h1>
-                <a href="/steuererklaerung-beauftragen" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <a href="/steuererklaerung-beauftragen/?product=grundsteuererklärungMACHEN<?= $publisher_id_param ?>" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
             <div class="hero-image-wrapper dots">
                 <?php echo get_image_tag('32979', 'BILD BESCHREIBUNG', 'Grundsteuer', 'left', 'full'); ?>
@@ -45,7 +53,7 @@ get_header();
         <div class="text-center section-inner max-width">
             <p>Die Grundsteuererklärung ist neu und sieben Bundesländer haben bereits ihre eigenen Grundsteuermodelle. Das macht die Erstellung der Steuererklärung noch komplizierter!</p>
             <p>Durch steuermachen erhältst du die ideale und einfache Unterstützung deines persönlichen Steuerexperten. So kannst du unkompliziert und preiswert deine Grundsteuererklärung machen lassen.</p>
-            <a href="/steuererklaerung-beauftragen" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+            <a href="/steuererklaerung-beauftragen/steuererklaerung-beauftragen/?product=grundsteuererklärungMACHEN<?= $publisher_id_param ?>" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
         </div>
     </section>
 
@@ -58,7 +66,7 @@ get_header();
                     <p class="mb-2">Die Preise der Steuerexperten richten sich nach der Steuerberatervergütungsverordnung und werden anhand des Grundstückswerts bestimmt.</p>
                     <p class="mb-4">Mit unserem Preisrechner kannst du deinen voraussichtlichen Preis berechnen.</p>
 
-                    <?php the_property_tax_price_calculator(); ?>
+                    <?php the_property_tax_price_calculator(['url' => "/steuererklaerung-beauftragen/?product=grundsteuererklärungMACHEN{$publisher_id_param}&property_value="]); ?>
                 </div>
             </div>
         </div>
@@ -84,7 +92,7 @@ get_header();
             </div>
 
             <div class="mt-5 text-center order-now">
-                <a href="/steuererklaerung-beauftragen/" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <a href="/steuererklaerung-beauftragen/?product=grundsteuererklärungMACHEN<?= $publisher_id_param ?>" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
         </div>
     </section>
@@ -104,7 +112,7 @@ get_header();
             <h5>Die neue Grundsteuererklärung</h5>
             <p>Die Abgabefrist der Feststellungserklärung ist am 31.10.2022. Die Grundsteuererklärung muss elektronisch an das Finanzamt übermittelt werden, ansonsten kann ein Zwangsgeld auf dich zukommen. Bist du Eigentümer eines Grundstücks oder einer Immobilie, so musst du eine Steuererklärung abgeben. Auch als Eigentümer eines land- und forstwirtschaftlichen Betriebs und als Erbberechtigter musst du eine Steuererklärung abgeben.</p>
             <div class="my-5 text-center order-now">
-                <a href="/steuererklaerung-beauftragen/" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <a href="/steuererklaerung-beauftragen/?product=grundsteuererklärungMACHEN<?= $publisher_id_param ?>" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
             <h5>Wie viel kostet die Grundsteuererklärung?</h5>
             <p>Wenn du deine Einkommensteuererklärung bei einem Lohnsteuerhilfeverein machen lässt, kann dir dieser bei der Feststellungserklärung nicht helfen. Lohnsteuerhilfevereine sind nicht dazu befugt, die Grundsteuererklärung anzufertigen. Alternativ kannst du auch bei einem Steuerberater deine Feststellungserklärung anfertigen lassen. Diese müssen sich an die Steuerberatervergütungsverordnung halten. Hier muss der Steuerberater eine Gebühr verlangen, die abhängig vom Grundstückswert (Gegenstandswert) ist.</p>
@@ -116,6 +124,4 @@ get_header();
     </section>
 </main>
 
-<?php
-
-get_footer();
+<?php get_footer($_publisher_mode);

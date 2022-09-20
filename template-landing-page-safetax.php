@@ -4,7 +4,15 @@
  * Template Name: Landing Page - safeTax
  */
 
-get_header();
+$_publisher_mode = '';
+$publisher_id = $_GET['p_id'] ?? null;
+$publisher_id_param = !empty($publisher_id) ? "&p_id={$publisher_id}" : '';
+
+if (true === is_publisher_mode()) {
+    $_publisher_mode = 'publisher';
+}
+
+get_header($_publisher_mode);
 ?>
 
 <main class="main-content landing-page">
@@ -12,7 +20,7 @@ get_header();
         <div class="hero-inner max-width">
             <div>
                 <h1 class="text-left"><span class="h2 text-primary">safeTax</span><span class="font-medium h3"> - Deine Einkommen&shy;steuererklärung mit vollständiger Kostenkontrolle </span></h1>
-                <a href="/steuererklaerung-beauftragen/?product=safeTax" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <a href="/steuererklaerung-beauftragen/?product=safeTax<?= $publisher_id_param ?>" class="mt-4 btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
             <div class="hero-image-wrapper dots">
                 <?php echo get_image_tag('32977', 'BILD BESCHREIBUNG', 'safeTax', 'left', 'full'); ?>
@@ -37,7 +45,7 @@ get_header();
             <h2 class="mb-3"><span class="text-primary">Berechne</span> deinen <span class="text-primary">Steuerrückerstattung</span></h2>
             <?php the_steuerrechner(); ?>
             <p class="mt-2 text-grey mx-auto max-w-full">safeTax: Nur im Falle einer Rückerstattung erhalten wir einen geringfügigen Anteil von 20%.</p>
-            <a class="btn btn-primary mx-auto block whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/?product=safeTax">Jetzt Steuererklärung machen lassen</a>
+            <a class="btn btn-primary mx-auto block whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/?product=safeTax<?= $publisher_id_param ?>">Jetzt Steuererklärung machen lassen</a>
 
             <!-- <div class="calculator-wrapper">
                 <div class="calculator-inner">
@@ -70,12 +78,10 @@ get_header();
             </div>
 
             <div class="mt-5 text-center order-now">
-                <a href="/steuererklaerung-beauftragen/?product=safeTax" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
+                <a href="/steuererklaerung-beauftragen/?product=safeTax<?= $publisher_id_param ?>" class="btn btn-primary btn-lg order-now">Jetzt beauftragen</a>
             </div>
         </div>
     </section>
 </main>
 
-<?php
-
-get_footer();
+<?php get_footer($_publisher_mode);
