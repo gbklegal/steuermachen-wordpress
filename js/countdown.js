@@ -10,7 +10,9 @@ function countdown() {
             return;
 
         // Set the date we're counting down to
-        countdownEnd = countdownEnd.replace(/-/g, '/');
+        if (!countdownEnd.includes('T'))
+            countdownEnd = countdownEnd.replace(/-/g, '/');
+
         let countdownDate = new Date(countdownEnd).getTime();
 
         // simple check length function
