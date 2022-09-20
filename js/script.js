@@ -1,12 +1,12 @@
 /**
  * steuermachen WordPress Theme
- * 
+ *
  * @author Tobias Roeder
  * @version 1.1.0
  */
 
 // window load
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     'use strict';
 
     // const fieldWrappers = document.querySelectorAll('.field-wrapper input[data-error], .field-wrapper input[data-warning]').forEach(elmt => elmt.parentNode);
@@ -14,12 +14,11 @@ window.addEventListener('load', function() {
     //     console.dir(elmt.parentElement);
     // });
 
-
     // toggle password
     const togglePasswordButtons = document.querySelectorAll('.toggle-password');
     togglePasswordButtons.forEach(button => {
         let input = button.previousElementSibling;
-        button.onclick = function() {
+        button.onclick = function () {
             // if (input.disabled === true) return;
 
             let inputType = input.type;
@@ -27,16 +26,14 @@ window.addEventListener('load', function() {
             if (inputType === 'password') {
                 input.type = 'text';
                 button.classList.replace('icon-eye-off', 'icon-eye');
-            }
-            else if (inputType === 'text') {
+            } else if (inputType === 'text') {
                 input.type = 'password';
                 button.classList.replace('icon-eye', 'icon-eye-off');
             }
-        }
+        };
     });
 
-    if (document.body.classList.contains('page-id-28564'))
-        initDictShortcodes();
+    if (document.body.classList.contains('page-id-28564')) initDictShortcodes();
 
     // selfwritten slider
     reallySimpleSlider();
@@ -56,13 +53,12 @@ window.addEventListener('load', function() {
 
     // Tabs
     let faqTabs = new Tabs();
-    if (faqTabs.isAvailable())
-        faqTabs.init();
+    if (faqTabs.isAvailable()) faqTabs.init();
 
     // Price Calculator
     let priceCalc = new PriceCalc({
         input: '#priceInput',
-        result: '#priceResult'
+        result: '#priceResult',
     });
     priceCalc.run();
 
@@ -70,7 +66,7 @@ window.addEventListener('load', function() {
     let propertyTaxPriceCalc = new PriceCalc({
         input: '[data-property-tax-price-input]',
         result: '[data-property-tax-price-result]',
-        priceType: 'propertyTax'
+        priceType: 'propertyTax',
     });
     propertyTaxPriceCalc.run();
 
@@ -79,44 +75,40 @@ window.addEventListener('load', function() {
 
     // Back To Top Init
     let backToTopElmt = document.querySelector('#back-to-top');
-    if (backToTopElmt)
-        backToTopElmt.addEventListener('click', backToTop);
+    if (backToTopElmt) backToTopElmt.addEventListener('click', backToTop);
 });
 
 // window hash change
-window.addEventListener('hashchange', function() {
+window.addEventListener('hashchange', function () {
     selectLetterInDictFromHash();
 });
 
 // window resize
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     setPagePaddingToHeaderHeight();
 });
 
 // window scroll
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     headerScroll();
 });
 
 // window keydown
-window.addEventListener('keydown', function(event) {
+window.addEventListener('keydown', function (event) {
     switch (event.key) {
         case 'Escape':
             hideMenuMobile();
     }
 });
 
-
 /**
  * enables keyboard shortcodes
  */
 function initDictShortcodes() {
     window.addEventListener('keydown', event => {
-        if (isLetter(event.key))
-            location.hash = event.key;
+        if (isLetter(event.key)) location.hash = event.key;
     });
 }
-
 
 /**
  * set padding to page from header height
@@ -125,12 +117,10 @@ function setPagePaddingToHeaderHeight() {
     const page = document.querySelector('#page');
     const header = document.querySelector('#header');
 
-    if (!page || !header)
-        return;
+    if (!page || !header) return;
 
     page.style.paddingTop = header.clientHeight + 'px';
 }
-
 
 /**
  * toggle header scroll class by checking scroll position
@@ -138,29 +128,23 @@ function setPagePaddingToHeaderHeight() {
 function headerScroll() {
     const header = document.querySelector('#header');
 
-    if (!header)
-        return;
+    if (!header) return;
 
-    if (window.scrollY > 0)
-        header.classList.add('header-scroll');
-    else
-        header.classList.remove('header-scroll');
+    if (window.scrollY > 0) header.classList.add('header-scroll');
+    else header.classList.remove('header-scroll');
 }
 
-
 /**
- * @param {string} hashValue 
+ * @param {string} hashValue
  */
-function selectLetterInDict( hashValue ) {
+function selectLetterInDict(hashValue) {
     // Steuerlexikon (dict)
     if (hashValue.match(/[a-z]{1}/)) {
         let dictLetterSelected = document.querySelector('.alphabet a.letter.selected');
-        if (dictLetterSelected)
-            dictLetterSelected.classList.remove('selected');
+        if (dictLetterSelected) dictLetterSelected.classList.remove('selected');
 
         let dictLetterFromHash = document.querySelector('.alphabet a.letter-' + hashValue);
-        if (dictLetterFromHash)
-            dictLetterFromHash.classList.add('selected');
+        if (dictLetterFromHash) dictLetterFromHash.classList.add('selected');
     }
 }
 
@@ -169,12 +153,10 @@ function selectLetterInDict( hashValue ) {
  */
 function selectLetterInDictFromHash() {
     // only on the dictionary (steuerlexikon) page
-    if (!document.body.classList.contains('page-id-28564'))
-        return;
+    if (!document.body.classList.contains('page-id-28564')) return;
     let hashValue = location.hash.slice(1);
     selectLetterInDict(hashValue);
 }
-
 
 /**
  * back to top without changing/setting the location hash
@@ -190,7 +172,6 @@ function backToTop(event) {
 
     return false;
 }
-
 
 /**
  * Collapsibles/Accordion
@@ -209,17 +190,15 @@ function accordionJS(accs) {
             } else {
                 panel.style.maxHeight = panel.scrollHeight + 'px';
             }
-        }
+        };
     });
 
-    if (accs.length <= 0)
-        return;
+    if (accs.length <= 0) return;
 
     // TODO fix lazy code
     let hash = window.location.hash;
     let focusedFaqItem = null;
-    if (hash)
-        focusedFaqItem = document.querySelector(hash);
+    if (hash) focusedFaqItem = document.querySelector(hash);
     if (focusedFaqItem) {
         focusedFaqItem.classList.add('active');
         const panel = focusedFaqItem.nextElementSibling;
@@ -227,25 +206,24 @@ function accordionJS(accs) {
     }
 }
 
-
 /**
  * Tabs
  */
 class Tabs {
     /**
      * contructor
-     * 
-     * @param {object} selector 
-     * @param {object} content 
+     *
+     * @param {object} selector
+     * @param {object} content
      */
-    constructor( selector, content ) {
+    constructor(selector, content) {
         this.selector = selector || document.querySelector('[data-tabs="selector"]');
         this.content = content || document.querySelector('[data-tabs="content"]');
     }
 
     /**
      * get selector element
-     * 
+     *
      * @returns {object}
      */
     getSelector() {
@@ -254,7 +232,7 @@ class Tabs {
 
     /**
      * get content elements
-     * 
+     *
      * @returns {object}
      */
     getContent() {
@@ -271,7 +249,7 @@ class Tabs {
         let targets = content.querySelectorAll('.content');
 
         items.forEach((item, index) => {
-            item.onclick = function() {
+            item.onclick = function () {
                 let selectedItem = selector.querySelector('.item-selected');
                 selectedItem.classList.remove('item-selected');
                 let selectedTarget = content.querySelector('.content-selected');
@@ -279,31 +257,27 @@ class Tabs {
 
                 item.classList.add('item-selected');
                 targets[index].classList.add('content-selected');
-            }
-        })
+            };
+        });
     }
 
     /**
      * check if tabs is available
-     * 
+     *
      * @param {boolean} showConsoleInfo false
      */
-    isAvailable( showConsoleInfo = false ) {
+    isAvailable(showConsoleInfo = false) {
         if (showConsoleInfo) {
-            if (!this.selector)
-                console.info('Missing selector element, could not being found.');
+            if (!this.selector) console.info('Missing selector element, could not being found.');
 
-            if (!this.content)
-                console.info('Missing content elements, could not being found.');
+            if (!this.content) console.info('Missing content elements, could not being found.');
         }
 
-        if (!this.selector || !this.content)
-            return false;
+        if (!this.selector || !this.content) return false;
 
         return true;
     }
 }
-
 
 /**
  * Quick Search
@@ -311,20 +285,18 @@ class Tabs {
 class QuickSearch {
     /**
      * @param {string|object} searchElmt - search element
-     * @param {string|object} itemSelector - quick search item selector 
+     * @param {string|object} itemSelector - quick search item selector
      */
     constructor(searchElmt, itemSelector) {
-        if (typeof searchElmt === 'string')
-            searchElmt = document.querySelector(searchElmt);
+        if (typeof searchElmt === 'string') searchElmt = document.querySelector(searchElmt);
 
-        if (typeof itemSelector === 'string')
-            itemSelector = document.querySelectorAll(itemSelector);
+        if (typeof itemSelector === 'string') itemSelector = document.querySelectorAll(itemSelector);
 
         this.elmt = searchElmt || document.querySelector('[data-qs-elmt]');
         this.selector = itemSelector || document.querySelectorAll('[data-qs-item]');
 
         // evtl. onkeydown
-        this.elmt.onkeyup = (event) => {
+        this.elmt.onkeyup = event => {
             let val = event.target.value;
             this.search(val);
         };
@@ -339,10 +311,8 @@ class QuickSearch {
         this.selector.forEach(item => {
             let text = item.innerText.toLowerCase();
 
-            if (!text.includes(query))
-                this.hide(item);
-            else
-                this.show(item);
+            if (!text.includes(query)) this.hide(item);
+            else this.show(item);
         });
     }
 
@@ -350,19 +320,16 @@ class QuickSearch {
      * @param {object} item
      */
     hide(item) {
-        if (item)
-            item.hidden = true;
+        if (item) item.hidden = true;
     }
 
     /**
      * @param {object} item
      */
     show(item) {
-        if (item)
-            item.hidden = false;
+        if (item) item.hidden = false;
     }
 }
-
 
 /**
  * Price Calculator
@@ -373,41 +340,19 @@ class PriceCalc {
      * prices
      * @private
      */
-    #prices = [
-        89,
-        99,
-        129,
-        169,
-        189,
-        229,
-        299,
-        319,
-        369,
-        429
-    ];
+    #prices = [89, 99, 129, 169, 189, 229, 299, 319, 369, 429];
 
     /**
      * propertyTaxPrices
      * @private
      */
-    #propertyTaxPrices = [
-        89,
-        119,
-        169,
-        189,
-        229,
-        249,
-        309
-    ];
+    #propertyTaxPrices = [89, 119, 169, 189, 229, 249, 309];
 
     /**
      * priceTypes
      * @private
      */
-    #priceTypes = [
-        'bje',
-        'propertyTax'
-    ];
+    #priceTypes = ['bje', 'propertyTax'];
 
     /**
      * @param {string|object} input
@@ -415,33 +360,26 @@ class PriceCalc {
      * @param {string} priceType - optional
      */
     constructor({ input, result, priceType = 'bje' }) {
-        if (typeof input === 'string')
-            this.input = document.querySelector(input);
-        else
-            this.input = input;
+        if (typeof input === 'string') this.input = document.querySelector(input);
+        else this.input = input;
 
-        if (typeof result === 'string')
-            this.result = document.querySelector(result);
-        else
-            this.result = result;
+        if (typeof result === 'string') this.result = document.querySelector(result);
+        else this.result = result;
 
-        if (this.#priceTypes.includes(priceType))
-            this.priceType = priceType;
-        else
-            console.error(`${priceType} is wrong - allowed price types: ${this.#priceTypes}`);
+        if (this.#priceTypes.includes(priceType)) this.priceType = priceType;
+        else console.error(`${priceType} is wrong - allowed price types: ${this.#priceTypes}`);
     }
 
     /**
      * this method does everything automatically
      * it only need the input and result element
      * from the constructor
-     * 
+     *
      * @returns {undefined}
      */
     run() {
         // we need both elements for the task
-        if (this.isAvailable() === false)
-            return;
+        if (this.isAvailable() === false) return;
 
         let input = this.input;
         let result = this.result;
@@ -451,10 +389,8 @@ class PriceCalc {
             // get price from input value
             let price = null;
 
-            if (this.priceType === 'bje')
-                price = this.getPrice(input);
-            else if (this.priceType === 'propertyTax')
-                price = this.getPropertyTaxPrice(input);
+            if (this.priceType === 'bje') price = this.getPrice(input);
+            else if (this.priceType === 'propertyTax') price = this.getPropertyTaxPrice(input);
 
             // only show price if its a number
             if (typeof price === 'number') {
@@ -468,46 +404,44 @@ class PriceCalc {
             else {
                 result.innerHTML = '&nbsp;';
             }
-        }
+        };
     }
 
     /**
      * format a number into a currency string
-     * 
-     * @param {number} number 
-     * 
+     *
+     * @param {number} number
+     *
      * @returns {string}
      */
-    formatCurrency( number ) {
-        return String(number)
-            // .toFixed(2)
-            .replace('.', ',')
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' Euro';
-    }
-
-    /**
-     * reduce a string to its core numbers
-     * 
-     * @param {string} string 
-     * 
-     * @returns {number}
-     */
-    reduceToNumber( string ) {
-        return Number(
-            parseInt(
-                string.replace(/[^\d,]/g, '')
-            ).toFixed(0)
+    formatCurrency(number) {
+        return (
+            String(number)
+                // .toFixed(2)
+                .replace('.', ',')
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' Euro'
         );
     }
 
     /**
+     * reduce a string to its core numbers
+     *
+     * @param {string} string
+     *
+     * @returns {number}
+     */
+    reduceToNumber(string) {
+        return Number(parseInt(string.replace(/[^\d,]/g, '')).toFixed(0));
+    }
+
+    /**
      * get price
-     * 
+     *
      * @param {object} elmt - optional
-     * 
+     *
      * @returns {number|boolean}
      */
-    getPrice( elmt = null ) {
+    getPrice(elmt = null) {
         if (!elmt) elmt = this.input;
         const bje = this.reduceToNumber(elmt.value);
         let price = 0;
@@ -517,35 +451,25 @@ class PriceCalc {
 
             if (bje <= 8000) {
                 priceIndex = 0;
-            }
-            else if (bje >= 8001 && bje <= 16000) {
+            } else if (bje >= 8001 && bje <= 16000) {
                 priceIndex = 1;
-            }
-            else if (bje >= 16001 && bje <= 25000) {
+            } else if (bje >= 16001 && bje <= 25000) {
                 priceIndex = 2;
-            }
-            else if (bje >= 25001 && bje <= 37000) {
+            } else if (bje >= 25001 && bje <= 37000) {
                 priceIndex = 3;
-            }
-            else if (bje >= 37001 && bje <= 50000) {
+            } else if (bje >= 37001 && bje <= 50000) {
                 priceIndex = 4;
-            }
-            else if (bje >= 50001 && bje <= 80000) {
+            } else if (bje >= 50001 && bje <= 80000) {
                 priceIndex = 5;
-            }
-            else if (bje >= 80001 && bje <= 110000) {
+            } else if (bje >= 80001 && bje <= 110000) {
                 priceIndex = 6;
-            }
-            else if (bje >= 110001 && bje <= 150000) {
+            } else if (bje >= 110001 && bje <= 150000) {
                 priceIndex = 7;
-            }
-            else if (bje >= 150001 && bje <= 200000) {
+            } else if (bje >= 150001 && bje <= 200000) {
                 priceIndex = 8;
-            }
-            else if (bje >= 200001 && bje <= 250000) {
+            } else if (bje >= 200001 && bje <= 250000) {
                 priceIndex = 9;
-            }
-            else {
+            } else {
                 price = 0;
                 return false;
             }
@@ -558,12 +482,12 @@ class PriceCalc {
 
     /**
      * get property tax price
-     * 
+     *
      * @param {object} elmt - optional
-     * 
+     *
      * @returns {number|boolean}
      */
-    getPropertyTaxPrice( elmt = null ) {
+    getPropertyTaxPrice(elmt = null) {
         if (!elmt) elmt = this.input;
         const propertyTax = this.reduceToNumber(elmt.value);
         let price = 0;
@@ -591,28 +515,25 @@ class PriceCalc {
 
     /**
      * checks if all necessary elements exists
-     * 
+     *
      * @param {boolean} showInfo - optional (Default: false)
-     * 
+     *
      * @returns {boolean}
      */
-    isAvailable( showInfo = false ) {
+    isAvailable(showInfo = false) {
         // check if both elements exists
-        if (this.input && this.result)
-            return true;
+        if (this.input && this.result) return true;
 
         // only show info in console if requested
-        if (showInfo)
-            console.warn('Input or Result is missing');
+        if (showInfo) console.warn('Input or Result is missing');
 
         return false;
     }
 }
 
-
 /**
  * Mobile menu functions
- * 
+ *
  * @function initMenuMobile
  * @function showMenuMobile
  * @function hideMenuMobile
@@ -625,8 +546,7 @@ function initMenuMobile() {
     const menuMobile = document.querySelector('#menu-mobile');
 
     // abort if not exists
-    if (!menuMobile)
-        return;
+    if (!menuMobile) return;
 
     const showMenu = document.querySelector('[data-show-menu]');
     const hideMenu = document.querySelector('[data-hide-menu]');
@@ -654,10 +574,9 @@ function hideMenuMobile() {
     jQuery(menuMobile).fadeOut(200);
 }
 
-
 /**
  * Influence the scrolling of the body
- * 
+ *
  * @function disableScroll
  * @function enableScroll
  * @function toggleScroll
@@ -684,10 +603,9 @@ function togglePageScroll() {
     jQuery(document.body).toggleClass('disable-scroll');
 }
 
-
 /**
  * Really Simple Slider
- * 
+ *
  * @author Tobias Röder
  * @version 0.1.0
  */
@@ -696,22 +614,21 @@ function reallySimpleSlider() {
 
     const isOverflownX = elmt => {
         return elmt.scrollWidth > elmt.clientWidth;
-    }
+    };
 
     const rssElmt = document.querySelector('[data-rss]');
 
-    if (!rssElmt || !isOverflownX(rssElmt))
-        return;
+    if (!rssElmt || !isOverflownX(rssElmt)) return;
 
     const rssElmtInner = rssElmt.querySelector('[data-rss-inner]');
     const rssLeft = rssElmt.querySelector('[data-rss-left]');
     const rssRight = rssElmt.querySelector('[data-rss-right]');
 
-    const hideRssLeft = () => rssLeft.hidden = true;
-    const showRssLeft = () => rssLeft.hidden = false;
+    const hideRssLeft = () => (rssLeft.hidden = true);
+    const showRssLeft = () => (rssLeft.hidden = false);
 
-    const hideRssRight = () => rssRight.hidden = true;
-    const showRssRight = () => rssRight.hidden = false;
+    const hideRssRight = () => (rssRight.hidden = true);
+    const showRssRight = () => (rssRight.hidden = false);
 
     const checkRssControlVisibility = () => {
         if (rssElmtInner.scrollLeft <= 0) {
@@ -720,12 +637,12 @@ function reallySimpleSlider() {
             showRssLeft();
         }
 
-        if (rssElmtInner.scrollLeft >= (rssElmtInner.scrollWidth - rssElmtInner.clientWidth)) {
+        if (rssElmtInner.scrollLeft >= rssElmtInner.scrollWidth - rssElmtInner.clientWidth) {
             hideRssRight();
         } else {
             showRssRight();
         }
-    }
+    };
 
     checkRssControlVisibility();
 
@@ -738,7 +655,6 @@ function reallySimpleSlider() {
     rssRight.addEventListener('click', () => {
         rssElmtInner.scrollLeft += scrollDistance;
     });
-
 
     // fix position absolute height loss
     rssElmt.style.height = rssElmtInner.clientHeight + 'px';
@@ -823,44 +739,49 @@ class ModalFrame {
 
     /**
      * show modal
-     * 
-     * @param {string} url 
+     *
+     * @param {string} url
      */
-    show(url) {
+    show(id) {
+        history.pushState(
+            {
+                modalframe: 'open',
+            },
+            null
+        );
+
+        this.isVisible = true;
+        this.id = id;
+        this.#loadContent();
         disablePageScroll();
-        jQuery(this.modal).fadeIn(400, () => {
-            this.frame.src = url;
-        });
+        jQuery(this.modal).fadeIn(400);
     }
 
     /**
      * hide modal
      */
     hide() {
+        this.isVisible;
         enablePageScroll();
-        jQuery(this.modal).fadeOut(200, () => {
-            this.frame.src = '';
-        });
+        jQuery(this.modal).fadeOut(200);
     }
 }
-
-
 
 /**
  * ! currently not working
  * utiltiy function to create a random id
- * 
+ *
  * @param {number} length - optional
- * 
+ *
  * @returns {string}
  */
-function randomId( length = 8 ) {
+function randomId(length = 8) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const random = Math.round(Math.random() * 61);
     let randomId = '';
 
     let i = 1;
-    while(i <= length) {
+    while (i <= length) {
         randomId += chars[random];
         i++;
     }
@@ -868,18 +789,17 @@ function randomId( length = 8 ) {
     return randomId;
 }
 
-
 /**
  * executs the callback each delay
  * this prevents for example an eventlistener
  * to get executed more often than it has to
- * 
+ *
  * orignal code from Web Dev Simplified
  * @see https://github.com/WebDevSimplified/debounce-throttle-js/blob/main/script.js#L24
- * 
+ *
  * @param {function} callback
  * @param {number} delay - optional
- * 
+ *
  * @returns {undefined}
  */
 function throttle(callback, delay = 1000) {
@@ -889,11 +809,11 @@ function throttle(callback, delay = 1000) {
         if (waitingArgs == null) {
             shouldWait = false;
         } else {
-            callback(...waitingArgs)
+            callback(...waitingArgs);
             waitingArgs = null;
             setTimeout(timeoutFunc, delay);
         }
-    }
+    };
 
     return (...args) => {
         if (shouldWait) {
@@ -905,24 +825,22 @@ function throttle(callback, delay = 1000) {
         shouldWait = true;
 
         setTimeout(timeoutFunc, delay);
-    }
+    };
 }
-
 
 /**
  * utility function to simply check if it's a letter
- * 
+ *
  * @param {string}
- * 
+ *
  * @returns {boolean}
  */
 function isLetter(str) {
     return !!(str.length === 1 && str.match(/[a-z]/i));
 }
 
-
-
 /**
+ * ! DEPRECATED
  * modal (alert alternate)
  */
 // class Modal {
@@ -941,7 +859,7 @@ function isLetter(str) {
 
 //     if (modals.length <= 0)
 //         return;
-    
+
 //     modals.forEach(modal => {
 //         const closeBtn = modal.querySelector('[data-modal-close]');
 //         closeBtn.addEventListener('click', () => modal.close());
@@ -955,7 +873,6 @@ function isLetter(str) {
 //         return;
 // }
 
-
 // function openModal( modalId ) {
 //     const modal = document.querySelector(`[data-modal="${modalId}"]`);
 //     if (!modal)
@@ -964,31 +881,32 @@ function isLetter(str) {
 //     modal.showModal();
 // }
 
-
-
+/**
+ * modal (inspired by sweetalert)
+ */
 const modal = {
     modal: null,
 
     icons: {
-        'success': 'icon-check-circle',
-        'warning': 'icon-alert-circle',
-        'error': 'icon-x-circle'
+        success: 'icon-check-circle',
+        warning: 'icon-alert-circle',
+        error: 'icon-x-circle',
     },
 
     /**
      * open the modal
-     * 
+     *
      * @param {string} icon - optional (success, warning, error)
      * @param {string} title - optional
      * @param {string} message - optional
-     * 
+     * @param {string} callback - optional (executes on modal close button click)
+     *
      * @returns {undefined}
      */
-    open({ icon = null, title = null, message = null } = {}) {
+    open({ icon = null, title = null, message = null, callback = null } = {}) {
         let modalElmt = modal.modal;
 
-        if (modalElmt && modalElmt.open)
-            modal.close();
+        if (modalElmt && modalElmt.open) modal.close();
 
         if (!modal.modal) {
             modalElmt = document.createElement('dialog');
@@ -1011,12 +929,15 @@ const modal = {
 
         modalElmt.innerHTML += `
             <div class="modal-footer">
-                <button class="btn btn-primary btn-full" data-modal-close>OK</button>
+                <button class="btn btn-primary btn-full" data-modal-close>schließen</button>
             </div>
         `;
 
         const modalCloseBtn = modalElmt.querySelector('[data-modal-close]');
-        modalCloseBtn.addEventListener('click', () => modalElmt.close());
+        modalCloseBtn.addEventListener('click', () => {
+            modalElmt.close();
+            if (callback) callback();
+        });
 
         modal.modal = modalElmt;
         document.body.appendChild(modalElmt);
@@ -1024,14 +945,10 @@ const modal = {
     },
 
     close() {
-        if (!modal.modal)
-            return;
+        if (!modal.modal) return;
         modal.modal.close();
-    }
-}
-
-
-
+    },
+};
 
 function adjustIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.clientHeight + 'px';
