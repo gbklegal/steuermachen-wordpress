@@ -744,29 +744,81 @@ function reallySimpleSlider() {
     rssElmt.style.height = rssElmtInner.clientHeight + 'px';
 }
 
-
+const _g = {}; // TODO remove in prod.
 
 /**
  * Modal with a focus an iframe
  * TODO change ModalFrame to Modal back and add the parameter frame, also look if show gets a string or an event
  * ! TODO: fix go back issue
- * TODO close modal with 'ESC'
+ * TODO close modal with 'ESC' - @DONE
  */
 class ModalFrame {
+    #isVisible = false;
+    #id;
+
     /**
      * @param {HTMLElement} modalElmt
      * @param {HTMLElement} closeElmt
      * @param {HTMLElement} frameElmt
      */
     constructor({ modalElmt, closeElmt, frameElmt }) {
-        if (!modalElmt || !closeElmt || !frameElmt)
+        if (!modalElmt || !closeElmt || !frameElmt) {
             throw new Error('Modal initialisation failed. One or more elements are missing.');
+        }
 
         this.modal = modalElmt;
         this.close = closeElmt;
         this.frame = frameElmt;
 
         this.close.addEventListener('click', () => this.hide());
+
+        _g.f = this.frame; // TODO remove in prod.
+
+        window.addEventListener('keydown', event => {
+            if (event.key === 'Escape') this.hide();
+        });
+
+        window.addEventListener('popstate', () => {
+            if (this.isVisible) this.hide();
+        });
+    }
+
+    #loadContent() {
+        // first of all make a cleanup
+        this.frame.innerHTML = '';
+
+        // show loading indicator
+        this.modal.classList.add('modalframe-loading');
+
+        const xhr = new XMLHttpRequest();
+        const url = `${location.origin}/wp-json/wp/v2/pages/${this.id}`;
+
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState !== 4) return;
+            if (xhr.status !== 200) {
+                modal.open({
+                    icon: 'error',
+                    title: 'Fehler',
+                    message: 'Wir bitten um Entschuldigung. Es gab einen Fehler beim Laden der Seite.',
+                    callback: () => this.hide(),
+                });
+                return;
+            }
+
+            const data = JSON.parse(xhr.responseText);
+
+            // hide loading indicator when done
+            this.modal.classList.remove('modalframe-loading');
+
+            let title = data.title.rendered;
+            let content = data.content.rendered;
+
+            // this.content = data.content.rendered;
+            // this.frame.innerHTML += `<h1>${title}</h1>`;
+            this.frame.innerHTML += `<main class="main-content">${content}</main>`;
+        };
+        xhr.send();
     }
 
     /**
