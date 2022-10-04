@@ -5,15 +5,13 @@
 
 .box-info {
     padding: 20px;
-    background: #C4ED8E;
+    background: #c4ed8e;
     border-radius: 4px;
 }
 
-
-
 .benefits-box {
     border-radius: 24px;
-    background-color: #F7F8FA;
+    background-color: #f7f8fa;
 
     .header {
         border-radius: 24px 24px 0 0;
@@ -41,13 +39,12 @@
                 &::marker {
                     font-family: $font-icons;
                     content: '\e90e';
-                    color: $clr-secondary;
+                    color: $clr-primary;
                 }
             }
         }
     }
 }
-
 
 @media (max-width: $breakpoint-lg) {
     .benefits-box .main img {
