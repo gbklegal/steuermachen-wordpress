@@ -1,12 +1,19 @@
 /*
+    ! The creation of this theme in that way is deprecated now.
+    ! In the future it will be slowly replaced by tailwindcss (TailPress)
+*/
+
+/*
     Themes Name: steuermachen
     Author: Tobias Röder
     Author URI: https://tobias-roeder.de/
     Description: Benutzerdefiniertes steuermachen Themes.
-    Version: 1.4.1
+    Version: 1.5.0
 */
 // ? Roboto?
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Open+Sans:wght@400;500&display=swap');
 
 @import 'var';
 @import 'lib/icons';
@@ -21,6 +28,7 @@
 
 // mixins
 @import 'mixins/alignfull';
+@import 'mixins/full-bleed';
 @import 'mixins/svg';
 @import 'mixins/transition';
 @import 'mixins/utility';
