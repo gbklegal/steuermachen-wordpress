@@ -11,6 +11,14 @@
     padding: 15px 44px;
     text-align: center;
 
+    // neutral button = default button
+    background-color: #3d4451;
+    color: $clr-text-white;
+
+    &:hover {
+        background-color: #2a2e37;
+    }
+
     &-lg {
         width: 365px;
         // width: min(100%, 365px);
@@ -35,26 +43,6 @@
     // // Primary
     // &-theme-primary, // compatibility reasons
     // &-primary {
-    //     background-color: $clr-primary;
-    //     color: $clr-text-white;
-
-    //     &:hover {
-    //         background-color: $clr-primary-hover;
-    //         // color: $clr-text-white;
-    //     }
-
-    //     &:active {
-    //         background-color: $clr-primary-active;
-    //         border-color: $clr-primary-active-stroke;
-    //     }
-
-    //     &:disabled {
-    //         background-color: $clr-primary-disabled;
-    //     }
-    // }
-
-    // // Secondary
-    // &-secondary {
     //     background-color: $clr-secondary;
     //     color: $clr-text-white;
 
@@ -72,29 +60,29 @@
     //         background-color: $clr-secondary-disabled;
     //     }
     // }
+
+    // // Secondary
+    // &-secondary {
+    //     background-color: $clr-primary;
+    //     color: $clr-text-white;
+
+    //     &:hover {
+    //         background-color: $clr-primary-hover;
+    //         // color: $clr-text-white;
+    //     }
+
+    //     &:active {
+    //         background-color: $clr-primary-active;
+    //         border-color: $clr-primary-active-stroke;
+    //     }
+
+    //     &:disabled {
+    //         background-color: $clr-primary-disabled;
+    //     }
+    // }
     // Primary
     &-theme-primary, // compatibility reasons
     &-primary {
-        background-color: $clr-secondary;
-        color: $clr-text-white;
-
-        &:hover {
-            background-color: $clr-secondary-hover;
-            // color: $clr-text-white;
-        }
-
-        &:active {
-            background-color: $clr-secondary-active;
-            border-color: $clr-secondary-active-stroke;
-        }
-
-        &:disabled {
-            background-color: $clr-secondary-disabled;
-        }
-    }
-
-    // Secondary
-    &-secondary {
         background-color: $clr-primary;
         color: $clr-text-white;
 
@@ -110,6 +98,26 @@
 
         &:disabled {
             background-color: $clr-primary-disabled;
+        }
+    }
+
+    // Secondary
+    &-secondary {
+        background-color: $clr-secondary;
+        color: $clr-text-white;
+
+        &:hover {
+            background-color: $clr-secondary-hover;
+            // color: $clr-text-white;
+        }
+
+        &:active {
+            background-color: $clr-secondary-active;
+            border-color: $clr-secondary-active-stroke;
+        }
+
+        &:disabled {
+            background-color: $clr-secondary-disabled;
         }
     }
 
