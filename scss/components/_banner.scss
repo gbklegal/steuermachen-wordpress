@@ -1,8 +1,15 @@
 .banner {
     color: $clr-text-black;
-    background-color: $clr-secondary;
-    font-size: 24px;
+    // background-color: $clr-primary;
+    background-color: #d9d9d9;
+    font-size: 18px;
     font-weight: 500;
-    padding: 20px;
-    text-align: center;
+    padding: 10px 20px;
+    // text-align: center;
+
+    .banner-inner {
+        margin-inline: auto;
+        max-width: $max-width;
+        // padding-inline: 50px;
+    }
 }
