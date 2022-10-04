@@ -29,7 +29,7 @@
             &::marker {
                 content: '\e90e\000020'; // Icon + Whitespace
                 font-family: $font-icons;
-                color: $clr-secondary;
+                color: $clr-primary;
                 padding-right: 5px;
             }
         }
@@ -52,7 +52,6 @@
         }
     }
 }
-
 
 @media (max-width: $breakpoint-md) {
     .price-card {
