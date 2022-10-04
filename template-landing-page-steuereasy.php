@@ -41,7 +41,7 @@ get_header($_publisher_mode);
         </div>
     </section> -->
 
-    <section class="section-price my-6">
+    <section class="my-6 section-price">
         <!-- <div class="section-inner aligncenter">
             <div class="img-label-wrapper">
                 <?php echo get_image_tag(32980, 'Steuer Sprechblasen', '', 'right'); ?>
@@ -49,7 +49,7 @@ get_header($_publisher_mode);
             </div>
             <div class="price-wrapper">25,00 €</div>
         </div> -->
-        <div class="price-card mx-auto">
+        <div class="mx-auto price-card">
             <div>
                 <div class="title">steuerEASY</div>
                 <ul class="description">
@@ -72,7 +72,7 @@ get_header($_publisher_mode);
     <section class="section-benefits">
         <div class="section-inner max-width">
             <div class="benefits-box box-shadow">
-                <div class="px-4 py-3 header bg-secondary">
+                <div class="px-4 py-3 header bg-primary">
                     <h3>Sichere dir jetzt deinen persönlichen Steuerexperten und deine optimale Steuer&shy;rück&shy;erstattung:</h3>
                 </div>
                 <div class="main">
