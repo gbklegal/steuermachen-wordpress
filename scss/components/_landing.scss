@@ -17,6 +17,32 @@ body.christmas #page {
 //     }
 // }
 
+.frame-mode.page-template-template-landing-page-grundsteuer,
+.frame-mode.page-template-template-landing-page-safetax,
+.frame-mode.page-template-template-landing-page-steuereasy,
+.frame-mode.page-template-template-landing-page-steuererklaerung, // * backward campatiblity
+.frame-mode.page-template-template-landing-page-einkommensteuer {
+    footer {
+        padding: 40px;
+        font-size: 12px;
+
+        .custom-logo {
+            padding-bottom: 20px;
+        }
+
+        ul {
+            padding-top: 10px;
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+
+            li:not(:last-child) {
+                padding-right: 10px;
+            }
+        }
+    }
+}
+
 .page-template-template-landing-page-grundsteuer,
 .page-template-template-landing-page-safetax,
 .page-template-template-landing-page-steuereasy,
@@ -90,7 +116,7 @@ body.christmas #page {
 
         header#hero {
             padding: 0 70px 40px;
-            margin-top: 40px;
+            // margin-top: 40px;
             margin-bottom: -40px;
 
             .hero-inner {
@@ -152,26 +178,6 @@ body.christmas #page {
                 h5 {
                     margin-bottom: 1rem;
                 }
-            }
-        }
-    }
-
-    footer {
-        padding: 40px;
-        font-size: 12px;
-
-        .custom-logo {
-            padding-bottom: 20px;
-        }
-
-        ul {
-            padding-top: 10px;
-            list-style-type: none;
-            display: flex;
-            flex-direction: row;
-
-            li:not(:last-child) {
-                padding-right: 10px;
             }
         }
     }
