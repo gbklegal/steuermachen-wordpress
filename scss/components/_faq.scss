@@ -1,79 +1,77 @@
 // .faq {
-    .easy-with-tax-section {
-        main {
-            margin-top: 60px;
+.easy-with-tax-section {
+    main {
+        margin-top: 60px;
 
-            .tabs-wrapper {
+        .tabs-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 50fr);
+            gap: 20px;
+        }
+
+        .changeable-part {
+            .content:not(.content-selected) {
+                display: none;
+            }
+
+            .content {
+                height: 100%;
                 display: grid;
-                grid-template-columns: repeat(2, 50fr);
-                gap: 20px;
-            }
+                place-items: center;
 
-            .changeable-part {
-                .content:not(.content-selected) {
-                    display: none;
-                }
-
-                .content {
-                    height: 100%;
-                    display: grid;
-                    place-items: center;
-
-                    img {
-                        max-width: 300px;
-                        border-radius: $br-2;
-                    }
+                img {
+                    max-width: 300px;
+                    border-radius: $br-2;
                 }
             }
+        }
 
-            .selections {
-                .item {
-                    padding-left: 10px;
-                    cursor: pointer;
-                    transition: color 0.1s ease-in;
-                    border-left: 2px solid transparent;
+        .selections {
+            .item {
+                padding-left: 10px;
+                cursor: pointer;
+                transition: color 0.1s ease-in;
+                border-left: 2px solid transparent;
 
-                    &:hover {
-                        color: $clr-primary;
-                    }
+                &:hover {
+                    color: $clr-secondary;
+                }
 
-                    &-selected {
-                        color: $clr-primary;
-                        border-color: $clr-primary;
-                    }
+                &-selected {
+                    color: $clr-secondary;
+                    border-color: $clr-secondary;
                 }
             }
         }
     }
+}
 
-    .curvy-video-section {
-        // border: 2px solid lightblue;
+.curvy-video-section {
+    // border: 2px solid lightblue;
+    position: relative;
+
+    img {
         position: relative;
+    }
 
-        img {
-            position: relative;
+    .curvy-video-inner {
+        // border: 2px solid blue;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        h2 {
+            text-align: center;
         }
 
-        .curvy-video-inner {
-            // border: 2px solid blue;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            
-            h2 {
-                text-align: center;
-            }
-
-            iframe {
-                box-shadow: 3px 18px 20px rgba($clr-bg-black, .25);
-                border-radius: $br-2;
-            }
+        iframe {
+            box-shadow: 3px 18px 20px rgba($clr-bg-black, 0.25);
+            border-radius: $br-2;
         }
     }
+}
 // }
-
-
 
 @media (max-width: $breakpoint-md) {
     .easy-with-tax-section main .tabs-wrapper {
