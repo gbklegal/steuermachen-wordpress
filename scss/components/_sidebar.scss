@@ -13,7 +13,12 @@
 
                 .sidebar-item {
                     border-radius: $br-3;
-                    border: 1px solid $clr-bg-grey-light;
+                    border: 6px solid $neutral-3-color;
+                    box-shadow: $box-shadow-small;
+
+                    h3 {
+                        margin-bottom: 0;
+                    }
 
                     &-title {
                         padding: 0.5em;
@@ -28,7 +33,7 @@
                     &.newsletter {
                         .sidebar-item {
                             &-title {
-                                background-color: rgba($clr-secondary, 0.4);
+                                background-color: rgba($clr-primary, 0.4);
                             }
 
                             &-content {
@@ -48,7 +53,7 @@
                     &.qr-code-app-download {
                         img {
                             border-radius: $br-1;
-                            box-shadow: 0 0 4px rgba($clr-bg-black, 0.2);
+                            // box-shadow: 0 0 4px rgba($clr-bg-black, 0.2);
                         }
                     }
 
@@ -65,12 +70,12 @@
                             .image {
                                 border-radius: $br-4;
                                 overflow: hidden;
-                        
+
                                 img {
                                     width: 100%;
                                     display: block;
                                     transition: ease-in-out 0.3s transform;
-                        
+
                                     &:hover {
                                         transform: scale(1.1);
                                     }
