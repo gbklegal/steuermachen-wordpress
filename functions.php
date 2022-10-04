@@ -8,6 +8,35 @@ define('STM_THEME_CSS', STM_THEME_URL . '/css');
 define('STM_THEME_JS', STM_THEME_URL . '/js');
 define('STM_THEME_IMG', STM_THEME_URL . '/img');
 
+// /**
+//  * Enqueue theme assets.
+//  */
+// function tailpress_enqueue_scripts()
+// {
+//     $theme = wp_get_theme();
+
+//     wp_enqueue_style('tailpress', tailpress_asset('css/app.css'), [], $theme->get('Version'));
+//     wp_enqueue_script('tailpress', tailpress_asset('js/app.js'), [], $theme->get('Version'));
+// }
+
+// add_action('wp_enqueue_scripts', 'tailpress_enqueue_scripts');
+
+// /**
+//  * Get asset path.
+//  *
+//  * @param string  $path Path to asset.
+//  *
+//  * @return string
+//  */
+// function tailpress_asset($path)
+// {
+//     if (wp_get_environment_type() === 'production') {
+//         return get_stylesheet_directory_uri() . '/' . $path;
+//     }
+
+//     return add_query_arg('time', time(), get_stylesheet_directory_uri() . '/' . $path);
+// }
+
 /**
  * utility function to create a random id
  *
@@ -91,6 +120,16 @@ function steuermachen_theme_setup()
     });
 }
 add_action('init', 'steuermachen_theme_setup');
+
+function theme_add_last_modified_header($headers)
+{
+    global $post;
+    if (isset($post) && isset($post->post_modified)) {
+        $post_mod_date = date('D, d M Y H:i:s', strtotime($post->post_modified));
+        header('Last-Modified: ' . $post_mod_date . ' GMT');
+    }
+}
+add_action('template_redirect', 'theme_add_last_modified_header');
 
 // TODO add this after your holiday, so the others and yourself can edit the sidebar simply in the widgets section
 // function steuermachen_widgets_init() {
@@ -303,13 +342,13 @@ add_filter(
  * Helper function
  * get image only by attachment ID like wp_get_attachment_image without the advanced settings and uneditable sizes
  *
- * @param attachment_id
- * @param size
- * @param class_name
+ * @param int $attachment_id
+ * @param string $size - optional
+ * @param string $class_name - optional
  *
  * @return string
  */
-function get_image_by_id(int $attachment_id, string $size, string $class_name = '', string $img_alt = ''): string
+function get_image_by_id(int $attachment_id, string $size = 'full', string $class_name = '', string $img_alt = ''): string
 {
     $attachment_id = absint($attachment_id);
     $img_url = wp_get_attachment_image_url($attachment_id, $size);
@@ -366,7 +405,7 @@ function init_stm_theme()
     register_nav_menus([
         'primary' => __('Header Navigation'),
         'footer_1' => __('Footer - Über steuermachen.de'),
-        'footer_2' => __('Footer - Rechtliche Dokumente'),
+        'footer_2' => __('Footer - Dokumente'),
         'footer_3' => __('Footer - Kooperation | Wir helfen dir'),
     ]);
 }
@@ -401,7 +440,7 @@ function get_search_results(string $query, ?string $post_type = null): array
             the_permalink(get_the_ID());
 
             echo '<br><br>';
-        };
+        }
     }
 
     return [];
@@ -1521,9 +1560,9 @@ require trailingslashit(get_template_directory()) . 'includes/init.php';
  * include this files if a user is logged in
  */
 if (is_user_logged_in()) {
-    add_action('admin_enqueue_scripts', function () {
-        wp_enqueue_style('admin-style', trailingslashit(get_template_directory_uri()) . 'css/admin.css');
-    });
+    // add_action('admin_enqueue_scripts', function () {
+    // });
+    wp_enqueue_style('admin-style', trailingslashit(get_template_directory_uri()) . 'css/admin.css');
 }
 
 /**
@@ -1621,7 +1660,7 @@ function download_pdf($args)
     if (count($args) > 1) {
         foreach ($args as $attachment_id) {
             $content .= $download_pdf_html($attachment_id);
-        };
+        }
     } else {
         $content .= $download_pdf_html($attachment_id);
     }
