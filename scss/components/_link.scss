@@ -3,14 +3,14 @@ a,
     text-decoration: none;
 
     &:not(.btn) {
-        color: $clr-primary;
+        color: $clr-secondary;
 
         &:hover {
-            color: $clr-primary-hover;
+            color: $clr-secondary-hover;
         }
 
         &:active {
-            color: $clr-primary-active;
+            color: $clr-secondary-active;
         }
     }
 }
