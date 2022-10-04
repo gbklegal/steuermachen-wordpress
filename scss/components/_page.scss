@@ -8,8 +8,6 @@ body:not(.frame-mode) #page {
     }
 }
 
-
-
 /* Steuerratgeber child pages */
 // * maybe it will be available for all article.page
 // * this means without the explicit parent-pageid
@@ -19,7 +17,7 @@ body:not(.frame-mode) #page {
         ol {
             padding-left: 20px;
             margin: 1.5em;
-    
+
             li {
                 padding: 0;
                 margin-bottom: 6px;
@@ -27,8 +25,6 @@ body:not(.frame-mode) #page {
         }
     }
 }
-
-
 
 /* Formulare */
 // lokal  32531
@@ -45,7 +41,7 @@ body:not(.frame-mode) #page {
 
         margin-bottom: 40px;
         padding: 10px 20px;
-        background-color: $clr-primary;
+        background-color: $clr-secondary;
         color: $clr-text-white;
         position: relative;
 
@@ -60,7 +56,7 @@ body:not(.frame-mode) #page {
             height: 0;
             border-left: $pointSize solid transparent;
             border-right: $pointSize solid transparent;
-            border-bottom: $pointSize solid $clr-primary;
+            border-bottom: $pointSize solid $clr-secondary;
         }
 
         &::after {
@@ -70,7 +66,7 @@ body:not(.frame-mode) #page {
             left: $pointSize;
             width: 0;
             height: 110px;
-            border-left: 1px solid $clr-primary;
+            border-left: 1px solid $clr-secondary;
         }
     }
 
@@ -78,7 +74,7 @@ body:not(.frame-mode) #page {
         margin-left: 5px;
 
         summary {
-            color: $clr-primary;
+            color: $clr-secondary;
             font-size: 1.25rem;
             font-weight: 600;
             cursor: pointer;
@@ -91,7 +87,6 @@ body:not(.frame-mode) #page {
         }
     }
 }
-
 
 /* Newsletter page */
 .page-id-32990 {
@@ -106,7 +101,6 @@ body:not(.frame-mode) #page {
         }
     }
 }
-
 
 /* steuerEASY page */
 .page-id-28426 {
@@ -127,18 +121,18 @@ body:not(.frame-mode) #page {
                 align-items: center;
                 gap: 1em;
                 padding: 1em 2em;
-        
+
                 img {
                     width: 150px;
                 }
 
                 // .label {
-                    // font-size: 
+                // font-size:
                 // }
             }
 
             .price-wrapper {
-                background-color: $clr-secondary;
+                background-color: $clr-primary;
                 text-align: center;
                 color: $clr-text-white;
                 font-weight: bold;
@@ -211,7 +205,7 @@ body:not(.frame-mode) #page {
 //         }
 
 //         .table-background {
-//             background-color: $clr-secondary;
+//             background-color: $clr-primary;
 //             color: $clr-text-white;
 //         }
 //     }
@@ -342,37 +336,37 @@ body:not(.frame-mode) #page {
 //     }
 
 //     /* Contact Form 7 redesign */
-    
+
 //     // .wpcf7-form {
 //     //     font-weight: 400;
 //     //     text-transform: none;
 //     //     font-size: inherit;
 //     //     letter-spacing: normal;
 //     // }
-    
+
 //     // .wpcf7-form fieldset {
 //     //     border: none;
 //     //     padding: 0;
 //     //     margin: 2em 0;
 //     // }
-    
+
 //     // .wpcf7-form legend span {
 //     //     font-size: 1rem;
 //     // }
-    
+
 //     // .wpcf7-form select,
 //     // .wpcf7-form textarea {
 //     //     margin-bottom: 1em;
 //     // }
-    
+
 //     // .wpcf7-form .wpcf7-checkbox span {
 //     //     margin-left: 0;
 //     // }
-    
+
 //     // .wpcf7-form input[type=checkbox] {
 //     //     margin-left: 0;
 //     // }
-    
+
 //     // .wpcf7-form input[type=submit] {
 //     //     background-color: var(--clr-orange);
 //     //     font-size: 1rem;
@@ -384,123 +378,119 @@ body:not(.frame-mode) #page {
 //     //     text-transform: none;
 //     //     margin-left: 1em;
 //     // }
-    
+
 //     // .wpcf7-form input[type=submit]:hover {
 //     //     background-color: var(--clr-orange-dark);
 //     //     text-decoration: none;
 //     // }
-    
+
 //     // .wpcf7-form.checkbox-last {
 //     //     margin-bottom: 0;
 //     // }
-    
-    
+
 //     // .wpcf7-form a {
 //     //     color: var(--clr-secondary);
 //     //     text-decoration: none;
 //     // }
-    
+
 //     // .wpcf7-form a:hover {
 //     //     color: var(--clr-secondary-dark);
 //     //     text-decoration: underline;
 //     // }
-    
+
 //     // .wpcf7-form .bestellen {
 //     //     margin-top: 3em;
 //     //     margin-bottom: 3em;
 //     // }
-    
+
 //     // .wpcf7-form .bestellen img {
 //     //     margin-right: 1em;
 //     //     margin-bottom: 4em;
 //     // }
-    
+
 //     // span.wpcf7-list-item {
 //     //     display: grid;
 //     //     grid-template-columns: auto 1fr;
 //     //     margin: 0;
 //     // }
-    
+
 //     // span.wpcf7-list-item input {
 //     //     place-self: center;
 //     // }
-    
+
 //     // .inline .wpcf7-list-item {
 //     //     display: inline;
 //     // }
-    
+
 //     // .wpcf7-form.text-area {
 //     //     margin-top: 2em;
 //     // }
-    
+
 //     // .wpcf7-form .inline {
 //     //     margin-bottom: .9375rem;
 //     // }
-    
+
 //     // .wpcf7-form .inline a {
 //     //     margin-left: 2em;
 //     //     display: block;
 //     // }
-    
+
 //     // input[type="radio"],
 //     // input[type="checkbox"] {
 //     //     margin: 0 12px 0 0;
 //     // }
-    
+
 //     // .wpcf7-form-control-wrap.ziel .wpcf7-list-item {
 //     //     margin-bottom: 0.5rem;
 //     // }
-    
-    
+
 //     // @media (min-width: 992px) {
 //     //     .wpcf7-form fieldset .formfield {
 //     //         display: grid;
 //     //         grid-template-columns: 1fr 1fr;
 //     //     }
-    
+
 //     //     /* Klage Finanzgericht Form / Ihr Antrag auf Soforthilfe zum Thema Steuerrecht */
 //     //     .page-id-28486 .wpcf7-form fieldset .formfield {
 //     //         display: block;
 //     //     }
-    
+
 //     //     /* steuerEASY */
 //     //     .page-id-28426 .wpcf7-form fieldset .formfield {
 //     //         display: block;
 //     //     }
-    
+
 //     //     .wpcf7-form fieldset .formfield.formfield-small {
 //     //         max-width: min-content;
 //     //         grid-column-gap: 2em;
 //     //     }
-    
+
 //     //     label.span {
 //     //         grid-column: 1 / 3;
 //     //     }
-    
+
 //     //     /* one column */
-    
+
 //     //     /* Klage Finanzgericht Form / Ihr Antrag auf Soforthilfe zum Thema Steuerrecht */
 //     //     .page-id-28486 .wpcf7-form fieldset .formfield {
 //     //         grid-template-columns: 1fr;
 //     //     }
 //     // }
-    
-    
+
 //     // @media (min-width: 1240px) {
-    
+
 //     //     /* Klage Finanzgericht Form / Ihr Antrag auf Soforthilfe zum Thema Steuerrecht */
 //     //     .page-id-28486 .wpcf7-form fieldset .formfield {
 //     //         display: grid;
 //     //         grid-template-columns: 1fr 1fr;
 //     //     }
 //     // }
-    
+
 //     // .h-captcha {
 //     //     margin-top: 2em;
 //     //     margin-bottom: 0;
 //     // }
 // }
-
 
 .page-id-28426 .info ul {
     list-style-type: none;
@@ -512,8 +502,8 @@ body:not(.frame-mode) #page {
 }
 
 .page-id-28426 .info ul .fa {
-    color: $clr-secondary;
-    padding-right: .5em;
+    color: $clr-primary;
+    padding-right: 0.5em;
     font-size: 1.2rem;
 }
 
@@ -521,8 +511,6 @@ body:not(.frame-mode) #page {
 .easy-form {
     margin-bottom: 3em;
 }
-
-
 
 .page-id-28426 main.main-content .container {
     margin-left: auto;
@@ -546,7 +534,6 @@ body:not(.frame-mode) #page {
         max-width: 100%;
     }
 }
-
 
 // Order Form (Bestellformular)
 .page-id-75 {
@@ -575,7 +562,6 @@ body:not(.frame-mode) #page {
         margin-inline: auto;
 
         .price-calculator {
-
             .calc {
                 .field-wrapper {
                     width: 100%;
@@ -618,12 +604,12 @@ body:not(.frame-mode) #page {
                 display: none;
 
                 &:checked + .radio-box {
-                    // border-color: $clr-secondary;
-                    // color: $clr-secondary;
-                    background-color: $clr-secondary;
+                    // border-color: $clr-primary;
+                    // color: $clr-primary;
+                    background-color: $clr-primary;
 
                     // .img {
-                    //     background-color: $clr-secondary;
+                    //     background-color: $clr-primary;
                     // }
                 }
             }
@@ -689,7 +675,6 @@ body:not(.frame-mode) #page {
     }
 }
 
-
 @media (max-width: $breakpoint-sm) {
     // Order Form (Bestellformular)
     .page-id-75,
@@ -705,5 +690,5 @@ body:not(.frame-mode) #page {
             }
         }
     }
-        // this one is the test page
+    // this one is the test page
 }
