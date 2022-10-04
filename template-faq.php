@@ -5,13 +5,11 @@
  * Template Name: FAQ
  */
 
-get_header();
-
-?>
+get_header(); ?>
 <main class="main-content faq">
     <div id="hero" class="hero-wrapper">
         <div class="hero-text">
-            <?php the_title( '<h1>', '</h1>' ); ?>
+            <?php the_title('<h1>', '</h1>'); ?>
             <?php if (has_secondary_title()): ?>
                 <div class="secondary-title"><?php the_secondary_title(); ?></div>
             <?php endif; ?>
@@ -88,6 +86,4 @@ get_header();
         </div>
     </div>
 </div>
-<?php
-
-get_footer();
+<?php get_footer();
