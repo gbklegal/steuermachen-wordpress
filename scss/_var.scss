@@ -6,19 +6,40 @@ $url-uploads: $url-content + '/uploads';
 $url-theme-base: $url-content + '/themes/steuermachen';
 $url-theme-img: $url-theme-base + '/img';
 
+// new colors
+$primary-color: #37ce00;
+$secondary-color: #ff6138;
+$accent-color: #eaffe2;
+$success-color: #66db3b;
+$error-color: #dc2837;
+$warning-color: #d5770b;
+$info-color: #009ece;
+$neutral-color: #17181b;
+$neutral-2-color: #252b42;
+$neutral-3-color: #ffffff;
+$text-field-default-color: #5a6684;
+$background-color: #f1f6fc;
+$grey-color: #e2e2e2;
+$grey-light-color: #aeb4c2;
+$disabled-bg-color: #d9d9d9;
+
+// gradient
+$gradient-bg: linear-gradient(180deg, #f1f6fc 0%, #ffffff 100%);
+$gradient: linear-gradient(180deg, #ffffff 0%, rgba(241, 245, 252, 0.4) 100%);
+$gradient-2: linear-gradient(270deg, #e6eef9 0.16%, #f1f6fc 100.16%);
 
 // colors
-$clr-primary: #ff6138;
-$clr-primary-hover: #CC5637;
-$clr-primary-disabled: #FFCABC;
-$clr-primary-active: #FF5427;
-$clr-primary-active-stroke: #B45941;
+$clr-primary: $primary-color;
+$clr-primary-hover: #4bbb29;
+$clr-primary-disabled: #bddeb1;
+$clr-primary-active: #56b633;
+$clr-primary-active-stroke: #509226;
 
-$clr-secondary: #66DB3B;
-$clr-secondary-hover: #5AB139;
-$clr-secondary-disabled: #DDF7D3;
-$clr-secondary-active: #40E703;
-$clr-secondary-active-stroke: #449E23;
+$clr-secondary: $secondary-color;
+$clr-secondary-hover: #e56341;
+$clr-secondary-disabled: #ffcabc;
+$clr-secondary-active: #ff5427;
+$clr-secondary-active-stroke: #b54021;
 
 // $clr-primary: #66DB3B;
 // $clr-primary-hover: #5AB139;
@@ -43,33 +64,33 @@ $clr-blue: #0074b5;
 $clr-orange: $clr-primary;
 $clr-green: $clr-secondary;
 
-$clr-bg-turquoise: #DAF5EE;
-$clr-bg-green: #EAFFE2;
-$clr-bg-blue: #F1F6FC;
-$clr-bg-grey: #C4C4C4;
-$clr-bg-grey-light: #E2E2E2;
-$clr-bg-grey-very-light: #FCFCFC;
-$clr-bg-white: #FFFFFF;
+$clr-bg-turquoise: #daf5ee;
+$clr-bg-green: #eaffe2;
+$clr-bg-blue: #f1f6fc;
+$clr-bg-grey: #c4c4c4;
+$clr-bg-grey-light: #e2e2e2;
+$clr-bg-grey-very-light: #fafafa; // #fcfcfc
+$clr-bg-white: #ffffff;
 $clr-bg-black: #000000;
 $clr-bg: $clr-bg-white;
 
 $clr-text-black: #333; // #000 || 494949
-$clr-text-blue: #252B42;
-$clr-text-white: #FFFFFF;
+$clr-text-blue: #252b42;
+$clr-text-white: #ffffff;
 $clr-text-grey: #737373;
 $clr-text: $clr-text-black; // default
 
-$clr-field-stroke: #AABFBD;
-$clr-field-stroke-disabled: #E6E6E6;
-$clr-field-stroke-inactive: #C9C9C9;
-$clr-field-stroke-hover: #8A8C8E;
-$clr-field-stroke-focused: #FF6138;
-$clr-field-stroke-invalid: #FFE7B9; // #FFEAC1
-$clr-field-stroke-error: #FF3B3B; // #FFD8D8
+$clr-field-stroke: #aabfbd;
+$clr-field-stroke-disabled: #e6e6e6;
+$clr-field-stroke-inactive: #c9c9c9;
+$clr-field-stroke-hover: #8a8c8e;
+$clr-field-stroke-focused: #ff6138;
+$clr-field-stroke-invalid: #ffe7b9; // #FFEAC1
+$clr-field-stroke-error: #ff3b3b; // #FFD8D8
 $clr-field-stroke-done: $clr-text-grey; // #FFD8D8
 $clr-field-tile: $clr-primary;
 $clr-field-text: $clr-text-blue;
-$clr-field-disabled: #AABFBD;
+$clr-field-disabled: #aabfbd;
 
 // modal or other
 $clr-success: #a5dc86;
@@ -102,11 +123,28 @@ $clr-alert-info-color: #055160;
 $clr-alert-info-bg: #cff4fc;
 $clr-alert-info-border-color: #b6effb;
 
-
 // font
-$font-default: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+$font-default: 'Open Sans', $font-fallback;
+$font-heading: 'Inter', $font-fallback;
 $font-icons: 'STM-Icons';
 
+$heading-font: 'Inter';
+$text-font: 'Open Sans';
+$icon-font: 'Material Icons';
+
+// header
+$fs-h1: 40px;
+$fs-h2: 28px;
+$fs-h3: 24px;
+$fs-h4: 20px;
+
+$fs-headers: (
+    1: $fs-h1,
+    2: $fs-h2,
+    3: $fs-h3,
+    4: $fs-h4,
+);
 
 // border radius
 $br-0: 0px;
@@ -117,7 +155,6 @@ $br-4: 12px;
 $br-5: 30px;
 $br-6: 60px;
 $br-7: 90px;
-
 
 // sizes
 $max-width: 1280px;
@@ -130,21 +167,14 @@ $breakpoint-lg: 1024px;
 $breakpoint-xl: 1280px;
 $breakpoint-2xl: 1536px;
 
-
 // directions
-$directions: (
-    left,
-    center,
-    right,
-    justify
-);
-
+$directions: (left, center, right, justify);
 
 // header sizes
 $header-size: 143px;
 $header-size-mobile: 88px;
 
-
 // box shadow
-$box-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
-$box-shadow-soft: 0 5px 10px rgba(154, 160, 185, .05), 0 15px 40px rgba(166, 173, 201, .2);
+$box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$box-shadow-small: 0px 0px 4px rgba(0, 0, 0, 0.25);
+$box-shadow-soft: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
