@@ -61,7 +61,7 @@ get_header($_publisher_mode);
     <section class="section-benefits">
         <div class="section-inner max-width">
             <div class="benefits-box box-shadow">
-                <div class="px-4 py-3 text-white header bg-secondary">
+                <div class="px-4 py-3 text-white header bg-primary">
                     <h3>Sichere dir jetzt deinen persönlichen Steuerexperten und deine optimale Steuer&shy;rückerstattung:</h3>
                 </div>
                 <div class="main">
