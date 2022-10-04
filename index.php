@@ -1,20 +1,15 @@
 <?php get_header(); ?>
 
-<?php
-// var_dump(get_the_ID());
-?>
-<?php
-// var_dump(have_posts());
-?>
-
 <main class="main-content">
 
-<?php if (is_home() || is_category() || is_author()): ?>
+<?php if (is_home() || is_category() || is_author() || is_archive()): ?>
 
     <?php if (have_posts()): ?>
         <header>
             <?php if (is_category()): ?>
-            <h2>Kategorie: <?php echo get_the_category()[0]->name; ?></h2>
+            <h2>Kategorie: <?php single_cat_title(); ?></h2>
+            <?php elseif (is_archive()): ?>
+            <h2><?php the_archive_title(); ?></h2>
             <?php else: ?>
             <h2>Neueste Beiträge</h2>
             <?php endif; ?>
