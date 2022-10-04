@@ -14,8 +14,8 @@ footer#footer {
 
     hr {
         border-bottom: 1px solid rgba($clr-bg-black, 0.2);
-        border-radius: 5px;;
-        margin: 20px 0 ;
+        border-radius: 5px;
+        margin: 20px 0;
     }
 
     .social {
@@ -34,6 +34,80 @@ footer#footer {
         // i {
         //     font-size: 22px;
         // }
+    }
+
+    #sicherheit {
+        padding: 24px;
+        margin: {
+            top: 24px;
+            bottom: 48px;
+        }
+
+        .section-inner {
+            max-width: 660px;
+            margin: 0 auto;
+        }
+
+        .shield {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            background-image: url($url-theme-img + '/shield.svg');
+            background-repeat: no-repeat;
+            position: relative;
+
+            i {
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 30px;
+                color: $clr-text-white;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin: 15px 0 25px;
+        }
+
+        .benefits {
+            list-style-type: none;
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 40px;
+            justify-content: space-around;
+
+            li {
+                font-size: 20px;
+
+                i {
+                    border-radius: 99rem;
+                    padding: 5px;
+                }
+
+                &:nth-child(1) {
+                    text-align: left;
+                }
+
+                &:nth-child(2) {
+                    text-align: center;
+                }
+
+                &:nth-child(3) {
+                    text-align: right;
+                }
+            }
+        }
+
+        .more-details {
+            margin-top: 20px;
+            text-align: center;
+
+            a {
+                font-size: 20px;
+            }
+        }
     }
 
     .footer-navs {
@@ -62,7 +136,7 @@ footer#footer {
     // }
 
     .app-badges {
-        margin-bottom: 1rem;
+        margin-top: 1rem;
 
         img {
             width: 200px;
@@ -73,7 +147,6 @@ footer#footer {
         margin: 30px 0;
     }
 }
-
 
 @media (max-width: 867px) {
     footer#footer .sign-up iframe#newsletter {
@@ -102,5 +175,37 @@ footer#footer {
 @media (max-width: 381px) {
     footer#footer .sign-up iframe#newsletter {
         height: 720px;
+    }
+}
+
+@media (max-width: 835px) {
+    footer#footer {
+        #sicherheit {
+            padding: 20px;
+
+            .section-inner {
+                .benefits {
+                    gap: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    footer#footer {
+        #sicherheit {
+            .section-inner {
+                .benefits {
+                    flex-flow: column wrap;
+                    margin: 0 auto;
+                    width: fit-content;
+
+                    li {
+                        text-align: left;
+                    }
+                }
+            }
+        }
     }
 }
