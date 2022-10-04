@@ -6,13 +6,16 @@
 
     &.hero-wrapper {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         width: 900px; // 750px
         max-width: 100%;
         margin: 0 auto;
-        gap: 20px;
+        gap: 50px;
 
         .hero-text {
+            display: block;
+            width: 100%;
+
             &:only-child {
                 h1,
                 .secondary-title {
@@ -48,13 +51,11 @@
     }
 }
 
-
 @media (max-width: $breakpoint-md) {
     #hero .hero-image:not(main.main-content.front-page #hero .hero-image) {
         display: none;
     }
 }
-
 
 @media (max-width: $breakpoint-xs) {
     #hero.hero-wrapper .hero-text {
