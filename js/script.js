@@ -950,6 +950,7 @@ const modal = {
     },
 };
 
-function adjustIframe(obj) {
-    obj.style.height = obj.contentWindow.document.body.clientHeight + 'px';
+function adjustIframe(elmt) {
+    elmt.style.height = elmt.contentWindow.document.body.clientHeight + 'px';
+    elmt.classList.remove('iframe-loading');
 }
