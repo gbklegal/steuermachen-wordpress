@@ -75,7 +75,7 @@ get_header($_publisher_mode);
     <section class="section-benefits">
         <div class="section-inner max-width">
             <div class="benefits-box box-shadow">
-                <div class="px-4 py-3 header bg-secondary">
+                <div class="px-4 py-3 header bg-primary">
                     <h3>Sichere dir jetzt deinen persönlichen Steuerexperten zur Erstellung deiner Grund&shy;steuer&shy;erklärung:</h3>
                 </div>
                 <div class="main">

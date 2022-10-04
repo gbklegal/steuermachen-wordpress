@@ -8,9 +8,9 @@ body {
         width: 100%;
         height: 550px;
         display: block;
-    
+
         // background: linear-gradient(0deg, #FFFFFF, #EEF6FF);
-        background: linear-gradient(0deg, $clr-bg-white, #EEF6FF);
+        background: linear-gradient(0deg, $clr-bg-white, #eef6ff);
         // border-radius: 0px 0px $br-7 $br-7;
     }
 }
@@ -31,6 +31,9 @@ header#header {
 
     .header-inner {
         // border: 2px solid blue;
+        // width: 1500px;
+        // margin-inline: auto;
+        // padding-inline: 50px;
 
         .header-mobile {
             display: none;
@@ -39,6 +42,10 @@ header#header {
         .header-part {
             display: flex;
             gap: 15px;
+
+            .btn {
+                font-size: inherit;
+            }
         }
 
         .header-content {
@@ -55,7 +62,8 @@ header#header {
             .menu-top-container-wrapper {
                 display: flex;
                 align-items: center;
-            
+                margin-left: 3rem;
+
                 .menu {
                     display: flex;
                     flex-direction: row;
@@ -68,7 +76,7 @@ header#header {
                         font-size: 16px;
 
                         &:hover {
-                            color: $clr-primary;
+                            color: $clr-secondary;
                         }
                     }
 
@@ -86,7 +94,7 @@ header#header {
                         // display: inline-block;
                         padding: 10px 15px;
                         position: relative;
-                        
+
                         &.menu-item-has-children:hover {
                             .sub-menu {
                                 display: block;
@@ -110,8 +118,9 @@ header#header {
     }
 }
 
-
-@media (max-width: 1330px) { // old: 1240px
+@media (max-width: 1179px) {
+    // ehem. 1330px
+    // old: 1240px
     header#header {
         padding: {
             top: 20px;
@@ -152,7 +161,7 @@ header#header {
                 .header-mobile-overlay {
                     z-index: 90;
                     position: fixed;
-                    // background-color: $clr-secondary;
+                    // background-color: $clr-primary;
                     background-color: $clr-bg;
                     // top: 0;
                     // left: 0;
@@ -210,7 +219,7 @@ header#header {
 
                                         a {
                                             padding-block: 0.2em;
-                                            display: inline-block
+                                            display: inline-block;
                                         }
 
                                         // &::before {
@@ -227,7 +236,6 @@ header#header {
     }
 }
 
-
 // @media (max-width: 1010px) {
 //     header#header {
 //         .hidden-on-mobile {
@@ -243,7 +251,7 @@ header#header {
 //             .header-mobile {
 //                 display: block;
 //                 text-align: right;
-                
+
 //                 i {
 //                     font-size: 42px;
 //                 }
@@ -251,7 +259,6 @@ header#header {
 //         }
 //     }
 // }
-
 
 // header#header {
 //     .menu-item-28391 {

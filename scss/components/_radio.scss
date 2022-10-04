@@ -6,17 +6,17 @@
     }
 
     &:hover .radio-button {
-        border-color: $clr-secondary;
+        border-color: $clr-primary;
     }
 
     input[type='radio'] {
         display: none;
 
-        &:checked+.radio-button {
-            border-color: $clr-secondary;
+        &:checked + .radio-button {
+            border-color: $clr-primary;
 
             &::before {
-                background-color: $clr-secondary;
+                background-color: $clr-primary;
             }
         }
     }
@@ -44,7 +44,7 @@
             border-radius: $size;
         }
 
-        &+.label {
+        & + .label {
             display: inline-block;
             font-size: 18px;
             padding-left: 5px;

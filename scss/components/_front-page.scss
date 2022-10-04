@@ -1,42 +1,39 @@
+body.home {
+    // alt: .page-template-template-frontpage
+    background-color: $clr-bg-grey-very-light;
+}
+
 main.main-content.front-page {
     max-width: 1500px;
 
     .hero-wrapper {
         width: 100% !important;
+        background-color: $clr-bg-blue;
+        @include full-bleed($clr-bg-blue);
 
-        h1 {
-            line-height: 1;
-            padding-bottom: 20px;
-        }
+        // h1 {
+        //     line-height: 1;
+        //     padding-bottom: 20px;
+        // }
 
         .hero-text {
-            h1 {
-                img {
-                    height: 40px;
-                    margin-right: 20px;
-                }
-            }
-
             .seals {
                 display: flex;
                 flex-flow: row nowrap;
                 align-items: center;
                 gap: 20px;
-                margin-bottom: 20px;
 
                 .trusted-shops,
                 .datenschutz {
-                    max-height: 82px;
+                    max-height: 82px; // prev. 56px
                 }
 
                 .elster {
-                    max-height: 48px;
+                    max-height: 48px; // prev. 40px
                 }
             }
 
             .advantages {
-                margin-bottom: 54px;
-
                 ul {
                     display: flex;
                     // flex-direction: row;
@@ -46,13 +43,15 @@ main.main-content.front-page {
                     li {
                         font-size: 18px;
                         font-weight: 500;
-                        margin-left: 18px; // width of the marker
+                        // margin-left: 25px; // width of the marker 20px
                         letter-spacing: 2px;
+                        list-style-type: none;
 
-                        &::marker {
+                        &::before {
                             content: '\e90e';
                             font-family: $font-icons;
-                            color: $clr-secondary;
+                            color: $clr-primary;
+                            margin-right: 5px;
                         }
                     }
                 }
@@ -105,7 +104,7 @@ main.main-content.front-page {
 
     #steps {
         // border: 2px solid blue;
-        $gap: 40px;
+        $gap: 24px; // 40px in combination with the after pseudo element
 
         .flip-cards-wrapper {
             display: grid;
@@ -114,13 +113,14 @@ main.main-content.front-page {
         }
 
         .flip-card-inner {
-            border-radius: $br-2;
+            border-radius: $br-4;
             box-shadow: 0 2px 8px rgba($clr-bg-black, 0.25);
 
             img {
                 margin: 0 auto;
                 display: block;
                 margin-bottom: 20px;
+                height: 128px;
             }
 
             .flip-card-front,
@@ -143,17 +143,17 @@ main.main-content.front-page {
         .step {
             position: relative;
 
-            &:not(:last-child)::after {
-                position: absolute;
-                top: 50%;
-                right: (calc($gap / 2) * -1);
-                transform: translateY(-50%);
-                content: '';
-                display: block;
-                width: 1px;
-                height: 88px;
-                background-color: $clr-bg-grey;
-            }
+            // &:not(:last-child)::after {
+            //     position: absolute;
+            //     top: 50%;
+            //     right: (calc($gap / 2) * -1);
+            //     transform: translateY(-50%);
+            //     content: '';
+            //     display: block;
+            //     width: 1px;
+            //     height: 88px;
+            //     background-color: $clr-bg-grey;
+            // }
 
             img {
                 margin: 0 auto;
@@ -195,7 +195,7 @@ main.main-content.front-page {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         place-items: center;
-        background-color: $clr-secondary;
+        background-color: $accent-color;
         border-radius: $br-4;
         overflow: hidden;
 
@@ -224,80 +224,173 @@ main.main-content.front-page {
         }
     }
 
-    #zahlen-und-fakten {
-        padding-bottom: 200px;
+    #vergleichstabelle {
+        // border: 2px solid lightblue;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
 
-        .box {
-            border-radius: $br-5;
-            background: linear-gradient(45deg, $clr-bg-blue, transparent);
-            display: flex;
-            flex-flow: row nowrap;
-            gap: 70px;
-            padding: 40px 60px;
-            max-width: 900px;
-            margin: 0 auto;
+        h2 {
+            margin-bottom: 0;
+        }
 
-            .header {
-                position: relative;
-                min-width: 230px;
+        // TODO replace this with
+        p.subheading {
+            padding-top: 16px;
+            padding-bottom: 32px;
+        }
 
-                h2 {
-                    font-size: 40px;
-                }
+        .table {
+            display: inline-grid;
+            grid-template-columns: repeat(4, 1fr);
+            // grid-template-rows: repeat(6, 114px);
+            gap: 1px;
+            background-color: $clr-bg-grey;
 
-                img.mockup {
-                    filter: drop-shadow(-20px 20px 20px rgba($clr-bg-black, 0.25));
-                    min-width: 230px;
-                    top: 0;
-                    position: absolute;
-                    margin-top: 60%;
-                    float: left;
-                }
-            }
-
-            .items {
-                width: 100%;
+            .cell {
+                padding: 10px 12px;
+                // font-size: 12px;
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-                position: relative;
+                place-items: center;
+                background-color: $clr-bg-white;
+                min-height: 114px;
 
-                &::before {
-                    $size: 315px;
+                &.header {
+                    background-color: $clr-bg-grey-light;
+                    // font-size: 14px;
 
-                    z-index: -1;
-                    content: '';
-                    position: absolute;
-                    background-image: url($url-uploads + '/2020/12/cropped-steuermachen-logo.png');
-                    background-size: $size $size;
-                    display: block;
-                    width: $size;
-                    height: $size;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    opacity: .35;
+                    // ! THIS ELEMENT COULD BE REMOVED IF NOT NEEDED
+                    // span {
+                    //     rotate: -60deg;
+                    // }
                 }
 
-                .item {
-                    background-color: $clr-bg-blue;
-                    border-radius: $br-2;
-                    width: 250px;
-                    height: 190px;
-                    box-shadow: 0 4px 4px rgba($clr-bg-black, 0.25);
-                    padding: 10px;
+                &.label {
+                    text-align: left;
+                    justify-items: start;
+                    // line-height: 16px;
+                }
 
-                    &-title {
-                        color: $clr-secondary;
-                    }
+                &.not {
+                    font-family: $font-heading;
+                    font-size: 32px;
+                    font-weight: 700;
+                }
 
-                    &-content {
-                        font-size: 20px;
-                    }
+                i.icon-check {
+                    color: $clr-primary;
+                    font-size: 1.5rem;
                 }
             }
         }
     }
+
+    #entwickelt-fuer {
+        p {
+            &:nth-child(1) {
+                letter-spacing: 0.2em;
+            }
+            &:nth-child(3) {
+                padding-top: 1rem;
+                margin-bottom: 0;
+                font-size: 2.5rem;
+            }
+        }
+
+        ul {
+            li {
+                list-style-type: none;
+                font-size: 2.5rem;
+                font-weight: bold;
+                line-height: 1.2;
+            }
+        }
+    }
+
+    // #zahlen-und-fakten {
+    //     padding-bottom: 200px;
+    //     max-width: 800px;
+    //     margin-inline: auto;
+
+    //     // .box {
+    //     //     border-radius: $br-5;
+    //     //     background: linear-gradient(45deg, $clr-bg-blue, transparent);
+    //     //     display: flex;
+    //     //     flex-flow: row nowrap;
+    //     //     gap: 70px;
+    //     //     padding: 40px 60px;
+    //     //     max-width: 900px;
+    //     //     margin: 0 auto;
+
+    //     .header {
+    //         position: relative;
+    //         min-width: 230px;
+
+    //         h2 {
+    //             font-size: 40px;
+    //         }
+    //     }
+
+    //     .inner {
+    //         display: flex;
+    //         flex-direction: row;
+    //         gap: 80px;
+    //     }
+
+    //     img.mockup {
+    //         filter: drop-shadow(10px 20px 20px rgba($clr-bg-black, 0.5));
+    //         // filter: drop-shadow(1px 1px $clr-bg-black) drop-shadow(2px 2px $clr-bg-black) drop-shadow(4px 4px $clr-bg-black) drop-shadow(8px 8px $clr-bg-black) drop-shadow(16px 16px $clr-bg-black);
+    //         max-width: 230px;
+    //         // top: 0;
+    //         // position: absolute;
+    //         // margin-top: 60%;
+    //         // float: left;
+    //     }
+
+    //     .items {
+    //         width: 100%;
+    //         display: grid;
+    //         grid-template-columns: repeat(2, 1fr);
+    //         gap: 40px;
+    //         position: relative;
+
+    //         // &::before {
+    //         //     $size: 315px;
+
+    //         //     z-index: -1;
+    //         //     content: '';
+    //         //     position: absolute;
+    //         //     background-image: url($url-uploads + '/2020/12/cropped-steuermachen-logo.png');
+    //         //     background-size: $size $size;
+    //         //     display: block;
+    //         //     width: $size;
+    //         //     height: $size;
+    //         //     top: 50%;
+    //         //     left: 50%;
+    //         //     transform: translate(-50%, -50%);
+    //         //     opacity: 0.35;
+    //         // }
+
+    //         .item {
+    //             background-color: $clr-bg-blue;
+    //             border-radius: $br-2;
+    //             // width: 250px;
+    //             // height: 190px;
+    //             box-shadow: 0 4px 4px rgba($clr-bg-black, 0.25);
+    //             padding: 10px;
+
+    //             &-title {
+    //                 color: $clr-primary;
+    //             }
+
+    //             &-content {
+    //                 font-size: 20px;
+    //             }
+    //         }
+    //     }
+    //     // }
+    // }
 
     #bewertungen {
         h2 {
@@ -336,7 +429,7 @@ main.main-content.front-page {
                 .date {
                     font-size: 18px;
                     font-weight: 700;
-                    color: $clr-primary;
+                    color: $clr-secondary;
                     font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
                 }
 
@@ -361,165 +454,78 @@ main.main-content.front-page {
         }
     }
 
-    #steuerratgeber {
-        h2 {
-            margin-bottom: 40px;
-        }
+    // #steuerratgeber {
+    //     h2 {
+    //         margin-bottom: 40px;
+    //     }
 
-        .recent-posts {
-            display: grid;
-            grid-template-columns: 4fr 3fr;
-            gap: 30px;
+    //     .recent-posts {
+    //         display: grid;
+    //         grid-template-columns: 4fr 3fr;
+    //         gap: 30px;
 
-            .image {
-                border-radius: $br-4;
-                overflow: hidden;
+    //         .image {
+    //             border-radius: $br-4;
+    //             overflow: hidden;
 
-                img {
-                    width: 100%;
-                    display: block;
-                    transition: ease-in-out 0.3s transform;
+    //             img {
+    //                 width: 100%;
+    //                 display: block;
+    //                 transition: ease-in-out 0.3s transform;
 
-                    &:hover {
-                        transform: scale(1.1);
-                    }
-                }
-            }
+    //                 &:hover {
+    //                     transform: scale(1.1);
+    //                 }
+    //             }
+    //         }
 
-            .categories {
-                font-size: 18px;
-                font-weight: bold;
-                text-transform: uppercase;
-                // margin-bottom: 15px;
-            }
+    //         .categories {
+    //             font-size: 18px;
+    //             font-weight: bold;
+    //             text-transform: uppercase;
+    //             // margin-bottom: 15px;
+    //         }
 
-            .latest-post {
-                .title {
-                    font-weight: bold;
-                    font-size: 24px;
-                }
+    //         .latest-post {
+    //             .title {
+    //                 font-weight: bold;
+    //                 font-size: 24px;
+    //             }
 
-                .image {
-                    margin-bottom: 5px;
-                }
-            }
+    //             .image {
+    //                 margin-bottom: 5px;
+    //             }
+    //         }
 
-            .latest-posts {
-                display: flex;
-                flex-flow: column wrap;
-                gap: 30px;
+    //         .latest-posts {
+    //             display: flex;
+    //             flex-flow: column wrap;
+    //             gap: 30px;
 
-                .post {
-                    display: flex;
-                    flex-flow: row nowrap;
-                    gap: 12px;
+    //             .post {
+    //                 display: flex;
+    //                 flex-flow: row nowrap;
+    //                 gap: 12px;
 
-                    .image img {
-                        $size: 200px;
+    //                 .image img {
+    //                     $size: 200px;
 
-                        width: $size;
-                        min-width: $size  !important;
-                    }
+    //                     width: $size;
+    //                     min-width: $size !important;
+    //                 }
 
-                    // .content {
-                    //     .title {
-                    //         a {
-                    //             color: $clr-text-black;
-                    //         }
-                    //     }
-                    // }
-                }
-            }
-        }
-    }
-
-    #sicherheit {
-        padding: 54px;
-        position: relative;
-
-        &::before {
-            z-index: -1;
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: block;
-            background: linear-gradient(to left, $clr-bg-blue, transparent);
-            height: 100%;
-            width: 100vw;
-            max-width: 100vw;
-            margin-left: calc(50% - 50vw);
-        }
-
-        .section-inner {
-            max-width: 660px;
-            margin: 0 auto;
-        }
-
-        .shield {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto;
-            background-image: url($url-theme-img + '/shield.svg');
-            background-repeat: no-repeat;
-            position: relative;
-
-            i {
-                position: absolute;
-                top: 40%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 30px;
-                color: $clr-text-white;
-            }
-        }
-
-        h2 {
-            text-align: center;
-            margin: 15px 0 25px;
-        }
-
-        .benefits {
-            list-style-type: none;
-            display: flex;
-            flex-flow: row nowrap;
-            gap: 40px;
-            justify-content: space-around;
-
-            li {
-                font-size: 20px;
-
-                i {
-                    background-color: $clr-bg-grey-light;
-                    border-radius: 99rem;
-                    padding: 5px;
-                }
-
-                &:nth-child(1) {
-                    text-align: left;
-                }
-
-                &:nth-child(2) {
-                    text-align: center;
-                }
-
-                &:nth-child(3) {
-                    text-align: right;
-                }
-            }
-        }
-
-        .more-details {
-            margin-top: 20px;
-            text-align: center;
-
-            a {
-                font-size: 20px;
-            }
-        }
-    }
+    //                 // .content {
+    //                 //     .title {
+    //                 //         a {
+    //                 //             color: $clr-text-black;
+    //                 //         }
+    //                 //     }
+    //                 // }
+    //             }
+    //         }
+    //     }
+    // }
 }
-
 
 @media (max-width: 1000px) {
     main.main-content.front-page {
@@ -555,6 +561,11 @@ main.main-content.front-page {
             }
         }
 
+        #vergleichstabelle {
+            // border: 2px solid blue;
+            flex-direction: column;
+        }
+
         #bewertungen {
             .rating-boxes {
                 // overflow: hidden;
@@ -582,6 +593,11 @@ main.main-content.front-page {
     }
 }
 
+@media (max-width: 900px) {
+    main.main-content.front-page #entwickelt-fuer ul li {
+        font-size: 2rem;
+    }
+}
 
 @media (max-width: 835px) {
     main.main-content.front-page {
@@ -601,18 +617,17 @@ main.main-content.front-page {
             }
         }
 
-        #sicherheit {
-            padding: 20px;
+        // #sicherheit {
+        //     padding: 20px;
 
-            .section-inner {
-                .benefits {
-                    gap: 10px;
-                }
-            }
-        }
+        //     .section-inner {
+        //         .benefits {
+        //             gap: 10px;
+        //         }
+        //     }
+        // }
     }
 }
-
 
 @media (max-width: $breakpoint-md) {
     main.main-content.front-page {
@@ -664,22 +679,38 @@ main.main-content.front-page {
             }
         }
 
-        #sicherheit {
-            .section-inner {
-                .benefits {
-                    flex-flow: column wrap;
-                    margin: 0 auto;
-                    width: fit-content;
+        // #sicherheit {
+        //     .section-inner {
+        //         .benefits {
+        //             flex-flow: column wrap;
+        //             margin: 0 auto;
+        //             width: fit-content;
 
-                    li {
-                        text-align: left;
+        //             li {
+        //                 text-align: left;
+        //             }
+        //         }
+        //     }
+        // }
+
+        #entwickelt-fuer {
+            & > div {
+                padding: 3rem;
+                flex-direction: column;
+
+                & > div {
+                    &:nth-child(1) {
+                        order: 1;
+                        width: 100%;
+                    }
+                    &:nth-child(2) {
+                        order: 0;
                     }
                 }
             }
         }
     }
 }
-
 
 @media (max-width: $breakpoint-sm) {
     main.main-content.front-page {
@@ -749,7 +780,6 @@ main.main-content.front-page {
     }
 }
 
-
 @media (max-width: $breakpoint-xs) {
     main.main-content.front-page {
         .hero-wrapper .hero-text {
@@ -779,6 +809,15 @@ main.main-content.front-page {
                         font-size: 16px;
                     }
                 }
+            }
+        }
+
+        #vergleichstabelle .table {
+            overflow: auto;
+            width: 100%;
+
+            .cell {
+                min-width: 140px;
             }
         }
     }

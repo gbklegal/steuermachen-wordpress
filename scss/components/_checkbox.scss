@@ -5,7 +5,7 @@
     cursor: pointer;
 
     &:hover .checkmark {
-        border-color: $clr-secondary;
+        border-color: $clr-primary;
     }
 
     input[type='checkbox'] {
@@ -15,8 +15,8 @@
         height: 22px;
 
         &:checked ~ .checkmark {
-            border-color: $clr-secondary;
-            background-color: $clr-secondary;
+            border-color: $clr-primary;
+            background-color: $clr-primary;
 
             &::before {
                 content: '';

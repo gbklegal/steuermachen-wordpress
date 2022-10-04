@@ -44,8 +44,8 @@ get_header($_publisher_mode);
         <div class="text-center section-inner">
             <h2 class="mb-3"><span class="text-primary">Berechne</span> deinen <span class="text-primary">Steuerrückerstattung</span></h2>
             <?php the_steuerrechner(); ?>
-            <p class="mt-2 text-grey mx-auto max-w-full">safeTax: Nur im Falle einer Rückerstattung erhalten wir einen geringfügigen Anteil von 20%.</p>
-            <a class="btn btn-primary mx-auto block whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/?product=safeTax<?= $publisher_id_param ?>">Jetzt Steuererklärung machen lassen</a>
+            <p class="max-w-full mx-auto mt-2 text-grey">safeTax: Nur im Falle einer Rückerstattung erhalten wir einen geringfügigen Anteil von 20%.</p>
+            <a class="block mx-auto btn btn-primary whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/?product=safeTax<?= $publisher_id_param ?>">Jetzt Steuererklärung machen lassen</a>
 
             <!-- <div class="calculator-wrapper">
                 <div class="calculator-inner">
@@ -61,7 +61,7 @@ get_header($_publisher_mode);
     <section class="section-benefits">
         <div class="section-inner max-width">
             <div class="benefits-box box-shadow">
-                <div class="px-4 py-3 header bg-secondary">
+                <div class="px-4 py-3 header bg-primary">
                     <h3>Sichere dir jetzt deinen persönlichen Steuerexperten und deine optimale Steuer&shy;rück&shy;erstattung:</h3>
                 </div>
                 <div class="main">

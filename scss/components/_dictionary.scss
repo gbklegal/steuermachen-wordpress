@@ -30,7 +30,7 @@
                 }
 
                 &.selected {
-                    background-color: $clr-secondary;
+                    background-color: $clr-primary;
                 }
             }
         }
@@ -47,7 +47,7 @@
                 $pointSizeHalf: calc($pointSize * 0.5);
                 $pointSizeHalfNeg: calc($pointSize * -0.5);
 
-                // background-color: $clr-primary;
+                // background-color: $clr-secondary;
                 position: relative;
                 margin-top: -4pxpx; // 30px
 
@@ -58,11 +58,11 @@
 
                     top: $pointSizeHalfNeg;
                     left: $pointSizeHalfNeg;
-                    width: 0; 
-                    height: 0; 
+                    width: 0;
+                    height: 0;
                     border-left: $pointSize solid transparent;
                     border-right: $pointSize solid transparent;
-                    border-bottom: $pointSize solid $clr-primary;
+                    border-bottom: $pointSize solid $clr-secondary;
                 }
 
                 &::after {
@@ -72,7 +72,7 @@
                     left: $pointSize;
                     width: 0;
                     height: 110px;
-                    border-left: 1px solid $clr-primary;
+                    border-left: 1px solid $clr-secondary;
                 }
 
                 h2 {
@@ -80,7 +80,7 @@
                     margin: 0;
                     // border: 2px solid blue;
                     text-align: center;
-                    background-color: $clr-primary;
+                    background-color: $clr-secondary;
                     color: $clr-text-white; // $clr-text-black would be better (https://coolors.co/contrast-checker/000000-ff6138)
                     box-shadow: 0 4px 4px rgba(#000, 0.25);
                 }

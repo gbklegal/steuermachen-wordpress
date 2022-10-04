@@ -26,14 +26,11 @@
     }
 }
 
-
-@include section(82px);
-
+@include section(160px);
 
 @media (max-width: $breakpoint-lg) {
     @include section(62px);
 }
-
 
 @media (max-width: $breakpoint-md) {
     @include section(42px);

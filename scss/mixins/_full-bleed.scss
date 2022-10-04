@@ -1,0 +1,6 @@
+// full width background in a container
+// inpired by youtu.be/81pnuZFarRw
+@mixin full-bleed($bg-color) {
+    box-shadow: 0 0 0 100vmax $bg-color;
+    clip-path: inset(0 -100vmax);
+}

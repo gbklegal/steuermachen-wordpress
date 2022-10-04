@@ -1,5 +1,4 @@
 #steuerrechner {
-
     h3 {
         margin-bottom: 1em;
     }
@@ -35,5 +34,11 @@
         input {
             font-size: 24px;
         }
+    }
+}
+
+@media (max-width: 885px) {
+    #steuerrechner .radio-wrapper.radio-triple {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 }

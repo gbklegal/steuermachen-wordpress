@@ -30,12 +30,11 @@
         }
 
         .list-article-content {
-
             a.list-article-link {
                 color: $clr-text-black;
 
                 &:hover {
-                    color: $clr-primary-hover;
+                    color: $clr-secondary-hover;
                 }
             }
 
@@ -52,7 +51,7 @@
     .post-categories {
         margin-bottom: 15px;
         font-size: 1rem;
-        
+
         a {
             text-transform: uppercase;
             font-weight: 500; // 700
@@ -72,7 +71,7 @@
         gap: 1rem;
 
         div:first-child:nth-last-child(1) {
-            margin: 0 0 0 auto
+            margin: 0 0 0 auto;
         }
 
         .nav-previous {
@@ -86,20 +85,17 @@
     }
 }
 
-
 @media (max-width: $breakpoint-xl) {
     .posts-wrapper {
         gap: 20px 40px;
     }
 }
 
-
 @media (max-width: $breakpoint-lg) {
     .posts-wrapper {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
 @media (max-width: $breakpoint-md) {
     .posts-wrapper {

@@ -4,7 +4,7 @@
 
 .countdown-wrapper {
     border-radius: $br-4;
-    background: linear-gradient(180.62deg, $clr-secondary 0.58%, hsl(161, 51%, 48%) 143.58%);
+    background: linear-gradient(180.62deg, $clr-primary 0.58%, hsl(161, 51%, 48%) 143.58%);
     border-radius: 12px;
 
     .countdown {
@@ -54,7 +54,7 @@
         display: grid;
         grid-template-columns: repeat(2, 50fr);
         align-items: center;
-        
+
         .countdown .label .label-content-mobile {
             display: none;
         }
@@ -71,7 +71,7 @@
                     font-size: 40px;
                     font-weight: 400;
                 }
-    
+
                 .label .label-content-desktop {
                     display: none;
                 }

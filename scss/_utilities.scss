@@ -1,11 +1,6 @@
 @use './utilities/font';
 @use './utilities/flex';
 
-.mx-auto {
-    margin-right: auto;
-    margin-left: auto;
-}
-
 .uppercase {
     text-transform: uppercase;
 }
@@ -35,34 +30,16 @@
     overflow: hidden;
 }
 
-
 // inspired by tailwindcss
-.font-thin { font-weight: 100; }
-.font-extralight { font-weight: 200; }
-.font-light { font-weight: 300; }
-.font-normal { font-weight: 400; }
-.font-medium { font-weight: 500; }
-.font-semibold { font-weight: 600; }
-.font-bold { font-weight: 700; }
-.font-extrabold { font-weight: 800; }
-.font-black { font-weight: 900; }
+$font-weight-names: (thin, extralight, light, normal, medium, semibold, bold, extrabold, 'black');
 
-.mt-0 {
-    margin-top: 0 !important;
+@for $i from 1 through length($font-weight-names) {
+    $font-weight: nth($font-weight-names, $i);
+
+    .font-#{$font-weight} {
+        font-weight: $i * 100;
+    }
 }
-
-.mb-0 {
-    margin-bottom: 0 !important;
-}
-
-.pt-0 {
-    padding-top: 0 !important;
-}
-
-.pb-0 {
-    padding-bottom: 0 !important;
-}
-
 
 // Resize (textarea)
 .resize-x {
@@ -77,20 +54,9 @@
     resize: none;
 }
 
-
-// Width
-.w-full {
-    width: 100% !important;
-}
-
-
 // utility classes highly inspired by tailwind css
 // display
-$displays: (
-    block,
-    inline-block,
-    flex
-);
+$displays: (block, inline-block, flex);
 
 @each $display in $displays {
     .#{$display} {
@@ -107,13 +73,7 @@ $displays: (
 }
 
 // whitespace
-$whitespaces: (
-    normal,
-    nowrap,
-    pre,
-    pre-line,
-    pre-wrap
-);
+$whitespaces: (normal, nowrap, pre, pre-line, pre-wrap);
 
 @each $whitespace in $whitespaces {
     .#{$whitespace} {
@@ -121,12 +81,10 @@ $whitespaces: (
     }
 }
 
-
 // overflow
 .overflow-hidden {
     overflow: hidden;
 }
-
 
 // border radius
 $border-radiuses: (
@@ -147,7 +105,6 @@ $border-radiuses: (
     }
 }
 
-
 // width
 .w-fit {
     width: fit-content;
@@ -162,51 +119,121 @@ $border-radiuses: (
     max-width: 100%;
 }
 
-
 // line height
 // @see https://tailwindcss.com/docs/line-height
-.leading-3 { line-height: .75rem; }
-.leading-4 { line-height: 1rem; }
-.leading-5 { line-height: 1.25rem; }
-.leading-6 { line-height: 1.5rem; }
-.leading-7 { line-height: 1.75rem; }
-.leading-8 { line-height: 2rem; }
-.leading-9 { line-height: 2.25rem; }
-.leading-10 { line-height: 2.5rem; }
-.leading-none { line-height: 1; }
-.leading-tight { line-height: 1.25; }
-.leading-snug { line-height: 1.375; }
-.leading-normal { line-height: 1.5; }
-.leading-relaxed { line-height: 1.625; }
-.leading-loose { line-height: 2; }
-
+.leading-3 {
+    line-height: 0.75rem;
+}
+.leading-4 {
+    line-height: 1rem;
+}
+.leading-5 {
+    line-height: 1.25rem;
+}
+.leading-6 {
+    line-height: 1.5rem;
+}
+.leading-7 {
+    line-height: 1.75rem;
+}
+.leading-8 {
+    line-height: 2rem;
+}
+.leading-9 {
+    line-height: 2.25rem;
+}
+.leading-10 {
+    line-height: 2.5rem;
+}
+.leading-none {
+    line-height: 1;
+}
+.leading-tight {
+    line-height: 1.25;
+}
+.leading-snug {
+    line-height: 1.375;
+}
+.leading-normal {
+    line-height: 1.5;
+}
+.leading-relaxed {
+    line-height: 1.625;
+}
+.leading-loose {
+    line-height: 2;
+}
 
 // font size
 // @see https://tailwindcss.com/docs/font-size
-.text-xs { font-size: 0.75rem !important; line-height: 1rem !important; }
-.text-sm { font-size: 0.875rem !important; line-height: 1.25rem !important; }
-.text-base { font-size: 1rem !important; line-height: 1.5rem !important; }
-.text-lg { font-size: 1.125rem !important; line-height: 1.75rem !important; }
-.text-xl { font-size: 1.25rem !important; line-height: 1.75rem !important; }
-.text-2xl { font-size: 1.5rem !important; line-height: 2rem !important; }
-.text-3xl { font-size: 1.875rem !important; line-height: 2.25rem !important; }
-.text-4xl { font-size: 2.25rem !important; line-height: 2.5rem !important; }
-.text-5xl { font-size: 3rem !important; line-height: 1 !important; }
-.text-6xl { font-size: 3.75rem !important; line-height: 1 !important; }
-.text-7xl { font-size: 4.5rem !important; line-height: 1 !important; }
-.text-8xl { font-size: 6rem !important; line-height: 1 !important; }
-.text-9xl { font-size: 8rem !important; line-height: 1 !important; }
-
+.text-xs {
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+}
+.text-sm {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+}
+.text-base {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+}
+.text-lg {
+    font-size: 1.125rem !important;
+    line-height: 1.75rem !important;
+}
+.text-xl {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+}
+.text-2xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+}
+.text-3xl {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem !important;
+}
+.text-4xl {
+    font-size: 2.25rem !important;
+    line-height: 2.5rem !important;
+}
+.text-5xl {
+    font-size: 3rem !important;
+    line-height: 1 !important;
+}
+.text-6xl {
+    font-size: 3.75rem !important;
+    line-height: 1 !important;
+}
+.text-7xl {
+    font-size: 4.5rem !important;
+    line-height: 1 !important;
+}
+.text-8xl {
+    font-size: 6rem !important;
+    line-height: 1 !important;
+}
+.text-9xl {
+    font-size: 8rem !important;
+    line-height: 1 !important;
+}
 
 // font color
 $colors-map: (
     'black': #000000,
-    'blue': #252B42,
-    'white': #FFFFFF,
+    'blue': #252b42,
+    'white': #ffffff,
     'grey': #737373,
     'default': $clr-text-black,
     'primary': $clr-primary,
-    'secondary': $clr-secondary
+    'secondary': $clr-secondary,
+    'accent': #eaffe2,
+    'transparent': transparent,
+    'error': $error-color,
+    'success': $success-color,
+    'warning': $warning-color,
+    'info': $info-color,
 );
 
 @each $name, $color in $colors-map {
@@ -224,7 +251,6 @@ $colors-map: (
     -webkit-text-fill-color: transparent;
 }
 
-
 // spin (loading)
 // .u-spin {
 //     animation: spin 2s linear infinite;
@@ -240,13 +266,16 @@ $colors-map: (
 //     }
 // }
 
-
 .u-spin {
     display: inline-block;
     animation: spin 3s linear infinite;
 }
 
 @keyframes spin {
-    from { transform: rotate(0deg) }
-    to { transform: rotate(360deg) }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

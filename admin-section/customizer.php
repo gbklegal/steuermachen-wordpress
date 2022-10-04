@@ -26,7 +26,7 @@ function steuermachen_customize_register($wp_customize)
     // Site Options
     require_once $path . '/admin-section/customizer/banner.php';
     require_once $path . '/admin-section/customizer/front-page.php';
-    require_once $path . '/admin-section/customizer/sidebar.php';
+    // require_once $path . '/admin-section/customizer/sidebar.php';
     require_once $path . '/admin-section/customizer/site-identity.php';
     require_once $path . '/admin-section/customizer/countdown.php';
     require_once $path . '/admin-section/customizer/wpcf7-spam-filter.php';

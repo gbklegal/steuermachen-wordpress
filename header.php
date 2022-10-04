@@ -7,6 +7,9 @@
  * @see https://developer.wordpress.org/themes/basics/template-files/#template-partials
  */
 
+// TODO remove in prod.
+$_contenteditable = isset($_GET['edit']) ? ' contenteditable="true"' : '';
+
 // add_enqueue_script_attributes(, 'defer');
 // wp_enqueue_style('steuermachen-style-old', 'https://steuermachen.de/wp-content/themes/onepress-child/style.css');
 wp_enqueue_style('steuermachen-style', get_bloginfo('stylesheet_url'));
@@ -14,7 +17,10 @@ wp_enqueue_style('steuermachen-style', get_bloginfo('stylesheet_url'));
 wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '/js/script.js');
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php
+language_attributes();
+echo $_contenteditable;
+?>>
 <head>
 
     <!-- CSS only -->
@@ -62,7 +68,7 @@ wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '
                     </div>
                     <div class="header-part">
                         <div class="hidden-on-mobile">
-                            <a href="/beauftragen" class="btn btn-primary">Beauftragen</a>
+                            <a href="/beauftragen" class="btn btn-primary">Jetzt Beauftragen</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +81,7 @@ wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '
                         <div class="header-mobile-overlay-inner">
                             <?php get_nav_menu('primary'); ?>
                             <!-- TODO: convert button to a link button -->
-                            <a href="/beauftragen" class="btn btn-primary">Beauftragen</a>
+                            <a href="/beauftragen" class="btn btn-primary">Jetzt Beauftragen</a>
                         </div>
                     </div>
                 </div>

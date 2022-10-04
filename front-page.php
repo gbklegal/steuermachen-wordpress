@@ -1,26 +1,45 @@
-<?php get_header(); ?>
+<?php
 
-<?php if (false === get_theme_mod('hide_banner')): ?>
-    <?php if (get_theme_mod('banner_link')): ?>
-    <a href="<?php echo get_theme_mod('banner_link'); ?>">
+add_filter('body_class', function ($body_class) {
+    $body_class[] = 'no-gradient';
+
+    return $body_class;
+});
+
+$_banner_hide = get_theme_mod('hide_banner');
+$_banner_link = get_theme_mod('banner_link');
+$_banner_content = get_theme_mod('banner_content');
+
+get_header();
+?>
+
+<?php if (false === $_banner_hide): ?>
+    <?php if ($_banner_link): ?>
+    <a href="<?php echo $_banner_link; ?>">
+    <?php endif; ?>
         <div class="banner">
-            <?php echo get_theme_mod('banner_content'); ?>
+            <div class="banner-inner">
+                <?php echo $_banner_content; ?>
+            </div>
         </div>
+    <?php if ($_banner_link): ?>
     </a>
-    <?php else: ?>
-    <div class="banner">
-        <?php echo get_theme_mod('banner_content'); ?>
-    </div>
     <?php endif; ?>
 <?php endif; ?>
 
 <main class="main-content front-page">
-    <div id="hero" class="hero-wrapper">
+    <div id="hero" class="hero-wrapper full-bleed">
+        <div class="hero-image">
+            <?php the_attachment(33011); ?>
+        </div>
         <div class="hero-text">
-            <h1 class="font-medium"><?php # echo get_image_tag(31979, 'steuermachen', 'steuermachen', 'left', [0, 40]); ?>Lass jetzt deine <strong>Steuer machen</strong> und erhalte <strong class="whitespace-nowrap">&Oslash; 1.047 &euro;</strong></h1>
-            <p class="text-4xl">Wir sind keine Steuersoftware, bei uns arbeiten echte Menschen.</p>
+            <h1>Lass jetzt deine Steuer machen und erhalte durchschnittlich 1.047 Euro</span></h1>
+            <p class="mt-4 text-2xl">Wir sind keine Steuersoftware, bei uns arbeiten echte Menschen.</p>
             <p class="text-2xl">Persönlich und digital beides aus einer Hand</p>
-            <div class="advantages">
+            <div class="mt-8 mb-16 cta-button">
+                <a href="/beauftragen" class="btn btn-lg">Jetzt Steuern sparen</a>
+            </div>
+            <div class="mb-8 advantages">
                 <ul>
                     <li>Einfach</li>
                     <li>Schnell</li>
@@ -31,22 +50,125 @@
             <div class="seals">
                 <?php
                 the_attachment(442, 'thumbnail', 'trusted-shops');
-                the_attachment(28234, '', 'elster');
+                the_attachment(34156, '', 'elster');
                 the_attachment(28229, 'thumbnail', 'datenschutz');
                 ?>
             </div>
-            <div class="cta-button">
-                <a href="/beauftragen" class="btn btn-primary btn-lg">Jetzt Steuern sparen</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <?php the_attachment(33011); ?>
         </div>
     </div>
 
-    <div class="sidebar-content-wrapper">
+    <div class="mt-12 sidebar-content-wrapper">
         <div class="sections-wrapper">
-            <section id="steuerratgeber" class="section section-mb">
+            <section id="steps" class="section section-mb">
+                <h2 class="mb-6 h3">steuermachen - Gewinn für alle und schnell Geld zurück</h2>
+                <div class="flip-cards-wrapper">
+                    <div class="flip-card step">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="flip-card-front-inner">
+                                    <!-- <img src="<?php echo STM_THEME_URL; ?>/img/submit.svg" alt="Schritt 1"> -->
+                                    <?php echo stm_get_image_tag(34140, 'Schritt 1', 'Schritt 1', 'center'); ?>
+                                    <span>Gewünschte Steuererklärung beauftragen</span>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="flip-card-back-inner">
+                                    <div class="details-content">Fülle das Bestellformular aus, wähle das gewünschte Steuerjahr für das du die Steuer&shy;erklärung machen lassen willst und sende einfach das Formular ab.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card step">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="flip-card-front-inner">
+                                    <!-- <img src="<?php echo STM_THEME_URL; ?>/img/open-email.svg" alt="Schritt 2"> -->
+                                    <?php echo stm_get_image_tag(34139, 'Schritt 2', 'Schritt 2', 'center'); ?>
+                                    <span>Unterlagen vorbereiten und versenden</span>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="flip-card-back-inner">
+                                    <div class="details-content">Du erhälst sofort eine Checkliste, mit deren Hilfe du deine erforderlichen Unterlagen zusammenstellst. Danach sendest du uns einfach deine gesammelten Unterlagen zu.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card step">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="flip-card-front-inner">
+                                    <!-- <img src="<?php echo STM_THEME_URL; ?>/img/solution.svg" alt="Schritt 3"> -->
+                                    <?php echo stm_get_image_tag(34141, 'Schritt 3', 'Schritt 3', 'center'); ?>
+                                    <span>Deine persönliche Steuererklärung fertigt dein Steuerexperte an</span>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="flip-card-back-inner">
+                                    <div class="details-content">Deine beauftragte Steuerkanzlei prüft für dich sicher deine Unterlagen und berät dich online über noch offene Fragen. Anschließend erstellt sie für dich deine Steuer&shy;erklärung.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card step">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="flip-card-front-inner">
+                                    <!-- <img src="<?php echo STM_THEME_URL; ?>/img/done.svg" alt="Schritt 4"> -->
+                                    <?php echo stm_get_image_tag(34138, 'Schritt 4', 'Schritt 4', 'center'); ?>
+                                    <span>Fertig: Du erhälst deinen geprüften Steuerbescheid</span>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="flip-card-back-inner">
+                                    <div class="details-content">Wenn dein Steuerbescheid vom Finanzamt erstellt worden ist, wird er von deinen Steuerexperten geprüft und an dich weitergeleitet.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="vergleichstabelle" class="section section-mb">
+                <div>
+                    <h2>Wieso für steuermachen zahlen, statt ELSTER kostenfrei nutzen?</h2>
+                    <p class="mt-4 mb-8">Mit steuermachen erhältst du schnell und sicher deine maximale Steuererstattung. Wir sind keine Steuersoftware, deine Steuererklärung wird von einem echten Steuerexperten für dich angefertigt.</p>
+                    <a href="/jetzt-bauftragen/" class="btn">Jetzt Steuern sparen</a>
+                </div>
+                <div class="table">
+                    <div class="cell header">&nbsp;</div>
+                    <div class="cell header"><span>ELSTER</span></div>
+                    <div class="cell header"><span>Steuersoftware</span></div>
+                    <div class="cell header"><span>steuermachen</span></div>
+
+                    <div class="cell label">ELSTER-Schnittstelle</div>
+                    <div class="cell"><span class="material-icons text-primary">done</span></div>
+                    <div class="cell"><span class="material-icons text-primary">done</span></div>
+                    <div class="cell"><span class="material-icons text-primary">done</span></div>
+
+                    <div class="cell label">Keine langwierige Registrierung</div>
+                    <div class="cell not">-</div>
+                    <div class="cell"><span class="material-icons text-primary">done</span></div>
+                    <div class="cell"><span class="material-icons text-primary">done</span></div>
+
+                    <div class="cell label">Keine Vorkenntnisse erforderlich</div>
+                    <div class="cell not">-</div>
+                    <div class="cell not">-</div>
+                    <div class="cell"><span class="material-icons text-primary">done</span></div>
+
+                    <div class="cell label">Persönliche Beratung und Betreuung durch echte Experten</div>
+                    <div class="cell not">-</div>
+                    <div class="cell not">-</div>
+                    <div class="cell"><span class="material-icons text-primary">done</span></div>
+
+                    <div class="cell label">Du musst nur die Unterlagen einreichen, der Rest wird für dich erledigt</div>
+                    <div class="cell not">-</div>
+                    <div class="cell not">-</div>
+                    <div class="cell"><span class="material-icons text-primary">done</span></div>
+                </div>
+            </section>
+
+            <!-- <section id="steuerratgeber" class="section section-mb">
                 <h2 class="text-center">Steuerratgeber</h2>
                 <div class="recent-posts">
                 <?php
@@ -101,82 +223,17 @@
                 endforeach; ?>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
-            <section class="section section-mb">
-                <a class="block mx-auto btn btn-primary whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/">Jetzt Steuern sparen</a>
-            </section>
+            <!-- <section class="section section-mb">
+                <a class="block mx-auto btn whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/">Jetzt Steuern sparen</a>
+            </section> -->
 
-            <section id="quicktax" class="section section-mb">
-                <h2 class="text-center h3">Du willst wissen ob es sich für dich lohnt? Berechne hier schnell und kostenlos deine voraussichtliche Steuererstattung.</h2>
+            <!-- <section id="quicktax" class="p-8 bg-white section section-my"> -->
+            <section id="quicktax" class="section section-my">
+                <h2 class="mb-0 text-center">Du willst wissen ob es sich für dich lohnt? Berechne hier schnell und kostenlos deine voraussichtliche Steuererstattung.</h2>
                 <?php the_steuerrechner(); ?>
-                <a class="block mx-auto btn btn-primary whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/?utm_source=steuermachen.de&amp;utm_medium=steuerrechner&amp;utm_campaign=steuer2021">Jetzt Steuererklärung machen lassen</a>
-            </section>
-
-            <section id="steps" class="section section-mb">
-                <h2 class="text-center h3">Leichter Ablauf und schnell Geld zurück</h2>
-                <div class="flip-cards-wrapper">
-                    <div class="flip-card step">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="flip-card-front-inner">
-                                    <img src="<?php echo STM_THEME_URL; ?>/img/submit.svg" alt="Schritt 1">
-                                    <div class="h4">Gewünschte Steuererklärung beauftragen</div>
-                                </div>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="flip-card-back-inner">
-                                    <div class="details-content">Fülle das Bestellformular aus, wähle das gewünschte Steuerjahr für das du die Einkommensteuererklärung machen lassen willst und sende einfach das Formular ab.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card step">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="flip-card-front-inner">
-                                    <img src="<?php echo STM_THEME_URL; ?>/img/open-email.svg" alt="Schritt 2">
-                                    <div class="h4">Unterlagen vorbereiten und versenden</div>
-                                </div>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="flip-card-back-inner">
-                                    <div class="details-content">Du erhälst sofort eine Checkliste, mit deren Hilfe du deine erforderlichen Unterlagen zusammenstellst. Danach sendest du uns einfach deine gesammelten Unterlagen zu.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card step">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="flip-card-front-inner">
-                                    <img src="<?php echo STM_THEME_URL; ?>/img/solution.svg" alt="Schritt 3">
-                                    <div class="h4">Deine persönliche Steuerkanzlei bietet die Lösung für deine Steuererklärung</div>
-                                </div>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="flip-card-back-inner">
-                                    <div class="details-content">Deine beauftragte Steuerkanzlei prüft für dich sicher deine Unterlagen, und berät dich online über noch offene Fragen. Anschließend erstellt sie für dich deine Einkommensteuererklärung.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card step">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="flip-card-front-inner">
-                                    <img src="<?php echo STM_THEME_URL; ?>/img/done.svg" alt="Schritt 4">
-                                    <div class="h4">Fertig: Du erhälst deinen geprüften Steuerbescheid</div>
-                                </div>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="flip-card-back-inner">
-                                    <div class="details-content">Wenn dein Steuerbescheid vom Finanzamt erstellt worden ist, wird er von deinen Steuerexperten geprüft und an dich weitergeleitet.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a class="block mx-auto btn whitespace-nowrap w-fit" href="/steuererklaerung-beauftragen/?utm_source=steuermachen.de&amp;utm_medium=steuerrechner&amp;utm_campaign=steuer2021">Jetzt Steuererklärung machen lassen</a>
             </section>
 
             <section id="app" class="section section-mb">
@@ -184,76 +241,71 @@
                     <?php the_attachment(32579); ?>
                 </div>
                 <div class="text-center app-text">
-                    <h3>Hol dir jetzt die steuermachen App!</h3>
+                    <p class="font-normal h3">Noch leichter geht's mit der steuermachen App.</p>
+                    <p class="font-normal h3">Sammle und übertrage deine Belege digital.</p>
                     <div class="store-badges">
                         <a href="/app/ios">
                             <?php echo stm_get_image_tag(32577, 'App Store', 'steuermachen - App Store', 'left', [200]); ?>
                         </a>
-                        <!-- <a href="/app/android"> -->
-                            <?php
-// 32578
-?>
-                            <?php echo stm_get_image_tag(28749, 'Play Store', 'steuermachen - Play Store', 'left', [200]); ?>
-                        <!-- </a> -->
+                        <a href="/app/android">
+                            <?php echo stm_get_image_tag(32578, 'Play Store', 'steuermachen - Play Store', 'left', [200]); ?>
+                        </a>
                     </div>
                 </div>
             </section>
 
-            <!-- <section id="steuerexperten" class="mx-auto text-center section section-mb w-700">
-                <h3>Deine persönliche Betreuung durch Steuerexperten</h3>
-                <p class="mb-0">Setze dich mit unseren Steuerexperten in Verbindung, die dir bei der Bewältigung deiner steuerlichen Situation helfen können. Du erhältst Zugang zu unbegrenzter Beratung, wenn du sie am dringendsten benötigst.</p>
-                <a class="mx-auto my-4 btn btn-primary" href="/steuererklaerung-beauftragen/">Jetzt beauftragen</a>
-                <h4>Lass jetzt auch deine Grundsteuererklärung anfertigen!</h4>
-                <p>Grundstückseigentümer müssen jetzt eine Grundsteuererklärung machen lassen! Das Formular ist sehr kompliziert und bei mehreren Grundstücken kann es schnell unübersichtlich werden. Durch steuermachen erhältst du jetzt die ideale und einfache Unterstützung deines persönlichen Steuerexperten. So kannst du unkompliziert und preiswert deine Grundsteuererklärung machen lassen.</p>
-                <h4>Deine Vorteile auf einem Blick:</h4>
-                <ul>
-                    <li>Professionelle und individuelle Beratung</li>
-                    <li>Sicherheitsgarantie durch Steuerexperten an deiner Seite</li>
-                    <li>Zeit und Nerven gespart</li>
-                    <li>Einfache und sichere Erfassung der relevanten Daten</li>
-                    <li>Faire und transparente Preise</li>
-                </ul>
-            </section> -->
-            <section id="steuerexperten" class="text-center section section-mb">
-                <div class="mx-auto w-700">
-                    <h3>Deine persönliche Betreuung durch Steuerexperten</h3>
-                    <p class="mb-0">Setze dich mit unseren Steuerexperten in Verbindung, die dir bei der Bewältigung deiner steuerlichen Situation helfen können. Du erhältst Zugang zu unbegrenzter Beratung, wenn du sie am dringendsten benötigst.</p>
-                    <a class="mx-auto my-4 btn btn-primary" href="/steuererklaerung-beauftragen/">Jetzt beauftragen</a>
+            <section id="entwickelt-fuer" class="section section-mb">
+                <div class="flex flex-row gap-16 p-24 justify-content-space-between align-items-center box bg-accent br-6 box-shadow">
+                    <div>
+                        <p class="uppercase">steuermachen für Alle</p>
+                        <ul>
+                            <li>Familien</li>
+                            <li>Singles</li>
+                            <li>Renter</li>
+                            <li>Kurzarbeiter</li>
+                            <li>Arbeitnehmer</li>
+                            <li>Beamte</li>
+                            <li>Studenten</li>
+                            <li>Expats</li>
+                            <li>Auszubildende</li>
+                        </ul>
+                        <!-- <p>Entwickelt für dich.</p> -->
+                    </div>
+                    <div>
+                        <!-- <img src="https://via.placeholder.com/720x720.png?text=Platzhalter" alt="Platzhalter" style="width:320px"> -->
+                        <img class="br-5" src="<?= wp_get_attachment_image_url(34145, 'full') ?>" alt="">
+                        <!-- https://unsplash.com/photos/tvbxqXI5mmo -->
+                    </div>
                 </div>
+            </section>
 
-                <div class="mx-auto my-4 w-700">
-                    <h3>Lass jetzt auch deine Grundsteuererklärung anfertigen!</h3>
-                    <p>Grundstückseigentümer müssen jetzt eine Grundsteuererklärung machen lassen! Das Formular ist sehr kompliziert und bei mehreren Grundstücken kann es schnell unübersichtlich werden.</p>
-                </div>
-
+            <section id="vorteile" class="section section-mb">
                 <div class="benefits-box box-shadow">
-                        <div class="px-4 py-3 header bg-secondary">
-                            <h3>Durch steuermachen erhältst du jetzt die ideale und einfache Unterstützung deines persönlichen Steuerexperten.</h3>
-                        </div>
-                        <div class="main justify-content-flex-start" style="padding-left:1em">
-                            <img style="width:230px" src="<?php echo STM_THEME_IMG; ?>/mortgage-loan.svg" alt="Tax">
-
-                            <ul class="text-left benefits">
-                                <li>Professionelle und individuelle Beratung</li>
-                                <li>Sicherheitsgarantie durch Steuerexperten an deiner Seite</li>
-                                <li>Zeit und Nerven gespart</li>
-                                <li>Einfache und sichere Erfassung der relevanten Daten</li>
-                                <li>Faire und transparente Preise</li>
-                            </ul>
-                        </div>
+                    <div class="px-6 py-5 header bg-primary">
+                        <h3 class="m-0 font-normal">Durch steuermachen erhältst du jetzt die ideale und einfache Unterstützung deines persönlichen Steuerexperten.</h3>
                     </div>
+                    <div class="main justify-content-flex-start" style="padding-left:1em">
+                        <!-- <img style="width:230px" src="<?php echo wp_get_attachment_image_url('33026'); ?>" alt="Grundsteuer"> -->
 
-                    <div class="mt-5 text-center order-now">
-                        <a class="mx-auto my-4 btn btn-primary" href="/steuererklaerung-beauftragen/">Jetzt beauftragen</a>
+                        <ul class="text-left benefits">
+                            <li>Professionelle und individuelle Beratung</li>
+                            <li>Sicherheitsgarantie durch Steuerexperten an deiner Seite</li>
+                            <li>Zeit und Nerven gespart</li>
+                            <li>Einfache und sichere Erfassung der relevanten Daten</li>
+                            <li>Faire und transparente Preise</li>
+                        </ul>
                     </div>
+                </div>
+
+                <div class="mt-5 text-center order-now">
+                    <a class="mx-auto my-4 btn" href="/steuererklaerung-beauftragen/">Jetzt beauftragen</a>
+                </div>
             </section>
 
-            <section id="zahlen-und-fakten" class="section section-mb">
-                <div class="box">
-                    <div class="header">
-                        <h2>Zahlen & Fakten</h2>
-                        <?php the_attachment(32119, '', 'mockup'); ?>
-                    </div>
+            <!-- <section id="zahlen-und-fakten" class="section section-mb">
+                <h2>Zahlen & Fakten</h2>
+                <div class="inner">
+                    <?php the_attachment(33027, '', 'mockup'); ?>
                     <div class="items">
                         <div class="item">
                             <div class="item-title h2">100 %</div>
@@ -273,10 +325,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             <section id="bewertungen" class="section section-pb">
-                <h2 class="text-center">Danach 100% zufrieden</h2>
+                <h2>Danach 100% zufrieden</h2>
                 <div class="rating-boxes">
                     <?php // $trusted_shops_reviews = $_COOKIE['test'] ?? null; // if ( true === is_null( $trusted_shops_reviews ) ) //     create_one_hour_cookie( 'trusted_shops_reviews', $trusted_shops_reviews = json_encode( get_etrusted_reviews() ) ); // else //     $trusted_shops_reviews = json_decode( $trusted_shops_reviews, true );
 
@@ -310,29 +362,9 @@
                 </div>
             </section>
 
-            <section id="sicherheit" class="section section-my">
-                <div class="section-inner">
-                    <div class="shield">
-                        <i class="icon-lock"></i>
-                    </div>
-                    <h2>Deine Sicherheit hat höchste Priorität, jetzt und immer.</h2>
-                    <ul class="benefits">
-                        <li><i class="icon-shield-check"></i> Verschlüsselung</li>
-                        <li><i class="icon-database"></i> Datenspeicherung</li>
-                        <li><i class="icon-lock"></i> Datenschutz</li>
-                    </ul>
-                    <?php
-/*
-                    <div class="more-details">
-                        <a href="#">Erfahre mehr über Sicherheit</a>
-                    </div>
-                    */
-?>
-                </div>
-            </section>
         </div>
         <?php get_sidebar('front-page'); ?>
     </div>
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer();
