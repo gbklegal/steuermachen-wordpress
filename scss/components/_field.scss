@@ -72,11 +72,11 @@
 
     // Focused
     &:focus {
-        border-color: $clr-primary;
+        border-color: $clr-secondary;
 
         & ~ label,
         & + .field-icon {
-            color: $clr-primary !important;
+            color: $clr-secondary !important;
         }
     }
 
@@ -122,7 +122,7 @@
 
         & + .field-icon::before {
             content: '\e904';
-            color: $clr-secondary;
+            color: $clr-primary;
         }
     }
 
@@ -185,11 +185,7 @@
         color: $clr-text-grey;
     }
 
-    input:not(
-        [type='button'],
-        [type='submit'],
-        [type='reset']
-    ),
+    input:not([type='button'], [type='submit'], [type='reset']),
     textarea {
         min-height: 42px; // TODO: check if this makes any issues before publishing
 
@@ -208,7 +204,7 @@
         left: 17px;
         position: absolute;
         color: $clr-text-grey;
-        
+
         &::before {
             font-size: 16px;
         }
