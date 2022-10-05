@@ -25,8 +25,11 @@ header#header {
     inset: 0 0 auto 0;
 
     &.header-scroll {
-        box-shadow: 0 4px 16px rgba($clr-bg-black, 0.2);
-        background-color: $clr-bg-white;
+        &,
+        .header-mobile-overlay {
+            box-shadow: 0 4px 16px rgba($clr-bg-black, 0.2);
+            background-color: $clr-bg-white;
+        }
     }
 
     .header-inner {
@@ -147,7 +150,8 @@ header#header {
 
             .header-mobile {
                 display: block;
-                text-align: right;
+                // text-align: right;
+                margin-left: 20px;
 
                 i {
                     font-size: 42px;
@@ -159,17 +163,12 @@ header#header {
                 }
 
                 .header-mobile-overlay {
+                    // border: 2px solid blue;
+                    width: 100%;
+                    position: absolute;
+                    inset: 100% auto auto 0;
                     z-index: 90;
-                    position: fixed;
-                    // background-color: $clr-primary;
                     background-color: $clr-bg;
-                    // top: 0;
-                    // left: 0;
-                    // width: 100%;
-                    // height: 100%;
-                    inset: 0;
-                    // display: grid;
-                    // place-items: center;
                     display: none; // TODO uncomment in prod.
 
                     .icon-x {
@@ -179,55 +178,38 @@ header#header {
                     }
 
                     .header-mobile-overlay-inner {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        overflow: auto;
-                        max-height: 100%;
-                        width: calc(100% - 100px);
-                        padding-block: 1em;
-                        text-align: center;
+                        padding: 20px;
 
                         .menu-top-container {
-                            margin-bottom: 24px;
-
                             ul {
                                 list-style-type: none;
-                                text-align: center;
 
                                 &.menu > li {
                                     font-size: 18px;
                                     font-weight: 600;
-                                    padding-bottom: 24px;
+                                    padding-bottom: 1rem;
 
-                                    a {
-                                        color: $clr-text-black;
-                                    }
+                                    // a {
+                                    //     color: $clr-text-black;
+                                    // }
                                 }
 
                                 &.sub-menu {
-                                    padding: 1em;
-                                    box-shadow: 0 2px 4px rgba($clr-bg-black, 0.2);
-                                    width: fit-content;
-                                    margin-inline: auto;
-                                    border-radius: $br-2;
-
                                     & > li {
-                                        list-style-type: circle;
-                                        margin-left: 20px;
+                                        padding-top: 1rem;
+                                        // list-style-type: circle;
+                                        // margin-left: 20px;
 
-                                        a {
-                                            padding-block: 0.2em;
-                                            display: inline-block;
+                                        &::before {
+                                            content: '- ';
                                         }
-
-                                        // &::before {
-                                        //     content: '- ';
-                                        // }
                                     }
                                 }
                             }
+                        }
+
+                        .cta-wrapper {
+                            margin-top: 24px;
                         }
                     }
                 }
@@ -267,3 +249,14 @@ header#header {
 //         }
 //     }
 // }
+
+@media (min-width: $breakpoint-xs) {
+    header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .cta-wrapper {
+        display: none;
+    }
+}
+@media (max-width: $breakpoint-xs) {
+    header#header .header-inner .header-part.cta-wrapper {
+        display: none;
+    }
+}
