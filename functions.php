@@ -1538,7 +1538,7 @@ function has_custom_retina_logo()
  * @param string $alt
  * @param string $title
  * @param string $align
- * @param string|array $size - optional
+ * @param string|int|array $size - optional
  * @param string $add_class - optional
  * @param string $srcset - optional
  *
@@ -1546,6 +1546,13 @@ function has_custom_retina_logo()
  */
 function stm_get_image_tag($id, $alt, $title, $align, $size = 'medium', $add_class = '', $srcset = '')
 {
+    $_size_count = is_array($size) ? count($size) : 0;
+    if (is_int($size)) {
+        $size = [$size, $size];
+    } elseif ($_size_count === 1) {
+        $size = [$size[0], $size[0]];
+    }
+
     list($image_src, $width, $height) = image_downsize($id, $size);
     $hwstring = image_hwstring($width, $height);
 
@@ -1812,6 +1819,7 @@ function is_publisher_mode(string ...$parameters): bool
  */
 function is_frame_mode(string ...$parameters): bool
 {
+    $_frame_mode = $_GET['frame_mode'] ?? null;
     $is_frame_mode = isset($_GET['frame_mode']);
 
     if (empty($parameters) && $is_frame_mode) {
@@ -1819,7 +1827,7 @@ function is_frame_mode(string ...$parameters): bool
     }
 
     foreach ($parameters as $parameter) {
-        if (false === empty($parameter) && $_GET['frame_mode'] === $parameter) {
+        if (false === empty($parameter) && $_frame_mode === $parameter) {
             return true;
         }
     }
