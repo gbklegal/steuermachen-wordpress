@@ -8,7 +8,7 @@
     Author: Tobias Röder
     Author URI: https://tobias-roeder.de/
     Description: Benutzerdefiniertes steuermachen Themes.
-    Version: 1.5.0
+    Version: 1.5.1
 */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Open+Sans:wght@400;500&display=swap");
@@ -1008,6 +1008,14 @@ code {
 
 .bg-accent {
   background-color: #eaffe2 !important;
+}
+
+.text-neutral {
+  color: #17181b !important;
+}
+
+.bg-neutral {
+  background-color: #17181b !important;
 }
 
 .text-transparent {
@@ -3100,7 +3108,8 @@ header#header {
   transition-property: box-shadow background;
   inset: 0 0 auto 0;
 }
-header#header.header-scroll {
+header#header.header-scroll,
+header#header.header-scroll .header-mobile-overlay {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
 }
@@ -3189,7 +3198,7 @@ header#header .header-inner .header-content .menu-top-container-wrapper .menu .m
   }
   header#header .header-inner .header-mobile {
     display: block;
-    text-align: right;
+    margin-left: 20px;
   }
   header#header .header-inner .header-mobile i {
     font-size: 42px;
@@ -3199,10 +3208,11 @@ header#header .header-inner .header-mobile [data-hide-menu] {
     cursor: pointer;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay {
+    width: 100%;
+    position: absolute;
+    inset: 100% auto auto 0;
     z-index: 90;
-    position: fixed;
     background-color: #ffffff;
-    inset: 0;
     display: none;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay .icon-x {
@@ -3211,45 +3221,34 @@ header#header .header-inner .header-mobile [data-hide-menu] {
     inset: 20px 20px auto;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: auto;
-    max-height: 100%;
-    width: calc(100% - 100px);
-    padding-block: 1em;
-    text-align: center;
-  }
-  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container {
-    margin-bottom: 24px;
+    padding: 20px;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul {
     list-style-type: none;
-    text-align: center;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.menu > li {
     font-size: 18px;
     font-weight: 600;
-    padding-bottom: 24px;
-  }
-  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.menu > li a {
-    color: #333;
-  }
-  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.sub-menu {
-    padding: 1em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: fit-content;
-    margin-inline: auto;
-    border-radius: 8px;
+    padding-bottom: 1rem;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.sub-menu > li {
-    list-style-type: circle;
-    margin-left: 20px;
+    padding-top: 1rem;
   }
-  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.sub-menu > li a {
-    padding-block: 0.2em;
-    display: inline-block;
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .menu-top-container ul.sub-menu > li::before {
+    content: "- ";
+  }
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .cta-wrapper {
+    margin-top: 24px;
+  }
+}
+@media (min-width: 576px) {
+  header#header .header-inner .header-mobile .header-mobile-overlay .header-mobile-overlay-inner .cta-wrapper {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  header#header .header-inner .header-part.cta-wrapper {
+    display: none;
   }
 }
 #hero {
@@ -9109,6 +9108,20 @@ dialog.modal .modal-footer {
 dialog.modal .modal-footer button {
   font-size: 1em;
   padding: 0.4em;
+}
+
+noscript#enable-js-notification {
+  text-align: center;
+  position: fixed;
+  inset: auto 0 0;
+  padding: 1rem;
+  background-color: #009ece;
+}
+noscript#enable-js-notification a {
+  color: #ffffff;
+}
+noscript#enable-js-notification a:hover {
+  text-decoration: underline;
 }
 
 #order-form {

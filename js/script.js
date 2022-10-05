@@ -543,35 +543,37 @@ class PriceCalc {
  * Init menu mobile only if it exists
  */
 function initMenuMobile() {
-    const menuMobile = document.querySelector('#menu-mobile');
+    initMenuMobile.menuMobile = document.querySelector('#menu-mobile');
 
     // abort if not exists
-    if (!menuMobile) return;
+    if (!initMenuMobile.menuMobile) return;
 
-    const showMenu = document.querySelector('[data-show-menu]');
-    const hideMenu = document.querySelector('[data-hide-menu]');
+    initMenuMobile.showMenuBtn = document.querySelector('[data-show-menu]');
+    initMenuMobile.hideMenuBtn = document.querySelector('[data-hide-menu]');
 
-    showMenu.addEventListener('click', showMenuMobile);
-    hideMenu.addEventListener('click', hideMenuMobile);
+    // jQuery(initMenuMobile.hideMenuBtn).hide();
+
+    initMenuMobile.showMenuBtn.addEventListener('click', showMenuMobile);
+    initMenuMobile.hideMenuBtn.addEventListener('click', hideMenuMobile);
 }
 
 /**
  * Show menu mobile
  */
 function showMenuMobile() {
-    const menuMobile = document.querySelector('#menu-mobile');
-
-    jQuery(menuMobile).fadeIn(200, disablePageScroll);
+    jQuery(initMenuMobile.showMenuBtn).hide();
+    jQuery(initMenuMobile.hideMenuBtn).show();
+    jQuery(initMenuMobile.menuMobile).fadeIn(200, disablePageScroll);
 }
 
 /**
  * Hide menu mobile
  */
 function hideMenuMobile() {
-    const menuMobile = document.querySelector('#menu-mobile');
-
     enablePageScroll();
-    jQuery(menuMobile).fadeOut(200);
+    jQuery(initMenuMobile.showMenuBtn).show();
+    jQuery(initMenuMobile.hideMenuBtn).hide();
+    jQuery(initMenuMobile.menuMobile).fadeOut(200);
 }
 
 /**

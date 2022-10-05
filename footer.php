@@ -1,7 +1,10 @@
 <?php if (false === is_frame_mode()): ?>
     <footer id="footer" class="mx-auto max-width">
         <div class="footer-top">
-            <?php echo get_image_tag(31979, 'steuermachen', 'steuermachen', 'left', [0, 25]); ?>
+            <?php
+    # echo get_image_tag(31979, 'steuermachen', 'steuermachen', 'left', [0, 25]);
+    ?>
+            <?php echo stm_get_image_tag(get_theme_mod('custom_logo'), 'steuermachen', 'steuermachen', 'left', [0, 42], 'custom-logo', wp_get_attachment_url(get_custom_retina_logo()) . ' 2x'); ?>
             <div class="social">
                 <!-- <a href="#"><i class="icon-instagram"></i></a>
                 <a href="#"><i class="icon-facebook"></i></a> -->
@@ -42,7 +45,6 @@
                 </a>
             </div>
         </div>
-
 
         <div class="footer-navs">
             <div class="footer-nav">
