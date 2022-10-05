@@ -8,6 +8,20 @@ define('STM_THEME_CSS', STM_THEME_URL . '/css');
 define('STM_THEME_JS', STM_THEME_URL . '/js');
 define('STM_THEME_IMG', STM_THEME_URL . '/img');
 
+/**
+ * enable javascript notification
+ */
+function enable_js_notification()
+{
+    ?>
+<noscript id="enable-js-notification">
+Um den vollen Funktionsumfang dieser Webseite zu erfahren, benötigst du JavaScript. Hier findest du die <a href="https://www.enable-javascript.com/de/" target="_blank" rel="noopener noreferrer">Anleitung wie du JavaScript in deinem Browser einschaltest</a>.
+</noscript>
+<?php
+}
+
+add_action('wp_footer', 'enable_js_notification');
+
 // /**
 //  * Enqueue theme assets.
 //  */

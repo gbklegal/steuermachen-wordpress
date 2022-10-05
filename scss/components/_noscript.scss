@@ -1,0 +1,17 @@
+noscript {
+    &#enable-js-notification {
+        text-align: center;
+        position: fixed;
+        inset: auto 0 0;
+        padding: 1rem;
+        background-color: $info-color;
+
+        a {
+            color: $clr-text-white;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
