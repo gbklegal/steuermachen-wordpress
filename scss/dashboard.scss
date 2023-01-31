@@ -1,0 +1,29 @@
+#stm-bestellungen-dashboard-widget {
+    .all-orders {
+        &::before {
+            content: '\f174';
+            color: #646970;
+            font: normal 20px/1 dashicons;
+            display: inline-block;
+            padding: 0 10px 0 0;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-decoration: none !important;
+            vertical-align: top;
+        }
+    }
+
+    .row {
+        display: grid;
+        gap: 0.5em 1em;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(3, 1fr);
+
+        & > div {
+            &:nth-child(odd) {
+                font-weight: bold;
+            }
+        }
+    }
+}

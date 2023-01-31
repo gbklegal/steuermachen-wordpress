@@ -158,8 +158,62 @@ add_action('template_redirect', 'theme_add_last_modified_header');
 //     ]);
 // }
 // add_action( 'widgets_init', 'steuermachen_widgets_init' );
+// add_action('widgets_init', 'steuermachen_widgets_init');
+
+/**
+ * Dashboard Widget: Bestellungen
+ */
+function stm_bestellungen_dashboard_widget()
+{
+    // only redakteur and higher
+    if (false === current_user_can('edit_posts')) {
+        return;
+    }
 
 // function add_mobile_nav_support( $items, $args ) {
+    wp_enqueue_style('dashboard-style', STM_THEME_CSS . '/dashboard.css');
+    wp_add_dashboard_widget('stm-bestellungen-dashboard-widget', 'Bestellungen', 'stm_bestellungen_dashboard_widget_function');
+
+    function stm_bestellungen_dashboard_widget_function()
+    {
+        ?>
+        <a href="admin.php?page=bestellungen" class="all-orders">alle Bestellungen</a>
+        <?php
+        global $wpdb;
+
+        $orders = $wpdb->get_results('SELECT id, order_number, firstname, lastname, product, created_at FROM stm_orders WHERE is_test = 0 ORDER BY id DESC LIMIT 5');
+
+        foreach ($orders as $key => $order):
+
+            $order_id = $order->id ?? null;
+            $order_number = $order->order_number ?? '/';
+            $first_name = $order->firstname ?? '/';
+            $last_name = $order->lastname ?? '/';
+            $product = $order->product ?? '/';
+            $date = $order->created_at ?? '';
+
+            $date = date_i18n(get_option('date_format'), strtotime($date));
+            $url = 'admin.php?page=bestellungen&view=details&order_id=' . $order_id;
+
+            if ($key < 5): ?>
+            <hr>
+            <?php endif;
+            ?>
+        <div class="row">
+            <div>Auftragsnummer</div>
+            <div><a href="<?= $url ?>"><?= $order_number ?></a></div>
+            <div>Name</div>
+            <div><?= sprintf('%s %s', $first_name, $last_name) ?></div>
+            <div>Produkt</div>
+            <div><?= $product ?></div>
+            <div>Datum</div>
+            <div><?= $date ?></div>
+        </div>
+    <?php
+        endforeach;
+    }
+}
+add_action('wp_dashboard_setup', 'stm_bestellungen_dashboard_widget');
 //     var_dump($items);
 //     var_dump($args);
 
