@@ -16,7 +16,9 @@
         <main class="post-content-wrapper">
             <div class="post-content">
                 <?php if (has_post_thumbnail()) {
-                    the_post_thumbnail('post-thumbnail', ['class' => 'post-thumbnail']);
+                    the_post_thumbnail('post-thumbnail', [
+                        'class' => 'post-thumbnail',
+                    ]);
                 } ?>
                 <?php
                 $table_of_contents = table_of_contents(get_the_content());
