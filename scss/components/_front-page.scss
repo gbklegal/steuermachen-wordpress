@@ -434,11 +434,19 @@ main.main-content.front-page {
                 flex-flow: column wrap;
 
                 &:nth-child(1) {
-                    background: linear-gradient(to left, $clr-bg-blue, transparent);
+                    background: linear-gradient(
+                        to left,
+                        $clr-bg-blue,
+                        transparent
+                    );
                 }
 
                 &:nth-child(3) {
-                    background: linear-gradient(to right, $clr-bg-blue, transparent);
+                    background: linear-gradient(
+                        to right,
+                        $clr-bg-blue,
+                        transparent
+                    );
                 }
 
                 .details-wrapper {
@@ -605,11 +613,19 @@ main.main-content.front-page {
                     max-width: 420px;
 
                     &:nth-child(1) {
-                        background: linear-gradient(to top, $clr-bg-blue, transparent);
+                        background: linear-gradient(
+                            to top,
+                            $clr-bg-blue,
+                            transparent
+                        );
                     }
 
                     &:nth-child(3) {
-                        background: linear-gradient(to bottom, $clr-bg-blue, transparent);
+                        background: linear-gradient(
+                            to bottom,
+                            $clr-bg-blue,
+                            transparent
+                        );
                     }
                 }
             }
@@ -800,6 +816,10 @@ main.main-content.front-page {
                     }
                 }
             }
+        }
+
+        #vorteile {
+            border: 2px solid blue;
         }
     }
 }
