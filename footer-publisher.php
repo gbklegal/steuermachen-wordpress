@@ -1,6 +1,6 @@
-    <footer class="max-width">
+    <footer id="footer">
         <div class="footer-inner">
-            <?php the_custom_logo(); ?>
+            <img src="<?php echo wp_get_attachment_url(get_theme_mod('custom_logo')); ?>" class="custom-logo" alt="steuermachen">
             <p class="text-justify">Copyright &copy; steuermachen (GDF). Sämtliche Inhalte, Fotos, Texte und Graphiken sind urheberrechtlich geschützt. Sie dürfen ohne vorherige schriftliche Zustimmung oder Genehmigung der GDF weder ganz noch auszugsweise kopiert, verändert, vervielfältigt oder veröffentlicht werden.</p>
             <ul>
                 <li>
