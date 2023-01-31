@@ -67,7 +67,12 @@ get_header();
                             <div class="flip-card-front">
                                 <div class="flip-card-front-inner">
                                     <!-- <img src="<?php echo STM_THEME_URL; ?>/img/submit.svg" alt="Schritt 1"> -->
-                                    <?php echo stm_get_image_tag(34140, 'Schritt 1', 'Schritt 1', 'center'); ?>
+                                    <?php echo stm_get_image_tag(
+                                        34140,
+                                        'Schritt 1',
+                                        'Schritt 1',
+                                        'center'
+                                    ); ?>
                                     <span>Gewünschte Steuererklärung beauftragen</span>
                                 </div>
                             </div>
@@ -83,7 +88,12 @@ get_header();
                             <div class="flip-card-front">
                                 <div class="flip-card-front-inner">
                                     <!-- <img src="<?php echo STM_THEME_URL; ?>/img/open-email.svg" alt="Schritt 2"> -->
-                                    <?php echo stm_get_image_tag(34139, 'Schritt 2', 'Schritt 2', 'center'); ?>
+                                    <?php echo stm_get_image_tag(
+                                        34139,
+                                        'Schritt 2',
+                                        'Schritt 2',
+                                        'center'
+                                    ); ?>
                                     <span>Unterlagen vorbereiten und versenden</span>
                                 </div>
                             </div>
@@ -99,7 +109,12 @@ get_header();
                             <div class="flip-card-front">
                                 <div class="flip-card-front-inner">
                                     <!-- <img src="<?php echo STM_THEME_URL; ?>/img/solution.svg" alt="Schritt 3"> -->
-                                    <?php echo stm_get_image_tag(34141, 'Schritt 3', 'Schritt 3', 'center'); ?>
+                                    <?php echo stm_get_image_tag(
+                                        34141,
+                                        'Schritt 3',
+                                        'Schritt 3',
+                                        'center'
+                                    ); ?>
                                     <span>Deine persönliche Steuererklärung fertigt dein Steuerexperte an</span>
                                 </div>
                             </div>
@@ -115,7 +130,12 @@ get_header();
                             <div class="flip-card-front">
                                 <div class="flip-card-front-inner">
                                     <!-- <img src="<?php echo STM_THEME_URL; ?>/img/done.svg" alt="Schritt 4"> -->
-                                    <?php echo stm_get_image_tag(34138, 'Schritt 4', 'Schritt 4', 'center'); ?>
+                                    <?php echo stm_get_image_tag(
+                                        34138,
+                                        'Schritt 4',
+                                        'Schritt 4',
+                                        'center'
+                                    ); ?>
                                     <span>Fertig: Du erhälst deinen geprüften Steuerbescheid</span>
                                 </div>
                             </div>
@@ -168,6 +188,7 @@ get_header();
                 </div>
             </section>
 
+            <?php if (false): ?>
             <!-- <section id="vergleichstabelle" class="section section-mb">
                 <div>
                     <h2>Wieso für steuermachen zahlen, statt ELSTER kostenfrei nutzen?</h2>
@@ -212,6 +233,7 @@ get_header();
                     </div>
                 </div>
             </section> -->
+            <?php endif; ?>
 
             <!-- <section id="steuerratgeber" class="section section-mb">
                 <h2 class="text-center">Steuerratgeber</h2>
@@ -227,7 +249,10 @@ get_header();
                 $latest_post_url = get_permalink($latest_post_id);
                 // $latest_post['guid']
                 $latest_post_title = $latest_post['post_title'];
-                $latest_post_thumbnail = get_the_post_thumbnail($latest_post_id, 'large');
+                $latest_post_thumbnail = get_the_post_thumbnail(
+                    $latest_post_id,
+                    'large'
+                );
                 ?>
                     <div class="latest-post">
                         <a href="<?php echo $latest_post_url; ?>">
@@ -248,7 +273,10 @@ get_header();
                     // $post_url = $post['guid'];
                     $post_url = get_permalink($post_id);
                     $post_title = $post['post_title'];
-                    $post_thumbnail = get_the_post_thumbnail($post_id, 'medium');
+                    $post_thumbnail = get_the_post_thumbnail(
+                        $post_id,
+                        'medium'
+                    );
                     ?>
                         <div class="post">
                             <a href="<?php echo $post_url; ?>">
@@ -290,10 +318,22 @@ get_header();
                     <p>Sammle und übertrage deine Belege digital.</p>
                     <div class="store-badges">
                         <a href="/app/ios">
-                            <?php echo stm_get_image_tag(32577, 'App Store', 'steuermachen - App Store', 'left', [200]); ?>
+                            <?php echo stm_get_image_tag(
+                                32577,
+                                'App Store',
+                                'steuermachen - App Store',
+                                'left',
+                                [200]
+                            ); ?>
                         </a>
                         <a href="/app/android">
-                            <?php echo stm_get_image_tag(32578, 'Play Store', 'steuermachen - Play Store', 'left', [200]); ?>
+                            <?php echo stm_get_image_tag(
+                                32578,
+                                'Play Store',
+                                'steuermachen - Play Store',
+                                'left',
+                                [200]
+                            ); ?>
                         </a>
                     </div>
                 </div>
@@ -318,26 +358,31 @@ get_header();
                     </div>
                     <div>
                         <!-- <img src="https://via.placeholder.com/720x720.png?text=Platzhalter" alt="Platzhalter" style="width:320px"> -->
-                        <img src="<?= wp_get_attachment_image_url(34145, 'full') ?>" alt="">
+                        <img src="<?= wp_get_attachment_image_url(
+                            34145,
+                            'full'
+                        ) ?>" alt="">
                         <!-- https://unsplash.com/photos/tvbxqXI5mmo -->
                     </div>
                 </div>
             </section>
 
             <section id="vorteile" class="section section-mb">
-                <div class="benefits-box box-shadow">
-                    <div class="px-6 py-5 header bg-primary">
+                <div class="p-24 box bg-accent br-4">
+                    <div class="mb-8">
                         <h3 class="m-0 font-normal">Durch steuermachen erhältst du jetzt die ideale und einfache Unterstützung deines persönlichen Steuerexperten.</h3>
                     </div>
                     <div class="main justify-content-flex-start" style="padding-left:1em">
-                        <!-- <img style="width:230px" src="<?php echo wp_get_attachment_image_url('33026'); ?>" alt="Grundsteuer"> -->
+                        <!-- <img style="width:230px" src="<?php echo wp_get_attachment_image_url(
+                            '33026'
+                        ); ?>" alt="Grundsteuer"> -->
 
                         <ul class="text-left benefits">
-                            <li>Professionelle und individuelle Beratung</li>
-                            <li>Sicherheitsgarantie durch Steuerexperten an deiner Seite</li>
-                            <li>Zeit und Nerven gespart</li>
-                            <li>Einfache und sichere Erfassung der relevanten Daten</li>
-                            <li>Faire und transparente Preise</li>
+                            <li><span class="li-inner">Professionelle und individuelle Beratung</span></li>
+                            <li><span class="li-inner">Sicherheitsgarantie durch Steuerexperten an deiner Seite</span></li>
+                            <li><span class="li-inner">Zeit und Nerven gespart</span></li>
+                            <li><span class="li-inner">Einfache und sichere Erfassung der relevanten Daten</span></li>
+                            <li><span class="li-inner">Faire und transparente Preise</span></li>
                         </ul>
                     </div>
                 </div>

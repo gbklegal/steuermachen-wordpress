@@ -20,6 +20,7 @@
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
+    font-feature-settings: 'liga';
     -moz-font-feature-settings: 'liga';
     -moz-osx-font-smoothing: grayscale;
 }
@@ -30,7 +31,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url($url-theme-fonts + 'Inter-SemiBold.ttf');
+    src: url($url-theme-fonts + '/Inter-SemiBold.ttf');
 }
 
 @font-face {
@@ -38,7 +39,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url($url-theme-fonts + 'Inter-Bold.ttf');
+    src: url($url-theme-fonts + '/Inter-Bold.ttf');
 }
 
 // Open Sans
@@ -47,7 +48,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url($url-theme-fonts + 'OpenSans-Regular.ttf');
+    src: url($url-theme-fonts + '/OpenSans-Regular.ttf');
 }
 
 @font-face {
@@ -55,5 +56,5 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url($url-theme-fonts + 'OpenSans-Medium.ttf');
+    src: url($url-theme-fonts + '/OpenSans-Medium.ttf');
 }

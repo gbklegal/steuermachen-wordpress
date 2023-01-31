@@ -8,7 +8,7 @@
     Author: Tobias Röder
     Author URI: https://tobias-roeder.de/
     Description: Benutzerdefiniertes steuermachen Themes.
-    Version: 1.5.4
+    Version: 1.5.5
 */
 @font-face {
   font-family: "Material Icons";
@@ -28,6 +28,7 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  font-feature-settings: "liga";
   -moz-font-feature-settings: "liga";
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,28 +38,28 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("/wp-content/themes/steuermachen/fontsInter-SemiBold.ttf");
+  src: url("/wp-content/themes/steuermachen/fonts/Inter-SemiBold.ttf");
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/wp-content/themes/steuermachen/fontsInter-Bold.ttf");
+  src: url("/wp-content/themes/steuermachen/fonts/Inter-Bold.ttf");
 }
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/wp-content/themes/steuermachen/fontsOpenSans-Regular.ttf");
+  src: url("/wp-content/themes/steuermachen/fonts/OpenSans-Regular.ttf");
 }
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("/wp-content/themes/steuermachen/fontsOpenSans-Medium.ttf");
+  src: url("/wp-content/themes/steuermachen/fonts/OpenSans-Medium.ttf");
 }
 @font-face {
   font-family: "STM-Icons";
@@ -2959,6 +2960,31 @@ main.main-content.front-page #entwickelt-fuer ul li {
 main.main-content.front-page #entwickelt-fuer img {
   border-radius: 24px;
 }
+main.main-content.front-page #vorteile .box {
+  border-radius: 24px;
+}
+main.main-content.front-page #vorteile .box h3 {
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+main.main-content.front-page #vorteile .box .benefits {
+  list-style-type: "\e92d";
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 18px;
+}
+main.main-content.front-page #vorteile .box .benefits li {
+  padding-left: 1rem;
+}
+main.main-content.front-page #vorteile .box .benefits li .li-inner {
+  vertical-align: super;
+}
+main.main-content.front-page #vorteile .box .benefits li::marker {
+  font-family: "Material Icons";
+  color: #37ce00;
+  font-size: 1.7rem;
+}
 main.main-content.front-page #bewertungen h2 {
   margin-bottom: 40px;
 }
@@ -3102,6 +3128,9 @@ main.main-content.front-page #bewertungen .rating-boxes .rating-box .rating-wrap
   }
   main.main-content.front-page #entwickelt-fuer > div > div:nth-child(2) {
     order: 0;
+  }
+  main.main-content.front-page #vorteile {
+    border: 2px solid blue;
   }
 }
 @media (max-width: 640px) {
@@ -9530,6 +9559,10 @@ body:not(.frame-mode) #page {
 }
 .post-wrapper.single-post .post-content-wrapper .post-sidebar .header {
   font-weight: 600;
+}
+.post-wrapper.single-post .post-content-wrapper .post-sidebar .lawyer-approved-seal {
+  float: right;
+  width: 100px;
 }
 .post-wrapper.single-post .post-content-wrapper .post-content .post-thumbnail {
   max-width: 100%;

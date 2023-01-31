@@ -67,6 +67,7 @@
         <p><small>*** Preise netto zzgl. der gesetzlichen Mehrwertsteuer von 19%.</small></p>
     </footer>
 
+    <?php if (false): ?>
     <!-- <div id="search-overlay" data-search>
         <section class="search-form-wrapper section-mb">
             <form action="/" method="get" name="search_form">
@@ -80,6 +81,7 @@
             <div class="search-results-load-more" data-active="false"></div>
         </section>
     </div> -->
+    <?php endif; ?>
 
 <?php endif; ?>
 

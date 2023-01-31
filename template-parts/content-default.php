@@ -1,5 +1,9 @@
-<?php $_is_steuerlexikon = wp_get_post_parent_id() === STM_STEUERLEXIKON_PAGE_ID; ?>
-<div class="post-wrapper<?= return_if($_is_steuerlexikon, ' single-post steuerlexikon-post') ?>">
+<?php $_is_steuerlexikon =
+    wp_get_post_parent_id() === STM_STEUERLEXIKON_PAGE_ID; ?>
+<div class="post-wrapper<?= return_if(
+    $_is_steuerlexikon,
+    ' single-post steuerlexikon-post'
+) ?>">
     <header id="hero" class="post-header hero-wrapper"><?php
 // if (has_title_image()) echo ' hero-wrapper'
 ?>
@@ -23,19 +27,7 @@
         </div>
         <?php if ($_is_steuerlexikon): ?>
             <div class="post-sidebar">
-                <div>
-                    <h3>Unsere Inhalte werden juristisch geprüft:</h3>
-                    <p>Tobias Gußmann ist Fachanwalt für Steuerrecht und Mitbegründer der Fachanwaltskanzlei GBK legal sowie Gussmann Böhner & Kropp GbR. Seine langjährigen Erfahrungen im Steuerrecht untermauern seine Expertise. Durch seinen Ehrgeiz und seiner Wissbegierde kennt er sich über alle aktuellen Gesetzesänderungen und Neuheiten bestens aus. Sein Fachwissen ist für jeden seiner Mandanten eine Bereicherung.</p>
-                </div>
-                <div>
-                    <h3>Warum steuermachen:</h3>
-                    <p>
-                        Keine Arbeit mit der Steuererklärung!<br />
-                        Lass jetzt deine Steuererklärung von Steuerexperten machen!<br />
-                        Wir sind keine Steuersoftware, bei uns arbeiten echte Menschen.<br />
-                        Dein persönlicher Steuerexperte beantwortet deine Fragen und hilft dir, deine maximale Steuerrückerstattung zu bekommen. Persönlich und digital beides aus einer Hand!
-                    </p>
-                </div>
+                <?php the_post_sidebar_content(); ?>
             </div>
         <?php endif; ?>
     </div>
