@@ -1,3 +1,34 @@
+<?php
+
+/**
+ * Redirect old blog URLs to the current pattern.
+ */
+
+/**
+ * @return string
+ */
+$_get_path = function () {
+    $uri = $_SERVER['REQUEST_URI'];
+    $path = explode('?', $uri)[0];
+
+    return $path;
+};
+
+/**
+ * @return bool;
+ */
+$_match_pattern = function () use ($_get_path) {
+    $pattern = '/^\/\d{4}\/\d{2}\/\d{2}\/[\d\w\-]+\/?/';
+
+    return preg_match($pattern, $_get_path()) === 1;
+};
+
+if ($_match_pattern()) {
+    $extracted_slug = explode('/', $_get_path())[4];
+
+    wp_redirect(home_url('/steuerratgeber/' . $extracted_slug));
+}
+?>
 <?php get_header(); ?>
 <img src="<?php echo STM_THEME_URL; ?>/img/404.svg" class="_404-image">
 <main class="text-center main-content _404">
