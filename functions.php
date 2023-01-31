@@ -85,8 +85,11 @@ function random_id(int $length): string
  * @param array $remove_params - optional
  * @param string $url - optional
  */
-function manipulate_get_params(array $add_params = [], array $remove_params = [], ?string $url = null)
-{
+function manipulate_get_params(
+    array $add_params = [],
+    array $remove_params = [],
+    ?string $url = null
+) {
     $get_params = $_GET ?? [];
     if (is_null($url)) {
         $url = get_permalink(get_the_ID());
@@ -131,7 +134,11 @@ function steuermachen_theme_setup()
 
     add_theme_support('custom-logo', $customLogoDefaults);
 
-    add_theme_support('post-thumbnails', ['post', 'page', 'custom-post-type-name']);
+    add_theme_support('post-thumbnails', [
+        'post',
+        'page',
+        'custom-post-type-name',
+    ]);
 
     // remove read more on the_excerpt but keep the three dots
     add_filter('excerpt_more', function () {
@@ -144,7 +151,10 @@ function theme_add_last_modified_header($headers)
 {
     global $post;
     if (isset($post) && isset($post->post_modified)) {
-        $post_mod_date = date('D, d M Y H:i:s', strtotime($post->post_modified));
+        $post_mod_date = date(
+            'D, d M Y H:i:s',
+            strtotime($post->post_modified)
+        );
         @header('Last-Modified: ' . $post_mod_date . ' GMT');
     }
 }
@@ -176,7 +186,11 @@ function stm_bestellungen_dashboard_widget()
     }
 
     wp_enqueue_style('dashboard-style', STM_THEME_CSS . '/dashboard.css');
-    wp_add_dashboard_widget('stm-bestellungen-dashboard-widget', 'Bestellungen', 'stm_bestellungen_dashboard_widget_function');
+    wp_add_dashboard_widget(
+        'stm-bestellungen-dashboard-widget',
+        'Bestellungen',
+        'stm_bestellungen_dashboard_widget_function'
+    );
 
     function stm_bestellungen_dashboard_widget_function()
     {
@@ -185,7 +199,9 @@ function stm_bestellungen_dashboard_widget()
         <?php
         global $wpdb;
 
-        $orders = $wpdb->get_results('SELECT id, order_number, firstname, lastname, product, created_at FROM stm_orders WHERE is_test = 0 ORDER BY id DESC LIMIT 5');
+        $orders = $wpdb->get_results(
+            'SELECT id, order_number, firstname, lastname, product, created_at FROM stm_orders WHERE is_test = 0 ORDER BY id DESC LIMIT 5'
+        );
 
         foreach ($orders as $key => $order):
 
@@ -197,7 +213,9 @@ function stm_bestellungen_dashboard_widget()
             $date = $order->created_at ?? '';
 
             $date = date_i18n(get_option('date_format'), strtotime($date));
-            $url = 'admin.php?page=bestellungen&view=details&order_id=' . $order_id;
+            $url =
+                'admin.php?page=bestellungen&view=details&order_id=' .
+                $order_id;
 
             if ($key < 5): ?>
             <hr>
@@ -367,7 +385,11 @@ function the_content_frame_mode($content)
     }
 
     if (is_frame_mode('remove-affiliate', 'app')) {
-        $content = preg_replace('#<div\s+class="box-info(.*)">[\S\s]*?<\/div>#', '', $content);
+        $content = preg_replace(
+            '#<div\s+class="box-info(.*)">[\S\s]*?<\/div>#',
+            '',
+            $content
+        );
     }
 
     return $content;
@@ -395,7 +417,10 @@ add_filter(
             return $spam;
         }
 
-        $spam_key_words = array_map('trim', explode(',', get_theme_mod('wpcf7_spam_filter_key_words')));
+        $spam_key_words = array_map(
+            'trim',
+            explode(',', get_theme_mod('wpcf7_spam_filter_key_words'))
+        );
 
         $found_spam_key_word = function ($string, $spam_key_words) {
             foreach ($spam_key_words as $spam_key_word) {
@@ -407,7 +432,8 @@ add_filter(
             return false;
         };
 
-        return $found_spam_key_word($_POST['subject'], $spam_key_words) || $found_spam_key_word($_POST['message'], $spam_key_words);
+        return $found_spam_key_word($_POST['subject'], $spam_key_words) ||
+            $found_spam_key_word($_POST['message'], $spam_key_words);
     },
     10,
     1
@@ -423,20 +449,35 @@ add_filter(
  *
  * @return string
  */
-function get_image_by_id(int $attachment_id, string $size = 'full', string $class_name = '', string $img_alt = ''): string
-{
+function get_image_by_id(
+    int $attachment_id,
+    string $size = 'full',
+    string $class_name = '',
+    string $img_alt = ''
+): string {
     $attachment_id = absint($attachment_id);
     $img_url = wp_get_attachment_image_url($attachment_id, $size);
 
     if ($img_alt === '') {
-        $img_alt = trim(strip_tags(get_post_meta($attachment_id, '_wp_attachment_image_alt', true)));
+        $img_alt = trim(
+            strip_tags(
+                get_post_meta($attachment_id, '_wp_attachment_image_alt', true)
+            )
+        );
     }
 
     if ($class_name !== '') {
         $class_name = ' class="' . $class_name . '"';
     }
 
-    $html = '<img src="' . $img_url . '" alt="' . $img_alt . '"' . $class_name . '>';
+    $html =
+        '<img src="' .
+        $img_url .
+        '" alt="' .
+        $img_alt .
+        '"' .
+        $class_name .
+        '>';
 
     return $html;
 }
@@ -448,7 +489,9 @@ function get_image_by_id(int $attachment_id, string $size = 'full', string $clas
 function ld_new_excerpt_more($more)
 {
     global $post;
-    return '...<p><a class="more-link" href="' . get_permalink($post->ID) . '">weiterlesen</a></p>';
+    return '...<p><a class="more-link" href="' .
+        get_permalink($post->ID) .
+        '">weiterlesen</a></p>';
 }
 add_filter('excerpt_more', 'ld_new_excerpt_more');
 
@@ -597,7 +640,11 @@ function anchor_content_h($content)
             $title = $matches[1];
             $slug = _wp_to_kebab_case($title);
 
-            $head = preg_replace('/<h([2-' . $depth . '])>/', '<h$1 id="' . $slug . '">', $head);
+            $head = preg_replace(
+                '/<h([2-' . $depth . '])>/',
+                '<h$1 id="' . $slug . '">',
+                $head
+            );
 
             return $head;
         },
@@ -676,7 +723,12 @@ function get_attachment_shortcode($atts): string
     }
 
     // return image as HTML string or a empty string if failed
-    return wp_get_attachment_image($image_id, $image_size, false, $attachment_attr);
+    return wp_get_attachment_image(
+        $image_id,
+        $image_size,
+        false,
+        $attachment_attr
+    );
 }
 add_shortcode('image', 'get_attachment_shortcode');
 
@@ -732,7 +784,14 @@ function cta_button_shortcode($atts)
         $theme = ' btn-' . $theme;
     }
 
-    return '<a class="btn' . $size . $theme . '" href="' . $href . '">' . $value . '</a>';
+    return '<a class="btn' .
+        $size .
+        $theme .
+        '" href="' .
+        $href .
+        '">' .
+        $value .
+        '</a>';
 }
 add_shortcode('cta_button', 'cta_button_shortcode');
 
@@ -740,7 +799,11 @@ add_shortcode('cta_button', 'cta_button_shortcode');
  * Remove input wrapper from WP Contact Form 7 plugin.
  */
 add_filter('wpcf7_form_elements', function ($content) {
-    $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+    $content = preg_replace(
+        '/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i',
+        '\2',
+        $content
+    );
 
     return $content;
 });
@@ -814,7 +877,8 @@ function get_etrusted_access_token()
  */
 function get_etrusted_rating(string $period): string
 {
-    $url = 'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
+    $url =
+        'https://api.etrusted.com/channels/chl-dd15a939-2472-443a-95cd-157c853459cb/service-reviews/aggregate-rating';
     // $url = 'https://code.tobias-roeder.de/http_response_code/http_response_code.php?response_code=418';
     $options = [
         'http' => [
@@ -1046,7 +1110,9 @@ function get_trusted_shops_logo($attr): string
 
     $attachment_id = 442;
     $image_size = $attr['size'] ?? 100;
-    $url = $attr['url'] ?? 'https://www.trustedshops.de/bewertung/info_X24AEB26CBD9A2EBDB8A0AC232A1BB7F9.html';
+    $url =
+        $attr['url'] ??
+        'https://www.trustedshops.de/bewertung/info_X24AEB26CBD9A2EBDB8A0AC232A1BB7F9.html';
     // $target = $attr['target'] ?? '_blank'; // enable if required
     // $rel = $attr['rel'] ?? 'noopener noreferrer nofollow'; // enable if required
     $wrap_p = $attr['wrap_p'] ?? true;
@@ -1067,7 +1133,10 @@ function get_trusted_shops_logo($attr): string
     }
 
     // wrap image with an anchor tag
-    $content .= '<a href="' . $url . '" rel="noopener noreferrer nofollow" target="_blank">';
+    $content .=
+        '<a href="' .
+        $url .
+        '" rel="noopener noreferrer nofollow" target="_blank">';
 
     // image as HTML string or a empty string if failed
     $content .= wp_get_attachment_image($attachment_id, $size);
@@ -1136,7 +1205,8 @@ function get_cta_button($attr): string
     }
 
     // link
-    $content .= '<a class="' . $class . '" href="' . $url . '">' . $value . '</a>';
+    $content .=
+        '<a class="' . $class . '" href="' . $url . '">' . $value . '</a>';
 
     // close wrapper (paragraph tag)
     if ($wrap_p === true) {
@@ -1217,8 +1287,14 @@ function get_steuerrechner()
     $content = '';
 
     // add steuerrechner css and js files
-    wp_enqueue_style('steuerrechner-style', get_stylesheet_directory_uri() . '/css/steuerrechner.min.css');
-    wp_enqueue_script('steuerrechner-script', get_stylesheet_directory_uri() . '/js/steuerrechner.min.js');
+    wp_enqueue_style(
+        'steuerrechner-style',
+        get_stylesheet_directory_uri() . '/css/steuerrechner.min.css'
+    );
+    wp_enqueue_script(
+        'steuerrechner-script',
+        get_stylesheet_directory_uri() . '/js/steuerrechner.min.js'
+    );
 
     // steuerrechner content
     $content .= '<div id="steuerrechner">
@@ -1401,7 +1477,9 @@ function the_author_info()
     $author_name = get_the_author_meta('display_name');
     $author_first_name = get_the_author_meta('first_name');
     $author_description = get_the_author_meta('description');
-    $author_avatar = get_avatar($author_id, 96, '', $author_name, ['class' => 'author-avatar']);
+    $author_avatar = get_avatar($author_id, 96, '', $author_name, [
+        'class' => 'author-avatar',
+    ]);
     $author_posts_url = get_author_posts_url($author_id);
 
     $_author_s = '';
@@ -1417,7 +1495,8 @@ function the_author_info()
     ?>
         <?php if (false): ?>
         <p>
-            <a href="<?php echo $author_posts_url; ?>"><?php echo $author_first_name . $_author_s; ?> Artikel</a>
+            <a href="<?php echo $author_posts_url; ?>"><?php echo $author_first_name .
+    $_author_s; ?> Artikel</a>
         </p>
         <?php endif; ?>
     </div>
@@ -1441,9 +1520,15 @@ function get_price_calculator($args = [])
 
     $content = '';
 
-    wp_enqueue_style('price-calculator-style', STM_THEME_URL . '/css/price-calculator.css');
+    wp_enqueue_style(
+        'price-calculator-style',
+        STM_THEME_URL . '/css/price-calculator.css'
+    );
     wp_enqueue_script('calculator-script', STM_THEME_URL . '/js/calculator.js');
-    wp_enqueue_script('price-calculator-script', STM_THEME_URL . '/js/price-calculator.js');
+    wp_enqueue_script(
+        'price-calculator-script',
+        STM_THEME_URL . '/js/price-calculator.js'
+    );
 
     $content .=
         '
@@ -1500,9 +1585,15 @@ function get_property_tax_price_calculator($args = [])
 
     $content = '';
 
-    wp_enqueue_style('price-calculator-style', STM_THEME_URL . '/css/price-calculator.css');
+    wp_enqueue_style(
+        'price-calculator-style',
+        STM_THEME_URL . '/css/price-calculator.css'
+    );
     wp_enqueue_script('calculator-script', STM_THEME_URL . '/js/calculator.js');
-    wp_enqueue_script('property-tax-price-calculator-script', STM_THEME_URL . '/js/property-tax-price-calculator.js');
+    wp_enqueue_script(
+        'property-tax-price-calculator-script',
+        STM_THEME_URL . '/js/property-tax-price-calculator.js'
+    );
 
     $content .=
         '
@@ -1525,7 +1616,10 @@ function get_property_tax_price_calculator($args = [])
     return $content;
 }
 
-add_shortcode('property_tax_price_calculator', 'get_property_tax_price_calculator');
+add_shortcode(
+    'property_tax_price_calculator',
+    'get_property_tax_price_calculator'
+);
 
 /**
  * Property Tax Price Calculator
@@ -1605,8 +1699,15 @@ function has_custom_retina_logo()
  *
  * @return string
  */
-function stm_get_image_tag($id, $alt, $title, $align, $size = 'medium', $add_class = '', $srcset = '')
-{
+function stm_get_image_tag(
+    $id,
+    $alt,
+    $title,
+    $align,
+    $size = 'medium',
+    $add_class = '',
+    $srcset = ''
+) {
     $_size_count = is_array($size) ? count($size) : 0;
     if (is_int($size)) {
         $size = [$size, $size];
@@ -1621,9 +1722,29 @@ function stm_get_image_tag($id, $alt, $title, $align, $size = 'medium', $add_cla
     $srcset = $srcset ? 'srcset="' . esc_attr($srcset) . '" ' : '';
 
     $size_class = is_array($size) ? implode('x', $size) : $size;
-    $class = 'align' . esc_attr($align) . ' size-' . esc_attr($size_class) . ' wp-image-' . $id . ' ' . $add_class;
+    $class =
+        'align' .
+        esc_attr($align) .
+        ' size-' .
+        esc_attr($size_class) .
+        ' wp-image-' .
+        $id .
+        ' ' .
+        $add_class;
 
-    $html = '<img src="' . esc_attr($image_src) . '" alt="' . esc_attr($alt) . '" ' . $title . $hwstring . 'class="' . $class . '" ' . $srcset . ' />';
+    $html =
+        '<img src="' .
+        esc_attr($image_src) .
+        '" alt="' .
+        esc_attr($alt) .
+        '" ' .
+        $title .
+        $hwstring .
+        'class="' .
+        $class .
+        '" ' .
+        $srcset .
+        ' />';
 
     return $html;
 }
@@ -1631,7 +1752,8 @@ function stm_get_image_tag($id, $alt, $title, $align, $size = 'medium', $add_cla
 /**
  * Require init from Admin Section.
  */
-require trailingslashit(get_template_directory()) . 'admin-section/customizer.php';
+require trailingslashit(get_template_directory()) .
+    'admin-section/customizer.php';
 
 /**
  * Require init from Includes.
@@ -1643,7 +1765,10 @@ require trailingslashit(get_template_directory()) . 'includes/init.php';
  */
 if (is_user_logged_in()) {
     add_action('wp_enqueue_scripts', function () {
-        wp_enqueue_style('admin-style', trailingslashit(get_template_directory_uri()) . 'css/admin.css');
+        wp_enqueue_style(
+            'admin-style',
+            trailingslashit(get_template_directory_uri()) . 'css/admin.css'
+        );
     });
 }
 
@@ -1681,7 +1806,9 @@ function get_attachment_details($attachment_id = 28504)
 
     $posts['pathinfo'] = pathinfo($posts['guid']);
     $posts['filesize'] = get_attachment_filesize((int) $attachment_id, false);
-    $posts['filesize_human_readable'] = get_attachment_filesize((int) $attachment_id);
+    $posts['filesize_human_readable'] = get_attachment_filesize(
+        (int) $attachment_id
+    );
 
     return $posts;
 }
@@ -1724,7 +1851,7 @@ function download_pdf($args)
 
     $content = '';
 
-    $download_pdf_html = function ($attachment_id) {
+    $download_pdf_html = function ($attachment_id) use ($content) {
         $attachment_details = get_attachment_details($attachment_id);
 
         $attachment_title = $attachment_details['post_title'];
@@ -1732,7 +1859,23 @@ function download_pdf($args)
         $attachment_url = $attachment_details['guid'];
         $attachment_filesize = $attachment_details['filesize_human_readable'];
 
-        $content .= '<div class="download-pdf-wrapper">' . '<div class="download-pdf-details">' . '<a href="' . $attachment_url . '">' . $attachment_title . '</a>' . ' &bull; ' . $attachment_filesize . '</div><div class="download-pdf-download">' . '<a href="' . $attachment_url . '" download="' . $attachment_name . '"><i class="icon-download"></i></a>' . '</div></div>';
+        $content .=
+            '<div class="download-pdf-wrapper">' .
+            '<div class="download-pdf-details">' .
+            '<a href="' .
+            $attachment_url .
+            '">' .
+            $attachment_title .
+            '</a>' .
+            ' &bull; ' .
+            $attachment_filesize .
+            '</div><div class="download-pdf-download">' .
+            '<a href="' .
+            $attachment_url .
+            '" download="' .
+            $attachment_name .
+            '"><i class="icon-download"></i></a>' .
+            '</div></div>';
 
         return $content;
     };
@@ -1771,8 +1914,14 @@ function get_countdown($args = []): string
         return $content;
     }
 
-    wp_enqueue_style('steuermachen-countdown-style', get_template_directory_uri() . '/css/countdown.min.css');
-    wp_enqueue_script_footer('steuermachen-countdown-script', get_template_directory_uri() . '/js/countdown.js');
+    wp_enqueue_style(
+        'steuermachen-countdown-style',
+        get_template_directory_uri() . '/css/countdown.min.css'
+    );
+    wp_enqueue_script_footer(
+        'steuermachen-countdown-script',
+        get_template_directory_uri() . '/js/countdown.js'
+    );
 
     $content .=
         '
@@ -2030,8 +2179,11 @@ function esc_html_adv($text, bool $empty_fallback = false)
  *
  * @return array
  */
-function create_newsletter_recipient(string $email, string $firstname, string $lastname): array
-{
+function create_newsletter_recipient(
+    string $email,
+    string $firstname,
+    string $lastname
+): array {
     $post_data = http_build_query([
         'email' => $email,
         'firstname' => $firstname,
@@ -2043,7 +2195,10 @@ function create_newsletter_recipient(string $email, string $firstname, string $l
     $options = [
         'http' => [
             'method' => 'POST',
-            'header' => ['Content-Type: application/x-www-form-urlencoded', 'Authorization: Bearer trDd99BRgxyhRK8TFPvWPRJtrkOCFchRZMk40etjz2YPO0NEaYXosTyJvKK7UxxTl3zGEvPe0Vjef1F2lWlfoIy4vDmS7yak46ZRnaKcNNoTpH6TXu4mTSXx2Bi8IZTGo7JkvmMdUGn0iDsIPSRnAMi0uLDkrH9gF2IgzOiXWrTrGVlG2MVlPPrNFiLJ2Cuniuqe8dt8JId6Egog95GwxkLE8uedKHOnsSqunFEmaY20f8BfNt7azaB47cAjM4JgKtPCQBOYtTBEbni4UFLi2rHEuvYVG7GreppaDzYbJGTjvW9oJtpSKQ8GeXNbA39AfLYa6cGTui8ZL4EdAX48h13Run9Fcq7nFNjfBOkLppJrdXCWfWXHBSvY1BJHWKmKo7vrflHCxeisbZb4BcCJaUNntRiYHaDL2487uuwSOTJWZ9ORsXkAtoihhYnRcQojkvZgJoEkkphJxwf4DAK5jZE61EBRdShjuTUcRcLyAS8tHKMmJEHtC3ipM5WQkNmE'],
+            'header' => [
+                'Content-Type: application/x-www-form-urlencoded',
+                'Authorization: Bearer trDd99BRgxyhRK8TFPvWPRJtrkOCFchRZMk40etjz2YPO0NEaYXosTyJvKK7UxxTl3zGEvPe0Vjef1F2lWlfoIy4vDmS7yak46ZRnaKcNNoTpH6TXu4mTSXx2Bi8IZTGo7JkvmMdUGn0iDsIPSRnAMi0uLDkrH9gF2IgzOiXWrTrGVlG2MVlPPrNFiLJ2Cuniuqe8dt8JId6Egog95GwxkLE8uedKHOnsSqunFEmaY20f8BfNt7azaB47cAjM4JgKtPCQBOYtTBEbni4UFLi2rHEuvYVG7GreppaDzYbJGTjvW9oJtpSKQ8GeXNbA39AfLYa6cGTui8ZL4EdAX48h13Run9Fcq7nFNjfBOkLppJrdXCWfWXHBSvY1BJHWKmKo7vrflHCxeisbZb4BcCJaUNntRiYHaDL2487uuwSOTJWZ9ORsXkAtoihhYnRcQojkvZgJoEkkphJxwf4DAK5jZE61EBRdShjuTUcRcLyAS8tHKMmJEHtC3ipM5WQkNmE',
+            ],
             'content' => $post_data,
             'ignore_errors' => true,
         ],
@@ -2051,7 +2206,11 @@ function create_newsletter_recipient(string $email, string $firstname, string $l
 
     $context = stream_context_create($options);
 
-    $result = file_get_contents('https://api.gbk-rae.de/newsletter/rapidmail/', false, $context);
+    $result = file_get_contents(
+        'https://api.gbk-rae.de/newsletter/rapidmail/',
+        false,
+        $context
+    );
 
     $json_result = json_decode($result, true);
 
