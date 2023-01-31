@@ -10,6 +10,8 @@
     transition-property: background-color, border-color, color;
     padding: 15px 44px;
     text-align: center;
+    white-space: normal;
+    hyphens: manual !important;
 
     // neutral button = default button
     background-color: #3d4451;
@@ -17,6 +19,10 @@
 
     &:hover {
         background-color: #2a2e37;
+    }
+
+    &-xl {
+        width: 400px;
     }
 
     &-lg {
@@ -119,6 +125,27 @@
         &:disabled {
             background-color: $clr-secondary-disabled;
         }
+    }
+
+    // Neutral
+    &-neutral {
+        background-color: $neutral-2-color;
+        color: $clr-text-white;
+
+        &:hover {
+            background-color: $neutral-2-color;
+            color: $clr-text-white;
+            border-color: $neutral-2-color !important;
+        }
+
+        // &:active {
+        //     background-color: $clr-neutral-active;
+        //     border-color: $clr-neutral-active-stroke;
+        // }
+
+        // &:disabled {
+        //     background-color: $clr-neutral-disabled;
+        // }
     }
 
     // Outline
