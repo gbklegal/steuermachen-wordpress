@@ -1,10 +1,14 @@
+<?php $_is_post_modified = get_the_modified_date('U') !== get_the_time('U'); ?>
 <div class="post-wrapper single-post">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <header id="hero" class="post-header">
             <?php the_title('<h1 class="post-title">', '</h1>'); ?>
             <?php if (get_theme_mod('single_meta', 1)): ?>
             <div class="post-meta">
-                <p class="uppercase posted-on">Veröffentlicht am <?php echo get_the_date(); ?> von <?php echo get_the_author(); ?></p>
+                <p class="uppercase posted-on">Veröffentlicht am <?php the_date(); ?> von <?php echo get_the_author(); ?></p>
+                <?php if ($_is_post_modified): ?>
+                <p class="uppercase updated-on text-grey">Aktualisiert am <?php the_modified_date(); ?></p>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
             <?php if (!is_frame_mode()): ?>
