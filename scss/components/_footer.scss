@@ -209,3 +209,12 @@ footer#footer {
         }
     }
 }
+
+@media (max-width: 520px) {
+    footer#footer {
+        .footer-top {
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}
