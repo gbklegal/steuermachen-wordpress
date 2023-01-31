@@ -8,7 +8,7 @@
     // wp contact form 7 form
     .wpcf7 {
         background-color: $clr-bg-turquoise;
-        box-shadow: 0 4px 4px rgba($clr-bg-black, .25);
+        box-shadow: 0 4px 4px rgba($clr-bg-black, 0.25);
         border-radius: $br-5;
         padding: 50px;
         // width: 650px; // demo only
@@ -26,7 +26,7 @@
             display: inline-block;
 
             // not working
-            &:not([data-size="invisible"]) {
+            &:not([data-size='invisible']) {
                 margin-bottom: $gap !important;
             }
         }
@@ -34,16 +34,16 @@
         .field-wrapper {
             margin-bottom: 0;
 
-            label {
-                background-color: $clr-bg-turquoise;
-            }
+            // label {
+            //     background-color: $clr-bg-turquoise;
+            // }
 
             .field {
                 width: 100%;
 
-                &:focus ~ label {
-                    background-color: $clr-bg-turquoise;
-                }
+                // &:focus ~ label {
+                //     background-color: $clr-bg-turquoise;
+                // }
             }
 
             textarea {
@@ -54,7 +54,7 @@
         .grid-wrapper {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-areas: 
+            grid-template-areas:
                 'firstname surname'
                 'email phone';
             gap: $gap;
@@ -68,20 +68,18 @@
     }
 }
 
-
 @media (max-width: $breakpoint-lg) {
     .contact-wrapper {
         grid-template-columns: 1fr;
     }
 }
 
-
 @media (max-width: $breakpoint-md) {
     .contact-wrapper {
         .wpcf7 {
             .grid-wrapper {
                 grid-template-columns: 1fr;
-                grid-template-areas: 
+                grid-template-areas:
                     'firstname'
                     'surname'
                     'email'
@@ -90,7 +88,6 @@
         }
     }
 }
-
 
 @media (max-width: $breakpoint-sm) {
     .contact-wrapper {
@@ -103,7 +100,6 @@
         }
     }
 }
-
 
 .contact-faq {
     display: flex;

@@ -1,3 +1,8 @@
-#order-form {
-    padding-inline: 50px;
+@media (max-width: $breakpoint-sm) {
+    #order-form {
+        padding: {
+            left: 20px !important;
+            right: 20px !important;
+        }
+    }
 }

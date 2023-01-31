@@ -51,6 +51,19 @@ header#header {
             }
         }
 
+        .menu-top-container {
+            a {
+                display: inline-block;
+                position: relative;
+                color: $clr-text-black;
+                font-size: 16px;
+
+                &:hover {
+                    color: $clr-secondary;
+                }
+            }
+        }
+
         .header-content {
             display: flex;
             flex-direction: row;
@@ -62,7 +75,7 @@ header#header {
                 height: 42px;
             }
 
-            .menu-top-container-wrapper {
+            .menu-top-container {
                 display: flex;
                 align-items: center;
                 margin-left: 3rem;
@@ -75,7 +88,7 @@ header#header {
                     a {
                         display: block;
                         position: relative;
-                        color: $clr-text-black;
+                        color: $clr-text-black !important;
                         font-size: 16px;
 
                         &:hover {

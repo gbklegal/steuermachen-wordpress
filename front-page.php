@@ -135,7 +135,7 @@ get_header();
                     <p class="mt-4 mb-8">Mit steuermachen erhältst du schnell und sicher deine maximale Steuererstattung. Wir sind keine Steuersoftware, deine Steuererklärung wird von einem echten Steuerexperten für dich angefertigt.</p>
                     <a href="/jetzt-bauftragen/" class="btn">Jetzt Steuern sparen</a>
                 </div>
-                <div class="table">
+                <div class="table edge-stm">
                     <div class="cell header">&nbsp;</div>
                     <div class="cell header"><span>ELSTER</span></div>
                     <div class="cell header"><span>Steuersoftware</span></div>
@@ -167,6 +167,51 @@ get_header();
                     <div class="cell"><span class="material-icons text-primary">done</span></div>
                 </div>
             </section>
+
+            <!-- <section id="vergleichstabelle" class="section section-mb">
+                <div>
+                    <h2>Wieso für steuermachen zahlen, statt ELSTER kostenfrei nutzen?</h2>
+                    <p class="mt-4 mb-8">Mit steuermachen erhältst du schnell und sicher deine maximale Steuererstattung. Wir sind keine Steuersoftware, deine Steuererklärung wird von einem echten Steuerexperten für dich angefertigt.</p>
+                    <a href="/jetzt-bauftragen/" class="btn">Jetzt Steuern sparen</a>
+                </div>
+                <div class="table">
+                    <div class="col">
+                        <div class="cell header">&nbsp;</div>
+                        <div class="cell label">ELSTER-Schnittstelle</div>
+                        <div class="cell label">Keine langwierige Registrierung</div>
+                        <div class="cell label">Keine Vorkenntnisse erforderlich</div>
+                        <div class="cell label">Persönliche Beratung und Betreuung durch echte Experten</div>
+                        <div class="cell label">Du musst nur die Unterlagen einreichen, der Rest wird für dich erledigt</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="cell header"><span>ELSTER</span></div>
+                        <div class="cell"><span class="material-icons text-primary">done</span></div>
+                        <div class="cell not">-</div>
+                        <div class="cell not">-</div>
+                        <div class="cell not">-</div>
+                        <div class="cell not">-</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="cell header"><span>Steuersoftware</span></div>
+                        <div class="cell"><span class="material-icons text-primary">done</span></div>
+                        <div class="cell"><span class="material-icons text-primary">done</span></div>
+                        <div class="cell not">-</div>
+                        <div class="cell not">-</div>
+                        <div class="cell not">-</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="cell header"><span>steuermachen</span></div>
+                        <div class="cell"><span class="material-icons text-primary">done</span></div>
+                        <div class="cell"><span class="material-icons text-primary">done</span></div>
+                        <div class="cell"><span class="material-icons text-primary">done</span></div>
+                        <div class="cell"><span class="material-icons text-primary">done</span></div>
+                        <div class="cell"><span class="material-icons text-primary">done</span></div>
+                    </div>
+                </div>
+            </section> -->
 
             <!-- <section id="steuerratgeber" class="section section-mb">
                 <h2 class="text-center">Steuerratgeber</h2>
@@ -240,9 +285,9 @@ get_header();
                 <div class="app-mockup">
                     <?php the_attachment(32579); ?>
                 </div>
-                <div class="text-center app-text">
+                <div class="app-text">
                     <p class="font-normal h3">Noch leichter geht's mit der steuermachen App.</p>
-                    <p class="font-normal h3">Sammle und übertrage deine Belege digital.</p>
+                    <p>Sammle und übertrage deine Belege digital.</p>
                     <div class="store-badges">
                         <a href="/app/ios">
                             <?php echo stm_get_image_tag(32577, 'App Store', 'steuermachen - App Store', 'left', [200]); ?>
@@ -255,7 +300,7 @@ get_header();
             </section>
 
             <section id="entwickelt-fuer" class="section section-mb">
-                <div class="flex flex-row gap-16 p-24 justify-content-space-between align-items-center box bg-accent br-6 box-shadow">
+                <div class="flex flex-row gap-16 p-24 justify-content-space-between align-items-center box bg-accent">
                     <div>
                         <p class="uppercase">steuermachen für Alle</p>
                         <ul>
@@ -273,7 +318,7 @@ get_header();
                     </div>
                     <div>
                         <!-- <img src="https://via.placeholder.com/720x720.png?text=Platzhalter" alt="Platzhalter" style="width:320px"> -->
-                        <img class="br-5" src="<?= wp_get_attachment_image_url(34145, 'full') ?>" alt="">
+                        <img src="<?= wp_get_attachment_image_url(34145, 'full') ?>" alt="">
                         <!-- https://unsplash.com/photos/tvbxqXI5mmo -->
                     </div>
                 </div>

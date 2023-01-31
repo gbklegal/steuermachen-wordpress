@@ -132,11 +132,16 @@ p {
 body.blog .posts-wrapper,
 body.single article,
 body.page-id-28564 .content-wrapper section,
-body.parent-pageid-28564 .post-wrapper,
+body.parent-pageid-28564 .post-wrapper .post-content,
 .hyphens-auto {
-    hyphens: auto;
+    // hyphens: auto;
     // overflow-wrap: hyphenate-word;
     // hyphens: overflow;
+
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-break: break-word;
 }
 
 header#header {

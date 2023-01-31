@@ -17,6 +17,7 @@ body.christmas #page {
 //     }
 // }
 
+.frame-mode,
 .frame-mode.page-template-template-landing-page-grundsteuer,
 .frame-mode.page-template-template-landing-page-safetax,
 .frame-mode.page-template-template-landing-page-steuereasy,
@@ -43,6 +44,7 @@ body.christmas #page {
     }
 }
 
+.frame-mode,
 .page-template-template-landing-page-grundsteuer,
 .page-template-template-landing-page-safetax,
 .page-template-template-landing-page-steuereasy,
@@ -63,6 +65,17 @@ body.christmas #page {
                     top: -55px;
                     left: -55px;
                     content: url('./img/christmas-bells.png');
+                }
+            }
+        }
+    }
+
+    .accordion-wrapper {
+        .accordion-inner {
+            .accordion {
+                h3 {
+                    font-size: 24px;
+                    margin: 1em 0;
                 }
             }
         }

@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+// load the following two script files if the page id is from the /suche/ page
+if (get_the_ID() === 32698) {
+    wp_enqueue_script('inview-script', get_stylesheet_directory_uri() . '/js/inview.js');
+    wp_enqueue_script('livesearch-script', get_stylesheet_directory_uri() . '/js/livesearch.js');
+}
+get_header();
+?>
 
 <main class="main-content">
 

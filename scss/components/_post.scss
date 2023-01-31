@@ -1,4 +1,13 @@
 .post-wrapper.single-post {
+    &.steuerlexikon-post {
+        // border: 2px solid blue;
+
+        .post-sidebar {
+            background-color: $background-color;
+            padding: 1rem;
+        }
+    }
+
     .posted-on {
         font-size: 24px;
     }
@@ -242,6 +251,14 @@ body.frame-mode .post-wrapper.single-post {
 
 @media (min-width: $breakpoint-lg) {
     .post-wrapper {
+        &.steuerlexikon-post {
+            .post-content-wrapper {
+                .post-sidebar {
+                    max-width: 290px;
+                }
+            }
+        }
+
         .post-content-wrapper {
             .post-sidebar {
                 max-width: 375px;

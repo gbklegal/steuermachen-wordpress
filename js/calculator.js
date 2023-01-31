@@ -42,7 +42,7 @@ class PriceCalculator {
 
         if (bje <= 16000) {
             price = 99;
-        } else if (bje <= 25000) {
+        } else if (bje <= 37000) {
             price = 189;
         } else if (bje <= 50000) {
             price = 199;

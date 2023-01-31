@@ -1,10 +1,7 @@
 <?php if (false === is_frame_mode()): ?>
     <footer id="footer" class="mx-auto max-width">
         <div class="footer-top">
-            <?php
-    # echo get_image_tag(31979, 'steuermachen', 'steuermachen', 'left', [0, 25]);
-    ?>
-            <?php echo stm_get_image_tag(get_theme_mod('custom_logo'), 'steuermachen', 'steuermachen', 'left', [0, 42], 'custom-logo', wp_get_attachment_url(get_custom_retina_logo()) . ' 2x'); ?>
+            <?php echo get_image_tag(31979, 'steuermachen', 'steuermachen', 'left', [0, 25]); ?>
             <div class="social">
                 <!-- <a href="#"><i class="icon-instagram"></i></a>
                 <a href="#"><i class="icon-facebook"></i></a> -->
@@ -56,7 +53,7 @@
                 <?php get_nav_menu('footer_2'); ?>
             </div>
             <div class="footer-nav">
-                <h3>Kooperation | Wir helfen Ihnen</h3>
+                <h3>Kooperation</h3>
                 <?php get_nav_menu('footer_3'); ?>
             </div>
             <div class="trusted-shops-logo-wrapper">
@@ -65,11 +62,24 @@
         </div>
         <div class="footer-text" id="copyright">
             <p>Copyright &copy; steuermachen (GDF). Sämtliche Inhalte, Fotos, Texte und Graphiken sind urheberrechtlich geschützt. Sie dürfen ohne vorherige schriftliche Zustimmung oder Genehmigung der GDF weder ganz noch auszugsweise kopiert, verändert, vervielfältigt oder veröffentlicht werden.</p>
-            <p>&ldquo;TaxGreen – Papierlos glücklich&rdquo; ist die Kampagne von steuermachen, die den Plan und die Maßnahmen von steuermachen.de zum Schutz dieser Erde und Umwelt umfasst.</p>
+            <p>&ldquo;TaxGreen – Papierlos glücklich&rdquo; ist die Kampagne von steuermachen, die den Plan und die Maßnahmen von steuermachen zum Schutz dieser Erde und Umwelt umfasst.</p>
         </div>
-        <p><small>* Preise inkl. 19% Mwst. *** Preise netto zzgl. der gesetzlichen Mehrwertsteuer von 19%.<br>
-        ** Wichtiger Hinweis zum Bruttojahreseinkommen: Die Bemessungsgrundlage setzt sich zusammen aus: - dem auf der Lohnsteuerkarte des betreffenden Steuerjahres eingetragenen Bruttoarbeitslohn - dem jährlichen Gesamtbetrag der Renten, Versorgungsbezüge, Lohnersatzleistungen und Unterhaltsleistungen - den Einnahmen aus Vermietung und Verpachtung, sowie den Einnahmen aus Kapitalvermögen. Im Falle von zusammenveranlagten Ehegatten werden die zuvor genannten Bemessungsgrundlagen und Einnahmen zusammengerechnet.</small></p>
+        <p><small>*** Preise netto zzgl. der gesetzlichen Mehrwertsteuer von 19%.</small></p>
     </footer>
+
+    <!-- <div id="search-overlay" data-search>
+        <section class="search-form-wrapper section-mb">
+            <form action="/" method="get" name="search_form">
+                <div class="field-wrapper"><input type="search" name="s" class="field field-search" placeholder=" " required="" autocomplete="off"><span class="field-icon" onclick="search_form.submit()"></span><label>Suchbegriff</label></div>
+            </form>
+            <div class="search-results-status"></div>
+            <div class="search-results"></div>
+            <div class="hidden search-results-loader">
+                <i class="icon-loader u-spin"></i>
+            </div>
+            <div class="search-results-load-more" data-active="false"></div>
+        </section>
+    </div> -->
 
 <?php endif; ?>
 

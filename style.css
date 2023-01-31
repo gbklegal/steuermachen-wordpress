@@ -8,10 +8,58 @@
     Author: Tobias Röder
     Author URI: https://tobias-roeder.de/
     Description: Benutzerdefiniertes steuermachen Themes.
-    Version: 1.5.1
+    Version: 1.5.4
 */
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Open+Sans:wght@400;500&display=swap");
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/wp-content/themes/steuermachen/fonts/material-icons.woff2") format("woff2");
+}
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: "liga";
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/wp-content/themes/steuermachen/fontsInter-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/wp-content/themes/steuermachen/fontsInter-Bold.ttf");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/wp-content/themes/steuermachen/fontsOpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/wp-content/themes/steuermachen/fontsOpenSans-Medium.ttf");
+}
 @font-face {
   font-family: "STM-Icons";
   src: url("fonts/STM-Icons.ttf?2yh9d6") format("truetype"), url("fonts/STM-Icons.woff?2yh9d6") format("woff"), url("fonts/STM-Icons.svg?2yh9d6#STM-Icons") format("svg");
@@ -358,12 +406,12 @@
 }
 
 html {
-  scroll-padding-top: 163px;
+  scroll-padding-top: 160px;
 }
 
 @media (max-width: 1240px) {
   html {
-    scroll-padding-top: 118px;
+    scroll-padding-top: 126px;
   }
 }
 body {
@@ -505,9 +553,12 @@ p {
 body.blog .posts-wrapper,
 body.single article,
 body.page-id-28564 .content-wrapper section,
-body.parent-pageid-28564 .post-wrapper,
+body.parent-pageid-28564 .post-wrapper .post-content,
 .hyphens-auto {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
+  word-break: break-word;
 }
 
 header#header {
@@ -529,7 +580,7 @@ footer#footer,
 
 @media (max-width: 640px) {
   header#header,
-footer#footer {
+  footer#footer {
     padding: 20px !important;
   }
   .main-content {
@@ -821,6 +872,13 @@ code {
   max-width: 100%;
 }
 
+.w-full {
+  width: 100%;
+}
+.w-full\! {
+  width: 100% !important;
+}
+
 .max-w-full {
   max-width: 100%;
 }
@@ -1011,11 +1069,11 @@ code {
 }
 
 .text-neutral {
-  color: #17181b !important;
+  color: #252b42 !important;
 }
 
 .bg-neutral {
-  background-color: #17181b !important;
+  background-color: #252b42 !important;
 }
 
 .text-transparent {
@@ -1880,11 +1938,16 @@ code {
   transition-property: background-color, border-color, color;
   padding: 15px 44px;
   text-align: center;
+  white-space: normal;
+  hyphens: manual !important;
   background-color: #3d4451;
   color: #ffffff;
 }
 .btn:hover {
   background-color: #2a2e37;
+}
+.btn-xl {
+  width: 400px;
 }
 .btn-lg {
   width: 365px;
@@ -1928,6 +1991,15 @@ code {
 }
 .btn-secondary:disabled {
   background-color: #ffcabc;
+}
+.btn-neutral {
+  background-color: #252b42;
+  color: #ffffff;
+}
+.btn-neutral:hover {
+  background-color: #252b42;
+  color: #ffffff;
+  border-color: #252b42 !important;
 }
 .btn-outline {
   background-color: inherit;
@@ -2071,14 +2143,8 @@ a.btn {
 .contact-wrapper .wpcf7 .field-wrapper {
   margin-bottom: 0;
 }
-.contact-wrapper .wpcf7 .field-wrapper label {
-  background-color: #daf5ee;
-}
 .contact-wrapper .wpcf7 .field-wrapper .field {
   width: 100%;
-}
-.contact-wrapper .wpcf7 .field-wrapper .field:focus ~ label {
-  background-color: #daf5ee;
 }
 .contact-wrapper .wpcf7 .field-wrapper textarea {
   resize: none;
@@ -2226,20 +2292,20 @@ details summary {
 
 @media (max-width: 768px) {
   .steuerlexikon #hero,
-.dictionary #hero {
+  .dictionary #hero {
     display: block;
   }
   .steuerlexikon .alphabet,
-.dictionary .alphabet {
+  .dictionary .alphabet {
     flex-wrap: wrap;
     justify-content: flex-start;
   }
   .steuerlexikon .alphabet li,
-.dictionary .alphabet li {
+  .dictionary .alphabet li {
     width: 54px;
   }
   .steuerlexikon section .section-inner ul,
-.dictionary section .section-inner ul {
+  .dictionary section .section-inner ul {
     grid-template-columns: 100fr;
   }
 }
@@ -2404,19 +2470,19 @@ details summary {
   color: #e6e6e6;
 }
 .field:focus {
-  border-color: #ff6138;
+  border-color: #8a8c8e;
 }
-.field:focus ~ label, .field:focus + .field-icon {
-  color: #ff6138 !important;
+.field:focus + .field-icon {
+  color: #8a8c8e !important;
 }
 .field:invalid:not(:placeholder-shown) {
-  border-color: #ffe7b9;
+  border-color: #d5770b;
 }
 .field:invalid:not(:placeholder-shown) ~ label, .field:invalid:not(:placeholder-shown) + .field-icon {
-  color: #ffe7b9 !important;
+  color: #d5770b !important;
 }
 .field:invalid:not(:placeholder-shown) + .field-icon::before {
-  content: "\e934";
+  content: "\e901";
 }
 .field:invalid:not(:placeholder-shown) ~ .helper-text::before {
   content: attr(data-warning);
@@ -2428,7 +2494,7 @@ details summary {
   color: #ff3b3b;
 }
 .field-error + .field-icon::before {
-  content: "\e910";
+  content: "\e900";
 }
 .field-error ~ .helper-text::before {
   content: attr(data-error);
@@ -2437,14 +2503,14 @@ details summary {
   border-color: #737373;
 }
 .field-done + .field-icon::before {
-  content: "\e904";
+  content: "\e90e";
   color: #37ce00;
 }
 .field-select {
   cursor: pointer;
 }
 .field-select + .field-icon::before {
-  content: "\e906";
+  content: "\e911";
 }
 .field-search + .field-icon::before {
   content: "\e93b";
@@ -2487,10 +2553,9 @@ details summary {
 .field-wrapper textarea:focus ~ label,
 .field-wrapper textarea:valid:not(:placeholder-shown) ~ label,
 .field-wrapper textarea:invalid:not(:placeholder-shown) ~ label {
-  top: -12px;
+  top: -20px;
   font-size: 12px;
   color: currentColor;
-  background-color: #ffffff;
 }
 .field-wrapper .helper-text {
   left: 17px;
@@ -2498,7 +2563,7 @@ details summary {
   color: #737373;
 }
 .field-wrapper .helper-text::before {
-  font-size: 16px;
+  font-size: inherit;
 }
 
 .wpcf7 .field::placeholder {
@@ -2689,6 +2754,12 @@ footer#footer .footer-text {
     text-align: left;
   }
 }
+@media (max-width: 520px) {
+  footer#footer .footer-top {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 body.home {
   background-color: #fafafa;
 }
@@ -2830,10 +2901,20 @@ main.main-content.front-page #vergleichstabelle p.subheading {
   padding-bottom: 32px;
 }
 main.main-content.front-page #vergleichstabelle .table {
+  position: relative;
   display: inline-grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background-color: #c4c4c4;
+}
+main.main-content.front-page #vergleichstabelle .table.edge-stm::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  display: block;
+  border: 2px solid #17181b;
+  width: calc(25% + 1px);
+  height: 100%;
 }
 main.main-content.front-page #vergleichstabelle .table .cell {
   padding: 10px 12px;
@@ -2858,6 +2939,9 @@ main.main-content.front-page #vergleichstabelle .table .cell i.icon-check {
   color: #37ce00;
   font-size: 1.5rem;
 }
+main.main-content.front-page #entwickelt-fuer > div {
+  border-radius: 24px;
+}
 main.main-content.front-page #entwickelt-fuer p:nth-child(1) {
   letter-spacing: 0.2em;
 }
@@ -2871,6 +2955,9 @@ main.main-content.front-page #entwickelt-fuer ul li {
   font-size: 2.5rem;
   font-weight: bold;
   line-height: 1.2;
+}
+main.main-content.front-page #entwickelt-fuer img {
+  border-radius: 24px;
 }
 main.main-content.front-page #bewertungen h2 {
   margin-bottom: 40px;
@@ -2980,14 +3067,11 @@ main.main-content.front-page #bewertungen .rating-boxes .rating-box .rating-wrap
 }
 @media (max-width: 768px) {
   main.main-content.front-page #hero.hero-wrapper .hero-text {
-    margin: 20px;
     display: flex;
     flex-flow: column wrap;
-    align-items: center;
   }
   main.main-content.front-page #hero.hero-wrapper .hero-text h1 {
     font-size: 30px;
-    text-align: center;
   }
   main.main-content.front-page #app {
     grid-template-columns: 1fr;
@@ -3081,11 +3165,10 @@ main.main-content.front-page #bewertungen .rating-boxes .rating-box .rating-wrap
     font-size: 16px;
   }
   main.main-content.front-page #vergleichstabelle .table {
-    overflow: auto;
-    width: 100%;
+    hyphens: auto;
   }
   main.main-content.front-page #vergleichstabelle .table .cell {
-    min-width: 140px;
+    min-width: 25%;
   }
 }
 body:not(.no-gradient)::before {
@@ -3123,6 +3206,15 @@ header#header .header-inner .header-part {
 header#header .header-inner .header-part .btn {
   font-size: inherit;
 }
+header#header .header-inner .menu-top-container a {
+  display: inline-block;
+  position: relative;
+  color: #333;
+  font-size: 16px;
+}
+header#header .header-inner .menu-top-container a:hover {
+  color: #ff6138;
+}
 header#header .header-inner .header-content {
   display: flex;
   flex-direction: row;
@@ -3133,42 +3225,42 @@ header#header .header-inner .header-content {
 header#header .header-inner .header-content .custom-logo {
   height: 42px;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper {
+header#header .header-inner .header-content .menu-top-container {
   display: flex;
   align-items: center;
   margin-left: 3rem;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper .menu {
+header#header .header-inner .header-content .menu-top-container .menu {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper .menu a {
+header#header .header-inner .header-content .menu-top-container .menu a {
   display: block;
   position: relative;
-  color: #333;
+  color: #333 !important;
   font-size: 16px;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper .menu a:hover {
+header#header .header-inner .header-content .menu-top-container .menu a:hover {
   color: #ff6138;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper .menu,
-header#header .header-inner .header-content .menu-top-container-wrapper .menu ul {
+header#header .header-inner .header-content .menu-top-container .menu,
+header#header .header-inner .header-content .menu-top-container .menu ul {
   min-width: 12em;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper .menu li,
-header#header .header-inner .header-content .menu-top-container-wrapper .menu ul li {
+header#header .header-inner .header-content .menu-top-container .menu li,
+header#header .header-inner .header-content .menu-top-container .menu ul li {
   white-space: nowrap;
   list-style-type: none;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper .menu .menu-item {
+header#header .header-inner .header-content .menu-top-container .menu .menu-item {
   padding: 10px 15px;
   position: relative;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper .menu .menu-item.menu-item-has-children:hover .sub-menu {
+header#header .header-inner .header-content .menu-top-container .menu .menu-item.menu-item-has-children:hover .sub-menu {
   display: block;
 }
-header#header .header-inner .header-content .menu-top-container-wrapper .menu .menu-item .sub-menu {
+header#header .header-inner .header-content .menu-top-container .menu .menu-item .sub-menu {
   display: none;
   position: absolute;
   top: 100%;
@@ -3204,7 +3296,7 @@ header#header .header-inner .header-content .menu-top-container-wrapper .menu .m
     font-size: 42px;
   }
   header#header .header-inner .header-mobile [data-show-menu],
-header#header .header-inner .header-mobile [data-hide-menu] {
+  header#header .header-inner .header-mobile [data-hide-menu] {
     cursor: pointer;
   }
   header#header .header-inner .header-mobile .header-mobile-overlay {
@@ -8632,6 +8724,7 @@ body.christmas #page {
   background-repeat: repeat-x;
 }
 
+.frame-mode footer,
 .frame-mode.page-template-template-landing-page-grundsteuer footer,
 .frame-mode.page-template-template-landing-page-safetax footer,
 .frame-mode.page-template-template-landing-page-steuereasy footer,
@@ -8640,6 +8733,7 @@ body.christmas #page {
   padding: 40px;
   font-size: 12px;
 }
+.frame-mode footer .custom-logo,
 .frame-mode.page-template-template-landing-page-grundsteuer footer .custom-logo,
 .frame-mode.page-template-template-landing-page-safetax footer .custom-logo,
 .frame-mode.page-template-template-landing-page-steuereasy footer .custom-logo,
@@ -8647,6 +8741,7 @@ body.christmas #page {
 .frame-mode.page-template-template-landing-page-einkommensteuer footer .custom-logo {
   padding-bottom: 20px;
 }
+.frame-mode footer ul,
 .frame-mode.page-template-template-landing-page-grundsteuer footer ul,
 .frame-mode.page-template-template-landing-page-safetax footer ul,
 .frame-mode.page-template-template-landing-page-steuereasy footer ul,
@@ -8657,6 +8752,7 @@ body.christmas #page {
   display: flex;
   flex-direction: row;
 }
+.frame-mode footer ul li:not(:last-child),
 .frame-mode.page-template-template-landing-page-grundsteuer footer ul li:not(:last-child),
 .frame-mode.page-template-template-landing-page-safetax footer ul li:not(:last-child),
 .frame-mode.page-template-template-landing-page-steuereasy footer ul li:not(:last-child),
@@ -8665,6 +8761,7 @@ body.christmas #page {
   padding-right: 10px;
 }
 
+.frame-mode .custom-logo,
 .page-template-template-landing-page-grundsteuer .custom-logo,
 .page-template-template-landing-page-safetax .custom-logo,
 .page-template-template-landing-page-steuereasy .custom-logo,
@@ -8672,6 +8769,7 @@ body.christmas #page {
 .page-template-template-landing-page-einkommensteuer .custom-logo {
   max-height: 90px;
 }
+.frame-mode.christmas .landing-page .countdown-wrapper,
 .page-template-template-landing-page-grundsteuer.christmas .landing-page .countdown-wrapper,
 .page-template-template-landing-page-safetax.christmas .landing-page .countdown-wrapper,
 .page-template-template-landing-page-steuereasy.christmas .landing-page .countdown-wrapper,
@@ -8679,6 +8777,7 @@ body.christmas #page {
 .page-template-template-landing-page-einkommensteuer.christmas .landing-page .countdown-wrapper {
   position: relative;
 }
+.frame-mode.christmas .landing-page .countdown-wrapper::before,
 .page-template-template-landing-page-grundsteuer.christmas .landing-page .countdown-wrapper::before,
 .page-template-template-landing-page-safetax.christmas .landing-page .countdown-wrapper::before,
 .page-template-template-landing-page-steuereasy.christmas .landing-page .countdown-wrapper::before,
@@ -8689,6 +8788,25 @@ body.christmas #page {
   left: -55px;
   content: url("./img/christmas-bells.png");
 }
+.frame-mode .accordion-wrapper .accordion-inner .accordion h3,
+.page-template-template-landing-page-grundsteuer .accordion-wrapper .accordion-inner .accordion h3,
+.page-template-template-landing-page-safetax .accordion-wrapper .accordion-inner .accordion h3,
+.page-template-template-landing-page-steuereasy .accordion-wrapper .accordion-inner .accordion h3,
+.page-template-template-landing-page-steuererklaerung .accordion-wrapper .accordion-inner .accordion h3,
+.page-template-template-landing-page-einkommensteuer .accordion-wrapper .accordion-inner .accordion h3 {
+  font-size: 24px;
+  margin: 1em 0;
+}
+.frame-mode .landing-page .h1,
+.frame-mode .landing-page h1,
+.frame-mode .landing-page .h2,
+.frame-mode .landing-page h2,
+.frame-mode .landing-page .h3,
+.frame-mode .landing-page h3,
+.frame-mode .landing-page .h4,
+.frame-mode .landing-page h4,
+.frame-mode .landing-page .h5,
+.frame-mode .landing-page h5,
 .page-template-template-landing-page-grundsteuer .landing-page .h1,
 .page-template-template-landing-page-grundsteuer .landing-page h1,
 .page-template-template-landing-page-grundsteuer .landing-page .h2,
@@ -8745,6 +8863,8 @@ body.christmas #page {
   line-height: 1 !important;
   text-transform: initial;
 }
+.frame-mode .landing-page .h1,
+.frame-mode .landing-page h1,
 .page-template-template-landing-page-grundsteuer .landing-page .h1,
 .page-template-template-landing-page-grundsteuer .landing-page h1,
 .page-template-template-landing-page-safetax .landing-page .h1,
@@ -8757,6 +8877,8 @@ body.christmas #page {
 .page-template-template-landing-page-einkommensteuer .landing-page h1 {
   font-size: 56px;
 }
+.frame-mode .landing-page .h2,
+.frame-mode .landing-page h2,
 .page-template-template-landing-page-grundsteuer .landing-page .h2,
 .page-template-template-landing-page-grundsteuer .landing-page h2,
 .page-template-template-landing-page-safetax .landing-page .h2,
@@ -8769,6 +8891,8 @@ body.christmas #page {
 .page-template-template-landing-page-einkommensteuer .landing-page h2 {
   font-size: 40px;
 }
+.frame-mode .landing-page .h3,
+.frame-mode .landing-page h3,
 .page-template-template-landing-page-grundsteuer .landing-page .h3,
 .page-template-template-landing-page-grundsteuer .landing-page h3,
 .page-template-template-landing-page-safetax .landing-page .h3,
@@ -8782,6 +8906,8 @@ body.christmas #page {
   font-size: 36px;
   font-weight: 600;
 }
+.frame-mode .landing-page .h4,
+.frame-mode .landing-page h4,
 .page-template-template-landing-page-grundsteuer .landing-page .h4,
 .page-template-template-landing-page-grundsteuer .landing-page h4,
 .page-template-template-landing-page-safetax .landing-page .h4,
@@ -8795,6 +8921,8 @@ body.christmas #page {
   font-size: 24px;
   letter-spacing: 0.1em;
 }
+.frame-mode .landing-page .h5,
+.frame-mode .landing-page h5,
 .page-template-template-landing-page-grundsteuer .landing-page .h5,
 .page-template-template-landing-page-grundsteuer .landing-page h5,
 .page-template-template-landing-page-safetax .landing-page .h5,
@@ -8808,6 +8936,7 @@ body.christmas #page {
   font-size: 20px;
   font-weight: 600;
 }
+.frame-mode .landing-page header#hero,
 .page-template-template-landing-page-grundsteuer .landing-page header#hero,
 .page-template-template-landing-page-safetax .landing-page header#hero,
 .page-template-template-landing-page-steuereasy .landing-page header#hero,
@@ -8816,6 +8945,7 @@ body.christmas #page {
   padding: 0 70px 40px;
   margin-bottom: -40px;
 }
+.frame-mode .landing-page header#hero .hero-inner,
 .page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner,
 .page-template-template-landing-page-safetax .landing-page header#hero .hero-inner,
 .page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner,
@@ -8826,6 +8956,7 @@ body.christmas #page {
   flex-wrap: nowrap;
   align-items: center;
 }
+.frame-mode .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
 .page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
 .page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
 .page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots,
@@ -8834,7 +8965,9 @@ body.christmas #page {
   position: relative;
   display: inline-block;
 }
-.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before, .page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.frame-mode .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before, .frame-mode .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
+.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
+.page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
 .page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
 .page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
 .page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
@@ -8853,6 +8986,7 @@ body.christmas #page {
   aspect-ratio: 1/1;
   border-radius: 99rem;
 }
+.frame-mode .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
 .page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
 .page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
 .page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before,
@@ -8860,6 +8994,7 @@ body.christmas #page {
 .page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::before {
   inset: 0 0 auto auto;
 }
+.frame-mode .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
 .page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
 .page-template-template-landing-page-safetax .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
 .page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after,
@@ -8867,6 +9002,7 @@ body.christmas #page {
 .page-template-template-landing-page-einkommensteuer .landing-page header#hero .hero-inner .hero-image-wrapper.dots::after {
   inset: auto auto 0 0;
 }
+.frame-mode .landing-page header#hero .hero-inner img,
 .page-template-template-landing-page-grundsteuer .landing-page header#hero .hero-inner img,
 .page-template-template-landing-page-safetax .landing-page header#hero .hero-inner img,
 .page-template-template-landing-page-steuereasy .landing-page header#hero .hero-inner img,
@@ -8875,6 +9011,7 @@ body.christmas #page {
   width: 400px;
   display: block;
 }
+.frame-mode .landing-page section,
 .page-template-template-landing-page-grundsteuer .landing-page section,
 .page-template-template-landing-page-safetax .landing-page section,
 .page-template-template-landing-page-steuereasy .landing-page section,
@@ -8882,6 +9019,7 @@ body.christmas #page {
 .page-template-template-landing-page-einkommensteuer .landing-page section {
   margin-bottom: 75px;
 }
+.frame-mode .landing-page section.section-price #calculator,
 .page-template-template-landing-page-grundsteuer .landing-page section.section-price #calculator,
 .page-template-template-landing-page-safetax .landing-page section.section-price #calculator,
 .page-template-template-landing-page-steuereasy .landing-page section.section-price #calculator,
@@ -8890,6 +9028,7 @@ body.christmas #page {
   width: 512px;
   max-width: 100%;
 }
+.frame-mode .landing-page section.section-price #calculator #bjeResult,
 .page-template-template-landing-page-grundsteuer .landing-page section.section-price #calculator #bjeResult,
 .page-template-template-landing-page-safetax .landing-page section.section-price #calculator #bjeResult,
 .page-template-template-landing-page-steuereasy .landing-page section.section-price #calculator #bjeResult,
@@ -8897,6 +9036,7 @@ body.christmas #page {
 .page-template-template-landing-page-einkommensteuer .landing-page section.section-price #calculator #bjeResult {
   font-size: 2rem;
 }
+.frame-mode .landing-page section.section-explanation h5,
 .page-template-template-landing-page-grundsteuer .landing-page section.section-explanation h5,
 .page-template-template-landing-page-safetax .landing-page section.section-explanation h5,
 .page-template-template-landing-page-steuereasy .landing-page section.section-explanation h5,
@@ -8907,60 +9047,60 @@ body.christmas #page {
 
 @media (max-width: 1280px) {
   .page-template-landing-page-grundsteuer .max-width,
-.page-template-landing-page-safetax .max-width,
-.page-template-landing-page-steuereasy .max-width,
-.page-template-landing-page-steuererklaerung .max-width,
-.page-template-landing-page-einkommensteuer .max-width {
+  .page-template-landing-page-safetax .max-width,
+  .page-template-landing-page-steuereasy .max-width,
+  .page-template-landing-page-steuererklaerung .max-width,
+  .page-template-landing-page-einkommensteuer .max-width {
     max-width: 100%;
   }
 }
 @media (min-width: 1024px) {
   .page-template-landing-page-grundsteuer .max-width,
-.page-template-landing-page-safetax .max-width,
-.page-template-landing-page-steuereasy .max-width,
-.page-template-landing-page-steuererklaerung .max-width,
-.page-template-landing-page-einkommensteuer .max-width {
+  .page-template-landing-page-safetax .max-width,
+  .page-template-landing-page-steuereasy .max-width,
+  .page-template-landing-page-steuererklaerung .max-width,
+  .page-template-landing-page-einkommensteuer .max-width {
     padding-right: 32px;
     padding-left: 32px;
   }
 }
 @media (max-width: 1024px) {
   .page-template-landing-page-grundsteuer #hero .hero-inner .hero-image-wrapper,
-.page-template-landing-page-safetax #hero .hero-inner .hero-image-wrapper,
-.page-template-landing-page-steuereasy #hero .hero-inner .hero-image-wrapper,
-.page-template-landing-page-steuererklaerung #hero .hero-inner .hero-image-wrapper,
-.page-template-landing-page-einkommensteuer #hero .hero-inner .hero-image-wrapper {
+  .page-template-landing-page-safetax #hero .hero-inner .hero-image-wrapper,
+  .page-template-landing-page-steuereasy #hero .hero-inner .hero-image-wrapper,
+  .page-template-landing-page-steuererklaerung #hero .hero-inner .hero-image-wrapper,
+  .page-template-landing-page-einkommensteuer #hero .hero-inner .hero-image-wrapper {
     display: none !important;
   }
   .page-template-landing-page-grundsteuer .max-width,
-.page-template-landing-page-safetax .max-width,
-.page-template-landing-page-steuereasy .max-width,
-.page-template-landing-page-steuererklaerung .max-width,
-.page-template-landing-page-einkommensteuer .max-width {
+  .page-template-landing-page-safetax .max-width,
+  .page-template-landing-page-steuereasy .max-width,
+  .page-template-landing-page-steuererklaerung .max-width,
+  .page-template-landing-page-einkommensteuer .max-width {
     padding-right: 8px;
     padding-left: 8px;
   }
   .page-template-landing-page-grundsteuer header#hero .hero-inner,
-.page-template-landing-page-safetax header#hero .hero-inner,
-.page-template-landing-page-steuereasy header#hero .hero-inner,
-.page-template-landing-page-steuererklaerung header#hero .hero-inner,
-.page-template-landing-page-einkommensteuer header#hero .hero-inner {
+  .page-template-landing-page-safetax header#hero .hero-inner,
+  .page-template-landing-page-steuereasy header#hero .hero-inner,
+  .page-template-landing-page-steuererklaerung header#hero .hero-inner,
+  .page-template-landing-page-einkommensteuer header#hero .hero-inner {
     flex-direction: column !important;
     padding: 20px !important;
   }
   .page-template-landing-page-grundsteuer header#hero .hero-inner h1,
-.page-template-landing-page-safetax header#hero .hero-inner h1,
-.page-template-landing-page-steuereasy header#hero .hero-inner h1,
-.page-template-landing-page-steuererklaerung header#hero .hero-inner h1,
-.page-template-landing-page-einkommensteuer header#hero .hero-inner h1 {
+  .page-template-landing-page-safetax header#hero .hero-inner h1,
+  .page-template-landing-page-steuereasy header#hero .hero-inner h1,
+  .page-template-landing-page-steuererklaerung header#hero .hero-inner h1,
+  .page-template-landing-page-einkommensteuer header#hero .hero-inner h1 {
     font-size: 40px;
     padding: 0px 0px 10px;
   }
   .page-template-landing-page-grundsteuer header#hero .hero-inner img,
-.page-template-landing-page-safetax header#hero .hero-inner img,
-.page-template-landing-page-steuereasy header#hero .hero-inner img,
-.page-template-landing-page-steuererklaerung header#hero .hero-inner img,
-.page-template-landing-page-einkommensteuer header#hero .hero-inner img {
+  .page-template-landing-page-safetax header#hero .hero-inner img,
+  .page-template-landing-page-steuereasy header#hero .hero-inner img,
+  .page-template-landing-page-steuererklaerung header#hero .hero-inner img,
+  .page-template-landing-page-einkommensteuer header#hero .hero-inner img {
     margin-top: 2rem;
   }
   .page-template-landing-page-safetax #hero {
@@ -9124,17 +9264,19 @@ noscript#enable-js-notification a:hover {
   text-decoration: underline;
 }
 
-#order-form {
-  padding-inline: 50px;
+@media (max-width: 640px) {
+  #order-form {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
-
 body:not(.frame-mode) #page {
-  padding-top: 143px;
+  padding-top: 140px;
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1179px) {
   body:not(.frame-mode) #page {
-    padding-top: 88px;
+    padding-top: 96px;
   }
 }
 /* Steuerratgeber child pages */
@@ -9310,7 +9452,8 @@ body:not(.frame-mode) #page {
   width: 100%;
   margin-bottom: 0;
 }
-.page-id-75 #page-3 .fields-wrapper .field-wrapper input {
+.page-id-75 #page-3 .fields-wrapper .field-wrapper input,
+.page-id-75 #page-3 .fields-wrapper .field-wrapper select {
   width: 100%;
 }
 .page-id-75 .radio-boxes {
@@ -9352,12 +9495,12 @@ body:not(.frame-mode) #page {
 
 @media (max-width: 640px) {
   .page-id-75 .pagination-wrapper,
-.page-id-33519 .pagination-wrapper {
+  .page-id-33519 .pagination-wrapper {
     flex-direction: column;
     gap: 2em !important;
   }
   .page-id-75 #page-3 .fields-wrapper,
-.page-id-33519 #page-3 .fields-wrapper {
+  .page-id-33519 #page-3 .fields-wrapper {
     grid-template-columns: 1fr;
   }
 }
@@ -9367,6 +9510,10 @@ body:not(.frame-mode) #page {
   max-width: 100%;
 }
 
+.post-wrapper.single-post.steuerlexikon-post .post-sidebar {
+  background-color: #f1f6fc;
+  padding: 1rem;
+}
 .post-wrapper.single-post .posted-on {
   font-size: 24px;
 }
@@ -9549,6 +9696,9 @@ body.frame-mode .post-wrapper.single-post {
 }
 
 @media (min-width: 1024px) {
+  .post-wrapper.steuerlexikon-post .post-content-wrapper .post-sidebar {
+    max-width: 290px;
+  }
   .post-wrapper .post-content-wrapper .post-sidebar {
     max-width: 375px;
   }
@@ -9714,8 +9864,8 @@ body.frame-mode .post-wrapper.single-post {
     flex-direction: column;
   }
   .price-card .price-wrapper .price,
-.price-card .price-wrapper .vat-info,
-.price-card .cta-wrapper {
+  .price-card .price-wrapper .vat-info,
+  .price-card .cta-wrapper {
     text-align: right;
   }
 }
@@ -10014,7 +10164,7 @@ body.frame-mode .post-wrapper.single-post {
 }
 #steuerrechner form {
   margin: 0 auto;
-  padding-inline: 0;
+  padding-inline: 0 !important;
   max-width: 820px;
 }
 #steuerrechner .radio-wrapper {
@@ -10039,6 +10189,11 @@ body.frame-mode .post-wrapper.single-post {
 @media (max-width: 885px) {
   #steuerrechner .radio-wrapper.radio-triple {
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 420px) {
+  #steuerrechner .radio-wrapper.radio-triple {
+    grid-template-columns: 1fr !important;
   }
 }
 ._table-of-contents li {

@@ -3,10 +3,13 @@
 /**
  * theme base url and more
  */
+define('STM_THEME_DIR', dirname(__FILE__));
 define('STM_THEME_URL', get_template_directory_uri());
 define('STM_THEME_CSS', STM_THEME_URL . '/css');
 define('STM_THEME_JS', STM_THEME_URL . '/js');
 define('STM_THEME_IMG', STM_THEME_URL . '/img');
+
+define('STM_STEUERLEXIKON_PAGE_ID', 28564);
 
 /**
  * enable javascript notification
@@ -52,6 +55,8 @@ add_action('wp_footer', 'enable_js_notification');
 // }
 
 /**
+ * ! DEPRECATED
+ *
  * utility function to create a random id
  *
  * @param int length - optional
@@ -140,33 +145,89 @@ function theme_add_last_modified_header($headers)
     global $post;
     if (isset($post) && isset($post->post_modified)) {
         $post_mod_date = date('D, d M Y H:i:s', strtotime($post->post_modified));
-        header('Last-Modified: ' . $post_mod_date . ' GMT');
+        @header('Last-Modified: ' . $post_mod_date . ' GMT');
     }
 }
 add_action('template_redirect', 'theme_add_last_modified_header');
 
 // TODO add this after your holiday, so the others and yourself can edit the sidebar simply in the widgets section
-// function steuermachen_widgets_init() {
+// function steuermachen_widgets_init()
+// {
 //     register_sidebar([
-//         'id'            => 'front-page-sidebar',
-//         'name'          => 'Startseite Sidebar',
-//         'description'   => 'A short description of the sidebar.',
+//         'id' => 'front-page-sidebar',
+//         'name' => 'Startseite Sidebar',
+//         'description' => 'A short description of the sidebar.',
 //         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-//         'after_widget'  => '</div>',
-//         'before_title'  => '<h3 class="widget-title">',
-//         'after_title'   => '</h3>',
+//         'after_widget' => '</div>',
+//         'before_title' => '<h3 class="widget-title">',
+//         'after_title' => '</h3>',
 //     ]);
 // }
-// add_action( 'widgets_init', 'steuermachen_widgets_init' );
+// add_action('widgets_init', 'steuermachen_widgets_init');
 
-// function add_mobile_nav_support( $items, $args ) {
+/**
+ * Dashboard Widget: Bestellungen
+ */
+function stm_bestellungen_dashboard_widget()
+{
+    // only redakteur and higher
+    if (false === current_user_can('edit_posts')) {
+        return;
+    }
+
+    wp_enqueue_style('dashboard-style', STM_THEME_CSS . '/dashboard.css');
+    wp_add_dashboard_widget('stm-bestellungen-dashboard-widget', 'Bestellungen', 'stm_bestellungen_dashboard_widget_function');
+
+    function stm_bestellungen_dashboard_widget_function()
+    {
+        ?>
+        <a href="admin.php?page=bestellungen" class="all-orders">alle Bestellungen</a>
+        <?php
+        global $wpdb;
+
+        $orders = $wpdb->get_results('SELECT id, order_number, firstname, lastname, product, created_at FROM stm_orders WHERE is_test = 0 ORDER BY id DESC LIMIT 5');
+
+        foreach ($orders as $key => $order):
+
+            $order_id = $order->id ?? null;
+            $order_number = $order->order_number ?? '/';
+            $first_name = $order->firstname ?? '/';
+            $last_name = $order->lastname ?? '/';
+            $product = $order->product ?? '/';
+            $date = $order->created_at ?? '';
+
+            $date = date_i18n(get_option('date_format'), strtotime($date));
+            $url = 'admin.php?page=bestellungen&view=details&order_id=' . $order_id;
+
+            if ($key < 5): ?>
+            <hr>
+            <?php endif;
+            ?>
+        <div class="row">
+            <div>Auftragsnummer</div>
+            <div><a href="<?= $url ?>"><?= $order_number ?></a></div>
+            <div>Name</div>
+            <div><?= sprintf('%s %s', $first_name, $last_name) ?></div>
+            <div>Produkt</div>
+            <div><?= $product ?></div>
+            <div>Datum</div>
+            <div><?= $date ?></div>
+        </div>
+    <?php
+        endforeach;
+    }
+}
+add_action('wp_dashboard_setup', 'stm_bestellungen_dashboard_widget');
+
+// function add_mobile_nav_support($items, $args)
+// {
 //     var_dump($items);
 //     var_dump($args);
 
 //     return $items;
 // }
 // // wp_nav_menu_items | nav_menu_item_id
-// add_filter( 'wp_nav_menu_items', 'add_mobile_nav_support' );
+// add_filter('wp_nav_menu_items', 'add_mobile_nav_support');
 // // add_action( 'wp_add_nav_menu_item', 'add_mobile_nav_support' );
 
 /**
@@ -420,7 +481,7 @@ function init_stm_theme()
         'primary' => __('Header Navigation'),
         'footer_1' => __('Footer - Über steuermachen.de'),
         'footer_2' => __('Footer - Dokumente'),
-        'footer_3' => __('Footer - Kooperation | Wir helfen dir'),
+        'footer_3' => __('Footer - Kooperation'),
     ]);
 }
 add_action('init', 'init_stm_theme');
@@ -1349,7 +1410,7 @@ function the_author_info()
     }
     ?>
     <div class="author-info">
-        <h3 class="text-center"><?php echo $author_name; ?></h3>
+        <h3>Autor: <?php echo $author_name; ?></h3>
         <?php echo $author_avatar; ?>
         <p><?php echo $author_description; ?></p>
         <?php // if ( false === is_frame_mode() ):
@@ -1581,9 +1642,9 @@ require trailingslashit(get_template_directory()) . 'includes/init.php';
  * include this files if a user is logged in
  */
 if (is_user_logged_in()) {
-    // add_action('admin_enqueue_scripts', function () {
-    // });
-    wp_enqueue_style('admin-style', trailingslashit(get_template_directory_uri()) . 'css/admin.css');
+    add_action('wp_enqueue_scripts', function () {
+        wp_enqueue_style('admin-style', trailingslashit(get_template_directory_uri()) . 'css/admin.css');
+    });
 }
 
 /**
