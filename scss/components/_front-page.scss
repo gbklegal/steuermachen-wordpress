@@ -332,6 +332,43 @@ main.main-content.front-page {
         }
     }
 
+    #vorteile {
+        // border: 2px solid blue;
+
+        .box {
+            border-radius: 24px;
+
+            h3 {
+                line-height: 1.5;
+                letter-spacing: 1px;
+            }
+
+            .benefits {
+                // border: 2px solid blue;
+                list-style-type: '\e92d';
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 18px;
+                // font-family: $icon-font !important;
+
+                li {
+                    padding-left: 1rem;
+
+                    .li-inner {
+                        vertical-align: super;
+                    }
+
+                    &::marker {
+                        font-family: $icon-font;
+                        color: $primary-color;
+                        font-size: 1.7rem;
+                    }
+                }
+            }
+        }
+    }
+
     // #zahlen-und-fakten {
     //     padding-bottom: 200px;
     //     max-width: 800px;
@@ -749,6 +786,10 @@ main.main-content.front-page {
                 }
             }
         }
+
+        #vorteile {
+            border: 2px solid blue;
+        }
     }
 }
 
@@ -816,10 +857,6 @@ main.main-content.front-page {
                     }
                 }
             }
-        }
-
-        #vorteile {
-            border: 2px solid blue;
         }
     }
 }

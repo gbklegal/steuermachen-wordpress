@@ -368,8 +368,8 @@ get_header();
             </section>
 
             <section id="vorteile" class="section section-mb">
-                <div class="benefits-box box-shadow">
-                    <div class="px-6 py-5 header bg-primary">
+                <div class="p-24 box bg-accent br-4">
+                    <div class="mb-8">
                         <h3 class="m-0 font-normal">Durch steuermachen erhältst du jetzt die ideale und einfache Unterstützung deines persönlichen Steuerexperten.</h3>
                     </div>
                     <div class="main justify-content-flex-start" style="padding-left:1em">
@@ -378,11 +378,11 @@ get_header();
                         ); ?>" alt="Grundsteuer"> -->
 
                         <ul class="text-left benefits">
-                            <li>Professionelle und individuelle Beratung</li>
-                            <li>Sicherheitsgarantie durch Steuerexperten an deiner Seite</li>
-                            <li>Zeit und Nerven gespart</li>
-                            <li>Einfache und sichere Erfassung der relevanten Daten</li>
-                            <li>Faire und transparente Preise</li>
+                            <li><span class="li-inner">Professionelle und individuelle Beratung</span></li>
+                            <li><span class="li-inner">Sicherheitsgarantie durch Steuerexperten an deiner Seite</span></li>
+                            <li><span class="li-inner">Zeit und Nerven gespart</span></li>
+                            <li><span class="li-inner">Einfache und sichere Erfassung der relevanten Daten</span></li>
+                            <li><span class="li-inner">Faire und transparente Preise</span></li>
                         </ul>
                     </div>
                 </div>
