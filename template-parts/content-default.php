@@ -1,5 +1,9 @@
-<?php $_is_steuerlexikon = wp_get_post_parent_id() === STM_STEUERLEXIKON_PAGE_ID; ?>
-<div class="post-wrapper<?= return_if($_is_steuerlexikon, ' single-post steuerlexikon-post') ?>">
+<?php $_is_steuerlexikon =
+    wp_get_post_parent_id() === STM_STEUERLEXIKON_PAGE_ID; ?>
+<div class="post-wrapper<?= return_if(
+    $_is_steuerlexikon,
+    ' single-post steuerlexikon-post'
+) ?>">
     <header id="hero" class="post-header hero-wrapper"><?php
 // if (has_title_image()) echo ' hero-wrapper'
 ?>
