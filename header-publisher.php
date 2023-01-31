@@ -54,6 +54,6 @@ if (true === is_christmas_time()) {
 
     <div class="container">
 
-        <section class="section-stm-logo mb-0 py-2 max-width">
+        <section class="py-10 section-stm-logo main-content">
             <img src="<?php echo wp_get_attachment_url(get_theme_mod('custom_logo')); ?>" class="custom-logo" alt="steuermachen">
         </section>
