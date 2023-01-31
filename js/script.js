@@ -42,7 +42,7 @@ window.addEventListener('load', function () {
     headerScroll();
 
     // fixed header page padding fix
-    // setPagePaddingToHeaderHeight(); // now solved with fixed css
+    setPagePaddingToHeaderHeight();
 
     // Steuerlexikon (dict)
     selectLetterInDictFromHash();
