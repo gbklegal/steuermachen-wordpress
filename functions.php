@@ -1504,6 +1504,29 @@ function the_author_info()
 }
 
 /**
+ * Sidebar content which will be shared in 'Steuerratgeber' and 'Lexikon'.
+ */
+function the_post_sidebar_content()
+{
+    ?>
+<div>
+    <h3>Unsere Inhalte sind juristisch geprüft</h3>
+    <img src="https://bussgeldpruefer.com/wp-content/uploads/2020/12/anwalt-siegel-v1-1-150x150.png" alt="Anwaltich geprüft - Siegel" class="lawyer-approved-seal">
+    <p>Tobias Gußmann ist Fachanwalt für Steuerrecht und Mitbegründer der Fachanwaltskanzlei GBK legal sowie Gussmann Böhner & Kropp GbR. Seine langjährigen Erfahrungen im Steuerrecht untermauern seine Expertise. Durch seinen Ehrgeiz und seiner Wissbegierde kennt er sich über alle aktuellen Gesetzesänderungen und Neuheiten bestens aus. Sein Fachwissen ist für jeden seiner Mandanten eine Bereicherung.</p>
+</div>
+<div>
+    <h3>Warum steuermachen?</h3>
+    <p>
+        Keine Arbeit mit der Steuererklärung!<br />
+        Lass jetzt deine Steuererklärung von Steuerexperten machen!<br />
+        Wir sind keine Steuersoftware, bei uns arbeiten echte Menschen.<br />
+        Dein persönlicher Steuerexperte beantwortet deine Fragen und hilft dir, deine maximale Steuerrückerstattung zu bekommen. Persönlich und digital beides aus einer Hand!
+    </p>
+</div>
+    <?php
+}
+
+/**
  * Price Calculator Shortcode
  *
  * @author Tobias Röder
