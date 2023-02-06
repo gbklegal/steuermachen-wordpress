@@ -9,7 +9,7 @@
             } else {
                 echo '<img alt="" src="' .
                     get_template_directory_uri() .
-                    '/assets/images/placholder2.png">';
+                    '/assets/images/placeholder.png">';
             } ?>
         </a>
     </div>
