@@ -144,6 +144,8 @@ function steuermachen_theme_setup()
     add_filter('excerpt_more', function () {
         return '...';
     });
+
+    add_image_size('stm-post-thumbnail', 1024, 683, true);
 }
 add_action('init', 'steuermachen_theme_setup');
 
@@ -1118,10 +1120,14 @@ function get_trusted_shops_logo($attr): string
     $wrap_p = $attr['wrap_p'] ?? true;
 
     // check if image size string contains a word or an integer
-    if ((int) $image_size === 0) {
+    if (false === is_int($image_size)) {
         $size = $image_size;
     } else {
         $size = [$image_size];
+    }
+
+    if (count($size) === 1) {
+        $size[] = $image_size;
     }
 
     // content start
@@ -1512,7 +1518,7 @@ function the_post_sidebar_content()
 <div>
     <h3>Unsere Inhalte sind juristisch geprüft</h3>
     <img src="https://bussgeldpruefer.com/wp-content/uploads/2020/12/anwalt-siegel-v1-1-150x150.png" alt="Anwaltich geprüft - Siegel" class="lawyer-approved-seal">
-    <p>Tobias Gußmann ist Fachanwalt für Steuerrecht und Mitbegründer der Fachanwaltskanzlei GBK legal sowie Gussmann Böhner & Kropp GbR. Seine langjährigen Erfahrungen im Steuerrecht untermauern seine Expertise. Durch seinen Ehrgeiz und seiner Wissbegierde kennt er sich über alle aktuellen Gesetzesänderungen und Neuheiten bestens aus. Sein Fachwissen ist für jeden seiner Mandanten eine Bereicherung.</p>
+    <p>Tobias Gußmann ist Fachanwalt für Steuerrecht und Mitbegründer der Fachanwaltskanzlei GBK LEGAL. Seine langjährigen Erfahrungen im Steuerrecht untermauern seine Expertise. Durch seinen Ehrgeiz und seiner Wissbegierde kennt er sich über alle aktuellen Gesetzesänderungen und Neuheiten bestens aus. Sein Fachwissen ist für jeden seiner Mandanten eine Bereicherung.</p>
 </div>
 <div>
     <h3>Warum steuermachen?</h3>

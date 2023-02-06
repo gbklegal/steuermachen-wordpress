@@ -8,7 +8,7 @@
     Author: Tobias Röder
     Author URI: https://tobias-roeder.de/
     Description: Benutzerdefiniertes steuermachen Themes.
-    Version: 1.5.5
+    Version: 1.5.6
 */
 @font-face {
   font-family: "Material Icons";
@@ -2785,7 +2785,7 @@ main.main-content.front-page .hero-wrapper .hero-text .seals .datenschutz {
   max-height: 82px;
 }
 main.main-content.front-page .hero-wrapper .hero-text .seals .elster {
-  max-height: 48px;
+  height: 48px;
 }
 main.main-content.front-page .hero-wrapper .hero-text .advantages ul {
   display: flex;
