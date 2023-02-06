@@ -5,7 +5,7 @@
     <div class="list-article-thumb">
         <a href="<?php echo esc_url(get_permalink()); ?>">
             <?php if (has_post_thumbnail()) {
-                the_post_thumbnail('large');
+                the_post_thumbnail('stm-post-thumbnail');
             } else {
                 echo '<img alt="" src="' .
                     get_template_directory_uri() .

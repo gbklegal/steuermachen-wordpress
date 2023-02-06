@@ -144,6 +144,8 @@ function steuermachen_theme_setup()
     add_filter('excerpt_more', function () {
         return '...';
     });
+
+    add_image_size('stm-post-thumbnail', 1024, 683, true);
 }
 add_action('init', 'steuermachen_theme_setup');
 
