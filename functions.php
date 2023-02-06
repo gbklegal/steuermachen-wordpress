@@ -1120,10 +1120,14 @@ function get_trusted_shops_logo($attr): string
     $wrap_p = $attr['wrap_p'] ?? true;
 
     // check if image size string contains a word or an integer
-    if ((int) $image_size === 0) {
+    if (false === is_int($image_size)) {
         $size = $image_size;
     } else {
         $size = [$image_size];
+    }
+
+    if (count($size) === 1) {
+        $size[] = $image_size;
     }
 
     // content start
