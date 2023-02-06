@@ -50,7 +50,7 @@ get_header();
             <div class="seals">
                 <?php
                 the_attachment(442, 'thumbnail', 'trusted-shops');
-                the_attachment(34156, '', 'elster');
+                the_attachment(34156, [150, 150], 'elster');
                 the_attachment(28229, 'thumbnail', 'datenschutz');
                 ?>
             </div>
