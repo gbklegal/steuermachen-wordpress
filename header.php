@@ -8,7 +8,10 @@
  */
 
 wp_enqueue_style('steuermachen-style', get_bloginfo('stylesheet_url'));
-wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '/js/script.js');
+wp_enqueue_script_footer(
+    'steuermachen-script',
+    get_template_directory_uri() . '/js/script.js'
+);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -17,7 +20,10 @@ wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?php echo wp_get_document_title(); ?></title>
+    <!-- <title><?php
+# echo wp_get_document_title();
+?></title> -->
+    <title><?php echo wp_title(); ?></title>
 
     <?php wp_head(); ?>
 
@@ -37,10 +43,21 @@ wp_enqueue_script_footer('steuermachen-script', get_template_directory_uri() . '
                                 <?php
                                 $custom_logo_srcset = '';
                                 if (has_custom_retina_logo()) {
-                                    $custom_logo_srcset = wp_get_attachment_url(get_custom_retina_logo()) . ' 2x';
+                                    $custom_logo_srcset =
+                                        wp_get_attachment_url(
+                                            get_custom_retina_logo()
+                                        ) . ' 2x';
                                 }
                                 ?>
-                                <?php echo stm_get_image_tag(get_theme_mod('custom_logo'), 'steuermachen', 'steuermachen', 'left', [0, 42], 'custom-logo', $custom_logo_srcset); ?>
+                                <?php echo stm_get_image_tag(
+                                    get_theme_mod('custom_logo'),
+                                    'steuermachen',
+                                    'steuermachen',
+                                    'left',
+                                    [0, 42],
+                                    'custom-logo',
+                                    $custom_logo_srcset
+                                ); ?>
                             <?php endif; ?>
                         </a>
                         <div class="menu-top-container-wrapper hidden-on-mobile">
