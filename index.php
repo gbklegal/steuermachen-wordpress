@@ -1,8 +1,14 @@
 <?php
 // load the following two script files if the page id is from the /suche/ page
 if (get_the_ID() === 32698) {
-    wp_enqueue_script('inview-script', get_stylesheet_directory_uri() . '/js/inview.js');
-    wp_enqueue_script('livesearch-script', get_stylesheet_directory_uri() . '/js/livesearch.js');
+    wp_enqueue_script(
+        'inview-script',
+        get_stylesheet_directory_uri() . '/js/inview.js'
+    );
+    wp_enqueue_script(
+        'livesearch-script',
+        get_stylesheet_directory_uri() . '/js/livesearch.js'
+    );
 }
 get_header();
 ?>
@@ -27,7 +33,11 @@ get_header();
             <?php get_template_part('/template-parts/content-list-posts'); ?>
         <?php endwhile; ?>
         </div>
-        <?php the_posts_navigation(['prev_text' => 'Ältere Beiträge <i class="icon-chevrons-right"></i>', 'next_text' => '<i class="icon-chevrons-left"></i> Neuere Beiträge']); ?>
+        <?php the_posts_navigation([
+            'prev_text' =>
+                'Ältere Beiträge <i class="icon-chevrons-right"></i>',
+            'next_text' => '<i class="icon-chevrons-left"></i> Neuere Beiträge',
+        ]); ?>
 
     <?php endif; ?>
 
