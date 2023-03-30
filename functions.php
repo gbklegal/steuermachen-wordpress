@@ -59,6 +59,8 @@ add_action('wp_footer', 'enable_js_notification');
  *
  * utility function to create a random id
  *
+ * @deprecated Use the wp_generate_uuid4() function instead.
+ *
  * @param int length - optional
  *
  * @return string
